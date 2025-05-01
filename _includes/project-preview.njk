@@ -1,0 +1,10 @@
+<section class="preview-box preview-box--projects">
+  <h2 class="preview-heading">Latest Project</h2>
+  {% set latestProject = collections.projects | first %}
+  <div class="preview-content">
+    <h3><a href="{{ latestProject.url }}">{{ latestProject.data.title }}</a></h3>
+    <p>{{ latestProject.data.description }}</p>
+    <p class="preview-tags">#tags coming soon</p>
+    <p><a class="preview-link" href="/projects/">See all projects →</a></p>
+  </div>
+</section>

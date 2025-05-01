@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Rule Reference Tool for Nimble TTRPG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav">
+  <a href="/" class="site-nav__brand">
+    <img src="/favicon-32.png" alt="Questadon logo" class="logo" />
+    <span class="site-title">Questadon</span>
+  </a>
+  <ul class="site-nav__links">
+    <li><a href="/projects/" class="">Projects</a></li>
+    <li><a href="/dev-garden/" class="">Dev Garden</a></li>
+    <li><a href="/about/" class="">About</a></li>
+  </ul>
+</nav>
+  </header>
+
+  <main>
+    <h1>Nimble TTRPG AI Rule Reference Tool</h1>
+<h2>The Final (for now) Result</h2>
+<p>I built a <strong>hosted searchable web app</strong> that uses Python and Flask to:</p>
+<ul>
+<li>Ingest and chunk PDFs</li>
+<li>Run fast keyword and fuzzy searches</li>
+<li>Display results in an easy-to-read web UI</li>
+<li>Highlight relevant matches</li>
+<li>Provide citation-style links back to the original PDF section</li>
+</ul>
+<p>It’s not a full chatbot or vector-powered retrieval system—it's <strong>deliberately simpler and faster</strong>. I wanted something my group could use on the fly during sessions, with no money down.</p>
+<p>Hosted on Render: <a href="https://nimble-rules.onrender.com/search">Nimble Rules Search</a></p>
+<p>Give it a bit to spin up! Then use password: Hopscotch</p>
+<h2>What I Set Out to Build</h2>
+<p>So with my long-running online TTRPG group, we play using a game system that's pretty new called Nimble. Unlike other Table-Top Role Playing Games like Dungeons and Dragons, there aren't many tools or references made for this one. Since we are all learning the system together, I wanted an easy way to <strong>look up specific rules from the Nimble rules PDFs during gameplay</strong>—without constantly flipping through 100-page rulebooks or opening the different files and wondering which ones my answer would be in. I also wanted to make it lightweight, private for just my group's use, and <strong>hostable for free</strong>, without needing to train an expensive AI model or rely on external APIs.</p>
+<h2>Options I Explored (and Why I Didn’t Use Them)</h2>
+<table>
+<thead>
+<tr>
+<th>Tool/Option</th>
+<th>Why I Looked at It</th>
+<th>Why I Didn’t Use It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT API</td>
+<td>Natural language support</td>
+<td>$$$ and not self-hosted</td>
+</tr>
+<tr>
+<td>GPT4All</td>
+<td>Local LLM inference</td>
+<td>Too heavy for this use case</td>
+</tr>
+<tr>
+<td>Pinecone/Weaviate</td>
+<td>Vector DB for semantic search</td>
+<td>Overkill for keyword-based queries</td>
+</tr>
+<tr>
+<td>LangChain</td>
+<td>Full retrieval pipeline</td>
+<td>Added too much complexity</td>
+</tr>
+<tr>
+<td>ChatPDF / PDF.ai</td>
+<td>Fast for individuals</td>
+<td>Not private or customizable or free</td>
+</tr>
+</tbody>
+</table>
+<p>I realized I didn't actually need natural language processing—<strong>keyword and fuzzy matching was enough</strong>. The goal wasn’t “conversational,” just <strong>fast, accurate rule recall</strong>. I might expand on this in the future, but as a starting tool, I wanted to simplify my goal here.</p>
+<h2>Tools and Tech Used</h2>
+<ul>
+<li><strong>Python</strong> (core script + backend logic)</li>
+<li><strong>Flask</strong> (lightweight web server)</li>
+<li><strong>PyMuPDF</strong> (<code>fitz</code>) for PDF parsing</li>
+<li><strong>FuzzyWuzzy</strong> (for fuzzy matching)</li>
+<li><strong>HTML/CSS</strong> (basic templating)</li>
+<li><strong>VS Code</strong> for development</li>
+<li><strong>Render.com</strong> (free tier deployment)</li>
+<li><strong>ChatGPT</strong> for vibe coding and learning</li>
+</ul>
+<h2>What I Learned</h2>
+<p>This was one of my first practical experiments applying lightweight AI techniques for personal use. I learned a ton about:</p>
+<ul>
+<li>Keeping scope tight</li>
+<li>Deploying apps (I had never uploaded to GitHub before!)</li>
+<li>Creating a front-end interface</li>
+<li>Chunking and adjusting weighting</li>
+<li>NLPs in general, what's out there and what they can do</li>
+</ul>
+<h2>Updates I'm Considering</h2>
+<p>I might like to update this project with features like:</p>
+<ul>
+<li>Natural Language Processing for search</li>
+<li>A streamlined way to upload new PDF versions</li>
+<li>A &quot;clear search&quot; option</li>
+<li>A front-end that's actually designed</li>
+<li>Obviously Nimble won't be happy to give their PDFs away for free via my search tool; I wonder if I can figure out a way to make it a searchable tool anyone beyond my group can use but not put their IP at risk?</li>
+</ul>
+<blockquote>
+<p>Have you built something similar? How did you do it differently? Whether it's another PDF reference tool or just another tool for a TTRPG like Nimble, I'd be super curious to take a peek and learn what worked for you!</p>
+</blockquote>
+
+  </main>
+
+  <footer class="site-footer">
+  <p>© 2025 Questadon. Thank you, 11ty.</p>
+  <p>
+    🌱 Powered by curiosity, clean(ish) code, and low-energy static site generation.
+  </p>
+  <p>
+    <a href="#top" class="back-to-top">↑ Back to top</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<nav class="site-nav">
+  <a href="/" class="site-nav__brand">
+    <img src="/favicon-32.png" alt="Questadon logo" class="logo" />
+    <span class="site-title">Questadon</span>
+  </a>
+  <ul class="site-nav__links">
+    <li><a href="/projects/" class="{% if page.url == '/projects/' %}active{% endif %}">Projects</a></li>
+    <li><a href="/dev-garden/" class="{% if page.url == '/dev-garden/' %}active{% endif %}">Dev Garden</a></li>
+    <li><a href="/about/" class="{% if page.url == '/about/' %}active{% endif %}">About</a></li>
+  </ul>
+</nav>

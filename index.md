@@ -1,8 +1,8 @@
 ---
-title: Welcome to Questadon
 layout: layout.njk
+title: Home
 ---
 
-# Hello, world! 👋
-
-This is my very first Eleventy page.
+{% include "hero.njk" %}
+{% include "project-preview.njk" %}
+{% include "dev-preview.njk" %}
