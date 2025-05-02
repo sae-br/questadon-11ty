@@ -189,8 +189,8 @@ blockquote {
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
+    grid-template-columns: 1fr 4fr;
+    align-items: top;
     gap: 4rem;
     margin: 0 auto;
   }
@@ -200,6 +200,8 @@ blockquote {
     width: 100%;
     height: auto;
     margin: 0 4rem 0 0; /* top right bottom left */
+    filter: drop-shadow(0 0 4px var(--color-accent-dark))
+    drop-shadow(0 0 40px var(--color-accent-dark)); /* neon glow, layered */
   }
   
   .hero__content {
