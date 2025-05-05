@@ -1,12 +1,22 @@
-/* Base setup */
+/* 1) Default (dark) theme in :root, so JS toggle or attribute fallbacks both work */
 :root {
-    --color-primary: #ED1E79;
-    --color-secondary: #E6FF7C;
-    --color-bg: #000D03;
-    --color-text: #f0f0df;
-    --color-accent-light: #FFA4C8;
-    --color-accent-dark: #A20041;
-  }
+  --color-bg:          #0c180e;
+  --color-text:        #f0f0df;
+  --color-primary:     #ED1E79;
+  --color-secondary:   #E6FF7C;
+  --color-accent-light:#FFA4C8;
+  --color-accent-dark: #A20041;
+}
+
+/* 2) Light mode overrides */
+[data-theme='light'] {
+  --color-bg:          #f6feef;
+  --color-text:        #05220c;
+  --color-primary:     #ED1E79;
+  --color-secondary:   #266201;
+  --color-accent-light:#A20041;
+  --color-accent-dark: #A20041;
+}
   
 html, body {
     background-color: var(--color-bg);
@@ -27,7 +37,7 @@ html, body {
 /* Headings */
 h1, h2, h3 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 400; /* Not bold */
+    font-weight: 600; /* Not bold */
     line-height: 1.2;
     color: var(--color-secondary);
     margin: 1.5rem 0 1rem;
@@ -60,28 +70,48 @@ h1, h2, h3 {
   
   a:hover {
     color: var(--color-accent-light);
+    text-decoration: underline;
+    text-decoration-thickness: .16em;
   }
   
   header, footer {
+    position: relative;
+    z-index: 1000;
     width: 100vw;
     padding: 0rem;
     background-color: var(--color-bg);
     color: var(--color-text);
   }
   
-  
+
+/* Header nav */  
   nav a {
     margin-right: 1rem;
     font-weight: bold;
   }
 
-  /* Layout and structure */
-.site-nav {
+  .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  
+  .site-nav {
     display: flex;
     align-items: center;
-    justify-content: left;
-    background-color: var(--color-bg);
-    padding: 0.75rem 1.25rem;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .site-nav {
+      flex-wrap: wrap;
+    }
   }
   
   .site-nav__brand {
@@ -129,6 +159,83 @@ h1, h2, h3 {
     color: var(--color-primary); /* active: Cerise */
   }
 
+/* Hide toggle on desktop, show on mobile */
+.nav-toggle {
+  display: none;
+  color: var(--color-secondary);
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+}
+
+/* group to the right */
+.nav-right {
+  margin-left: auto;        /* push everything right */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* separator styling */
+.nav-separator {
+  color: var(--color-text);
+  margin: 0 0.5rem;
+}
+
+/* hide the separator on mobile */
+@media screen and (max-width: 768px) {
+  .nav-separator {
+    display: none;
+  }
+}
+
+/* hide hamburger on desktop */
+.nav-toggle {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  .site-nav__links {
+    /* your existing mobile dropdown rules… */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .site-nav {
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .site-nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    width: 100vw;
+    text-align: right;
+    padding: 1rem 2rem;
+    z-index: 1000;
+  }
+
+  .site-nav__links.open {
+    display: flex;
+  }
+
+  .site-nav__links li {
+    margin: 0.5rem 1rem;
+  }
+}
+  
   /* Footer */
   .site-footer {
     text-align: center;
@@ -163,12 +270,12 @@ h1, h2, h3 {
   table th {
     background-color: var(--color-bg);
     color: var(--color-secondary);
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color:(0 0 1px var(--color-bg));
     font-weight: bold;
   }
   
   table tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.03); /* soft zebra striping */
+    background-color: (0 0 1px var(--color-bg)); /* soft zebra striping */
   }
 
 
@@ -189,19 +296,19 @@ blockquote {
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 8fr;
     align-items: top;
-    gap: 4rem;
+    gap: 2.5rem;
     margin: 0 auto;
   }
   
   .hero__image img {
-    max-width: 300px;
+    max-width: 100px;
     width: 100%;
     height: auto;
     margin: 0 4rem 0 0; /* top right bottom left */
-    filter: drop-shadow(0 0 4px var(--color-accent-dark))
-    drop-shadow(0 0 40px var(--color-accent-dark)); /* neon glow, layered */
+    filter: drop-shadow(0 0 1px var(--color-bg))
+    drop-shadow(0 0 30px var(--color-bg)); /* turned off for now for later testing */
   }
   
   .hero__content {

@@ -1,6 +1,9 @@
 ---
-title: Dev Garden
+title: Dev Garden | Questadon
 layout: layout.njk
+eleventyNavigation:
+  key: Dev Garden
+  order: 3
 ---
 
 # Dev Garden

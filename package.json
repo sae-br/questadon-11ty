@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "eleventy --serve",
-  "build": "eleventy"
-},
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy-navigation": "^1.0.4"
   }
 }

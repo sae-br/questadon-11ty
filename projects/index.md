@@ -1,6 +1,9 @@
 ---
-title: Projects
+title: Projects | Questadon
 layout: layout.njk
+eleventyNavigation:
+  key: Projects
+  order: 2
 ---
 
 # Projects
