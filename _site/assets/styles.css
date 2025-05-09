@@ -21,6 +21,7 @@
 html, body {
     background-color: var(--color-bg) !important;
     background-image: none !important;
+    min-height: 100vh;
     color: var(--color-text);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
