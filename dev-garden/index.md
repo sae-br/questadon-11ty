@@ -12,7 +12,7 @@ This is my public learning journal: a digital garden where I share what I’m ma
 
 ---
 
-{% for post in collections.devGarden | reverse %}
+{% for post in collections.devGarden %}
   {% if post.url != '/dev-garden/' %}
     <article class="post-preview">
       <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>

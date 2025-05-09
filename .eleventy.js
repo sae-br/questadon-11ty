@@ -15,7 +15,11 @@ module.exports = function(eleventyConfig) {
 
   // Passthrough copy for assets and favicons
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("favicon-96x96.png");
+  eleventyConfig.addPassthroughCopy("favicon.svg");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("site.webmanifest");
 
   // Custom collection for Dev Garden posts, sorted newest first
   eleventyConfig.addCollection("devGarden", (collection) => {
