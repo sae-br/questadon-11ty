@@ -1,19 +1,20 @@
 const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight"); // ✅ This is the correct plugin
 
 module.exports = function(eleventyConfig) {
-  // Log to confirm this config file is loaded
   console.log("✅ Loaded .eleventy.js, registering plugins and filters");
 
-  // Register Eleventy Navigation plugin
+  // ✅ Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(syntaxHighlight); // ✅ Keep this
 
-  // Filter to format the current year
+  // ✅ Custom filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy");
   });
 
-  // Passthrough copy for assets and favicons
+  // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("favicon-96x96.png");
@@ -21,14 +22,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("site.webmanifest");
 
-  // Custom collection for Dev Garden posts, sorted newest first
+  // ✅ Collections
   eleventyConfig.addCollection("devGarden", (collection) => {
     return collection
       .getFilteredByGlob("./dev-garden/**/*.md")
       .sort((a, b) => b.date - a.date);
   });
 
-  // Custom collection for Projects, sorted newest first
   eleventyConfig.addCollection("projects", (collection) => {
     return collection
       .getFilteredByGlob("./projects/**/*.md")

@@ -19,7 +19,8 @@
 }
   
 html, body {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg) !important;
+    background-image: none !important;
     color: var(--color-text);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
@@ -27,6 +28,15 @@ html, body {
     line-height: 1.7;
     overflow-x: hidden;
   }
+
+/* Full-viewport background fallback (fixes edge/gutter leaks) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg);
+  z-index: -1;
+}
 
   main {
     padding: 2rem;
@@ -133,6 +143,10 @@ h1, h2, h3 {
     font-family: Arial, sans-serif;
     font-size: 1.25rem;
     color: var(--color-text);
+    text-decoration: none;
+  }
+    .site-title a {
+    text-decoration: none;
   }
   
   /* Nav links */
@@ -232,7 +246,8 @@ h1, h2, h3 {
   }
 }
   
-  /* Footer */
+
+/* Footer */
   .site-footer {
     text-align: center;
     font-size: 0.8rem; 
@@ -248,7 +263,7 @@ h1, h2, h3 {
   }
 
 
-  /* Tables */
+/* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -283,6 +298,8 @@ blockquote {
   font-style: italic;
   color: var(--color-text);
 }
+
+
 
 
 /* Hero section (home) */

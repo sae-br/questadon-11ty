@@ -1,0 +1,20 @@
+{
+  "name": "Questadon",
+  "short_name": "Questadon",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c180e", 
+  "theme_color": "#ED1E79",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

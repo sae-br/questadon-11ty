@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>Ye Ole Youtube GA Tracking (According to Bards from 2013)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Questadon" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav">
+  <a href="/" class="site-nav__brand">
+    <img src="/favicon-96x96.png" alt="Questadon logo" class="logo" />
+    <span class="site-title">Questadon</span>
+  </a>
+
+  <div class="nav-right">
+    <!-- Theme toggle always visible -->
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      aria-label="Toggle dark mode"
+    >🌓</button>
+
+    <!-- Separator only on desktop -->
+    <span class="nav-separator" aria-hidden="true">|</span>
+
+    <!-- Desktop links + mobile dropdown -->
+    <ul class="site-nav__links">
+      
+      
+        <li>
+          <a
+            href="/projects/"
+            class=""
+          >Projects</a>
+        </li>
+      
+        <li>
+          <a
+            href="/dev-garden/"
+            class=""
+          >Dev Garden</a>
+        </li>
+      
+        <li>
+          <a
+            href="/about/"
+            class=""
+          >About</a>
+        </li>
+      
+    </ul>
+
+    <!-- Hamburger only on mobile -->
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation menu"
+    >☰</button>
+  </div>
+</nav>
+  </header>
+
+  <main>
+    <h1>Ye Ole Youtube GA Tracking (According to Bards from 2013)</h1>
+<p>Okay, one of my favourite things lately is crawling under the hoods of websites to find jewels like this, which was written back in 2013 (and therefore might be super outdated but entertaining nonetheless).</p>
+<p>It's a bit like geocaching, eh? Devs leave fun little treasures somewhere, and someone finds it 13 years later and is just delighted. Humans can be great.</p>
+<p>Looks like Lunametrics belongs to a different company now, but props to Sayf Sharif and whoever else may have crafted yon rousing ditty. Thy notes hath mightily informed me of the mad reasonings behind thy creation.</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">//To Track Thy Youtube Upon Google Analytics</span>
+<span class="token comment">//Regardless the number of Players upon thy stage</span>
+<span class="token comment">//Performed by LunaMetrics http://www.lunametrics.com @lunametrics </span>
+<span class="token comment">//and Sayf Sharif @sayfsharif</span>
+<span class="token comment">//Who beg thy forgiveness for the lack of the regular expression</span>
+<span class="token comment">//Forget thou not to subscribeth to our bloge: http://www.lunametrics.com/blog/</span>
+<span class="token comment">//CURTAIN</span>
+<span class="token comment">//</span>
+<span class="token comment">//Forsooth here doth we instantiate thy youtube player api </span>
+<span class="token comment">//as it was written by the Google</span>
+<span class="token keyword">var</span> tag <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+tag<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">"//www.youtube.com/iframe_api"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> firstScriptTag <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+firstScriptTag<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>tag<span class="token punctuation">,</span> firstScriptTag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//Then as a drop of rain we create two heavenly arrays</span>
+<span class="token comment">//who may hold in thy endless bossom our value</span>
+<span class="token keyword">var</span> videoArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> playerArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//twixt the jquery we fly to watch as the eagle does the mouse</span>
+<span class="token comment">//for the wanderous devil known as the iframe</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">function</span> <span class="token function">trackYouTube</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">//What am i, but nothing?</span>
+		<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token comment">//Harken to the iframes of the page</span>
+		<span class="token comment">//thy loathesome demon gallavanting upon</span>
+		<span class="token comment">//our innocent sweet html</span>
+		<span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token comment">//but what is this?</span>
+			<span class="token comment">//an iframe! Avast!</span>
+			<span class="token keyword">var</span> video <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//it has a source!</span>
+			<span class="token comment">//Lo we can see it's innards</span>
+			<span class="token comment">//as Han was wont to slice the tauntaun</span>
+			<span class="token keyword">var</span> vidSrc <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+			vidSrc <span class="token operator">=</span> video<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//We shall check the source</span>
+			<span class="token comment">//there are but two responses</span>
+			<span class="token comment">//lo ere the response incorrect</span>
+			<span class="token comment">//we shall ignore it.</span>
+			<span class="token keyword">if</span><span class="token punctuation">(</span>vidSrc<span class="token punctuation">.</span>length<span class="token operator">></span><span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token keyword">if</span><span class="token punctuation">(</span>vidSrc<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">29</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">"http://www.youtube.com/embed/"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+					<span class="token comment">//It is a YouTube video!</span>
+					<span class="token comment">//Rip apart it's source to obtain it's</span>
+					<span class="token comment">//vile beating heart, the youtube id</span>
+					<span class="token keyword">var</span> youtubeid <span class="token operator">=</span> vidSrc<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span><span class="token punctuation">(</span>youtubeid<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">"?rel=0"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+						<span class="token comment">//cut off last 6 digits as hannibal did to atreides</span>
+						<span class="token comment">//and offer them to your gods</span>
+						cutlength <span class="token operator">=</span> youtubeid<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">6</span><span class="token punctuation">;</span>
+						youtubeid <span class="token operator">=</span> youtubeid<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>cutlength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+					<span class="token comment">//we now place the beating heart of the youtube id</span>
+					<span class="token comment">//in our first heavenly array</span>
+					videoArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> youtubeid<span class="token punctuation">;</span>
+					<span class="token comment">//and then mark the vile iframe beast</span>
+					<span class="token comment">//with the id of this video so that all</span>
+					<span class="token comment">//may know it, and reference it</span>
+					<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> youtubeid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token comment">//And for this, I am no longer nothing, I am more</span>
+					i<span class="token operator">++</span><span class="token punctuation">;</span>			
+				<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>vidSrc<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">"https://www.youtube.com/embed/"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+					<span class="token comment">//Again! But this time it is wearing armor</span>
+					<span class="token comment">//Lo, the beast video may think it is </span>
+					<span class="token comment">//protected, but not from our might</span>
+					<span class="token comment">//rip out it's heart again</span>
+					<span class="token keyword">var</span> youtubeid <span class="token operator">=</span> vidSrc<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span><span class="token punctuation">(</span>youtubeid<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">"?rel=0"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+						<span class="token comment">//again cut off last 6 digits as hannibal did to atreides</span>
+						<span class="token comment">//but this time burn them as an offering to the four winds</span>
+						cutlength <span class="token operator">=</span> youtubeid<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">6</span><span class="token punctuation">;</span>
+						youtubeid <span class="token operator">=</span> youtubeid<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>cutlength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+					<span class="token comment">//and once again place this demonic youtube id</span>
+					<span class="token comment">//into the possession of the array where it shall hold</span>
+					videoArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> youtubeid<span class="token punctuation">;</span>
+					<span class="token comment">//and again mark the vile id onto the iframe</span>
+					<span class="token comment">//so all may know it.</span>
+					<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> youtubeid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token comment">//once more my worth increases, i am again incremented</span>
+					i<span class="token operator">++</span><span class="token punctuation">;</span>					
+				<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+					<span class="token comment">//An iframe, but not one we see as that containing</span>
+					<span class="token comment">//a source of the youtube. These we shall let pass</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">}</span>
+	<span class="token comment">//The beginning!</span>
+	<span class="token comment">//Sometimes buried deep within the story</span>
+	<span class="token comment">//but here we start our tale in earnest</span>
+	<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//begin our quest to find the foul iframes</span>
+		<span class="token comment">//so infected with the source of the youtube</span>
+		<span class="token function">trackYouTube</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//When the API of YouTube doth load, it will call</span>
+<span class="token comment">//as if by magic</span>
+<span class="token comment">//this function or code. </span>
+<span class="token comment">//be ready</span>
+<span class="token keyword">function</span> <span class="token function">onYouTubeIframeAPIReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">//Now the battle is engaged</span>
+	<span class="token comment">//we sweep through our array and reference the</span>
+	<span class="token comment">//beating hearts of the youtube id's</span>
+	<span class="token comment">//We then create a new holy object into our</span>
+	<span class="token comment">//second array, by referencing each beating</span>
+	<span class="token comment">//youtube id heart, and tell it wence it</span>
+	<span class="token comment">//shall act upon events</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> videoArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		playerArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">YT<span class="token punctuation">.</span>Player</span><span class="token punctuation">(</span>videoArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+			<span class="token literal-property property">events</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token string-property property">'onReady'</span><span class="token operator">:</span> onPlayerReady<span class="token punctuation">,</span>
+			<span class="token string-property property">'onStateChange'</span><span class="token operator">:</span> onPlayerStateChange
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//Should one wish our monstrous video to play upon load</span>
+<span class="token comment">//we could set that here. But for us. We shall let it</span>
+<span class="token comment">//sleep. Sleep video. Await thy time.</span>
+<span class="token keyword">function</span> <span class="token function">onPlayerReady</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">//event.target.playVideo();</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//When our caged monster wishes to act</span>
+<span class="token comment">//we are ready to hold it's chains</span>
+<span class="token comment">//and enslave it to our will.</span>
+<span class="token keyword">function</span> <span class="token function">onPlayerStateChange</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+	<span class="token comment">//it tries to trick us with a number one greater than</span>
+	<span class="token comment">//that of our arrays. But we outsmart it.</span>
+	<span class="token comment">//with math.</span>
+	videoarraynum <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>id <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token comment">//Should the video rear it's head</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data <span class="token operator">==</span><span class="token constant">YT</span><span class="token punctuation">.</span>PlayerState<span class="token punctuation">.</span><span class="token constant">PLAYING</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		_gaq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'_trackEvent'</span><span class="token punctuation">,</span> <span class="token string">'Videos'</span><span class="token punctuation">,</span> <span class="token string">'Play'</span><span class="token punctuation">,</span> videoArray<span class="token punctuation">[</span>videoarraynum<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span> 
+	<span class="token comment">//should the video tire out and cease</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data <span class="token operator">==</span><span class="token constant">YT</span><span class="token punctuation">.</span>PlayerState<span class="token punctuation">.</span><span class="token constant">ENDED</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		_gaq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'_trackEvent'</span><span class="token punctuation">,</span> <span class="token string">'Videos'</span><span class="token punctuation">,</span> <span class="token string">'Watch to End'</span><span class="token punctuation">,</span> videoArray<span class="token punctuation">[</span>videoarraynum<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span> 
+	<span class="token comment">//and should we tell it to halt, cease, heal.</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data <span class="token operator">==</span><span class="token constant">YT</span><span class="token punctuation">.</span>PlayerState<span class="token punctuation">.</span><span class="token constant">PAUSED</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		_gaq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'_trackEvent'</span><span class="token punctuation">,</span> <span class="token string">'Videos'</span><span class="token punctuation">,</span> <span class="token string">'Pause'</span><span class="token punctuation">,</span> videoArray<span class="token punctuation">[</span>videoarraynum<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span>
+	<span class="token comment">//and should the monster think, before it doth play</span>
+	<span class="token comment">//after we command it to move</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data <span class="token operator">==</span><span class="token constant">YT</span><span class="token punctuation">.</span>PlayerState<span class="token punctuation">.</span><span class="token constant">BUFFERING</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		_gaq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'_trackEvent'</span><span class="token punctuation">,</span> <span class="token string">'Videos'</span><span class="token punctuation">,</span> <span class="token string">'Buffering'</span><span class="token punctuation">,</span> videoArray<span class="token punctuation">[</span>videoarraynum<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span>
+	<span class="token comment">//and should it cue</span>
+	<span class="token comment">//for why not track this as well.</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data <span class="token operator">==</span><span class="token constant">YT</span><span class="token punctuation">.</span>PlayerState<span class="token punctuation">.</span><span class="token constant">CUED</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		_gaq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'_trackEvent'</span><span class="token punctuation">,</span> <span class="token string">'Videos'</span><span class="token punctuation">,</span> <span class="token string">'Cueing'</span><span class="token punctuation">,</span> videoArray<span class="token punctuation">[</span>videoarraynum<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span> 
+<span class="token punctuation">}</span> 
+
+
+
+
+
+<span class="token literal-property property">Note</span><span class="token operator">:</span> This tracks multiple videos on a web page by their id</code></pre>
+
+  </main>
+
+  <footer class="site-footer">
+  <p>© 2025 Questadon. Thank you, 11ty.</p>
+  <p>
+    🌱 Powered by curiosity and low-energy static site generation.
+  </p>
+  <p>
+    <a href="#top" class="back-to-top">↑ Back to top</a>
+  </p>
+</footer>
+
+  <script src="/assets/nav.js"></script>
+</body>
+</html>
