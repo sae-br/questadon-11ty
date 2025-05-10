@@ -23,6 +23,8 @@ Hosted on Render: [Nimble Rules Search](https://nimble-rules.onrender.com/search
 
 Give it a bit to spin up! Then use password: Hopscotch
 
+Poke through my build here, too, if you'd like: [Nimble Rules - GitHub](https://github.com/sae-br/nimble-rules)
+
 
 ## What I Set Out to Build
 
