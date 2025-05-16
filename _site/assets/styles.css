@@ -252,12 +252,11 @@ h1, h2, h3 {
   .site-footer {
     text-align: center;
     font-size: 0.8rem; 
-    padding: 2rem 1rem;
+    padding-bottom: 1rem;
     color: var(--color-text);
   }
 
   .site-footer p {
-    margin: 0; 
     color: inherit; 
     font-size: inherit;
     text-align: inherit;
@@ -414,3 +413,46 @@ blockquote {
   }
   
  
+/* Quote Box */
+
+.quote-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.quote-container {
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  background-color: var(--color-bg);
+}
+
+.quote-h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.quote-output {
+  margin: 2rem auto;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text);
+  max-width: 30ch; /* sets a readable line length */
+  text-align: center;
+  line-height: 1.4;
+}
+
+.quote-button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.quote-button:hover {
+  background-color: var(--color-accent-dark);
+}

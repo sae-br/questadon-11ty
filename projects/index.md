@@ -12,7 +12,7 @@ Here’s a growing collection of creative and technical projects I’m experimen
 
 ---
 
-{% for post in collections.projects | reverse %}
+{% for post in collections.projects %}
   {% if post.url != '/projects/' %}
     <article class="post-preview">
       <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
