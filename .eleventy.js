@@ -7,12 +7,12 @@ module.exports = function(eleventyConfig) {
 
   // ✅ Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(syntaxHighlight); // ✅ Keep this
+  eleventyConfig.addPlugin(syntaxHighlight); // 
 
   // ✅ Custom filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy");
-  });
+    return DateTime.fromJSDate(dateObj).toFormat("MMMM d, yyyy");
+});
 
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");

@@ -248,6 +248,14 @@ h1, h2, h3 {
 }
   
 
+/* Center anything that isn't in main */
+  .centered {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+
 /* Footer */
   .site-footer {
     text-align: center;
@@ -299,6 +307,14 @@ blockquote {
   color: var(--color-text);
 }
 
+
+/* Tiny text */
+  p.tiny {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0px;
+    color: var(--color-accent-light);
+  }
 
 
 
@@ -359,6 +375,10 @@ blockquote {
 
   /* Previews */
 
+  .post-preview { /* On the collection list page */
+  margin-bottom: 4rem;
+}
+  
   .preview-box {
     border: 2px solid var(--color-accent-dark);
     border-radius: 8px;
