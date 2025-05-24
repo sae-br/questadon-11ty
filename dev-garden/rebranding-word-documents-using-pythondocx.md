@@ -7,21 +7,25 @@ layout: layout.njk
 
 # Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)
 
+ 
+
 I made this because I had 160 articles to rebrand for work, and figured I'd make a personal project of it. But gosh, this pushed way beyond what I've worked with before.
 
-The goal was to reformat old .docx articles into a clean new branded style using a Word template, all as a batch. I learned about the python-docx library, low-level XML manipulation, and building structured content transformation pipelines... this was all super new for me and probably more advanced than I SHOULD have gone at my current level. But hey, pretty in character for me to throw myself into the deep end and try not to drown. ;) 
+The goal was to reformat old .docx articles into a clean new branded style using a Word template, all as a batch. 
+
+I learned about the python-docx library, low-level XML manipulation, and building structured content transformation pipelines... this was all super new for me and probably more advanced than I SHOULD have gone at my current level. But hey, pretty in character for me to throw myself into the deep end and try not to drown. ;) 
 
 I've got a parser.py to detect elements of the old docs and a writer.py to create the new docs, and a convert.py for single file tests and convert_batch.py for all 160 (no limit I'm aware of?).
 
-Here's the GitHub folder: https://github.com/sae-br/Article-Rebrand
+Here's the [GitHub folder](https://github.com/sae-br/Article-Rebrand)
 
  
 ## **Libraries and Tools I Used**
 
 ### **python-docx**
 
-See: https://pypi.org/project/python-docx/
-Many thanks to: https://pypi.org/user/scanny/
+[Documentation](https://pypi.org/project/python-docx/)
+[Many thanks to Scanny!](https://pypi.org/user/scanny/)
 
 I used this library to read and write Word .docx files. Most of the document structure work happened with this.
   
@@ -44,8 +48,8 @@ Key functions and objects:
  
 ### **docx2python**
 
-See: https://pypi.org/project/docx2python/
-Many thanks to: https://pypi.org/user/ShayHill/
+[Documentation](https://pypi.org/project/docx2python/)
+[Many thanks to ShayHill!](https://pypi.org/user/ShayHill/)
 
 Used only for extracting the title text from textboxes, since python-docx can’t read headers or textboxes very well.
 
