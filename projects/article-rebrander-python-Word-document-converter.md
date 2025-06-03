@@ -63,7 +63,7 @@ Some had tables. Some had merged cells. Some had hyperlinks. Some used bullet li
 
 It’s good enough to *clean up a big pile of documents quickly*, but not perfect.
 
----
+ 
 
 ## What I Learned
 
@@ -84,7 +84,7 @@ Things I’d like to tackle next:
 - Add a third step (or separate program?) to batch convert the .docx to .pdf to round out the process after manual review
 - Real error handling and logs perhaps?
 
----
+ 
 
 > If you’ve done something similar—maybe rebranding Word docs, building document processing pipelines, or working with styled exports—I’d love to hear how you handled the hard parts. And if you have suggestions on how to fix any of the stuff I couldn't figure out, PLEASE BE MY HERO AND SAY SOMETHING.
 >

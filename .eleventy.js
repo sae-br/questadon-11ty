@@ -1,9 +1,31 @@
 const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight"); // ✅ This is the correct plugin
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight"); 
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
   console.log("✅ Loaded .eleventy.js, registering plugins and filters");
+
+module.exports = function (eleventyConfig) { // RSS Feed Plugin
+	eleventyConfig.addPlugin(feedPlugin, {
+		type: "atom", // or "rss", "json"
+		outputPath: "/feed.xml",
+		collection: {
+			name: "dev-garden", // iterate over `collections.posts`
+			limit: 20,     // 0 means no limit
+		},
+		metadata: {
+			language: "en",
+			title: "Questadon",
+			subtitle: "Questions, experiments, and creations as Sarah Brown (that's me) adventures through a world of code.",
+			base: "https://www.questadon.com/",
+			author: {
+				name: "Sarah Brown",
+				email: "", // Optional later
+			}
+		}
+	});
+};
 
   // ✅ Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
