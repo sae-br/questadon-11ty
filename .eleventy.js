@@ -33,7 +33,13 @@ module.exports = function(eleventyConfig) {
   // ✅ Custom filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("MMMM d, yyyy");
-});
+  });
+  eleventyConfig.addFilter("limit", (array, limit) => {
+    return array.slice(0, limit);
+  });
+  eleventyConfig.addFilter("year", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toFormat("yyyy");
+  });
 
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");

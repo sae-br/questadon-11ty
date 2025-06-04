@@ -24,8 +24,7 @@ Here's the [GitHub folder](https://github.com/sae-br/Article-Rebrand)
 
 ### **python-docx**
 
-[Documentation](https://pypi.org/project/python-docx/)
-[Many thanks to Scanny!](https://pypi.org/user/scanny/)
+[Documentation](https://pypi.org/project/python-docx/) - [Many thanks to Scanny!](https://pypi.org/user/scanny/)
 
 I used this library to read and write Word .docx files. Most of the document structure work happened with this.
   
@@ -48,8 +47,7 @@ Key functions and objects:
  
 ### **docx2python**
 
-[Documentation](https://pypi.org/project/docx2python/)
-[Many thanks to ShayHill!](https://pypi.org/user/ShayHill/)
+[Documentation](https://pypi.org/project/docx2python/) - [Many thanks to ShayHill!](https://pypi.org/user/ShayHill/)
 
 Used only for extracting the title text from textboxes, since python-docx can’t read headers or textboxes very well.
 
