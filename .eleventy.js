@@ -11,14 +11,14 @@ module.exports = function(eleventyConfig) {
     type: "atom", // or "rss", "json"
     outputPath: "/feed.xml",
     collection: {
-      name: "devGarden", // NOTE: should match your collection name exactly
+      name: "devGarden", // must match collection name exactly, see Collections below
       limit: 20, // 0 means no limit
     },
     metadata: {
       language: "en",
       title: "Questadon",
       subtitle: "Questions, experiments, and creations as Sarah Brown (that's me) adventures through a world of code.",
-      base: "https://www.questadon.com/",
+      base: "https://questadon.com/",
       author: {
         name: "Sarah Brown",
         email: "", // Optional
