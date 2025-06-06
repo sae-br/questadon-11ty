@@ -11,7 +11,7 @@ module.exports = function(eleventyConfig) {
     type: "atom", // or "rss", "json"
     outputPath: "/feed.xml",
     collection: {
-      name: "devGarden", // must match collection name exactly, see Collections below
+      name: "gardenandprojects", // must match collection name exactly, see Collections below
       limit: 20, // 0 means no limit
     },
     metadata: {
@@ -61,6 +61,15 @@ module.exports = function(eleventyConfig) {
       .getFilteredByGlob("./projects/**/*.md")
       .sort((a, b) => b.date - a.date);
   });
+
+  eleventyConfig.addCollection("gardenandprojects", (collection) => {
+  return [
+    ...collection.getFilteredByGlob([
+      "./dev-garden/**/*.md",
+      "./projects/**/*.md"
+    ]).sort((a, b) => b.date - a.date)
+  ];
+});
 
   return {
     markdownTemplateEngine: "njk",

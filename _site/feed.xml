@@ -4,9 +4,703 @@
   <subtitle>Questions, experiments, and creations as Sarah Brown (that&#39;s me) adventures through a world of code.</subtitle>
   <link href="https://questadon.com/feed.xml" rel="self" />
   <link href="https://questadon.com/" />
-  <updated>2025-06-05T01:27:10Z</updated>
+  <updated>2025-05-24T00:00:00Z</updated>
   <id>https://questadon.com/</id>
   <author>
     <name>Sarah Brown</name>
   </author>
+  <entry>
+    <title>Projects | Questadon</title>
+    <link href="https://questadon.com/projects/" />
+    <updated>2025-04-17T12:27:05Z</updated>
+    <id>https://questadon.com/projects/</id>
+    <content type="html">&lt;h1&gt;Projects&lt;/h1&gt;
+&lt;p&gt;Here’s a growing collection of creative and technical projects I’m experimenting with.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/projects/article-rebrander-python-Word-document-converter/&quot;&gt;Article Rebrand Tool (Python + .docx Parsing)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A Python-based batch tool that rebrands old Word articles into a clean new template—complete with table support, text formatting, hyperlink preservation, and list handling.&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;May 23, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/projects/idea-generator/&quot;&gt;Random Project Idea Generator&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A simple JavaScript project that started as a quote generator, then evolved into a quirky project idea machine—with reusable DOM interaction, array randomization, and no repeated results.&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;May 15, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/projects/ai-rule-search-tool-for-nimble-ttrpg/&quot;&gt;AI Rule Reference Tool for Nimble TTRPG&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A lightweight, self-hosted AI tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;April 22, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Dev Garden | Questadon</title>
+    <link href="https://questadon.com/dev-garden/" />
+    <updated>2025-04-17T12:27:05Z</updated>
+    <id>https://questadon.com/dev-garden/</id>
+    <content type="html">&lt;h1&gt;Dev Garden&lt;/h1&gt;
+&lt;p&gt;This is my public learning journal: a digital garden where I share what I’m making, learning, and thinking about along the way.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/dev-garden/rebranding-word-documents-using-pythondocx/&quot;&gt;Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I had 160 articles to rebrand, so I tried to make Python do it for me. Mostly successful!&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;May 23, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/dev-garden/youtube-ga-tracking-according-to-bards/&quot;&gt;Ye Ole Youtube GA Tracking (According to Bards from 2013)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Some medieval bard wrote the comments on this code back in 2013 or so, and finding it today delighted me to no end.&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;May 8, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;article class=&quot;post-preview&quot;&gt;
+&lt;h2&gt;&lt;a href=&quot;https://questadon.com/dev-garden/first-garden-note/&quot;&gt;Planting the first seed&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;What the heck am I doing here? Some starting goals etc.&lt;/p&gt;
+&lt;p class=&quot;tiny&quot;&gt;April 22, 2025&lt;/p&gt;
+&lt;/article&gt;&lt;p&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>AI Rule Reference Tool for Nimble TTRPG</title>
+    <link href="https://questadon.com/projects/ai-rule-search-tool-for-nimble-ttrpg/" />
+    <updated>2025-04-23T00:00:00Z</updated>
+    <id>https://questadon.com/projects/ai-rule-search-tool-for-nimble-ttrpg/</id>
+    <content type="html">&lt;h1&gt;Nimble TTRPG AI Rule Reference Tool&lt;/h1&gt;
+&lt;h2&gt;The Final (for now) Result&lt;/h2&gt;
+&lt;p&gt;I built a &lt;strong&gt;hosted searchable web app&lt;/strong&gt; that uses Python and Flask to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingest and chunk PDFs&lt;/li&gt;
+&lt;li&gt;Run fast keyword and fuzzy searches&lt;/li&gt;
+&lt;li&gt;Display results in an easy-to-read web UI&lt;/li&gt;
+&lt;li&gt;Highlight relevant matches&lt;/li&gt;
+&lt;li&gt;Provide citation-style links back to the original PDF section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It’s not a full chatbot or vector-powered retrieval system—it&#39;s &lt;strong&gt;deliberately simpler and faster&lt;/strong&gt;. I wanted something my group could use on the fly during sessions, with no money down.&lt;/p&gt;
+&lt;p&gt;Hosted on Render: &lt;a href=&quot;https://nimble-rules.onrender.com/search&quot;&gt;Nimble Rules Search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Give it a bit to spin up! Then use password: Hopscotch&lt;/p&gt;
+&lt;p&gt;Poke through my build here, too, if you&#39;d like: &lt;a href=&quot;https://github.com/sae-br/nimble-rules&quot;&gt;Nimble Rules - GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;What I Set Out to Build&lt;/h2&gt;
+&lt;p&gt;So with my long-running online TTRPG group, we play using a game system that&#39;s pretty new called Nimble. Unlike other Table-Top Role Playing Games like Dungeons and Dragons, there aren&#39;t many tools or references made for this one. Since we are all learning the system together, I wanted an easy way to &lt;strong&gt;look up specific rules from the Nimble rules PDFs during gameplay&lt;/strong&gt;—without constantly flipping through 100-page rulebooks or opening the different files and wondering which ones my answer would be in. I also wanted to make it lightweight, private for just my group&#39;s use, and &lt;strong&gt;hostable for free&lt;/strong&gt;, without needing to train an expensive AI model or rely on external APIs.&lt;/p&gt;
+&lt;h2&gt;Options I Explored (and Why I Didn’t Use Them)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool/Option&lt;/th&gt;
+&lt;th&gt;Why I Looked at It&lt;/th&gt;
+&lt;th&gt;Why I Didn’t Use It&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ChatGPT API&lt;/td&gt;
+&lt;td&gt;Natural language support&lt;/td&gt;
+&lt;td&gt;$$$ and not self-hosted&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GPT4All&lt;/td&gt;
+&lt;td&gt;Local LLM inference&lt;/td&gt;
+&lt;td&gt;Too heavy for this use case&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pinecone/Weaviate&lt;/td&gt;
+&lt;td&gt;Vector DB for semantic search&lt;/td&gt;
+&lt;td&gt;Overkill for keyword-based queries&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LangChain&lt;/td&gt;
+&lt;td&gt;Full retrieval pipeline&lt;/td&gt;
+&lt;td&gt;Added too much complexity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ChatPDF / PDF.ai&lt;/td&gt;
+&lt;td&gt;Fast for individuals&lt;/td&gt;
+&lt;td&gt;Not private or customizable or free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I realized I didn&#39;t actually need natural language processing—&lt;strong&gt;keyword and fuzzy matching was enough&lt;/strong&gt;. The goal wasn’t “conversational,” just &lt;strong&gt;fast, accurate rule recall&lt;/strong&gt;. I might expand on this in the future, but as a starting tool, I wanted to simplify my goal here.&lt;/p&gt;
+&lt;h2&gt;Tools and Tech Used&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Python&lt;/strong&gt; (core script + backend logic)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flask&lt;/strong&gt; (lightweight web server)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PyMuPDF&lt;/strong&gt; (&lt;code&gt;fitz&lt;/code&gt;) for PDF parsing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FuzzyWuzzy&lt;/strong&gt; (for fuzzy matching)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HTML/CSS&lt;/strong&gt; (basic templating)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VS Code&lt;/strong&gt; for development&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Render.com&lt;/strong&gt; (free tier deployment)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ChatGPT&lt;/strong&gt; for vibe coding and learning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What I Learned&lt;/h2&gt;
+&lt;p&gt;This was one of my first practical experiments applying lightweight AI techniques for personal use. I learned a ton about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keeping scope tight&lt;/li&gt;
+&lt;li&gt;Deploying apps (I had never uploaded to GitHub before!)&lt;/li&gt;
+&lt;li&gt;Creating a front-end interface&lt;/li&gt;
+&lt;li&gt;Chunking and adjusting weighting&lt;/li&gt;
+&lt;li&gt;NLPs in general, what&#39;s out there and what they can do&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Updates I&#39;m Considering&lt;/h2&gt;
+&lt;p&gt;I might like to update this project with features like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Natural Language Processing for search&lt;/li&gt;
+&lt;li&gt;A streamlined way to upload new PDF versions&lt;/li&gt;
+&lt;li&gt;A &amp;quot;clear search&amp;quot; option&lt;/li&gt;
+&lt;li&gt;A front-end that&#39;s actually designed&lt;/li&gt;
+&lt;li&gt;Obviously Nimble won&#39;t be happy to give their PDFs away for free via my search tool; I wonder if I can figure out a way to make it a searchable tool anyone beyond my group can use but not put their IP at risk?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Have you built something similar? How did you do it differently? Whether it&#39;s another PDF reference tool or just another tool for a TTRPG like Nimble, I&#39;d be super curious to take a peek and learn what worked for you!&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Planting the first seed</title>
+    <link href="https://questadon.com/dev-garden/first-garden-note/" />
+    <updated>2025-04-23T00:00:00Z</updated>
+    <id>https://questadon.com/dev-garden/first-garden-note/</id>
+    <content type="html">&lt;h1&gt;Planting the first seed&lt;/h1&gt;
+&lt;p&gt;Welcome to the beginning of &lt;strong&gt;Questadon&lt;/strong&gt;, my little plot of cloud-soil where I’ll be documenting what I learn, make, and experiment with. A place where I can try things out, document the weird and wonderful bits of the process, and hopefully connect with others doing the same.&lt;/p&gt;
+&lt;p&gt;My goal is simple: &lt;strong&gt;use this site as a no-budget learning project where I house my other learning and creative projects!&lt;/strong&gt; I&#39;m hoping to build things that are thoughtful, fast, and sustainable. And end up with stuff that I actually personally use!&lt;/p&gt;
+&lt;h2&gt;Why I’m doing this&lt;/h2&gt;
+&lt;p&gt;So, I&#39;m primarily a designer and marketer; I’ve been creating websites for years (2008, yikes) using platforms like Webflow. I had never been really interested in the nuts and bolts of programming, but hello 2025 and crazy-times-in-the-world, suddenly I find myself feeling a lot more digital-DIY-inclined.&lt;/p&gt;
+&lt;p&gt;I want the things I make to reflect how I work and what I value. That means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keeping things &lt;strong&gt;lean and performant&lt;/strong&gt; (small page sizes, optimized images, reasonable JS, eventually light/dark mode)&lt;/li&gt;
+&lt;li&gt;Building on other people&#39;s work—no need to reinvent the wheel for the sake of it, use what&#39;s already out there and put it together in new ways that work for me&lt;/li&gt;
+&lt;li&gt;Crediting the amazing people, tools, and small companies I learn from along the way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The core constraints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;No money down&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Environmentally mindful&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learning-focused above all&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make stuff I want!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Y&#39;all, I don&#39;t know what I&#39;m doing here. If you&#39;re doing something similar, say hi! Seeing people working on stuff that makes the digital world safer, more environmentally-sustainable, more accessible to all, and better for humans in general—that stuff gives me hope.&lt;/p&gt;
+&lt;h2&gt;My starting point&lt;/h2&gt;
+&lt;p&gt;Where am I starting from? I&#39;m relatively familiar with HTML and CSS, and I’ve just taken my first dip into Python and JavaScript. My learning will be assisted by AI, I&#39;m gonna vibe-code my way through a lot of this (yep, really inviting the hate from that comment), but as I immerse myself in these projects I&#39;ll be looking to learn from other sources as well.&lt;/p&gt;
+&lt;p&gt;I&#39;m starting with just building this website, though I have a couple other projects already in progress. What I&#39;ve done so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Picked &lt;strong&gt;Obsidian&lt;/strong&gt; to track my learning and outline content&lt;/li&gt;
+&lt;li&gt;Chose &lt;strong&gt;11ty&lt;/strong&gt; as my static site generator for this website&lt;/li&gt;
+&lt;li&gt;Planned a &lt;strong&gt;Dev Garden&lt;/strong&gt; (posts like this, built as a learn-in-public journal)&lt;/li&gt;
+&lt;li&gt;Consolidated some &lt;strong&gt;Projects&lt;/strong&gt; I&#39;ve already been working on—builds, experiments, useful tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is only the beginning—but I’m already learning a lot. And that’s kind of the whole point.&lt;/p&gt;
+&lt;p&gt;Let’s see where this takes me.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Ye Ole Youtube GA Tracking (According to Bards from 2013)</title>
+    <link href="https://questadon.com/dev-garden/youtube-ga-tracking-according-to-bards/" />
+    <updated>2025-05-09T00:00:00Z</updated>
+    <id>https://questadon.com/dev-garden/youtube-ga-tracking-according-to-bards/</id>
+    <content type="html">&lt;h1&gt;Ye Ole Youtube GA Tracking (According to Bards from 2013)&lt;/h1&gt;
+&lt;p&gt;Okay, one of my favourite things lately is crawling under the hoods of websites to find jewels like this, which was written back in 2013 (and therefore might be super outdated but entertaining nonetheless).&lt;/p&gt;
+&lt;p&gt;It&#39;s a bit like geocaching, eh? Devs leave fun little treasures somewhere, and someone finds it 13 years later and is just delighted. Humans can be great.&lt;/p&gt;
+&lt;p&gt;Looks like Lunametrics belongs to a different company now, but props to Sayf Sharif and whoever else may have crafted yon rousing ditty. Thy notes hath mightily informed me of the mad reasonings behind thy creation.&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//To Track Thy Youtube Upon Google Analytics&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Regardless the number of Players upon thy stage&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Performed by LunaMetrics http://www.lunametrics.com @lunametrics &lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//and Sayf Sharif @sayfsharif&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Who beg thy forgiveness for the lack of the regular expression&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Forget thou not to subscribeth to our bloge: http://www.lunametrics.com/blog/&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//CURTAIN&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Forsooth here doth we instantiate thy youtube player api &lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//as it was written by the Google&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; tag &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;script&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+tag&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;//www.youtube.com/iframe_api&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; firstScriptTag &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;script&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+firstScriptTag&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parentNode&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;insertBefore&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tag&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; firstScriptTag&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Then as a drop of rain we create two heavenly arrays&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//who may hold in thy endless bossom our value&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; videoArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; playerArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//twixt the jquery we fly to watch as the eagle does the mouse&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//for the wanderous devil known as the iframe&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;trackYouTube&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//What am i, but nothing?&lt;/span&gt;
+		&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//Harken to the iframes of the page&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//thy loathesome demon gallavanting upon&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//our innocent sweet html&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;iframe&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//but what is this?&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//an iframe! Avast!&lt;/span&gt;
+			&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; video &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//it has a source!&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//Lo we can see it&#39;s innards&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//as Han was wont to slice the tauntaun&lt;/span&gt;
+			&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; vidSrc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+			vidSrc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; video&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;src&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//We shall check the source&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//there are but two responses&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//lo ere the response incorrect&lt;/span&gt;
+			&lt;span class=&quot;token comment&quot;&gt;//we shall ignore it.&lt;/span&gt;
+			&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vidSrc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vidSrc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;http://www.youtube.com/embed/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//It is a YouTube video!&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//Rip apart it&#39;s source to obtain it&#39;s&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//vile beating heart, the youtube id&lt;/span&gt;
+					&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; youtubeid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; vidSrc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;?rel=0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+						&lt;span class=&quot;token comment&quot;&gt;//cut off last 6 digits as hannibal did to atreides&lt;/span&gt;
+						&lt;span class=&quot;token comment&quot;&gt;//and offer them to your gods&lt;/span&gt;
+						cutlength &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+						youtubeid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;cutlength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//we now place the beating heart of the youtube id&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//in our first heavenly array&lt;/span&gt;
+					videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//and then mark the vile iframe beast&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//with the id of this video so that all&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//may know it, and reference it&lt;/span&gt;
+					&lt;span class=&quot;token function&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//And for this, I am no longer nothing, I am more&lt;/span&gt;
+					i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;			
+				&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vidSrc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://www.youtube.com/embed/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//Again! But this time it is wearing armor&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//Lo, the beast video may think it is &lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//protected, but not from our might&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//rip out it&#39;s heart again&lt;/span&gt;
+					&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; youtubeid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; vidSrc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;?rel=0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+						&lt;span class=&quot;token comment&quot;&gt;//again cut off last 6 digits as hannibal did to atreides&lt;/span&gt;
+						&lt;span class=&quot;token comment&quot;&gt;//but this time burn them as an offering to the four winds&lt;/span&gt;
+						cutlength &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+						youtubeid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;cutlength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//and once again place this demonic youtube id&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//into the possession of the array where it shall hold&lt;/span&gt;
+					videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//and again mark the vile id onto the iframe&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//so all may know it.&lt;/span&gt;
+					&lt;span class=&quot;token function&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; youtubeid&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//once more my worth increases, i am again incremented&lt;/span&gt;
+					i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;					
+				&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//An iframe, but not one we see as that containing&lt;/span&gt;
+					&lt;span class=&quot;token comment&quot;&gt;//a source of the youtube. These we shall let pass&lt;/span&gt;
+				&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//The beginning!&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//Sometimes buried deep within the story&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//but here we start our tale in earnest&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//begin our quest to find the foul iframes&lt;/span&gt;
+		&lt;span class=&quot;token comment&quot;&gt;//so infected with the source of the youtube&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;trackYouTube&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;jQuery&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//When the API of YouTube doth load, it will call&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//as if by magic&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//this function or code. &lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//be ready&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;onYouTubeIframeAPIReady&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//Now the battle is engaged&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//we sweep through our array and reference the&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//beating hearts of the youtube id&#39;s&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//We then create a new holy object into our&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//second array, by referencing each beating&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//youtube id heart, and tell it wence it&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//shall act upon events&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		playerArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;YT&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Player&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;token literal-property property&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;token string-property property&quot;&gt;&#39;onReady&#39;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; onPlayerReady&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token string-property property&quot;&gt;&#39;onStateChange&#39;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; onPlayerStateChange
+			&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;		
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//Should one wish our monstrous video to play upon load&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//we could set that here. But for us. We shall let it&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//sleep. Sleep video. Await thy time.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;onPlayerReady&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//event.target.playVideo();&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//When our caged monster wishes to act&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//we are ready to hold it&#39;s chains&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//and enslave it to our will.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;onPlayerStateChange&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; 
+	&lt;span class=&quot;token comment&quot;&gt;//it tries to trick us with a number one greater than&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//that of our arrays. But we outsmart it.&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//with math.&lt;/span&gt;
+	videoarraynum &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//Should the video rear it&#39;s head&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;YT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PlayerState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PLAYING&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		_gaq&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;_trackEvent&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Videos&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Play&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;videoarraynum&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; 
+	&lt;span class=&quot;token comment&quot;&gt;//should the video tire out and cease&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;YT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PlayerState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;ENDED&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		_gaq&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;_trackEvent&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Videos&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Watch to End&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;videoarraynum&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; 
+	&lt;span class=&quot;token comment&quot;&gt;//and should we tell it to halt, cease, heal.&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;YT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PlayerState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PAUSED&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		_gaq&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;_trackEvent&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Videos&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Pause&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;videoarraynum&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//and should the monster think, before it doth play&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//after we command it to move&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;YT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PlayerState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;BUFFERING&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		_gaq&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;_trackEvent&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Videos&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Buffering&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;videoarraynum&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//and should it cue&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;//for why not track this as well.&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;YT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PlayerState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;CUED&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		_gaq&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;_trackEvent&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Videos&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Cueing&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; videoArray&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;videoarraynum&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; 
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; 
+
+
+
+
+
+&lt;span class=&quot;token literal-property property&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; This tracks multiple videos on a web page by their id&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Random Project Idea Generator</title>
+    <link href="https://questadon.com/projects/idea-generator/" />
+    <updated>2025-05-16T00:00:00Z</updated>
+    <id>https://questadon.com/projects/idea-generator/</id>
+    <content type="html">&lt;h1&gt;Random Project Idea Generator&lt;/h1&gt;
+&lt;h2&gt;The Final Result&lt;/h2&gt;
+&lt;p&gt;My very first JavaScript learning project started as a quote generator with a button. But then I turned it into something more fun and &amp;quot;me&amp;quot;—a &lt;strong&gt;random project idea machine&lt;/strong&gt; that combines three elements to generate prompts like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“An alarm system for small business owners preparing for the end times.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Each time you click the button, a new combination is generated from three curated lists. I also integrated it cleanly into my &lt;a href=&quot;https://www.11ty.dev/&quot;&gt;Eleventy&lt;/a&gt; site, styled it, and added logic to avoid repeat results.&lt;/p&gt;
+&lt;p&gt;You can see it live &lt;strong&gt;at the bottom of my homepage!&lt;/strong&gt; Give it a whirl!&lt;/p&gt;
+&lt;h2&gt;What I Set Out to Build&lt;/h2&gt;
+&lt;p&gt;Initially I just wanted to practice:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writing basic JavaScript functions&lt;/li&gt;
+&lt;li&gt;Selecting elements with &lt;code&gt;getElementById&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Using event listeners&lt;/li&gt;
+&lt;li&gt;Randomizing items from an array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So I started by creating a basic quote generator that displayed a random inspirational quote from an array.&lt;/p&gt;
+&lt;p&gt;I used &lt;a href=&quot;https://medium.com/@nambilucia/lets-build-a-simple-random-quote-generator-in-vanilla-js-50b13fcd9c39&quot;&gt;this article tutorial for a random quote generator&lt;/a&gt; to get me started, because it was recent and uses vanilla javascript. Thanks Lucia Nambi! 🙌&lt;/p&gt;
+&lt;p&gt;I went through all the code and had AI walk me through the concepts used (and it assigned me a bunch of practices for converting traditional functions to arrow functions, because I was really getting stuck on that.)&lt;/p&gt;
+&lt;p&gt;Once I understood how this separate little app worked on its own, I wanted to integrate it into my site and make it more &amp;quot;me&amp;quot;.&lt;/p&gt;
+&lt;p&gt;I&#39;m not much of a quote person. So I was like, what if instead it was an idea generator?&lt;/p&gt;
+&lt;p&gt;And I figured from what I had learned about &lt;code&gt;Math.floor(Math.random() * quotes.length)&lt;/code&gt; there had to be a way to do this for three sets of information and then just display them all as a single string.&lt;/p&gt;
+&lt;p&gt;There was. Yay!&lt;/p&gt;
+&lt;h2&gt;How I Built It&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I created three separate arrays (&lt;code&gt;ideas1&lt;/code&gt;, &lt;code&gt;ideas2&lt;/code&gt;, &lt;code&gt;ideas3&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;I used a single function (&lt;code&gt;getRandomItem&lt;/code&gt;) to select a random item from each&lt;/li&gt;
+&lt;li&gt;I displayed the full result using &lt;code&gt;innerHTML&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;I added a reusable function to &lt;strong&gt;avoid repeating the same value twice in a row&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once it worked in a standalone folder, I:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a Nunjucks partial (&lt;code&gt;quote-box.njk&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Inserted it as an include on my Eleventy homepage&lt;/li&gt;
+&lt;li&gt;Moved the script into &lt;code&gt;/assets/quote.js&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Styled it using scoped class names (&lt;code&gt;.quote-section&lt;/code&gt;, &lt;code&gt;.quote-output&lt;/code&gt;, etc.)&lt;/li&gt;
+&lt;li&gt;Tweaked line widths with &lt;code&gt;max-width: 30ch&lt;/code&gt; for better multi-line balance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What I Learned About JavaScript&lt;/h2&gt;
+&lt;p&gt;This project taught me a lot about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DOM manipulation (&lt;code&gt;document.getElementById&lt;/code&gt;, &lt;code&gt;innerHTML&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Array use cases (especially selecting random items)&lt;/li&gt;
+&lt;li&gt;Arrow functions vs. traditional functions&lt;/li&gt;
+&lt;li&gt;Anonymous functions and callbacks&lt;/li&gt;
+&lt;li&gt;The difference between &lt;code&gt;console.log()&lt;/code&gt; (for developers) vs. DOM updates (for users)&lt;/li&gt;
+&lt;li&gt;How to avoid immediate repeats with index tracking&lt;/li&gt;
+&lt;li&gt;Writing helper functions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also got more comfortable with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Structuring reusable components for static sites&lt;/li&gt;
+&lt;li&gt;Separating concerns: logic in JS, layout in HTML, style in CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Code Snippets&lt;/h2&gt;
+&lt;p&gt;Here&#39;s what I ended up using, in case anyone cares for the quick look!&lt;/p&gt;
+&lt;p&gt;quote-box.njk&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;section&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-section&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h2&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-h2&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;What to build? Find your next idea below!&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-container&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-output&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-output&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;A scheduling app for calisthenics trainers who don&#39;t have thumbs.&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-button&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;quote-button&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Fresh Idea&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;section&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;quote.js&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; button &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;quote-button&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; output &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;quote-output&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ideas1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;A baby name generator&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A haunted calendar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A crowdsourced treasure map&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A vintage meme archive&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A judgmental productivity app&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A calorie calculator&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A smartwatch app&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A platformer game&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A financial dashboard&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A customer support chatbot&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A dating simulator&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A personality test&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A virtual pet&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;An alarm system&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;A to-do list&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ideas2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;for marine biologists&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for Walmart greeters&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for small business owners&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;for high school teachers&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;for nice folks&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;for romantasy authors&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for competitive knitters&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for astronauts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for introverted teens&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for dragons&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;for food bloggers&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for UX designers&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for conspiracy theorists&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;for lost souls&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ideas3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;trying not to fall asleep in a Zoom call.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;renting out their backyard tree fort.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;preparing for the end times.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;trying to impress their cat.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;who overthink everything.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;looking for love.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;who want to learn to play ukulele.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;with trust issues.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;obsessed with soup.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;training for American Ninja Warrior.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;learning to meditate.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;building community.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;fleeing the algorithm.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;planning a vacation.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;token string&quot;&gt;&quot;organizing their neopet collection.&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getRandomItem&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; lastIndex&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    index &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;index &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; lastIndex&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;index&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; last1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; last2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; last3&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+button&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;click&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;part1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i1&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getRandomItem&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ideas1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; last1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;part2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i2&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getRandomItem&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ideas2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; last2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;part3&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i3&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getRandomItem&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ideas3&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; last3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  last1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i1&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  last2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i2&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  last3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i3&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; fullIdea &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;part1&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;part2&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;part3&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  output&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;innerHTML &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fullIdea&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;styles.css&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Quote Box */&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-section&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 2rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; center&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-container&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 0 auto&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;padding-bottom&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 1rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-bg&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-h2&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 1.25rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 600&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-secondary&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-output&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 2rem auto&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 1.6rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 600&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-text&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 30ch&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/* sets a readable line length */&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; center&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 1.4&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-button&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-primary&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-text&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; none&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 0.75rem 1.5rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 1rem&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 30px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; pointer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; background-color 0.2s ease-in-out&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;.quote-button:hover&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;--color-accent-dark&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Article Rebrand Tool (Python + .docx Parsing)</title>
+    <link href="https://questadon.com/projects/article-rebrander-python-Word-document-converter/" />
+    <updated>2025-05-24T00:00:00Z</updated>
+    <id>https://questadon.com/projects/article-rebrander-python-Word-document-converter/</id>
+    <content type="html">&lt;h1&gt;Article Rebrand Tool (Python + .docx Parsing)&lt;/h1&gt;
+&lt;h2&gt;The Final (for now) Result&lt;/h2&gt;
+&lt;p&gt;I built a &lt;strong&gt;Python batch conversion tool&lt;/strong&gt; that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parses &lt;code&gt;.docx&lt;/code&gt; Word articles with old branding&lt;/li&gt;
+&lt;li&gt;Extracts and preserves paragraph styles, headings, tables, hyperlinks, bold/italic/underline formatting&lt;/li&gt;
+&lt;li&gt;Rewrites each document into a new branded Word template&lt;/li&gt;
+&lt;li&gt;Outputs fully restructured, consistently formatted &lt;code&gt;.docx&lt;/code&gt; files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It’s not fancy, but it’s functional—&lt;strong&gt;no Word macros, no manual editing, no open/save/reopen/reformat/repeat.&lt;/strong&gt; You drop files into a folder, run the script, and boom: clean new versions ready to go!&lt;/p&gt;
+&lt;p&gt;Here’s the repo: &lt;a href=&quot;https://github.com/sae-br/article-rebrand&quot;&gt;Article Rebrand - GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It’s not polished to perfection (yet), but it did help me crank through &lt;strong&gt;160 documents&lt;/strong&gt;, which feels p-rettyyyy dang satisfying. In it&#39;s current version, I definitely did need to give them the manual review, but I figure maybe it can be improved for something in the future!&lt;/p&gt;
+&lt;h2&gt;What I Set Out to Build&lt;/h2&gt;
+&lt;p&gt;I had a batch of old Word articles that needed to be rebranded to match a new template—complete with updated paragraph styles, cleaner layout, and no weird formatting artifacts from the early 2000s.&lt;/p&gt;
+&lt;p&gt;Some had tables. Some had merged cells. Some had hyperlinks. Some used bullet lists. This is one of those tasks I&#39;ve done or assigned to people and it&#39;s just super tedious. So I tried making Python do it for me instead.&lt;/p&gt;
+&lt;h2&gt;Tools and Tech Used&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Python 3&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;python-docx&lt;/strong&gt; (for reading and writing &lt;code&gt;.docx&lt;/code&gt; files)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;docx2python&lt;/strong&gt; (for reading Word textboxes)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;lxml / XML tags&lt;/strong&gt; (for formatting hyperlinks and table borders)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VS Code&lt;/strong&gt; (for building it)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt; (first time posting a doc tool!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What It Can Do (Current State)&lt;/h2&gt;
+&lt;p&gt;✅ Automatically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extracts and rewrites:
+&lt;ul&gt;
+&lt;li&gt;Titles&lt;/li&gt;
+&lt;li&gt;Headings&lt;/li&gt;
+&lt;li&gt;Paragraphs&lt;/li&gt;
+&lt;li&gt;Bold / italic / underline styles&lt;/li&gt;
+&lt;li&gt;Tables (with basic formatting)&lt;/li&gt;
+&lt;li&gt;Hyperlinks&lt;/li&gt;
+&lt;li&gt;Unordered lists (bullets)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;❌ Still needs manual help with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ordered lists (numbered steps don’t auto-detect, so currently I&#39;ve got them outputting to unordered lists)&lt;/li&gt;
+&lt;li&gt;Complex table formatting (merged cells, varied column widths, etc)&lt;/li&gt;
+&lt;li&gt;Mixed formatting inside hyperlinks&lt;/li&gt;
+&lt;li&gt;No image support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It’s good enough to &lt;em&gt;clean up a big pile of documents quickly&lt;/em&gt;, but not perfect.&lt;/p&gt;
+&lt;h2&gt;What I Learned&lt;/h2&gt;
+&lt;p&gt;Honestly? A TON, cuz this was way out of my depth. I think this is one I&#39;ll come back to later on and have lots of &amp;quot;ohhhhh, THAT&#39;s why that worked&amp;quot; moments.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How Word documents are built under the hood (hello XML rabbit hole)&lt;/li&gt;
+&lt;li&gt;How to process structured text using &lt;code&gt;python-docx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;That hyperlinks in Word are surprisingly complicated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Future Improvements&lt;/h2&gt;
+&lt;p&gt;Things I’d like to tackle next:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proper support for numbered lists&lt;/li&gt;
+&lt;li&gt;Smarter handling of tables&lt;/li&gt;
+&lt;li&gt;Maybe image support?&lt;/li&gt;
+&lt;li&gt;Add a third step (or separate program?) to batch convert the .docx to .pdf to round out the process after manual review&lt;/li&gt;
+&lt;li&gt;Real error handling and logs perhaps?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you’ve done something similar—maybe rebranding Word docs, building document processing pipelines, or working with styled exports—I’d love to hear how you handled the hard parts. And if you have suggestions on how to fix any of the stuff I couldn&#39;t figure out, PLEASE BE MY HERO AND SAY SOMETHING.&lt;/p&gt;
+&lt;p&gt;Okay, that&#39;s a wrap for now.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)</title>
+    <link href="https://questadon.com/dev-garden/rebranding-word-documents-using-pythondocx/" />
+    <updated>2025-05-24T00:00:00Z</updated>
+    <id>https://questadon.com/dev-garden/rebranding-word-documents-using-pythondocx/</id>
+    <content type="html">&lt;h1&gt;Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)&lt;/h1&gt;
+&lt;p&gt;I made this because I had 160 articles to rebrand for work, and figured I&#39;d make a personal project of it. But gosh, this pushed way beyond what I&#39;ve worked with before.&lt;/p&gt;
+&lt;p&gt;The goal was to reformat old .docx articles into a clean new branded style using a Word template, all as a batch.&lt;/p&gt;
+&lt;p&gt;I learned about the python-docx library, low-level XML manipulation, and building structured content transformation pipelines... this was all super new for me and probably more advanced than I SHOULD have gone at my current level. But hey, pretty in character for me to throw myself into the deep end and try not to drown. ;)&lt;/p&gt;
+&lt;p&gt;I&#39;ve got a parser.py to detect elements of the old docs and a writer.py to create the new docs, and a convert.py for single file tests and convert_batch.py for all 160 (no limit I&#39;m aware of?).&lt;/p&gt;
+&lt;p&gt;Here&#39;s the &lt;a href=&quot;https://github.com/sae-br/Article-Rebrand&quot;&gt;GitHub folder&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Libraries and Tools I Used&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;strong&gt;python-docx&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://pypi.org/project/python-docx/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://pypi.org/user/scanny/&quot;&gt;Many thanks to Scanny!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I used this library to read and write Word .docx files. Most of the document structure work happened with this.&lt;/p&gt;
+&lt;p&gt;Key things I worked with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Document(...)&lt;/code&gt; – to create or load a .docx&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.add_paragraph()&lt;/code&gt; and &lt;code&gt;.add_run()&lt;/code&gt; – to insert styled text&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.add_table()&lt;/code&gt; – to generate and format tables&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.paragraphs[0]._element.getparent().remove(...)&lt;/code&gt; – this was used to delete placeholder content from my Word template&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were a few things I wanted to do that python-docx can’t handle out of the box—like clickable hyperlinks, table cell borders, and padding. So I dropped down into the WordprocessingML XML layer, which I still don&#39;t think I quite understand yet, to be honest.&lt;/p&gt;
+&lt;p&gt;Key functions and objects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;OxmlElement(...)&lt;/code&gt; – to create custom XML tags like &lt;code&gt;&amp;lt;w:hyperlink&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;w:r&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;w:tcBorders&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;parse_xml(...)&lt;/code&gt; – to convert a raw XML string into an element&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;qn(...)&lt;/code&gt; – to apply the correct namespace prefix to tags&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;strong&gt;docx2python&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://pypi.org/project/docx2python/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://pypi.org/user/ShayHill/&quot;&gt;Many thanks to ShayHill!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Used only for extracting the title text from textboxes, since python-docx can’t read headers or textboxes very well.&lt;/p&gt;
+&lt;p&gt;This was a good learning stretch for me and helped me understand how Word documents are really structured under the hood.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Design Elements My Article Rebrander Can (and Can&#39;t) Handle&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;strong&gt;Paragraph Types&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The parser detects these block types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;heading2, heading3&lt;/li&gt;
+&lt;li&gt;paragraph&lt;/li&gt;
+&lt;li&gt;list_item (used for both bulleted and numbered lists for now)&lt;/li&gt;
+&lt;li&gt;table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each type is output with the correct style name from my template (like “Body Text”, “List Paragraph”, etc). This gave me full control over the final formatting.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Lists&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Unordered and ordered list detection was trickier than expected. I spent like 2 hours trying things that kept not working for the ordered lists.&lt;/p&gt;
+&lt;p&gt;For now, I settled on treating all list items as list_item, and styled them uniformly as unordered lists. Hyperlinked text inside list items is also supported.&lt;/p&gt;
+&lt;p&gt;Partial win here.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Tables&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Tables are generated row by row, and for each cell:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Borders are added (light grey)&lt;/li&gt;
+&lt;li&gt;Internal margins/padding are applied&lt;/li&gt;
+&lt;li&gt;Text formatting (bold, italic, underline) is preserved&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This only works for simple tables. For example merged cells, column widths, and specific table formatting isn&#39;t preserved.&lt;/p&gt;
+&lt;p&gt;Another partial win!&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Things I&#39;m Learning as a Programming Noob&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;This project helped me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Understand how to use python-docx for both reading and writing Word content&lt;/li&gt;
+&lt;li&gt;Dive into XML-based formatting using OxmlElement&lt;/li&gt;
+&lt;li&gt;Improve my ability to modularize code and handle complex document structures&lt;/li&gt;
+&lt;li&gt;Debug layout issues that didn’t come from syntax errors but from subtle Word styling quirks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I encountered some small pieces for the first time as well:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wrote my first README.md file&lt;/li&gt;
+&lt;li&gt;Learned what a .gitignore is and used one&lt;/li&gt;
+&lt;li&gt;I didn&#39;t realize you can&#39;t comment in a JSON file, but now I know!&lt;/li&gt;
+&lt;li&gt;I &lt;strong&gt;tested out GitHub Copilots and to be honest, it wasn&#39;t a win for me.&lt;/strong&gt; It misunderstood my instructions and gave incorrect responses for almost all the things I wanted it to do, so I fell back on my good faithful non-optimal ChatGPT. Which sent me in circles on the ordered list issue for a long time but helped me find the libraries, figure out how to implement them, and get to where I got with this!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This was a stretch project for me and a rewarding one—I built something genuinely useful, and got much better at handling real-world Python code in the process.&lt;/p&gt;
+&lt;p&gt;I don&#39;t know if I SAVED myself time on converting those articles, ha, but I learned a heck of a lot more than I would have by monotonously doing them all manually one by one.&lt;/p&gt;
+</content>
+  </entry>
 </feed>
