@@ -15,6 +15,12 @@ git clone https://github.com/sae-br/questadon-11ty.git
 cd questadon-11ty
 ```
 
+Install dependencies as defined in package-lock.json:
+
+```bash
+npm ci
+```
+
 Run the local dev server:
 ```bash
 npm start
