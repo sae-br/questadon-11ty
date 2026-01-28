@@ -195,7 +195,7 @@ h1, h2, h3 {
     align-items: center;
     gap: 0.8rem;
     margin-right: 3rem;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem 0.25rem 0;
     border-radius: 6px;
   }
 
@@ -218,8 +218,8 @@ h1, h2, h3 {
   }
 
   .logo {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     border-radius: 0px 4px 4px;
     color: var(--color-primary);
     transition: color 0.2s ease;
@@ -387,7 +387,7 @@ h1, h2, h3 {
 
 /* group to the right */
 .nav-right {
-  margin-left: auto;        /* push everything right */
+  margin-left: auto; 
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -543,19 +543,39 @@ hr {
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.5fr 8fr;
+    grid-template-columns: 2fr 7fr;
     align-items: top;
     gap: 2.5rem;
     margin: 0 auto;
   }
   
+  .hero__image {
+    position: relative;
+    max-width: 160px;
+    width: 100%;
+    margin: 0.5rem 4rem 0 0;
+  }
+
   .hero__image img {
-    max-width: 140px;
     width: 100%;
     height: auto;
-    margin: 0.5rem 4rem 0 0; 
     filter: drop-shadow(0 0 1px var(--color-bg))
     drop-shadow(0 0 30px var(--color-bg)); /* turned off for now for later testing */
+  }
+
+  .hero__image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .hero__image:hover .hero__image-default {
+    opacity: 0;
+  }
+
+  .hero__image:hover .hero__image-hover {
+    opacity: 1;
   }
   
   .hero__content {
@@ -568,7 +588,7 @@ hr {
       text-align: center;
     }
   
-    .hero__image img {
+    .hero__image {
       max-width: 200px;
       margin: 0 auto;
     }
