@@ -1,7 +1,10 @@
 const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight"); 
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+const Image = require("@11ty/eleventy-img");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function(eleventyConfig) {
   console.log("✅ Loaded .eleventy.js, registering plugins and filters");
@@ -28,7 +31,11 @@ module.exports = function(eleventyConfig) {
 
   // ✅ Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(syntaxHighlight); // 
+  eleventyConfig.addPlugin(syntaxHighlight);
+
+  // ✅ Markdown with anchor IDs
+  const md = markdownIt({ html: true }).use(markdownItAnchor);
+  eleventyConfig.setLibrary("md", md); 
 
   // ✅ Custom filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
@@ -39,6 +46,25 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter("year", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy");
+  });
+
+  // ✅ Image shortcode
+  eleventyConfig.addShortcode("image", async function(src, alt, sizes = "900px") {
+    let metadata = await Image(src, {
+      widths: [450, 900, 1800],
+      formats: ["webp", "png"],
+      outputDir: "./_site/img/",
+      urlPath: "/img/",
+    });
+
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    return Image.generateHTML(metadata, imageAttributes);
   });
 
   // ✅ Passthrough files
