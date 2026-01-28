@@ -51,25 +51,36 @@ module.exports = function(eleventyConfig) {
 
   // ✅ Collections
   eleventyConfig.addCollection("devGarden", (collection) => {
-    return collection
+    const items = collection
       .getFilteredByGlob("./dev-garden/**/*.md")
+      .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
       .sort((a, b) => b.date - a.date);
+    console.log(`📚 devGarden collection: ${items.length} items found`);
+    items.forEach(item => console.log(`   - ${item.fileSlug}: ${item.data.title}`));
+    return items;
   });
 
   eleventyConfig.addCollection("projects", (collection) => {
-    return collection
+    const items = collection
       .getFilteredByGlob("./projects/**/*.md")
+      .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
       .sort((a, b) => b.date - a.date);
+    console.log(`📚 projects collection: ${items.length} items found`);
+    items.forEach(item => console.log(`   - ${item.fileSlug}: ${item.data.title}`));
+    return items;
   });
 
   eleventyConfig.addCollection("gardenandprojects", (collection) => {
-  return [
-    ...collection.getFilteredByGlob([
-      "./dev-garden/**/*.md",
-      "./projects/**/*.md"
-    ]).sort((a, b) => b.date - a.date)
-  ];
-});
+    return [
+      ...collection
+        .getFilteredByGlob([
+          "./dev-garden/**/*.md",
+          "./projects/**/*.md",
+        ])
+        .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
+        .sort((a, b) => b.date - a.date),
+    ];
+  });
 
   return {
     markdownTemplateEngine: "njk",

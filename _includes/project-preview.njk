@@ -1,9 +1,13 @@
 <section class="preview-box preview-box--projects">
   <h2 class="preview-heading">Latest Project</h2>
   {% set latestProject = collections.projects | first %}
+  {% if latestProject %}
   <div class="preview-content">
     <h3><a href="{{ latestProject.url }}">{{ latestProject.data.title }}</a></h3>
     <p>{{ latestProject.data.description }}</p>
     <p><a class="preview-link" href="/projects/">See all projects →</a></p>
   </div>
+  {% else %}
+  <p>No projects found. (Debug: collections.projects has {{ collections.projects | length }} items)</p>
+  {% endif %}
 </section>

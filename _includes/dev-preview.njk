@@ -1,9 +1,13 @@
 <section class="preview-box preview-box--dev">
   <h2 class="preview-heading">In the Dev Garden</h2>
   {% set latestDev = collections.devGarden | first %}
+  {% if latestDev %}
   <div class="preview-content">
     <h3><a href="{{ latestDev.url }}">{{ latestDev.data.title }}</a></h3>
     <p>{{ latestDev.data.description }}</p>
     <p><a class="preview-link" href="/dev-garden/">See all posts →</a></p>
   </div>
+  {% else %}
+  <p>No dev garden posts found. (Debug: collections.devGarden has {{ collections.devGarden | length }} items)</p>
+  {% endif %}
 </section>
