@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
     metadata: {
       language: "en",
       title: "Questadon",
-      subtitle: "Questions, experiments, and creations as Sarah Brown (that's me) adventures through a world of code.",
+      subtitle: "Questions, experiments, and creations as Sarah Brown (that's me) adventures through code and dice rolls.",
       base: "https://questadon.com/",
       author: {
         name: "Sarah Brown",
