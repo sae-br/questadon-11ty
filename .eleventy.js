@@ -51,23 +51,17 @@ module.exports = function(eleventyConfig) {
 
   // ✅ Collections
   eleventyConfig.addCollection("devGarden", (collection) => {
-    const items = collection
+    return collection
       .getFilteredByGlob("./dev-garden/**/*.md")
       .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
       .sort((a, b) => b.date - a.date);
-    console.log(`📚 devGarden collection: ${items.length} items found`);
-    items.forEach(item => console.log(`   - ${item.fileSlug}: ${item.data.title}`));
-    return items;
   });
 
   eleventyConfig.addCollection("projects", (collection) => {
-    const items = collection
+    return collection
       .getFilteredByGlob("./projects/**/*.md")
       .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
       .sort((a, b) => b.date - a.date);
-    console.log(`📚 projects collection: ${items.length} items found`);
-    items.forEach(item => console.log(`   - ${item.fileSlug}: ${item.data.title}`));
-    return items;
   });
 
   eleventyConfig.addCollection("gardenandprojects", (collection) => {
