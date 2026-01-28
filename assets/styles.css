@@ -594,8 +594,38 @@ hr {
   /* Previews */
 
   .post-preview { /* On the collection list page */
-  margin-bottom: 4rem;
-}
+    margin-bottom: 4rem;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-accent-light);
+  }
+
+  .post-date {
+    margin-right: 0.5rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .tag-pill:hover {
+    background-color: var(--color-primary);
+    text-decoration: none;
+    color: var(--color-bg);
+  }
   
   .preview-box {
     position: relative;
