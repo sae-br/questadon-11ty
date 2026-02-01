@@ -9,7 +9,7 @@ eleventyNavigation:
 
 # Dev Garden
 
-This is my public learning journal: a digital garden where I share what I’m making, learning, and thinking about along the way.
+<p class="lead">This is my public learning journal: a digital garden where I share what I’m making, learning, and thinking about along the way.</p>
 
 ---
  

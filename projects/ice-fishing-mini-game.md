@@ -6,7 +6,7 @@ layout: post.njk
 tags: [project, ttrpg]
 ---
 
-A two-part winter festival mini-game for your table: an ice fishing competition followed by a creature battle royale. Perfect for a holiday one-shot or a fun side activity in your campaign.
+<p class="lead">A two-part winter festival mini-game for your table: an ice fishing competition followed by a creature battle royale. Perfect for a holiday one-shot or a fun side activity in your campaign.</p>
 
 {% image "./assets/post-images/ice-fishing/preview.png", "Preview of the creature cards" %}
 
