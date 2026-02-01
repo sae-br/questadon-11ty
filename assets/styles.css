@@ -659,13 +659,13 @@ hr {
   }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--color-secondary);
     margin-top: 0rem;
   }
 
 .hero-paragraph {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     color: var(--color-text);
     margin-top: 2rem;
