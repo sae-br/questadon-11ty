@@ -1,11 +1,9 @@
 ---
 title: Ye Ole Youtube GA Tracking (According to Bards from 2013)
-layout: layout.njk
+layout: post.njk
 date: 2025-05-09
-description: Some medieval bard wrote the comments on this code back in 2013 or so, and finding it today delighted me to no end. 
+description: Some medieval bard wrote the comments on this code back in 2013 or so, and finding it today delighted me to no end.
 ---
-
-# Ye Ole Youtube GA Tracking (According to Bards from 2013)
 
 Okay, one of my favourite things lately is crawling under the hoods of websites to find jewels like this, which was written back in 2013 (and therefore might be super outdated but entertaining nonetheless). 
 

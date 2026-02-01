@@ -1,0 +1,24 @@
+---
+layout: layout.njk
+---
+<article class="prose">
+  <header class="prose__header">
+    <h1>{{ title }}</h1>
+    {% if date %}
+    <p class="prose__meta">
+      <time datetime="{{ date | dateToRfc3339 }}">{{ date | readableDate }}</time>
+      {% if tags %}
+        {% for tag in tags %}
+          {% if tag != "project" and tag != "dev-garden" %}
+            <a href="/tags/{{ tag | slugify }}/" class="tag-pill">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
+    {% endif %}
+  </header>
+
+  <div class="prose__content">
+    {{ content | safe }}
+  </div>
+</article>

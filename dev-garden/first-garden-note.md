@@ -2,11 +2,8 @@
 title: Planting the first seed
 date: 2025-04-23
 description: What the heck am I doing here? Some starting goals etc.
-layout: layout.njk
+layout: post.njk
 ---
-
-
-# Planting the first seed
 
 Welcome to the beginning of **Questadon**, my little plot of cloud-soil where I’ll be documenting what I learn, make, and experiment with. A place where I can try things out, document the weird and wonderful bits of the process, and hopefully connect with others doing the same.
 

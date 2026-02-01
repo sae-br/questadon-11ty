@@ -2,11 +2,9 @@
 title: Random Project Idea Generator
 description: A simple JavaScript project that started as a quote generator, then evolved into a quirky project idea machine—with reusable DOM interaction, array randomization, and no repeated results.
 date: 2025-05-16
-layout: layout.njk
+layout: post.njk
 tags: [project, javascript, eleventy]
 ---
-
-# Random Project Idea Generator
 
 ## The Final Result
 

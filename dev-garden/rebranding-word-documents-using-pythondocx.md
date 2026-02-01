@@ -2,10 +2,8 @@
 title: Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)
 date: 2025-05-24
 description: I had 160 articles to rebrand, so I tried to make Python do it for me. Mostly successful!
-layout: layout.njk
+layout: post.njk
 ---
-
-# Rebranding Word Documents to Use a New Branded Template (A First Attempt at python-docx and docx2python)
 
  
 
