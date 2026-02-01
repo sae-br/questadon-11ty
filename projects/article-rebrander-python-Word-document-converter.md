@@ -18,7 +18,7 @@ It’s not fancy, but it’s functional—**no Word macros, no manual editing, n
 
 Here’s the repo: [Article Rebrand - GitHub](https://github.com/sae-br/article-rebrand)
 
-It’s not polished to perfection (yet), but it did help me crank through **160 documents**, which feels p-rettyyyy dang satisfying. In it's current version, I definitely did need to give them the manual review, but I figure maybe it can be improved for something in the future!
+It’s not polished to perfection (yet), but it did help me crank through **160 documents**, which feels p-rettyyyy dang satisfying. In its current version, I definitely did need to give them the manual review, but I figure maybe it can be improved for something in the future!
 
  
 

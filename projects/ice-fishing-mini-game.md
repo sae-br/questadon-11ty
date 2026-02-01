@@ -12,7 +12,7 @@ A two-part winter festival mini-game for your table: an ice fishing competition 
 
 Every year, my online group holds a special event called Fishapalooza, where each of us "hosts" a stall or runs a one-shot taking place at a festival all about FISH. Sometimes it's on a tropical island, sometimes it's in a cute bustling port town, and one year we did it in December so we set it in the polar north at Christmas. This is a very silly mini-game anyone can slide into their party's adventure for some fierce yet nonviolent festival fun.  
 
-**What's included:** This post contains all the rules you need to run this event. While we were playing using Nimble, this is just as compatible with D&D and easily tweaked for other systems. I've also made printable creature cards and tokens available for free—download links at the bottom. [++ Skip to downloads](#downloads)
+**What's included:** This post contains all the rules you need to run this event. While we were playing using Nimble, this is just as compatible with D&D and easily tweaked for other systems. I also made digital creature cards and tokens this—download links are at the bottom. [++ Skip to downloads](#downloads)
 
 
 ---
@@ -85,14 +85,16 @@ Players use the creatures they caught in Part 1 to battle it out in a tiny magic
 - I drew up a very simple map the day of, with mostly water but some icebergs and shoreline. 
 - Populate your arena with tokens for each player's catches. (I used Owlbear Rodeo with my online group, and put coloured rings around tokens to show which player owns each creature. To each their own for choice of VTT!)
 - Give your players a verbal rundown of the simplified combat rules below, then roll initiative!
+- Use the initiative order to have each player choose where their fish begin in the arena. (I just assigned corners since I had 4 players.)
+- FIGHT TO THE (magically simulated) DEATH!
 
 #### Simplified Combat Rules
-- **Three action points per round.** On your turn, you can use an action point to have a creature move or attack, in any combination. You can spend all your Action Points on 1 creature or use them on different creatures. If you take a reaction (Octomas), you have one less Action Point the next time you take your turn.
+- **Three action points per round.** On your turn, you can use an action point to have a creature move or attack, in any combination. You can spend all your Action Points on 1 creature or use them on different creatures. If you take a reaction (Octomas) while it's someone else's turn, you have one less Action Point the next time you take your turn.
 - **No attack rolls.** If you're in reach, just roll damage.
 - **Movement:** All creatures can swim. Some can also move on land/ice (check their stat card for "speed" vs "swim").
 - **Abilities:** Each creature has special actions noted on their card.
 
-*We were using Nimble not D&D at the time; the action point system above is based on how combat works in Nimble!* 
+> We were using Nimble not D&D at the time; the action point system above is based on how combat works in Nimble!
 
 ---
 
