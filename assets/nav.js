@@ -40,4 +40,27 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     // === Theme toggle code ends here ===
+
+    // === Floating back-to-top button ===
+    const backToTopBtn = document.getElementById("back-to-top");
+
+    if (backToTopBtn) {
+      // Show/hide button based on scroll position
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add("visible");
+        } else {
+          backToTopBtn.classList.remove("visible");
+        }
+      });
+
+      // Smooth scroll to top on click
+      backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    }
+    // === Floating back-to-top ends here ===
   });
