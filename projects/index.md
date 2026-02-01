@@ -1,6 +1,7 @@
 ---
 title: Projects | Questadon
 layout: layout.njk
+description: A collection of creative and technical projects—from Python tools to TTRPG utilities and web experiments.
 eleventyNavigation:
   key: Projects
   order: 2

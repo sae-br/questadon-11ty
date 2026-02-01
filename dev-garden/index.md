@@ -1,6 +1,7 @@
 ---
 title: Dev Garden | Questadon
 layout: layout.njk
+description: A public learning journal sharing notes on web development, static site generators, and creative coding experiments.
 eleventyNavigation:
   key: Dev Garden
   order: 3

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" id="top">
 <head>
   <meta charset="UTF-8">
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed">
-  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Questadon RSS Feed">
+  <meta name="description" content="{{ description | default('Questions, experiments, and creations as Sarah Brown adventures through code and dice rolls.') }}">
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css" integrity="sha384-wFjoQjtV1y5jVHbt0p35Ui8aV8GVpEZkyF99OXWqP/eNJDU93D3Ugxkoyh6Y2I4A" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -14,14 +15,24 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Questadon" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     {% include "nav.njk" %}
   </header>
 
-  <main>
+  <main id="main-content">
     {{ content | safe }}
   </main>
 

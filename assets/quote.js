@@ -71,5 +71,5 @@ button.addEventListener('click', () => {
   last3 = i3;
 
   const fullIdea = `${part1} ${part2} ${part3}`;
-  output.innerHTML = fullIdea;
+  output.textContent = fullIdea;
 });

@@ -1,6 +1,7 @@
 ---
 title: About | Questadon
 layout: layout.njk
+description: Meet Sarah Brown—designer, marketer, and compulsive learner exploring code, static sites, AI tooling, and TTRPGs.
 eleventyNavigation:
   key: About
   order: 4
