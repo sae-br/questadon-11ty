@@ -1,15 +1,15 @@
 ---
-title: Dev Garden | Questadon
+title: Digital Garden | Questadon
 layout: layout.njk
-description: A public learning journal sharing notes on web development, static site generators, and creative coding experiments.
+description: Thoughts, fun findings, and learning notes about programming, AI, TTRPGs, and more.
 eleventyNavigation:
   key: Dev Garden
   order: 3
 ---
 
-# Dev Garden
+# Digital Garden
 
-<p class="lead">This is my public learning journal: a digital garden where I share what I’m making, learning, and thinking about along the way.</p>
+<p class="lead">My haphazard digital garden of things I’m making, learning, finding, and thinking about along my learning journey. I reserve the right to disagree with myself in the future. 🙃</p>
 
 ---
  
