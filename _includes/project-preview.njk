@@ -1,10 +1,15 @@
 <section class="preview-box preview-box--projects">
-  <h2 class="preview-heading">Latest Project</h2>
-  {% set latestProject = collections.projects | first %}
-  {% if latestProject %}
+  <h2 class="preview-heading">Latest Projects</h2>
+  {% if collections.projects | length %}
   <div class="preview-content">
-    <h3><a href="{{ latestProject.url }}">{{ latestProject.data.title }}</a></h3>
-    <p>{{ latestProject.data.description }}</p>
+    {% for project in collections.projects %}
+      {% if loop.index <= 2 %}
+      <div class="preview-item">
+        <h3><a href="{{ project.url }}">{{ project.data.title }}</a></h3>
+        <p>{{ project.data.description }}</p>
+      </div>
+      {% endif %}
+    {% endfor %}
     <a class="preview-link" href="/projects/">See all projects →</a>
   </div>
   {% else %}

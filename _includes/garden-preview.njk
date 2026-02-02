@@ -1,0 +1,18 @@
+<section class="preview-box preview-box--dev">
+  <h2 class="preview-heading">In the Digital Garden</h2>
+  {% if collections.digitalGarden | length %}
+  <div class="preview-content">
+    {% for post in collections.digitalGarden %}
+      {% if loop.index <= 2 %}
+      <div class="preview-item">
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p>{{ post.data.description }}</p>
+      </div>
+      {% endif %}
+    {% endfor %}
+    <a class="preview-link" href="/digital-garden/">See all posts →</a>
+  </div>
+  {% else %}
+  <p>No digital garden posts found.</p>
+  {% endif %}
+</section>
