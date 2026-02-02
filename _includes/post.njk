@@ -9,7 +9,7 @@ layout: layout.njk
       <time datetime="{{ date | dateToRfc3339 }}">{{ date | readableDate }}</time>
       {% if tags %}
         {% for tag in tags %}
-          {% if tag != "project" and tag != "dev-garden" %}
+          {% if tag != "project" and tag != "digital-garden" %}
             <a href="/tags/{{ tag | slugify }}/" class="tag-pill">{{ tag }}</a>
           {% endif %}
         {% endfor %}

@@ -9,7 +9,7 @@ eleventyNavigation:
 
 # Projects
 
-<p class="lead">Here’s a growing collection of creative and technical projects I’m experimenting with.</p>
+<p class="lead">Here’s a growing collection of stuff I've made—technical, creative, hyper-dimensional... all kinds.</p>
 
 ---
  

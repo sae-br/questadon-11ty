@@ -114,7 +114,7 @@ h1, h2, h3 {
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.8;
   }
 
@@ -127,7 +127,7 @@ h1, h2, h3 {
 
   /* Lists */
   ul, ol {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     line-height: 1.8;
     padding-left: 1.5rem;
     margin: 1rem 0;
@@ -1003,10 +1003,10 @@ hr {
 
 /* Paragraphs */
 .prose__content p {
-  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   margin-top: 0;
-  margin-bottom: 1.25rem;
-  line-height: 1.75;
+  margin-bottom: 1.3rem;
+  line-height: 1.8;
 }
 
 /* Tighter spacing for consecutive paragraphs */
@@ -1016,17 +1016,17 @@ hr {
 
 /* Lead paragraph in prose */
 .prose__content .lead {
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
-  line-height: 1.7;
+  font-size: clamp(1.3rem, 3vw, 1.4rem);
+  line-height: 1.8;
   margin-bottom: 1.5rem;
 }
 
 /* Lists */
 .prose__content ul,
 .prose__content ol {
-  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   margin-top: 0;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.3rem;
   padding-left: 1.5rem;
   line-height: 1.7;
 }
@@ -1044,8 +1044,8 @@ hr {
 .prose__content ol ol,
 .prose__content ul ol,
 .prose__content ol ul {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 /* Links */
@@ -1239,7 +1239,7 @@ hr {
 
   .prose__content p,
   .prose__content li {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   /* Make tables scrollable on very small screens */

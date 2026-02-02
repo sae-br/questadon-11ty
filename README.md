@@ -1,6 +1,6 @@
 # Questadon (Eleventy)
 
-Questadon is a personal Eleventy (11ty) site used as a dev garden / experimentation space for writing, programming notes, and project documentation.
+Questadon is a personal Eleventy (11ty) site used as a digital garden / experimentation space for writing, programming notes, and project documentation.
 
 ## Tech Stack
 - Node.js (tested with Node 18+)

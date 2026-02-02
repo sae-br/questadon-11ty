@@ -3,7 +3,7 @@ title: Digital Garden | Questadon
 layout: layout.njk
 description: Thoughts, fun findings, and learning notes about programming, AI, TTRPGs, and more.
 eleventyNavigation:
-  key: Dev Garden
+  key: Digital Garden
   order: 3
 ---
 
@@ -14,8 +14,8 @@ eleventyNavigation:
 ---
  
 
-{% for post in collections.devGarden %}
-  {% if post.url != '/dev-garden/' %}
+{% for post in collections.digitalGarden %}
+  {% if post.url != '/digital-garden/' %}
     <article class="post-preview">
       <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
       <p>{{ post.data.description }}</p>

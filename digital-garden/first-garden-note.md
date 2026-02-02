@@ -35,7 +35,7 @@ Where am I starting from? I'm relatively familiar with HTML and CSS, and I’ve 
 I'm starting with just building this website, though I have a couple other projects already in progress. What I've done so far:
 - Picked **Obsidian** to track my learning and outline content
 - Chose **11ty** as my static site generator for this website
-- Planned a **Dev Garden** (posts like this, built as a learn-in-public journal)
+- Planned a **Digital Garden** (posts like this, built as a learn-in-public journal)
 - Consolidated some **Projects** I've already been working on—builds, experiments, useful tools
 
 ---
