@@ -1,17 +1,17 @@
-<section class="preview-box preview-box--dev">
-  <h2 class="preview-heading">In the Digital Garden</h2>
+<section class="preview-section">
+  <h2 class="preview-heading">I Write Stuff Sometimes (Digital Garden)</h2>
   {% if collections.digitalGarden | length %}
-  <div class="preview-content">
+  <div class="preview-stack">
     {% for post in collections.digitalGarden %}
       {% if loop.index <= 2 %}
-      <div class="preview-item">
+      <article class="preview-box garden-card">
         <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        <p>{{ post.data.description }}</p>
-      </div>
+        <p class="text-sm">{{ post.data.description }}</p>
+      </article>
       {% endif %}
     {% endfor %}
-    <a class="preview-link" href="/digital-garden/">See all posts →</a>
   </div>
+  <a class="preview-link" href="/digital-garden/">See all posts →</a>
   {% else %}
   <p>No digital garden posts found.</p>
   {% endif %}

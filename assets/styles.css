@@ -47,6 +47,12 @@ header, footer, main, .preview-box, .site-nav, .site-nav__links {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Text utilities */
+.text-sm {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
 /* Full-viewport background fallback (fixes edge/gutter leaks) */
 body::before {
   content: "";
@@ -738,44 +744,20 @@ hr {
   }
   
   .preview-heading {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
     margin-top: 0px;
     color: var(--color-secondary);
   }
   
-  .preview-content h3 a{
-    margin-top: 0;
-    font-size: 2rem;
-    font-weight: 600;
-  }
-
-  .preview-content h3 a:hover{
-    margin-top: 0;
-    font-size: 2rem;
-  }
-
-  .preview-content h3 {
-    margin-top: 0;
-    font-size: 2rem;
-  }
-  
-  .preview-content p {
-    margin-bottom: 1rem;
-  }
-  
-  .preview-tags {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--color-accent-light);
-  }
-
   .preview-link {
     font-size: 1rem;
     color: var(--color-primary);
     font-weight: 600;
     text-decoration: none;
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
     margin-top: 0.5rem;
     margin-bottom: 0rem;
   }
@@ -783,8 +765,91 @@ hr {
   .preview-box > *:last-child {
     margin-bottom: 0;
   }
-  
- 
+
+  /* Projects preview grid */
+
+  .preview-section {
+    margin: 2rem 0;
+  }
+
+  /* Extra breathing room only between two stacked preview sections */
+  .preview-section + .preview-section {
+    margin-top: 5rem;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-card {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-card h3 a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .project-card h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .project-card .post-meta {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Garden preview stack */
+
+  .preview-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .garden-card {
+    margin: 0;
+  }
+
+  .garden-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .garden-card h3 a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .garden-card h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .garden-card p:last-child {
+    margin-bottom: 0;
+  }
+
 /* Quote Box */
 
 .quote-section {

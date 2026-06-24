@@ -1,17 +1,20 @@
-<section class="preview-box preview-box--projects">
-  <h2 class="preview-heading">Latest Projects</h2>
+<section class="preview-section">
+  <h2 class="preview-heading">I Make Stuff Sometimes (Projects)</h2>
   {% if collections.projects | length %}
-  <div class="preview-content">
+  <div class="project-grid">
     {% for project in collections.projects %}
-      {% if loop.index <= 2 %}
-      <div class="preview-item">
+      {% if loop.index <= 4 %}
+      <article class="preview-box project-card">
         <h3><a href="{{ project.url }}">{{ project.data.title }}</a></h3>
-        <p>{{ project.data.description }}</p>
-      </div>
+        {% if project.data.tags %}
+        <p class="post-meta">{% for tag in project.data.tags %}{% if tag != "project" %}<a href="/tags/{{ tag | slugify }}/" class="tag-pill">{{ tag }}</a>{% endif %}{% endfor %}</p>
+        {% endif %}
+        <p class="text-sm">{{ project.data.description }}</p>
+      </article>
       {% endif %}
     {% endfor %}
-    <a class="preview-link" href="/projects/">See all projects →</a>
   </div>
+  <a class="preview-link" href="/projects/">See all projects →</a>
   {% else %}
   <p>No projects found.</p>
   {% endif %}
