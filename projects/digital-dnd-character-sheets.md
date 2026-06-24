@@ -65,7 +65,7 @@ This is meant a highly flexible BYO-content digital character sheet that sticks 
 - A way to visually differentiate one character sheet from another (i.e. probably colour scheme; probably not handling image uploads)
 
 ## Features DDCS Won't Be Offering
-- Automated math (to keep total homebrew flexibility, everything gets fill everything manually, like you would with pencil and paper)
+- Automated math (to keep total homebrew/content flexibility, almost no fields are locked into a specific function, so you update it manually, like you would with pencil and paper)
 - Pre-populated content (you are responsible to source and add content you own/have permission to use)
 - Fancy animations (I want to keep this app light and quick)
 - Other TTRPG systems or versions (this is just for D&D 5.5E and 5E)
@@ -74,7 +74,7 @@ This is meant a highly flexible BYO-content digital character sheet that sticks 
 
 Full Disclosure: this isn't free for ME. But I found a way to do it affordably and support it at a scale that a good amount of people can use it, because while I built this for my own preferences, it always feels better to share things!
 
-So you using this and enjoying it is part of the point of me making this. 🙂 I love hearing from people who are happy to have found DDCS.
+So you using this and enjoying it is part of the point of me making this. 🙂 I love hearing from people who are happy to have found DDCS. (You can email me (Sarah) at hello@questadon.com)
 
 That said, I'm just one person, and this is a little side project (among many). Kindness is appreciated.
 

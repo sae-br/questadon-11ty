@@ -9,7 +9,7 @@ Managing character sheets is one of those things D&D players have a LOT of opini
 
 [D&D Character Sheets](https://ddcs.questadon.com/) is a web app that gives you loads of freedom in terms of content, a tidy and familiar UI, a place to organize (and not accidentally spill Pepsi on) your sheets, some helpful features for finding and sorting info within your sheet, and it's free.
 
-You're welcome to check out my feature list and write-up [about the DDCS app](/projects/digital-dnd-character-sheets.md); this particular post is just some explanation on why my experience managing character sheets has been less than satisfactory and why I ended up building DDCS for myself the way I did.
+You're welcome to check out my feature list and write-up [about the DDCS app](/projects/digital-dnd-character-sheets/); this particular post is just some explanation on why my experience managing character sheets has been less than satisfactory and why I ended up building DDCS for myself the way I did.
 
 ## What's the Best Way to Manage D&D Character Sheets?
 
