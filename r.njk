@@ -12,7 +12,7 @@ eleventyExcludeFromCollections: true
   <meta name="robots" content="noindex">
   <link rel="icon" href="/favicon.ico">
   <noscript>
-    <meta http-equiv="refresh" content="0;url=https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57">
+    <meta http-equiv="refresh" content="0;url=https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57&amp;utm_source=tshirt&amp;utm_medium=qr&amp;utm_campaign=prelaunch">
   </noscript>
   <style>
     body {
@@ -32,7 +32,7 @@ eleventyExcludeFromCollections: true
 <body>
   <div>
     <p>Taking you to the Kickstarter campaign&hellip;</p>
-    <p><a href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57">Continue to Kickstarter</a></p>
+    <p><a href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57&amp;utm_source=tshirt&amp;utm_medium=qr&amp;utm_campaign=prelaunch">Continue to Kickstarter</a></p>
   </div>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P5792YKJB"></script>
@@ -40,9 +40,9 @@ eleventyExcludeFromCollections: true
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-3P5792YKJB');
+    gtag('config', 'G-3P5792YKJB', { transport_type: 'beacon' });
 
-    var destination = "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57";
+    var destination = "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=40yx57&utm_source=tshirt&utm_medium=qr&utm_campaign=prelaunch";
     var redirected = false;
     function goToKickstarter() {
       if (redirected) return;
@@ -52,12 +52,10 @@ eleventyExcludeFromCollections: true
 
     gtag('event', 'qr_code_scan', {
       event_category: 'QR Code',
-      event_label: 'qrcode',
-      event_callback: goToKickstarter,
-      event_timeout: 1000
+      event_label: 'qrcode'
     });
 
-    setTimeout(goToKickstarter, 1200);
+    setTimeout(goToKickstarter, 500);
   </script>
 </body>
 </html>
