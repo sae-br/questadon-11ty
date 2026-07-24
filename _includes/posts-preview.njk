@@ -1,0 +1,18 @@
+<section class="preview-section">
+  <h2 class="preview-heading">I Write Stuff Sometimes (Posts)</h2>
+  {% if collections.posts | length %}
+  <div class="preview-stack">
+    {% for post in collections.posts %}
+      {% if loop.index <= 2 %}
+      <article class="preview-box posts-card">
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p class="text-sm">{{ post.data.description }}</p>
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <a class="preview-link" href="/posts/">See all posts →</a>
+  {% else %}
+  <p>No posts found.</p>
+  {% endif %}
+</section>

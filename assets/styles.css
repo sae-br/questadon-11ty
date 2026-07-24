@@ -828,25 +828,25 @@ hr {
     margin-bottom: 1rem;
   }
 
-  .garden-card {
+  .posts-card {
     margin: 0;
   }
 
-  .garden-card h3 {
+  .posts-card h3 {
     margin-top: 0;
     margin-bottom: 0.75rem;
   }
 
-  .garden-card h3 a {
+  .posts-card h3 a {
     font-weight: 600;
     text-decoration: none;
   }
 
-  .garden-card h3 a:hover {
+  .posts-card h3 a:hover {
     text-decoration: underline;
   }
 
-  .garden-card p:last-child {
+  .posts-card p:last-child {
     margin-bottom: 0;
   }
 

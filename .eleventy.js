@@ -76,9 +76,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site.webmanifest");
 
   // ✅ Collections
-  eleventyConfig.addCollection("digitalGarden", (collection) => {
+  eleventyConfig.addCollection("posts", (collection) => {
     return collection
-      .getFilteredByGlob("./digital-garden/**/*.md")
+      .getFilteredByGlob("./posts/**/*.md")
       .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
       .sort((a, b) => b.date - a.date);
   });
@@ -94,7 +94,7 @@ module.exports = function(eleventyConfig) {
     return [
       ...collection
         .getFilteredByGlob([
-          "./digital-garden/**/*.md",
+          "./posts/**/*.md",
           "./projects/**/*.md",
         ])
         .filter((item) => !item.data.eleventyExcludeFromCollections && !item.inputPath.endsWith("index.md"))
