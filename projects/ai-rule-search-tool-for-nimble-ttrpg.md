@@ -1,5 +1,5 @@
 ---
-title: AI Rule Reference Tool for Nimble TTRPG
+title: Rule Reference Tool for Nimble TTRPG
 description: A lightweight, self-hosted AI tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
 date: 2025-04-23
 layout: post.njk
@@ -15,7 +15,7 @@ I built a **hosted searchable web app** that uses Python and Flask to:
 - Highlight relevant matches
 - Provide citation-style links back to the original PDF section
 
-It’s not a full chatbot or vector-powered retrieval system—it's **deliberately simpler and faster**. I wanted something my group could use on the fly during sessions, with no money down.
+It's a **deliberately simple and fast** tool. I wanted something my group could use on the fly during sessions, with no money down.
 
 Hosted on Render: [Nimble Rules Search](https://nimble-rules.onrender.com/search)
 

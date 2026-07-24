@@ -17,6 +17,7 @@ And I think grief matters more than we’re admitting.
 
 Because half of us don't even realize we're grieving, and when people mention AI, we don’t actually end up in dialogue. We end up talking past each other—or talking at each other—while assuming the problem is about opinions, ethics, or policy, or education. There ARE problems there to tackle. But it's very difficult to get to real dialogue without first acknowledging grief.
 
+(I'll be up front: my personal approach is AI-hopeful, not anti- and also not fully pro-AI. I do think AI is here to stay in the world, and with any change like this there are massive costs to the world that most of the powers driving the change are discounting, to the harm of many. Sometimes it's just easier to read something when you know the writer's bias instead of finding it out along the way, so... there's mine.)
 
 ## Grief Doesn’t Always Look Like Sadness
 
