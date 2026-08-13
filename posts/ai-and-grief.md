@@ -3,6 +3,9 @@ title: On AI, Grief, and Restabilizing Society
 date: 2026-02-02
 description: The AI debate isn’t just about policy or ethics, it’s also about grief. Some thoughts on loss, destabilization, and what to do about it.
 layout: post.njk
+# Unpublished: remove these two lines to put it back on the site
+permalink: false
+eleventyExcludeFromCollections: true
 ---
 
 I’ve been noticing something in the way people talk about AI.
