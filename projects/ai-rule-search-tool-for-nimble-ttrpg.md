@@ -3,7 +3,7 @@ title: Rule Reference Tool for Nimble TTRPG
 description: A lightweight, self-hosted AI tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
 date: 2025-04-23
 layout: post.njk
-tags: [project, ttrpg, ai, python]
+tags: [project, ttrpg, python]
 ---
 
 ## The Final (for now) Result
