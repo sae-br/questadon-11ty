@@ -682,21 +682,7 @@ hr {
 .featured {
     position: relative;
     margin: 3rem 0 8rem;
-    padding-top: 3.5rem;
     background-color: var(--color-bg);
-  }
-
-  /* Dotted separator between the hero and this section */
-  .featured::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-      0 0 / 7px 2px repeat-x;
-    pointer-events: none;
   }
 
   .featured__media {
