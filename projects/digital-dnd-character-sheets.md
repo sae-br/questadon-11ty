@@ -3,7 +3,7 @@ title: D&D Character Sheets - Simple, Digital, Free
 description: A free, simple app for managing your 5E or 5.5E character sheets digitally, featuring a pencil-and-paper approach, sortable spells, and rich text formatting.
 date: 2026-06-23
 layout: post.njk
-tags: [project, ttrpg]
+tags: [project, d&d 5e, d&d 5.5e, tool]
 ---
 
 <p class="lead">Lots of digital D&D character sheet apps offer a ton of features but get so expensive. This is my attempt at merging the best of the pencil and paper approach (free, no automations that break when you get into homebrew)... with the advantages of being digital (easy search, spell sorting, adjustable sizing for lots of text, and not losing your papers!).</p>
