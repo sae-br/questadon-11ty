@@ -1,7 +1,7 @@
 ---
 title: About | Questadon
 layout: layout.njk
-description: Meet Sarah Brown—designer, marketer, and compulsive learner exploring code, static sites, AI tooling, and TTRPGs.
+description: Meet Sarah Brown—player, game master, and designer of tabletop role-playing games, and creator of the horror-survival RPG Final Light.
 eleventyNavigation:
   key: About
   order: 4
@@ -9,19 +9,8 @@ eleventyNavigation:
 
 # About
 
-<p class="lead">Hi, I’m Sarah Brown, and I like to make things on screens for people.</p> 
+<p class="lead">Hi, I’m Sarah Brown. I play, run, and design TTRPGs, because I like to make my friends laugh and cry. (And you and your friends, too, if you’re into that kind of thing.)</p>
 
-I’ve spent nearly 20 years designing websites and leading brand and content strategy, but I started Questadon in early 2025 shortly after beginning my dive into learning to code. I learn best by doing things out in the wild.
+My first published game, Final Light, is a short-form horror-survival zombie RPG with a focus on intense escape, limited inventory, and personal stakes. It was funded on Kickstarter within the first minute! You can [learn more and back Final Light now](https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd).
 
-Questadon is a place to track some of my experiments and share some of the things I make along the way with whoever wanders by. On the dev end, I explore static site generators, custom workflows, Django, sustainable web practices, and more. As an avid player and game master of table top role playing games, one of the things I love about the community is how freely people share what they've made—I've definitely benefitted from this, and hope to give back a bit as I move forward! 
-
-If you’re working on similar stuff, or want to trade ideas, don't be a stranger, drop me a note! 
-
-## Stuff I'm Interested In
-
-- working in the open
-- industry 5.0 > 6.0
-- digital sustainability for the average human
-- learning as a creative resource
-- re-thinking social contracts
-- collaborative storytelling
+One of my favourite things about this community is how generous and creative folks are. I’ve learned a ton from other creators, and hope to pay it forward! If you’re making TTRPG content too—or just want to trade ideas—I’d love to hear from you. Come say hi on Instagram: [@questadon](https://www.instagram.com/questadon).

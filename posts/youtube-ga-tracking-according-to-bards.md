@@ -3,6 +3,9 @@ title: Ye Ole Youtube GA Tracking (According to Bards from 2013)
 layout: post.njk
 date: 2025-05-09
 description: Some medieval bard wrote the comments on this code back in 2013 or so, and finding it today delighted me to no end.
+# Archived: dev content, kept in the repo for migration to another site.
+# Remove this line to put it back in nav/homepage/collection listings.
+eleventyExcludeFromCollections: true
 ---
 
 Okay, one of my favourite things lately is crawling under the hoods of websites to find jewels like this, which was written back in 2013 (and therefore might be super outdated but entertaining nonetheless). 

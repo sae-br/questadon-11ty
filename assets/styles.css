@@ -677,6 +677,91 @@ hr {
     margin-top: 2rem;
   }
 
+/* Featured block (home) */
+
+.featured {
+    position: relative;
+    margin: 3rem 0 8rem;
+    padding-top: 3.5rem;
+    background-color: var(--color-bg);
+  }
+
+  /* Dotted separator between the hero and this section */
+  .featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
+      0 0 / 7px 2px repeat-x;
+    pointer-events: none;
+  }
+
+  .featured__media {
+    line-height: 0;
+  }
+
+  .featured__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .featured__body {
+    padding: 2rem 0 0;
+  }
+
+  .featured__heading {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+    color: var(--color-secondary);
+  }
+
+  .featured__blurb {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
+    max-width: 60ch;
+    color: var(--color-text);
+  }
+
+  .featured__cta {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white; /* stays white in light mode, matching .quote-button */
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .featured__cta:hover {
+    background-color: var(--color-accent-dark);
+    color: white;
+    text-decoration: none;
+  }
+
+  .featured__cta:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .featured__body {
+      padding: 1.5rem 0 0;
+    }
+
+    .featured__heading {
+      font-size: 1.6rem;
+    }
+  }
+
   /* Previews */
 
   .post-preview { /* On the collection list page */

@@ -3,6 +3,9 @@ title: Planting the first seed
 date: 2025-04-23
 description: What the heck am I doing here? Some starting goals etc.
 layout: post.njk
+# Archived: dev content, kept in the repo for migration to another site.
+# Remove this line to put it back in nav/homepage/collection listings.
+eleventyExcludeFromCollections: true
 ---
 
 Welcome to the beginning of **Questadon**, my little plot of cloud-soil where I’ll be documenting what I learn, make, and experiment with. A place where I can try things out, document the weird and wonderful bits of the process, and hopefully connect with others doing the same.

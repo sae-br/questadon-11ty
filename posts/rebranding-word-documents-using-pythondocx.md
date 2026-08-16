@@ -3,6 +3,9 @@ title: Rebranding Word Documents to Use a New Branded Template (A First Attempt 
 date: 2025-05-24
 description: I had 160 articles to rebrand, so I tried to make Python do it for me. Mostly successful!
 layout: post.njk
+# Archived: dev content, kept in the repo for migration to another site.
+# Remove this line to put it back in nav/homepage/collection listings.
+eleventyExcludeFromCollections: true
 ---
 
  
