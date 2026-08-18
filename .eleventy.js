@@ -2,7 +2,7 @@ const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
-const Image = require("@11ty/eleventy-img");
+const { default: Image, generateHTML } = require("@11ty/eleventy-img");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
@@ -64,7 +64,7 @@ module.exports = function(eleventyConfig) {
       decoding: "async",
     };
 
-    return Image.generateHTML(metadata, imageAttributes);
+    return generateHTML(metadata, imageAttributes);
   });
 
   // ✅ Passthrough files

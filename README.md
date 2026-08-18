@@ -3,7 +3,7 @@
 Questadon is a personal Eleventy (11ty) site used as a digital garden / experimentation space for writing, programming notes, and project documentation.
 
 ## Tech Stack
-- Node.js (tested with Node 18+)
+- Node.js 22+ (required by @11ty/eleventy-img v7)
 - Eleventy (@11ty/eleventy)
 
 ## Setup
