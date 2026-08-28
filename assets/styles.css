@@ -655,7 +655,7 @@ hr {
     }
   
     .hero__image {
-      max-width: 200px;
+      max-width: 140px;
       margin: 0 auto;
     }
   
@@ -665,13 +665,13 @@ hr {
   }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
     color: var(--color-secondary);
     margin-top: 0rem;
   }
 
 .hero-paragraph {
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
     line-height: 1.6;
     color: var(--color-text);
     margin-top: 2rem;
