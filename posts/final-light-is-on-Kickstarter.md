@@ -5,7 +5,7 @@ description: I'm releasing Final Light, a new TTRPG for telling emotionally inte
 layout: post.njk
 ---
 
-{% image "./assets/post-images/final-light/final-light-on-kickstarter.png", "Final Light on Kickstarter" %}
+{% image "./assets/post-images/final-light/final-light-on-kickstarter-prelaunch.jpg", "Final Light on Kickstarter" %}
 
 I never really got over the videogame *The Last of Us*. The tension, the high stakes, and the way humans respond to horrifying world events—sometimes reaching for the light, sometimes becoming monsters themselves, sometimes both. Stories like that stick with you! And telling a story like that together, as a table, is something I've wanted to do for a long time.
 
