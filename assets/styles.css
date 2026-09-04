@@ -297,15 +297,9 @@ h1, h2, h3 {
     font-family: 'General Sans', sans-serif;
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s ease;
-  }
-
-  .site-nav__brand:hover .site-title,
-  .site-nav__brand:hover .logo {
-    color: var(--color-secondary);
-    text-decoration: none;
   }
 
   /* Nav links */
@@ -606,12 +600,12 @@ hr {
 
 /* Hero section (home) */
 .hero {
-    padding: 4rem 0rem; /* Top/bottom increased from 2rem to 4rem */
+    padding: 2rem 0rem; /* Top/bottom increased from 2rem to 4rem */
   }
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 2fr 7fr;
+    grid-template-columns: 3fr 1fr;
     align-items: top;
     gap: 2.5rem;
     margin: 0 auto;
@@ -619,7 +613,7 @@ hr {
   
   .hero__image {
     position: relative;
-    max-width: 180px;
+    max-width: 800px;
     width: 100%;
     margin: 0.5rem 4rem 0 0;
   }
@@ -652,10 +646,11 @@ hr {
     .hero__grid {
       grid-template-columns: 1fr;
       text-align: center;
+      gap: 0;
     }
   
     .hero__image {
-      max-width: 140px;
+      max-width: 100%;
       margin: 0 auto;
     }
   
@@ -671,8 +666,8 @@ hr {
   }
 
 .hero-paragraph {
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-    line-height: 1.6;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.4;
     color: var(--color-text);
     margin-top: 2rem;
   }

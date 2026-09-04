@@ -1,6 +1,6 @@
 ---
 title: Rule Reference Tool for Nimble TTRPG
-description: A lightweight, self-hosted AI tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
+description: A lightweight, self-hosted tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
 date: 2025-04-23
 layout: post.njk
 tags: [project, nimble, tool]
@@ -26,7 +26,7 @@ Poke through my build here, too, if you'd like: [Nimble Rules - GitHub](https://
 
 ## What I Set Out to Build
 
-So with my long-running online TTRPG group, we play using a game system that's pretty new called Nimble. Unlike other Table-Top Role Playing Games like Dungeons and Dragons, there aren't many tools or references made for this one. Since we are all learning the system together, I wanted an easy way to **look up specific rules from the Nimble rules PDFs during gameplay**—without constantly flipping through 100-page rulebooks or opening the different files and wondering which ones my answer would be in. I also wanted to make it lightweight, private for just my group's use, and **hostable for free**, without needing to train an expensive AI model or rely on external APIs.
+So with my long-running online TTRPG group, we play using a game system that's pretty new called Nimble. Unlike other tabletop roleplaying games like Dungeons and Dragons, there aren't many tools or references made for this one. Since we are all learning the system together, I wanted an easy way to **look up specific rules from the Nimble rules PDFs during gameplay**—without constantly flipping through 100-page rulebooks or opening the different files and wondering which ones my answer would be in. I also wanted to make it lightweight, private for just my group's use, and **hostable for free**, without needing to train an expensive AI model or rely on external APIs.
 
 
 ## Options I Explored (and Why I Didn’t Use Them)
@@ -39,7 +39,7 @@ So with my long-running online TTRPG group, we play using a game system that's p
 | LangChain         | Full retrieval pipeline       | Added too much complexity           |
 | ChatPDF / PDF.ai  | Fast for individuals          | Not private or customizable or free |
 
-I realized I didn't actually need natural language processing—**keyword and fuzzy matching was enough**. The goal wasn’t “conversational,” just **fast, accurate rule recall**. I might expand on this in the future, but as a starting tool, I wanted to simplify my goal here.
+I realized I didn't actually need natural language processing—**keyword and fuzzy matching was enough**. I just needed it to understand the data and provide **fast, accurate rule recall**. I might expand on this in the future, but as a starting tool, I wanted to simplify my goal here.
 
 
 ## Tools and Tech Used
@@ -71,7 +71,6 @@ I might like to update this project with features like:
 - A streamlined way to upload new PDF versions
 - A "clear search" option
 - A front-end that's actually designed
-- Obviously Nimble won't be happy to give their PDFs away for free via my search tool; I wonder if I can figure out a way to make it a searchable tool anyone beyond my group can use but not put their IP at risk?
 
 
 > Have you built something similar? How did you do it differently? Whether it's another PDF reference tool or just another tool for a TTRPG like Nimble, I'd be super curious to take a peek and learn what worked for you!
