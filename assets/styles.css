@@ -162,7 +162,7 @@ h1, h2, h3 {
   header, footer {
     position: relative;
     z-index: 1000;
-    width: 100vw;
+    width: 100%;
     padding: 0rem;
     background-color: var(--color-bg);
     color: var(--color-text);
