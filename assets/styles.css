@@ -714,9 +714,9 @@ hr {
     background-color: var(--color-primary);
     color: white; /* stays white in light mode, matching .quote-button */
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 4px;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out;
   }
@@ -1044,6 +1044,194 @@ hr {
   background-color: var(--color-accent-dark);
   color: white;
   text-decoration: none;
+}
+
+
+/* ============================================
+   NEWSLETTER BOX - EmailOctopus embed
+   ============================================ */
+
+.newsletter-box {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  padding: 2rem 2rem 1rem;
+  margin: 5rem 0;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-box__heading {
+  font-size: 1.8rem;
+  margin: 0 0 0.75rem;
+  color: var(--color-secondary);
+}
+
+.newsletter-box__blurb {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 55ch;
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* --- Embed overrides ---
+   The embed injects its own <style> into the body at runtime, so it always
+   lands after styles.css in source order. Its rules are scoped to
+   [data-form="..."] and top out around (0,3,1) specificity, so each override
+   below is deliberately prefixed to outrank it. !important is only used where
+   the embed itself uses !important. */
+
+.newsletter-box [data-form] {
+  --font-family: 'General Sans', sans-serif;
+  --base-font-size: 1rem;
+  --text-colour: var(--color-text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form {
+  --field-colour: transparent;
+  --field-border-colour: var(--color-primary);
+  --button-colour: var(--color-primary);
+  --button-text-colour: #fff;
+  --label-colour: var(--color-text);
+}
+
+/* Fill the box instead of the embed's 600px / 520px caps */
+.newsletter-box .inline-container[data-form] {
+  max-width: none !important;
+}
+
+.newsletter-box [data-form] .form-container {
+  max-width: none;
+}
+
+.newsletter-box [data-form] .emailoctopus-form-wrapper {
+  margin-top: 1.5rem;
+}
+
+/* Field + button share a row; the embed's 2px side margins become a real gap */
+.newsletter-box [data-form] .main-form {
+  align-items: stretch;
+  justify-content: flex-start;
+  column-gap: 0.75rem;
+}
+
+.newsletter-box [data-form] .main-form .emailoctopus-form-row,
+.newsletter-box [data-form] .main-form input[type="submit"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control {
+  height: auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 3px;
+  color: var(--color-text);
+  font-family: 'General Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control::placeholder {
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control:focus {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary);
+  outline: none;
+}
+
+/* The field is transparent, but Chrome/Safari repaint autofilled inputs with
+   their own opaque background - force it back onto the page colour */
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill,
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset;
+  caret-color: var(--color-text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset, 0 0 0 3px var(--color-primary);
+  caret-color: var(--color-text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"] {
+  height: auto;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 3px;
+  font-family: 'General Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus {
+  box-shadow: none;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.newsletter-box [data-form] .emailoctopus-success-message,
+.newsletter-box [data-form] .emailoctopus-error-message {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* EmailOctopus' "powered by" credit - recolour it for both themes */
+.newsletter-box [data-form] .text-center {
+  text-align: left;
+}
+
+.newsletter-box [data-form] .mastfoot {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.newsletter-box [data-form] .mastfoot .inner {
+  text-align: left;
+}
+
+.newsletter-box [data-form] .mastfoot p,
+.newsletter-box [data-form] .mastfoot a {
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+/* The embed wraps at ~200px, which is too cramped for a phone - stack instead */
+@media screen and (max-width: 600px) {
+  .newsletter-box {
+    padding: 1.5rem;
+  }
+
+  .newsletter-box__heading {
+    font-size: 1.5rem;
+  }
+
+  .newsletter-box [data-form] .main-form {
+    flex-direction: column;
+    column-gap: 0;
+  }
+
+  .newsletter-box [data-form] .main-form .emailoctopus-form-row,
+  .newsletter-box [data-form] .main-form input[type="submit"] {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 
