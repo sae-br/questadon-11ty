@@ -1,15 +1,34 @@
 <section class="featured" aria-labelledby="featured-heading">
-  <div class="featured__media">
-    <img
-      src="/assets/post-images/final-light/final-light-on-kickstarter.jpg"
-      alt="Final Light, a survival-horror indie TTRPG, over 2000% funded on Kickstarter"
-      width="1800" height="1200" loading="eager" decoding="async">
+  <div class="featured__art">
+    <picture>
+      <source type="image/webp"
+              srcset="/assets/feature-banner-final-light-1100.webp 1100w,
+                      /assets/feature-banner-final-light-1920.webp 1920w,
+                      /assets/feature-banner-final-light-3840.webp 3840w"
+              sizes="100vw">
+      <img src="/assets/feature-banner-final-light.jpg" alt="" aria-hidden="true"
+           width="3840" height="1600" loading="eager" decoding="async" fetchpriority="high">
+    </picture>
   </div>
-  <div class="featured__body">
-    <h2 class="featured__heading" id="featured-heading">Final Light — Late Pledges Available on Kickstarter</h2>
-    <p class="featured__blurb">A tabletop RPG for telling emotionally intense, scary zombie stories with your friends; funded in just one minute! Late pledges still available.</p>
-    <a class="featured__cta"
-       href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
-       target="_blank" rel="noopener noreferrer">Back Final Light on Kickstarter</a>
+
+  <div class="featured__inner">
+    <div class="featured__content">
+      <h2 class="featured__heading" id="featured-heading">
+        <img class="featured__logo" src="/assets/final-light-logo-web.png"
+             alt="Final Light" width="800" height="617" loading="eager" decoding="async">
+      </h2>
+      <p class="featured__tagline">A survival-horror TTRPG for telling short, high-stakes zombie stories with your friends.</p>
+      <ul class="featured__stats">
+        <li>Funded in one minute</li>
+        <li>Over 4200% funded</li>
+        <li>Late pledges open</li>
+      </ul>
+      <div class="featured__actions">
+        <a class="featured__cta"
+           href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
+           target="_blank" rel="noopener noreferrer">Back it on Kickstarter</a>
+        <a class="featured__cta featured__cta--ghost" href="/projects/final-light-ttrpg/">See what's inside</a>
+      </div>
+    </div>
   </div>
 </section>

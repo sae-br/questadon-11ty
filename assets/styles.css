@@ -119,7 +119,7 @@ h1, h2, h3 {
   }
   
   h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
   }
   
@@ -593,7 +593,6 @@ h1, h2, h3 {
     width: 100%;
     height: auto;
     display: block;
-    transition: opacity 0.2s ease;
   }
 
   .site-footer__mark-hover {
@@ -610,11 +609,6 @@ h1, h2, h3 {
     opacity: 1;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .site-footer__mark img {
-      transition: none;
-    }
-  }
 
   .site-footer__tagline {
     margin: 0;
@@ -794,54 +788,130 @@ hr {
 
 .featured {
     position: relative;
-    margin: 3rem 0 8rem;
-    background-color: var(--color-bg);
+    display: flex;
+    align-items: center;
+    /* Full-bleed: break out of the 1140px rail for a cinematic hero. */
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: -2rem;
+    margin-bottom: 5rem;
+    min-height: min(78vh, 720px);
+    overflow: hidden;
+    background-color: #0c180e;
   }
 
-  .featured__media {
+  .featured__art {
+    position: absolute;
+    inset: 0;
     line-height: 0;
   }
 
-  .featured__media img {
+  .featured__art img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    border-radius: 12px;
+    object-fit: cover;
+    /* Anchor left so the art's dark, quiet third stays under the text. */
+    object-position: left center;
   }
 
-  .featured__body {
-    padding: 2rem 0 0;
+  /* Scrim: heavy at the left where the copy sits, clear over the figure. */
+  .featured__art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(12, 24, 14, 0.80) 0%,
+        rgba(12, 24, 14, 0.68) 30%,
+        rgba(12, 24, 14, 0.28) 58%,
+        rgba(12, 24, 14, 0) 78%),
+      linear-gradient(180deg, rgba(12, 24, 14, 0.5) 0%, transparent 22%);
+  }
+
+  .featured__inner {
+    position: relative;
+    width: 100%;
+    max-width: var(--site-width);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .featured__content {
+    max-width: 34rem;
   }
 
   .featured__heading {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin: 0 0 1rem;
-    color: var(--color-secondary);
+    margin: 0 0 1.5rem;
   }
 
-  .featured__blurb {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    margin: 0 0 1.75rem;
-    max-width: 60ch;
-    color: var(--color-text);
+  .featured__logo {
+    display: block;
+    width: clamp(190px, 24vw, 330px);
+    height: auto;
+  }
+
+  .featured__tagline {
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+    color: #f0f0df;
+  }
+
+  .featured__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #E6FF7C;
+  }
+
+  .featured__stats li {
+    position: relative;
+    margin: 0;
+  }
+
+  .featured__stats li + li::before {
+    content: "";
+    position: absolute;
+    left: -0.85rem;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: #ED1E79;
+    transform: translateY(-50%);
+  }
+
+  .featured__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .featured__cta {
     display: inline-block;
     background-color: var(--color-primary);
-    color: white; /* stays white in light mode, matching .quote-button */
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
+    border: 2px solid var(--color-primary);
+    color: white;
+    padding: 0.85rem 1.75rem;
+    font-size: 1.05rem;
     font-weight: 500;
     border-radius: 4px;
     text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 
   .featured__cta:hover {
     background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
     color: white;
     text-decoration: none;
   }
@@ -851,13 +921,57 @@ hr {
     outline-offset: 3px;
   }
 
-  @media screen and (max-width: 768px) {
-    .featured__body {
-      padding: 1.5rem 0 0;
+  .featured__cta--ghost {
+    background-color: transparent;
+    border-color: rgba(240, 240, 223, 0.5);
+    color: #f0f0df;
+  }
+
+  .featured__cta--ghost:hover {
+    background-color: rgba(240, 240, 223, 0.14);
+    border-color: #f0f0df;
+    color: #f0f0df;
+  }
+
+  /* Portrait: a left-side scrim has nowhere to go, so anchor the copy to the
+     bottom, scrim upward, and pan the art to keep the figure in frame. */
+  @media screen and (max-width: 860px) {
+    .featured {
+      align-items: flex-end;
+      min-height: min(82vh, 640px);
+      margin-bottom: 3.5rem;
     }
 
-    .featured__heading {
-      font-size: 1.6rem;
+    .featured__art img {
+      /* Pan to the figure's head; 62% landed on the arm. */
+      object-position: 52% center;
+    }
+
+    .featured__art::after {
+      background: linear-gradient(180deg,
+        rgba(12, 24, 14, 0.15) 0%,
+        rgba(12, 24, 14, 0.22) 18%,
+        rgba(12, 24, 14, 0.72) 42%,
+        rgba(12, 24, 14, 0.93) 66%,
+        rgba(12, 24, 14, 0.98) 100%);
+    }
+
+    .featured__logo {
+      width: clamp(150px, 42vw, 220px);
+    }
+
+    .featured__inner {
+      padding: 2rem 1.5rem 2.5rem;
+    }
+
+    .featured__content {
+      max-width: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .featured__cta {
+      transition: none;
     }
   }
 
