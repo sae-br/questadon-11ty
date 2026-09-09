@@ -1,6 +1,14 @@
 <section class="featured" aria-labelledby="featured-heading">
   <div class="featured__art">
     <picture>
+      {# Portrait viewports get a crop around the figure: the 2.4:1 plate only
+         shows ~19% of its width in a phone frame, which reads as an
+         unidentifiable close-up. #}
+      <source media="(max-width: 860px)" type="image/webp"
+              srcset="/assets/fl-portrait-800.webp 800w,
+                      /assets/fl-portrait-1200.webp 1200w"
+              sizes="100vw">
+      <source media="(max-width: 860px)" srcset="/assets/fl-portrait.jpg">
       <source type="image/webp"
               srcset="/assets/feature-banner-final-light-1100.webp 1100w,
                       /assets/feature-banner-final-light-1920.webp 1920w,

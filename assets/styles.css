@@ -942,18 +942,19 @@ hr {
       margin-bottom: 3.5rem;
     }
 
+    /* Portrait source is already framed on the figure, so barely any crop. */
     .featured__art img {
-      /* Pan to the figure's head; 62% landed on the arm. */
-      object-position: 52% center;
+      object-position: center top;
     }
 
+    /* Keep the figure readable; darken only where the copy sits. */
     .featured__art::after {
       background: linear-gradient(180deg,
-        rgba(12, 24, 14, 0.15) 0%,
-        rgba(12, 24, 14, 0.22) 18%,
-        rgba(12, 24, 14, 0.72) 42%,
-        rgba(12, 24, 14, 0.93) 66%,
-        rgba(12, 24, 14, 0.98) 100%);
+        rgba(12, 24, 14, 0.1) 0%,
+        rgba(12, 24, 14, 0.05) 30%,
+        rgba(12, 24, 14, 0.55) 52%,
+        rgba(12, 24, 14, 0.9) 70%,
+        rgba(12, 24, 14, 0.97) 100%);
     }
 
     .featured__logo {
