@@ -1212,6 +1212,26 @@ hr {
   opacity: 0.75;
 }
 
+/* The embed loads reCAPTCHA v3, which floats a badge over the bottom-right
+   corner - where the back-to-top link already lives. Google's terms allow
+   hiding it as long as the branding text is shown in the form instead, which
+   .newsletter-box__recaptcha does. Keep the two together. */
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.newsletter-box__recaptcha {
+  font-size: 0.6rem;
+  line-height: 1.5;
+  margin: 0.75rem 0 0;
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+.newsletter-box__recaptcha a {
+  color: inherit;
+}
+
 /* The embed wraps at ~200px, which is too cramped for a phone - stack instead */
 @media screen and (max-width: 600px) {
   .newsletter-box {
