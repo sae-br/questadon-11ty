@@ -2,17 +2,28 @@
 title: Ice-Fishing Mini Game (5e Compatible, Rules-Light)
 description: A free, rules-light mini-game for D&D 5e and other TTRPGs featuring an ice fishing competition and creature battle royale.
 date: 2026-01-28
-layout: post.njk
 tags: [project, module, d&d 5e, d&d 5.5e, nimble]
+cardImage: ./assets/post-images/ice-fishing/preview.png
+cardImageAlt: "Ice-Fishing Mini Game: printable creature cards for a winter festival one-shot"
+cardImageFocus: center
+lead: "A two-part winter festival mini-game for your table: an ice fishing competition followed by a creature battle royale. Perfect for a holiday one-shot or a fun side activity in your campaign."
+heroImage: ./assets/post-images/ice-fishing/preview.png
+heroImageAlt: "Preview of the creature cards"
+ctaText: Skip to downloads
+ctaUrl: "#downloads"
+specs:
+  - label: System
+    value: D&D 5e compatible (played in Nimble)
+  - label: Price
+    value: Free
+  - label: Format
+    value: Rules, printable creature cards & tokens
+  - label: Length
+    value: Two-part one-shot or side activity
 ---
-
-<p class="lead">A two-part winter festival mini-game for your table: an ice fishing competition followed by a creature battle royale. Perfect for a holiday one-shot or a fun side activity in your campaign.</p>
-
-{% image "./assets/post-images/ice-fishing/preview.png", "Preview of the creature cards" %}
-
 Every year, my online group holds a special event called Fishapalooza, where each of us "hosts" a stall or runs a one-shot taking place at a festival all about FISH. Sometimes it's on a tropical island, sometimes it's in a cute bustling port town, and one year we did it in December so we set it in the polar north at Christmas. This is a very silly mini-game anyone can slide into their party's adventure for some fierce yet nonviolent festival fun.  
 
-**What's included:** This post contains all the rules you need to run this event. While we were playing using Nimble, this is just as compatible with D&D and easily tweaked for other systems. I also made digital creature cards and tokens this—download links are at the bottom. [++ Skip to downloads](#downloads)
+**What's included:** This post contains all the rules you need to run this event. While we were playing using Nimble, this is just as compatible with D&D and easily tweaked for other systems. I also made digital creature cards and tokens this—download links are at the bottom.
 
 
 ---

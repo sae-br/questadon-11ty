@@ -2,10 +2,30 @@
 title: Rule Reference Tool for Nimble TTRPG
 description: A lightweight, self-hosted tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
 date: 2025-04-23
-layout: post.njk
 tags: [project, nimble, tool]
+cardImage: ./assets/post-images/nimble-rules/cover.png
+cardImageAlt: "Rule Reference Tool for Nimble TTRPG"
+cardImageFocus: center
+lead: A hosted, searchable web app for querying multiple Nimble rulebook PDFs—fast keyword and fuzzy search, with citation links back to the source section.
+heroImage: ./assets/post-images/nimble-rules/banner.png
+heroImageAlt: "Rule Reference Tool for Nimble TTRPG"
+ctaText: Open the Nimble Rules Search
+ctaUrl: "https://nimble-rules.onrender.com/search"
+ctaExternal: true
+ctaNote: "Give it a bit to spin up, then use password: Hopscotch"
+ctaSecondaryText: View the code on GitHub
+ctaSecondaryUrl: "https://github.com/sae-br/nimble-rules"
+ctaSecondaryExternal: true
+specs:
+  - label: System
+    value: Nimble
+  - label: Price
+    value: Free
+  - label: Built with
+    value: Python + Flask
+  - label: Hosting
+    value: Render (free tier, sleeps when idle)
 ---
-
 ## The Final (for now) Result
 
 I built a **hosted searchable web app** that uses Python and Flask to:

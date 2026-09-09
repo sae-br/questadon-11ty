@@ -52,7 +52,7 @@
     {% include "nav.njk" %}
   </header>
 
-  <main id="main-content">
+  <main id="main-content"{% if mainClass %} class="{{ mainClass }}"{% endif %}>
     {{ content | safe }}
   </main>
 

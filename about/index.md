@@ -1,6 +1,7 @@
 ---
 title: About | Questadon
 layout: layout.njk
+mainClass: main--reading
 description: Meet Sarah Brown—player, game master, and designer of tabletop role-playing games, and creator of the horror-survival RPG Final Light.
 eleventyNavigation:
   key: About

@@ -16,6 +16,10 @@
   --color-secondary:   #E6FF7C;
   --color-accent-light:#FFA4C8;
   --color-accent-dark: #A20041;
+
+  /* Site-wide layout widths */
+  --site-width: 1140px;
+  --reading-width: 760px;
 }
 
 /* 2) Light mode overrides */
@@ -38,7 +42,9 @@ html, body {
     margin: 0;
     line-height: 1.7;
     letter-spacing: 0.03em;
-    overflow-x: hidden;
+    /* `clip`, not `hidden`: hidden makes <body> a scroll container, which
+       silently breaks position:sticky (the project page's buy panel). */
+    overflow-x: clip;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -86,8 +92,16 @@ body::before {
 
   main {
     padding: 2rem;
-    max-width: 900px;
+    max-width: var(--site-width);
     margin: 0 auto;
+  }
+
+  /* Text-led pages keep the full shell so they stay aligned with the nav
+     and footer rail, but constrain each block to a readable measure. */
+  main.main--reading > * {
+    max-width: var(--reading-width);
+    /* beats `.prose { margin: 0 auto }`, which would re-centre the column */
+    margin-inline: 0 auto;
   }
 
   main img {
@@ -245,7 +259,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    max-width: 900px;
+    max-width: var(--site-width);
     margin: 0 auto;
   }
   
@@ -519,7 +533,7 @@ h1, h2, h3 {
 
 /* Center anything that isn't in main */
   .centered {
-    max-width: 900px;
+    max-width: var(--site-width);
     margin: 0 auto;
     padding: 0 2rem;
   }
@@ -527,16 +541,117 @@ h1, h2, h3 {
 
 /* Footer */
   .site-footer {
-    text-align: center;
-    font-size: 0.8rem; 
-    padding-bottom: 1rem;
+    margin-top: 5rem;
+    padding: 3rem 2rem 1.5rem;
+    font-size: 0.85rem;
     color: var(--color-text);
+    border-top: 1px solid var(--color-accent-dark);
   }
 
-  .site-footer p {
-    color: inherit; 
+  .site-footer__inner {
+    max-width: var(--site-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1.1fr 0.8fr;
+    gap: 2.25rem;
+    align-items: start;
+  }
+
+  .site-footer__col {
+    min-width: 0;
+  }
+
+  .site-footer__wordmark {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+  }
+
+  .site-footer__tagline {
+    margin: 0;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .site-footer__heading {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+
+  .site-footer__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* beats the global `ul, ol` font-size */
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .site-footer__list li + li {
+    margin-top: 0.45rem;
+  }
+
+  .site-footer__list a {
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  .site-footer__list a:hover,
+  .site-footer__list a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .site-footer__bottom {
+    max-width: var(--site-width);
+    margin: 2.5rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-accent-dark);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.78rem;
+  }
+
+  .site-footer__bottom p {
+    margin: 0;
+    color: inherit;
     font-size: inherit;
-    text-align: inherit;
+  }
+
+  .back-to-top {
+    text-decoration: none;
+  }
+
+  .back-to-top:hover,
+  .back-to-top:focus-visible {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .site-footer {
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .site-footer__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 1.5rem;
+    }
+
+    .site-footer__brand {
+      grid-column: 1 / -1;
+    }
+
+    .site-footer__bottom {
+      justify-content: flex-start;
+    }
   }
 
 
@@ -604,7 +719,7 @@ hr {
 
   .hero__grid {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2.5fr 1fr;
     align-items: top;
     gap: 2.5rem;
     margin: 0 auto;
@@ -844,43 +959,99 @@ hr {
 
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    /* Track count follows the space actually available, not the viewport:
+       auto-fit drops to a single column as soon as a second 300px column
+       won't fit. min() keeps the track from overflowing containers that are
+       themselves narrower than 300px. */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 2.5rem 1.5rem;
     margin-bottom: 1rem;
+    justify-items: center;
   }
 
+  /* Product-tile card: art leads, whole tile is the link. */
   .project-card {
     margin: 0;
+    width: 100%;
+    /* Stops a single-column row from stretching one 3:4 cover to full width. */
+    max-width: 440px;
     display: flex;
     flex-direction: column;
-  }
-
-  .project-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  .project-card h3 a {
-    font-weight: 600;
     text-decoration: none;
+    color: var(--color-text);
+    border-radius: 8px;
+    transition: transform 0.15s ease;
   }
 
-  .project-card h3 a:hover {
+  .project-card:hover,
+  .project-card:focus-visible {
+    text-decoration: none;
+    transform: translateY(-3px);
+  }
+
+  .project-card:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 6px;
+  }
+
+  .project-card__media {
+    line-height: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 0.9rem;
+    background-color: var(--color-accent-dark);
+    transition: box-shadow 0.15s ease;
+  }
+
+  .project-card:hover .project-card__media,
+  .project-card:focus-visible .project-card__media {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* eleventy-img emits <picture><img>, so size both. */
+  .project-card__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-card__media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* --card-focus comes from the cardImageFocus front matter field, so a
+       landscape source can be cropped to 3:4 without losing the subject. */
+    object-position: var(--card-focus, center);
+  }
+
+  .project-card__title {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-secondary);
+  }
+
+  .project-card:hover .project-card__title {
     text-decoration: underline;
   }
 
-  .project-card .post-meta {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+  .project-card__blurb {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
   }
 
-  .project-card p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .project-grid {
-      grid-template-columns: 1fr;
+  @media (prefers-reduced-motion: reduce) {
+    .project-card {
+      transition: none;
+    }
+    .project-card:hover,
+    .project-card:focus-visible {
+      transform: none;
     }
   }
 
@@ -1056,7 +1227,7 @@ hr {
   color: var(--color-secondary);
   border: 2px solid var(--color-primary);
   border-radius: 8px;
-  padding: 2rem 2rem 1rem;
+  padding: 4rem;
   margin: 5rem 0;
   transition: border-color 0.3s ease, color 0.3s ease;
 }
@@ -1294,6 +1465,206 @@ hr {
 
 .prose__meta time {
   margin-right: 0.5rem;
+}
+
+/* ============================================
+   PROJECT PAGE - key art, full-width title,
+   then content beside a persistent buy panel
+   ============================================ */
+
+.project-page__breadcrumb {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+.project-page__breadcrumb a {
+  color: var(--color-accent-light);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.project-page__breadcrumb a:hover,
+.project-page__breadcrumb a:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.project-page__media {
+  margin-bottom: 2.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--color-accent-dark);
+}
+
+.project-page__media picture,
+.project-page__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-page__title {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.project-page__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.project-page__main {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.project-page__panel {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-accent-dark);
+  border-radius: 8px;
+}
+
+.project-page__lead {
+  margin: 0 0 2rem;
+  font-size: 1.25rem;
+}
+
+.project-page__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-page__cta {
+  display: block;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.85rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.project-page__cta:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  color: white;
+  text-decoration: none;
+}
+
+.project-page__cta:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.project-page__cta--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.project-page__cta--secondary:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.project-page__cta-note {
+  margin: 0.9rem 0 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-accent-light);
+}
+
+.project-page__specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-accent-dark);
+}
+
+.project-page__specs dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.15rem;
+}
+
+.project-page__specs dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project-page__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-accent-dark);
+}
+
+/* Below this the content column gets too narrow to read beside the panel,
+   so stack: DOM order already puts the panel before the description. */
+@media screen and (max-width: 920px) {
+  .project-page__body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-page__main,
+  .project-page__panel {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .project-page__panel {
+    position: static;
+  }
+
+  .project-page__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .project-page__cta {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .project-page__media {
+    margin-bottom: 1.75rem;
+  }
+
+  .project-page__title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-page__cta {
+    transition: none;
+  }
 }
 
 /* Main content area */

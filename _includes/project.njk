@@ -1,0 +1,62 @@
+---
+layout: layout.njk
+---
+<article class="prose project-page">
+  <nav class="project-page__breadcrumb" aria-label="Breadcrumb">
+    <a href="/projects/"><span aria-hidden="true">←</span> Games &amp; More</a>
+  </nav>
+
+  {% set hero = heroImage or cardImage %}
+  {% if hero %}
+  <div class="project-page__media">
+    {% image hero, heroImageAlt or cardImageAlt or title, "(max-width: 1204px) 100vw, 1140px" %}
+  </div>
+  {% endif %}
+
+  <h1 class="project-page__title">{{ title }}</h1>
+
+  <div class="project-page__body">
+    {# Panel comes first in the DOM so it precedes the long description for
+       keyboard and screen-reader users; the grid places it on the right. #}
+    <aside class="project-page__panel" aria-label="Where to get it">
+      {% if ctaUrl %}
+      <div class="project-page__actions">
+        <a class="project-page__cta" href="{{ ctaUrl }}"
+           {% if ctaExternal %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ ctaText or "Learn more" }}</a>
+        {% if ctaSecondaryUrl %}
+        <a class="project-page__cta project-page__cta--secondary" href="{{ ctaSecondaryUrl }}"
+           {% if ctaSecondaryExternal %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ ctaSecondaryText or "More" }}</a>
+        {% endif %}
+      </div>
+      {% if ctaNote %}<p class="project-page__cta-note">{{ ctaNote }}</p>{% endif %}
+      {% endif %}
+
+      {% if specs %}
+      <dl class="project-page__specs">
+        {% for spec in specs %}
+        <dt>{{ spec.label }}</dt>
+        <dd>{{ spec.value }}</dd>
+        {% endfor %}
+      </dl>
+      {% endif %}
+
+      {% if tags %}
+      <p class="project-page__tags">
+        {% for tag in tags %}
+          {% if tag != "project" and tag != "posts" %}
+          <a href="/tags/{{ tag | slugify }}/" class="tag-pill">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      </p>
+      {% endif %}
+    </aside>
+
+    <div class="project-page__main">
+      {% set leadText = lead or description %}
+      {% if leadText %}<p class="lead project-page__lead">{{ leadText }}</p>{% endif %}
+      <div class="prose__content">
+        {{ content | safe }}
+      </div>
+    </div>
+  </div>
+</article>

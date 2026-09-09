@@ -2,19 +2,25 @@
 title: D&D Character Sheets - Simple, Digital, Free
 description: A free, simple app for managing your 5E or 5.5E character sheets digitally, featuring a pencil-and-paper approach, sortable spells, and rich text formatting.
 date: 2026-06-23
-layout: post.njk
 tags: [project, d&d 5e, d&d 5.5e, tool]
+cardImage: ./assets/post-images/character-sheets/cover.png
+cardImageAlt: "D&D Character Sheets cover: a free digital 5E character sheet app"
+cardImageFocus: center
+lead: Lots of digital D&D character sheet apps offer a ton of features but get so expensive. This is my attempt at merging the best of the pencil and paper approach (free, no automations that break when you get into homebrew)... with the advantages of being digital (easy search, spell sorting, adjustable sizing for lots of text, and not losing your papers!).
+heroImage: ./assets/post-images/character-sheets/ddcs-character-sheet.png
+heroImageAlt: "Preview of digital D&D character sheet app"
+ctaText: Create Your Own Character Sheet
+ctaUrl: "https://ddcs.questadon.com/"
+ctaExternal: true
+ctaNote: Create a free account and use it as much as you want!
+specs:
+  - label: System
+    value: D&D 5E & 5.5E
+  - label: Price
+    value: Free, no subscription
+  - label: Platform
+    value: Desktop browser
 ---
-
-<p class="lead">Lots of digital D&D character sheet apps offer a ton of features but get so expensive. This is my attempt at merging the best of the pencil and paper approach (free, no automations that break when you get into homebrew)... with the advantages of being digital (easy search, spell sorting, adjustable sizing for lots of text, and not losing your papers!).</p>
-
-{% image "./assets/post-images/character-sheets/ddcs-character-sheet.png", "Preview of digital D&D character sheet app" %}
-
-Create a free account and use it as much as you want! [++ Create Your Own Character Sheet](https://ddcs.questadon.com/)
-
-
----
-
 *Last Significant Update: June 23, 2026*
 
 ## What Does My D&D Character Sheets (DDCS) App Do?

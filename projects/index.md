@@ -1,25 +1,24 @@
 ---
-title: Projects | Questadon
+title: Games & More | Questadon
 layout: layout.njk
-description: A collection of creative and technical projects—from Python tools to TTRPG utilities and web experiments.
+description: Table-top roleplaying games, D&D content, and other tools and stuff.
 eleventyNavigation:
-  key: Projects
+  key: Games & More
   order: 2
 ---
 
-# Projects
+# Games & More
 
-<p class="lead">Here’s a growing collection of stuff I've made—technical, creative, hyper-dimensional... all kinds.</p>
-
----
- 
-
-{% for post in collections.projects %}
-  {% if post.url != '/projects/' %}
-<article class="post-preview">
-<h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-<p>{{ post.data.description }}</p>
-<p class="post-meta"><span class="post-date">{{ post.date | readableDate }}</span>{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != "project" %} <a href="/tags/{{ tag | slugify }}/" class="tag-pill">{{ tag }}</a>{% endif %}{% endfor %}{% endif %}</p>
-</article>
-  {% endif %}
-{% endfor %}
+<div class="project-grid project-grid--index">
+{%- for project in collections.projects %}
+{%- if project.url != '/projects/' %}
+<a class="project-card" href="{{ project.url }}">
+{%- if project.data.cardImage %}
+<div class="project-card__media" style="--card-focus: {{ project.data.cardImageFocus | default('center') }}">{% image project.data.cardImage, project.data.cardImageAlt or project.data.title, "(max-width: 540px) 100vw, 440px" %}</div>
+{%- endif %}
+<h2 class="project-card__title">{{ project.data.title }}</h2>
+<p class="project-card__blurb">{{ project.data.description }}</p>
+</a>
+{%- endif %}
+{%- endfor %}
+</div>

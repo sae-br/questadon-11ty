@@ -1,5 +1,5 @@
 <section class="preview-section">
-  <h2 class="preview-heading">Posts</h2>
+  <h2 class="preview-heading">Updates</h2>
   {% if collections.posts | length %}
   <div class="preview-stack">
     {% for post in collections.posts %}
@@ -11,8 +11,8 @@
       {% endif %}
     {% endfor %}
   </div>
-  <a class="preview-link" href="/posts/">See all posts →</a>
+  <a class="preview-link" href="/posts/">See all updates →</a>
   {% else %}
-  <p>No posts found.</p>
+  <p>Nothing here yet.</p>
   {% endif %}
 </section>

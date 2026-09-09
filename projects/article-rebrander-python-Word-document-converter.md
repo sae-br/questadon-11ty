@@ -2,7 +2,6 @@
 title: Article Rebrand Tool (Python + .docx Parsing)
 description: A Python-based batch tool that rebrands old Word articles into a clean new template—complete with table support, text formatting, hyperlink preservation, and list handling.
 date: 2025-05-24
-layout: post.njk
 tags: [project, document, python]
 # Archived: dev content, kept in the repo for migration to another site.
 # Remove this line to put it back in nav/homepage/collection listings.

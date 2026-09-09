@@ -1,18 +1,43 @@
-<footer class="site-footer centered">
-  <p style="font-style: italic;">
-    Cinematic. Collaborative. Occasionally chaotic.
-  </p>
-  <p>
-    Come say hi!
-    <a href="https://www.instagram.com/questadon" rel="me">Instagram</a>
-    +
-    <a href="https://www.tiktok.com/@questadon" rel="me">TikTok</a>
-  </p>
-  <p>© {{ site.currentYear | year }} Questadon. <a href="/feed.xml">RSS Feed</a></p>
-  <p>
-    🇨🇦 Canada Strong / Canada Fort 🇨🇦
-  </p>
-  <p>
-    <a href="#top" class="back-to-top" aria-label="Back to top of page">↑ Back to top</a>
-  </p>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__col site-footer__brand">
+      <p class="site-footer__wordmark">QUESTADON</p>
+      <p class="site-footer__tagline">Cinematic. Collaborative. Occasionally chaotic.</p>
+    </div>
+
+    <nav class="site-footer__col" aria-labelledby="footer-explore">
+      <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
+      <ul class="site-footer__list">
+        <li><a href="/projects/">Games &amp; More</a></li>
+        <li><a href="/posts/">Updates</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </nav>
+
+    <nav class="site-footer__col" aria-labelledby="footer-final-light">
+      <h2 class="site-footer__heading" id="footer-final-light">Final Light</h2>
+      <ul class="site-footer__list">
+        <li>
+          <a href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
+             target="_blank" rel="noopener noreferrer">Late pledges on Kickstarter</a>
+        </li>
+        <li><a href="/projects/final-light-ttrpg/">About the game</a></li>
+      </ul>
+    </nav>
+
+    <nav class="site-footer__col" aria-labelledby="footer-connect">
+      <h2 class="site-footer__heading" id="footer-connect">Connect</h2>
+      <ul class="site-footer__list">
+        <li><a href="https://www.instagram.com/questadon" rel="me">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@questadon" rel="me">TikTok</a></li>
+        <li><a href="/#newsletter">Email list</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>© {{ site.currentYear | year }} Questadon. Made in 🇨🇦 Canada. Canada Strong / Canada Fort.</p>
+    <p><a href="#top" class="back-to-top" aria-label="Back to top of page">↑ Back to top</a></p>
+  </div>
 </footer>

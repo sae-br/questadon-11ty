@@ -1,15 +1,15 @@
 ---
-title: Posts | Questadon
+title: Updates | Questadon
 layout: layout.njk
 description: Thoughts, fun findings, and learning notes about programming, AI, TTRPGs, and more.
 eleventyNavigation:
-  key: Posts
+  key: Updates
   order: 3
 ---
 
-# Posts
+# Updates
 
-<p class="lead">My haphazard collection of things I’m making, learning, finding, and thinking about along my learning journey. I reserve the right to disagree with myself in the future. 🙃</p>
+<p class="lead">Announcements and behind-the-scenes thoughts. I reserve the right to disagree with myself in the future. 🙃</p>
 
 ---
  

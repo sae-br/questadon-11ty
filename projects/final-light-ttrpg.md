@@ -2,22 +2,25 @@
 title: Final Light - A Zombie Survival Story TTRPG
 description: A survival-horror TTRPG for telling short, high-stakes zombie stories like The Last of Us, Train to Busan, 28 Days Later, and more.
 date: 2026-08-31
-layout: post.njk
 tags: [project, ttrpg, full-game]
+cardImage: ./assets/post-images/final-light/final-light-books.jpg
+cardImageAlt: "The Final Light core book and adventure guides"
+cardImageFocus: center
+lead: Scavenge, stealth, and escape your way through a world of undead and hold on to whatever keeps you human.
+heroImage: ./assets/post-images/final-light/final-light-on-kickstarter.jpg
+heroImageAlt: "Final Light TTRPG with zombie and Kickstarter note"
+ctaText: Back Final Light on Kickstarter
+ctaUrl: "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
+ctaExternal: true
+ctaNote: The campaign funded well past its goal. Late pledges open now.
+specs:
+  - label: Format
+    value: Hardback & PDF
+  - label: Adventures
+    value: Four zines, 3–5 sessions each
+  - label: Status
+    value: Funded — late pledges open
 ---
-
-<p class="lead">Scavenge, stealth, and escape your way through a world of undead and hold on to whatever keeps you human.</p>
-
-{% image "./assets/post-images/final-light/final-light-on-kickstarter.jpg", "Final Light TTRPG with zombie and Kickstarter note" %}
-
-[++ Back Final Light on Kickstarter](https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd )
-
-*The campaign funded well past its goal. Late pledges open now.*
-
-
----
-
-
 Final Light is a short-form survival RPG set after the world has fallen apart. **You are not heroes trying to fix it. You are survivors trying to get through it.**
 
 The rules are familiar but rebuilt for tension: backgrounds that create emotional storytelling, an inventory that forces hard choices, and an adrenaline-fuelled encounter system designed around escape... hopefully.
