@@ -832,7 +832,10 @@ hr {
   .featured__inner {
     position: relative;
     width: 100%;
-    max-width: var(--site-width);
+    /* border-box + main's total width, so the copy lands on the same rail as
+       the rest of the page and width:100% + padding can't exceed the viewport. */
+    box-sizing: border-box;
+    max-width: calc(var(--site-width) + 4rem);
     margin: 0 auto;
     padding: 4rem 2rem;
   }
@@ -933,40 +936,48 @@ hr {
     color: #f0f0df;
   }
 
-  /* Portrait: a left-side scrim has nowhere to go, so anchor the copy to the
-     bottom, scrim upward, and pan the art to keep the figure in frame. */
+  /* Small viewports: stop overlaying entirely. The art shows at its own
+     aspect ratio so none of it is cropped, fades into the panel colour,
+     and the copy sits below it on the green. */
   @media screen and (max-width: 860px) {
     .featured {
-      align-items: flex-end;
-      min-height: min(82vh, 640px);
+      display: block;
+      min-height: 0;
       margin-bottom: 3.5rem;
     }
 
-    /* Portrait source is already framed on the figure, so barely any crop. */
-    .featured__art img {
-      object-position: center top;
+    .featured__art {
+      position: relative;
+      inset: auto;
     }
 
-    /* Keep the figure readable; darken only where the copy sits. */
+    .featured__art img {
+      width: 100%;
+      height: auto;
+      object-fit: fill;
+      object-position: center;
+    }
+
+    /* Just the bottom edge, dissolving into the panel. */
     .featured__art::after {
       background: linear-gradient(180deg,
-        rgba(12, 24, 14, 0.1) 0%,
-        rgba(12, 24, 14, 0.05) 30%,
-        rgba(12, 24, 14, 0.55) 52%,
-        rgba(12, 24, 14, 0.9) 70%,
-        rgba(12, 24, 14, 0.97) 100%);
-    }
-
-    .featured__logo {
-      width: clamp(150px, 42vw, 220px);
+        transparent 58%,
+        rgba(12, 24, 14, 0.45) 80%,
+        rgba(12, 24, 14, 0.88) 93%,
+        #0c180e 100%);
     }
 
     .featured__inner {
-      padding: 2rem 1.5rem 2.5rem;
+      padding: 0 2rem 2.5rem;
+      margin-top: -1.5rem;
     }
 
     .featured__content {
       max-width: none;
+    }
+
+    .featured__logo {
+      width: clamp(160px, 44vw, 230px);
     }
   }
 
