@@ -10,7 +10,7 @@ lead: Scavenge, stealth, and escape your way through a world of undead and hold 
 heroImage: ./assets/post-images/final-light/final-light-on-kickstarter.jpg
 heroImageTall: ./assets/post-images/final-light/final-light-tall.jpg
 heroImageAlt: "Final Light TTRPG with zombie and Kickstarter note"
-ctaText: Back Final Light on Kickstarter
+ctaText: Back on Kickstarter
 ctaUrl: "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
 ctaExternal: true
 ctaNote: The campaign funded well past its goal. Late pledges open now.
