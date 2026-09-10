@@ -8,6 +8,7 @@ cardImageAlt: "The Final Light core book and adventure guides"
 cardImageFocus: center
 lead: Scavenge, stealth, and escape your way through a world of undead and hold on to whatever keeps you human.
 heroImage: ./assets/post-images/final-light/final-light-on-kickstarter.jpg
+heroImageTall: ./assets/post-images/final-light/final-light-tall.jpg
 heroImageAlt: "Final Light TTRPG with zombie and Kickstarter note"
 ctaText: Back Final Light on Kickstarter
 ctaUrl: "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"

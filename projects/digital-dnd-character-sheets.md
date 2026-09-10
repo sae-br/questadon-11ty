@@ -7,7 +7,8 @@ cardImage: ./assets/post-images/character-sheets/cover.png
 cardImageAlt: "D&D Character Sheets cover: a free digital 5E character sheet app"
 cardImageFocus: center
 lead: Lots of digital D&D character sheet apps offer a ton of features but get so expensive. This is my attempt at merging the best of the pencil and paper approach (free, no automations that break when you get into homebrew)... with the advantages of being digital (easy search, spell sorting, adjustable sizing for lots of text, and not losing your papers!).
-heroImage: ./assets/post-images/character-sheets/ddcs-character-sheet.png
+heroImage: ./assets/post-images/character-sheets/ddcs.jpg
+heroImageTall: ./assets/post-images/character-sheets/ddcs-tall.jpg
 heroImageAlt: "Preview of digital D&D character sheet app"
 ctaText: Create Your Own Character Sheet
 ctaUrl: "https://ddcs.questadon.com/"

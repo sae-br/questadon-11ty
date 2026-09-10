@@ -9,7 +9,8 @@ layout: layout.njk
   {% set hero = heroImage or cardImage %}
   {% if hero %}
   <div class="project-page__media">
-    {% image hero, heroImageAlt or cardImageAlt or title, "(max-width: 1204px) 100vw, 1140px" %}
+    {% heroPicture hero, heroImageTall, heroImageAlt or cardImageAlt or title,
+        { sizes: "(max-width: 1204px) 100vw, 1140px", breakpoint: "860px", eager: true } %}
   </div>
   {% endif %}
 

@@ -8,6 +8,7 @@ cardImageAlt: "Rule Reference Tool for Nimble TTRPG"
 cardImageFocus: center
 lead: A hosted, searchable web app for querying multiple Nimble rulebook PDFs—fast keyword and fuzzy search, with citation links back to the source section.
 heroImage: ./assets/post-images/nimble-rules/banner.png
+heroImageTall: ./assets/post-images/nimble-rules/cover.png
 heroImageAlt: "Rule Reference Tool for Nimble TTRPG"
 ctaText: Open the Nimble Rules Search
 ctaUrl: "https://nimble-rules.onrender.com/search"

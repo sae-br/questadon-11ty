@@ -67,6 +67,47 @@ module.exports = function(eleventyConfig) {
     return generateHTML(metadata, imageAttributes);
   });
 
+  // ✅ Hero picture: a wide plate plus an optional tall crop swapped in on
+  //    narrow screens, so hero art stays a usable size in portrait.
+  eleventyConfig.addShortcode("heroPicture", async function(src, tallSrc, alt, opts) {
+    opts = opts || {};
+    const sizes = opts.sizes || "100vw";
+    const breakpoint = opts.breakpoint || "860px";
+    const common = { formats: ["webp", "jpeg"], outputDir: "./_site/img/", urlPath: "/img/" };
+
+    const wide = await Image(src, { widths: [800, 1200, 1800, 2400], ...common });
+    const tall = tallSrc ? await Image(tallSrc, { widths: [500, 800, 1200], ...common }) : null;
+
+    const sources = [];
+    if (tall) {
+      for (const fmt of Object.keys(tall)) {
+        const entries = tall[fmt];
+        sources.push(`<source media="(max-width: ${breakpoint})" type="${entries[0].sourceType}" srcset="${entries.map(e => e.srcset).join(", ")}" sizes="${sizes}">`);
+      }
+    }
+    const formats = Object.keys(wide);
+    for (const fmt of formats.slice(0, -1)) {
+      const entries = wide[fmt];
+      sources.push(`<source type="${entries[0].sourceType}" srcset="${entries.map(e => e.srcset).join(", ")}" sizes="${sizes}">`);
+    }
+
+    const fallback = wide[formats[formats.length - 1]];
+    const last = fallback[fallback.length - 1];
+    const attrs = [
+      `src="${last.url}"`,
+      `alt="${(alt || "").replace(/"/g, "&quot;")}"`,
+      `width="${last.width}"`,
+      `height="${last.height}"`,
+      `srcset="${fallback.map(e => e.srcset).join(", ")}"`,
+      `sizes="${sizes}"`,
+      `loading="${opts.eager ? "eager" : "lazy"}"`,
+      `decoding="async"`,
+    ];
+    if (opts.eager) attrs.push(`fetchpriority="high"`);
+
+    return `<picture>${sources.join("")}<img ${attrs.join(" ")}></picture>`;
+  });
+
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("favicon.ico");
