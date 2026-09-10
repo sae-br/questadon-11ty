@@ -108,6 +108,10 @@ module.exports = function(eleventyConfig) {
     return `<picture>${sources.join("")}<img ${attrs.join(" ")}></picture>`;
   });
 
+  // ✅ Serverless functions live in the repo root alongside content, so keep
+  //    Eleventy out of them (input dir is the project root).
+  eleventyConfig.ignores.add("netlify/**");
+
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("favicon.ico");

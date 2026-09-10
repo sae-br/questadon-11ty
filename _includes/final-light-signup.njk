@@ -1,0 +1,19 @@
+{# Quick Start signup. Posts to the /api/subscribe Netlify function, which
+   applies the `final-light` tag in EmailOctopus. Works without JS as a plain
+   form post; fl-signup.js upgrades it to a fetch and an inline message.
+   Keep this file free of blank lines - markdown-it ends an HTML block at the
+   first one, and this partial is included from a markdown body. #}
+<form class="fl-signup" method="post" action="/api/subscribe" novalidate>
+  <label class="fl-signup__label" for="fl-email">Email address</label>
+  <div class="fl-signup__row">
+    <input class="fl-signup__field" id="fl-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+    <button class="fl-signup__submit" type="submit">Send me the Quick Start</button>
+  </div>
+  {# Honeypot: hidden from people, catnip to bots. #}
+  <div class="fl-signup__hp" aria-hidden="true">
+    <label for="fl-company">Company</label>
+    <input id="fl-company" name="company" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <p class="fl-signup__status" role="status" aria-live="polite"></p>
+</form>
+<script src="/assets/fl-signup.js" defer></script>
