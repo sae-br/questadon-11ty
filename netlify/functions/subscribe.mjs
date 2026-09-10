@@ -177,7 +177,16 @@ async function eo(path, { method = "GET", body } = {}) {
 function upstreamFailure(what, res) {
   let hint = "";
   if (res.status === 401 || res.status === 403) {
-    hint = " | check EO_API_KEY in Netlify - a rotated key needs a redeploy to take effect";
+    // "the keys match" is easy to believe and hard to verify by eye. Fingerprint
+    // the key so it can be compared against the local one without ever logging
+    // the secret itself:  printf %s "$EO_API_KEY" | shasum -a 256
+    const raw = process.env.EO_API_KEY || "";
+    const key = env("EO_API_KEY");
+    const fingerprint = createHash("sha256").update(key).digest("hex").slice(0, 12);
+    hint =
+      ` | EO_API_KEY sha256=${fingerprint} length=${key.length}` +
+      ` had_surrounding_whitespace=${raw !== key} - if this fingerprint differs` +
+      ` from your local key, Netlify is holding a different value`;
   } else if (res.status === 400) {
     hint = " | check EO_LIST_ID is the complete list UUID";
   }
