@@ -36,7 +36,11 @@ export default async (req) => {
     return json({ error: "Method not allowed." }, 405);
   }
 
-  const { EO_API_KEY, EO_LIST_ID } = process.env;
+  // Trimmed: a stray newline pasted into a dashboard env var makes a malformed
+  // Bearer header (401) or a %0A in the list URL (400), both of which surface
+  // as an identical, unhelpful 502.
+  const EO_API_KEY = env("EO_API_KEY");
+  const EO_LIST_ID = env("EO_LIST_ID");
   if (!EO_API_KEY || !EO_LIST_ID) {
     console.error("subscribe: EO_API_KEY and/or EO_LIST_ID is not set");
     return json({ error: "The signup form isn't configured yet." }, 500);
@@ -142,7 +146,7 @@ async function eo(path, { method = "GET", body } = {}) {
   const res = await fetch(API_BASE + path, {
     method,
     headers: {
-      Authorization: `Bearer ${process.env.EO_API_KEY}`,
+      Authorization: `Bearer ${env("EO_API_KEY")}`,
       ...(body === undefined ? {} : { "content-type": "application/json" }),
     },
     body: body === undefined ? undefined : JSON.stringify(body),
@@ -161,9 +165,26 @@ async function eo(path, { method = "GET", body } = {}) {
   return { status: res.status, ok: res.ok, payload };
 }
 
-/** Log the upstream detail, hand the visitor something generic. */
+/**
+ * Log the upstream detail, hand the visitor something generic.
+ *
+ * Every misconfiguration looks like the same 502 from the browser, so name the
+ * likely cause in the log. Verified against the live API:
+ *   401 "Invalid key."       -> EO_API_KEY wrong or revoked
+ *   400 "Bad request."       -> EO_LIST_ID malformed, or not a real list
+ *   404 "Contact not found." -> genuinely absent contact (handled before here)
+ */
 function upstreamFailure(what, res) {
-  console.error(`subscribe: EmailOctopus rejected ${what}`, res.status, res.payload);
+  let hint = "";
+  if (res.status === 401 || res.status === 403) {
+    hint = " | check EO_API_KEY in Netlify - a rotated key needs a redeploy to take effect";
+  } else if (res.status === 400) {
+    hint = " | check EO_LIST_ID is the complete list UUID";
+  }
+  console.error(
+    `subscribe: EmailOctopus rejected ${what}: ${res.status} ${res.payload?.detail || ""}${hint}`
+  );
+
   const tooMany = res.status === 429;
   return {
     status: tooMany ? 429 : 502,
@@ -201,6 +222,10 @@ async function readSubmission(req) {
   }
 
   return null;
+}
+
+function env(name) {
+  return (process.env[name] || "").trim();
 }
 
 function normalise(value) {
