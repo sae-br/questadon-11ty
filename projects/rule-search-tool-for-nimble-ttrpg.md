@@ -1,97 +1,65 @@
 ---
-title: Rule Reference Tool for Nimble TTRPG
-description: A lightweight, self-hosted tool for querying multiple Nimble rulebook PDFs, built with Python + Flask to make searching rules in-game easy and free.
+title: Nimble Rules Search - Fast, Free Rule Lookups Mid-Game
+description: A free, searchable web tool for finding rules across the Nimble rulebooks mid-session, so you're not flipping through PDFs while everyone waits.
 date: 2025-04-23
 tags: [project, nimble, tool]
 cardImage: ./assets/post-images/nimble-rules/cover.png
-cardImageAlt: "Rule Reference Tool for Nimble TTRPG"
+cardImageAlt: "Nimble Rules Search: a free tool for looking up Nimble rules mid-game"
 cardImageFocus: center
-lead: A hosted, searchable web app for querying multiple Nimble rulebook PDFs—fast keyword and fuzzy search, with citation links back to the source section.
+lead: Nimble is new enough that there aren't many tools for it yet. So I threw this together for my own table in May 2025—type a word, get the rule, get back to the game. It's still up, and you're welcome to use it.
 heroImage: ./assets/post-images/nimble-rules/banner.png
 heroImageTall: ./assets/post-images/nimble-rules/cover.png
-heroImageAlt: "Rule Reference Tool for Nimble TTRPG"
+heroImageAlt: "Nimble Rules Search: a free tool for looking up Nimble rules mid-game"
 ctaText: Open the Nimble Rules Search
 ctaUrl: "https://nimble-rules.onrender.com/search"
 ctaExternal: true
 ctaNote: "Give it a bit to spin up, then use password: Hopscotch"
-ctaSecondaryText: View the code on GitHub
-ctaSecondaryUrl: "https://github.com/sae-br/nimble-rules"
-ctaSecondaryExternal: true
 specs:
   - label: System
     value: Nimble
   - label: Price
     value: Free
-  - label: Built with
-    value: Python + Flask
-  - label: Hosting
-    value: Render (free tier, sleeps when idle)
+  - label: Format
+    value: Web app, any browser
+  - label: Status
+    value: A 2025 side project, still running
 ---
-## The Final (for now) Result
+My long-running online group plays Nimble right now (as of May 2025), and because it's a newer system there just isn't the pile of wikis, cheat sheets, and lookup tools you get with something like D&D. We were all learning it at the same time, which meant every session we had a moment where somebody asked "wait, how does that work again?" and we'd all wait while someone scrolled through several PDFs trying to remember which one the answer was in.
 
-I built a **hosted searchable web app** that uses Python and Flask to:
-- Ingest and chunk PDFs
-- Run fast keyword and fuzzy searches
-- Display results in an easy-to-read web UI
-- Highlight relevant matches
-- Provide citation-style links back to the original PDF section
+So I made a thing that fixes that one specific annoyance, and have been using it for myself—figured I'd share if anyone else likes the idea! It's not fancy, but it works!
 
-It's a **deliberately simple and fast** tool. I wanted something my group could use on the fly during sessions, with no money down.
+## What it does
 
-Hosted on Render: [Nimble Rules Search](https://nimble-rules.onrender.com/search)
+You type a word or phrase. It searches across the Nimble rulebooks at once and shows you the matching passages, with the relevant bits highlighted and a note about which book and section each one came from.
 
-Give it a bit to spin up! Then use password: Hopscotch
+- **Searches all the books together**, so you don't have to guess which PDF has your answer
+- **Fuzzy matching**, so "advantag" or a typo mid-panic still finds the right rule
+- **Highlights the match** in the surrounding text, so you get the context and not just a page number
+- **Tells you where it came from**, so you can double-check it in your own copy of the book
 
-Poke through my build here, too, if you'd like: [Nimble Rules - GitHub](https://github.com/sae-br/nimble-rules)
+It's built to do one thing quickly, and saves me time!
 
+## How to use it at the table
 
-## What I Set Out to Build
+1. Open it in a tab before session starts (see the note below about spin-up).
+2. Enter the password when it asks: **Hopscotch**
+3. Search single distinctive words rather than full questions—i.e.**"stagger"** works better than **"what happens when I get staggered"**.
+4. If you get too many results, add a second word. If you get none, try a shorter or simpler one.
 
-So with my long-running online TTRPG group, we play using a game system that's pretty new called Nimble. Unlike other tabletop roleplaying games like Dungeons and Dragons, there aren't many tools or references made for this one. Since we are all learning the system together, I wanted an easy way to **look up specific rules from the Nimble rules PDFs during gameplay**—without constantly flipping through 100-page rulebooks or opening the different files and wondering which ones my answer would be in. I also wanted to make it lightweight, private for just my group's use, and **hostable for free**, without needing to train an expensive AI model or rely on external APIs.
+That last one is the main trick. It's keyword search, not a chatbot—it's looking for words that actually appear in the books, so it rewards short and specific over conversational.
 
+## Fair warnings
 
-## Options I Explored (and Why I Didn’t Use Them)
+**It goes to sleep.** It's on a free hosting plan, so if nobody's used it in a while the first visit takes something like 30-60 seconds to wake up. I open it at the beginning of a session so it's ready when the question comes.
 
-| Tool/Option       | Why I Looked at It            | Why I Didn’t Use It                 |
-| ----------------- | ----------------------------- | ----------------------------------- |
-| ChatGPT API       | Natural language support      | $$$ and not self-hosted             |
-| GPT4All           | Local LLM inference           | Too heavy for this use case         |
-| Pinecone/Weaviate | Vector DB for semantic search | Overkill for keyword-based queries  |
-| LangChain         | Full retrieval pipeline       | Added too much complexity           |
-| ChatPDF / PDF.ai  | Fast for individuals          | Not private or customizable or free |
+**It's not AI.** It won't summarize a rule or reason about your weird edge case. It finds the text and shows it to you. 
 
-I realized I didn't actually need natural language processing—**keyword and fuzzy matching was enough**. I just needed it to understand the data and provide **fast, accurate rule recall**. I might expand on this in the future, but as a starting tool, I wanted to simplify my goal here.
+**It's pointed at the PDFs I had in May 2025.** If Nimble has been updated since, this won't know about it. Treat what it finds as "go look at this section," not as the final word.
 
+**It's shared, not polished.** There's no mobile-friendly design, no clear-search button, no account. It's the tool my group uses, left switched on in case it's useful to yours.
 
-## Tools and Tech Used
+## Might do someday
 
-- **Python** (core script + backend logic)
-- **Flask** (lightweight web server)
-- **PyMuPDF** (`fitz`) for PDF parsing
-- **FuzzyWuzzy** (for fuzzy matching)
-- **HTML/CSS** (basic templating)
-- **VS Code** for development
-- **Render.com** (free tier deployment)
-- **ChatGPT** for vibe coding and learning
+If people actually use it, I might add a proper front-end that doesn't look like a Craigslist post, make an easier way to drop in updated rulebooks, and maybe improve it with a smarter search that handles a real question. 
 
-
-## What I Learned
-
-This was one of my first practical experiments applying lightweight AI techniques for personal use. I learned a ton about:
-- Keeping scope tight
-- Deploying apps (I had never uploaded to GitHub before!)
-- Creating a front-end interface
-- Chunking and adjusting weighting
-- NLPs in general, what's out there and what they can do
-
-
-## Updates I'm Considering
-
-I might like to update this project with features like:
-- Natural Language Processing for search
-- A streamlined way to upload new PDF versions
-- A "clear search" option
-- A front-end that's actually designed
-
-
-> Have you built something similar? How did you do it differently? Whether it's another PDF reference tool or just another tool for a TTRPG like Nimble, I'd be super curious to take a peek and learn what worked for you!
+> UPDATE (AUG 2026): If you play Nimble and you try this, I'd love to know whether it was useful, or what you'd want it to do instead. My regular group finished our Nimble campaign and we don't use this anymore but I'd improve it if someone does want it! Or if you've built something similar for your own table, please show me—I'm nosy about other people's game tools. ++ hello@questadon.com ++ @questadon

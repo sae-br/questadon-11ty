@@ -84,5 +84,3 @@ Full Disclosure: this isn't free for ME. But I found a way to do it affordably a
 So you using this and enjoying it is part of the point of me making this. 🙂 I love hearing from people who are happy to have found DDCS. (You can email me (Sarah) at hello@questadon.com)
 
 That said, I'm just one person, and this is a little side project (among many). Kindness is appreciated.
-
-Granted, if the userbase were to grow beyond what I can support at this tier, I'd need to get creative to figure out how to handle that. I only say that as an "anything can happen" scenario. I always want to keep this affordable and accessible, and stick with the originally stated goals here. 

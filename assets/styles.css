@@ -10,7 +10,7 @@
 
 /* 1) Default (dark) theme in :root, so JS toggle or attribute fallbacks both work */
 :root {
-  --color-bg:          #0c180e;
+  --color-bg:          #08100a;
   --color-text:        #f0f0df;
   --color-primary:     #ED1E79;
   --color-secondary:   #E6FF7C;
