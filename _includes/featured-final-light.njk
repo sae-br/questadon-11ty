@@ -1,10 +1,8 @@
 <section class="featured" aria-labelledby="featured-heading">
   <div class="featured__art">
     {% heroPicture
-        "./assets/feature-banner-final-light.jpg",
-        "./assets/feature-banner-final-light-square.jpg",
-        "",
-        { sizes: "100vw", breakpoint: "860px", eager: true } %}
+        "./assets/feature-banner-final-light-square.jpg", "", "",
+        { sizes: "(max-width: 860px) 100vw, 700px", eager: true } %}
   </div>
 
   <div class="featured__inner">
