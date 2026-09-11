@@ -13,6 +13,8 @@ heroImageAlt: "Final Light TTRPG with zombie and Kickstarter note"
 ctaText: Back on Kickstarter
 ctaUrl: "https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
 ctaExternal: true
+ctaSecondaryText: Get the free Quick Start
+ctaSecondaryUrl: "#quick-start"
 ctaNote: The campaign funded well past its goal. Late pledges open now.
 specs:
   - label: Format
@@ -36,7 +38,8 @@ Get the full details and reserve your copy on Kickstarter. Late pledges still op
 
 ---
 
-#### BE THE FIRST TO TRY IT
+<h4 id="quick-start">BE THE FIRST TO TRY IT</h4>
+
 A **learn-to-play single-session quick start** will be available mid-September, delivered exclusively to backers and email subscribers. 
 
 {% include "final-light-signup.njk" %}
