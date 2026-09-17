@@ -114,6 +114,8 @@ module.exports = function(eleventyConfig) {
 
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");
+  // Downloadable files (Quick Start zip, etc.) - copied verbatim to /downloads/.
+  eleventyConfig.addPassthroughCopy("downloads");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("favicon-96x96.png");
   eleventyConfig.addPassthroughCopy("favicon.svg");

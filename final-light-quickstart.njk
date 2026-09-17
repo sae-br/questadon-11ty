@@ -1,0 +1,172 @@
+---
+title: Downloading the Final Light Quick Start | Questadon
+permalink: /final-light-quickstart/index.html
+eleventyExcludeFromCollections: true
+# The one place the filename lives. Re-cut the zip under a new name and this
+# is the only line to change - the public URL never moves.
+zipUrl: /downloads/final-light-quickstart.zip
+---
+{# Download gateway for the Final Light Quick Start.
+
+   This page exists to make the download countable. A direct link to the zip
+   runs no JavaScript, so GA4 can never see it; landing here first means we can
+   fire an event and then hand the browser the file.
+
+   Navigating to a .zip does not replace the page - the browser starts the
+   download and leaves this page on screen - so the visitor ends up here
+   reading "your download is starting" rather than staring at a blank flash.
+
+   Because this is a real page, UTM tags on the URL work too:
+   /final-light-quickstart?utm_source=kickstarter picks up channel attribution
+   in GA4 for free. #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {# Not a page we want in search results - it triggers a download. #}
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preload" href="/assets/fonts/general-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  {# Same theme bootstrap as layout.njk, so this page opens in the visitor's
+     chosen palette instead of flashing the dark default. #}
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <style>
+    @font-face {
+      font-family: 'General Sans';
+      src: url('/assets/fonts/general-sans-variable.woff2') format('woff2'),
+           url('/assets/fonts/general-sans-variable.woff') format('woff');
+      font-weight: 200 700;
+      font-display: swap;
+    }
+
+    /* Palette lifted from styles.css so this standalone page stays on brand. */
+    :root {
+      --color-bg:    #08100a;
+      --color-text:  #f0f0df;
+      --color-primary: #ED1E79;
+      --color-secondary: #E6FF7C;
+    }
+
+    :root[data-theme="light"] {
+      --color-bg:    #f6feef;
+      --color-text:  #05220c;
+      --color-primary: #ED1E79;
+      --color-secondary: #266201;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'General Sans', system-ui, sans-serif;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .gate { max-width: 30rem; }
+
+    .gate__logo {
+      width: clamp(160px, 40vw, 260px);
+      height: auto;
+      margin: 0 auto 2rem;
+      display: block;
+    }
+
+    .gate__heading {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 600;
+      margin: 0 0 0.75rem;
+    }
+
+    .gate__note {
+      margin: 0 0 2rem;
+      opacity: 0.85;
+    }
+
+    .gate__fallback a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    :root[data-theme="light"] .gate__fallback a { color: #A20041; }
+
+    .gate__back {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-size: 0.9375rem;
+      color: var(--color-text);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="gate">
+    <img class="gate__logo" src="/assets/final-light-logo-web.png" alt="Final Light" width="400" height="200">
+    <h1 class="gate__heading">Your download is starting</h1>
+    <p class="gate__note">
+      <em>Local Anaesthetic</em>, the learn-to-play Quick Start for Final Light.
+      It's a 23&nbsp;MB zip, so give it a moment on a slow connection.
+    </p>
+    <p class="gate__fallback">
+      Nothing happening?
+      <a href="{{ zipUrl }}" download>Download it directly</a>.
+    </p>
+    <a class="gate__back" href="/projects/final-light-ttrpg/">&larr; Back to Final Light</a>
+  </div>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P5792YKJB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    {# Beacon transport so the hit survives the navigation to the zip. #}
+    gtag('config', 'G-3P5792YKJB', { transport_type: 'beacon' });
+
+    var fileUrl = "{{ zipUrl }}";
+
+    {# Custom event name rather than GA4's built-in `file_download`, which
+       Enhanced Measurement also fires on its own when someone clicks the
+       fallback link above. Keeping our own name means the count is exactly
+       "times this page handed over the file", with nothing else mixed in. #}
+    gtag('event', 'quickstart_download', {
+      event_category: 'Download',
+      event_label: 'Final Light Quick Start',
+      file_name: 'final-light-quickstart.zip'
+    });
+
+    var started = false;
+    function startDownload() {
+      if (started) return;
+      started = true;
+      {# Navigating to a zip downloads it and leaves this page in place. #}
+      window.location.href = fileUrl;
+    }
+
+    {# Brief pause to let the beacon leave before the navigation. #}
+    setTimeout(startDownload, 500);
+  </script>
+
+  <noscript>
+    {# No JS means no event, but never block the download over analytics. #}
+    <meta http-equiv="refresh" content="0;url={{ zipUrl }}">
+  </noscript>
+</body>
+</html>

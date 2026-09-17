@@ -6,3 +6,9 @@
 [build.environment]
   # @11ty/eleventy-img v7 needs Node 22+, matching the README's stated requirement.
   NODE_VERSION = "22"
+
+# Keep the download out of search results - it's for backers and subscribers.
+[[headers]]
+  for = "/downloads/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
