@@ -65,6 +65,26 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         setStatus(messageFor(result.body), "is-success");
+
+        // Conversion. Fires only on a genuine success - not on a validation
+        // error, a rejected address or an unreachable server. `signup_state`
+        // separates the three flavours of success so a confirmed subscriber
+        // can be told apart from one who still owes us a double opt-in click:
+        //   subscribed - on the list, confirmed
+        //   pending    - added, waiting on the confirmation email
+        //   tagged     - already subscribed, newly tagged for Final Light
+        // Guarded because this file is plain JS that could be loaded on a page
+        // without the analytics partial; layout.njk always defines gtag.
+        if (typeof gtag === "function") {
+          gtag("event", "quickstart_signup", {
+            signup_state: result.body.pending
+              ? "pending"
+              : result.body.state === "tagged"
+                ? "tagged"
+                : "subscribed",
+          });
+        }
+
         form.reset();
       })
       .catch(function () {

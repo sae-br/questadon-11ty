@@ -46,10 +46,7 @@ eleventyExcludeFromCollections: true
       window.location.replace(destination);
     }
 
-    gtag('event', 'qr_code_scan', {
-      event_category: 'QR Code',
-      event_label: 'qrcode'
-    });
+    gtag('event', 'qr_code_scan');
 
     setTimeout(goToFinalLight, 500);
   </script>
