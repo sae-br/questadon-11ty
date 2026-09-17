@@ -132,14 +132,9 @@ zipUrl: /downloads/final-light-quickstart.zip
     <a class="gate__back" href="/projects/final-light-ttrpg/">&larr; Back to Final Light</a>
   </div>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P5792YKJB"></script>
+  {% set gaBeacon = true %}
+  {% include "analytics.njk" %}
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    {# Beacon transport so the hit survives the navigation to the zip. #}
-    gtag('config', 'G-3P5792YKJB', { transport_type: 'beacon' });
-
     var fileUrl = "{{ zipUrl }}";
 
     {# Custom event name rather than GA4's built-in `file_download`, which

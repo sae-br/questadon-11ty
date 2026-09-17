@@ -1,0 +1,33 @@
+{# Google Analytics 4, for every page on the site. The measurement ID lives in
+   _data/site.js so it is stated once; blank it there to switch analytics off.
+
+   Only production builds get the real tag, so `npm start` and Netlify deploy
+   previews never send hits.
+
+   Set `gaBeacon` before including this on a page that fires an event and then
+   immediately navigates away - beacon transport lets the hit outlive the page:
+
+     {% set gaBeacon = true %}
+     {% include "analytics.njk" %}
+
+   The no-op stub in the else branch matters for exactly those pages: they call
+   gtag() further down, and an undefined gtag would throw and strand the
+   visitor on a page that never redirects. #}
+{% if site.isProduction and site.googleAnalyticsId %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.googleAnalyticsId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ site.googleAnalyticsId }}'{% if gaBeacon %}, { transport_type: 'beacon' }{% endif %});
+  </script>
+{% else %}
+  <script>
+    /* Analytics is off in this build. Stub gtag so pages that fire events and
+       then redirect still work. */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+  </script>
+{% endif %}

@@ -35,13 +35,9 @@ eleventyExcludeFromCollections: true
     <p><a href="/projects/final-light-ttrpg/?utm_source=tshirt&amp;utm_medium=qr&amp;utm_campaign=prelaunch">Continue to Final Light</a></p>
   </div>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3P5792YKJB"></script>
+  {% set gaBeacon = true %}
+  {% include "analytics.njk" %}
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-3P5792YKJB', { transport_type: 'beacon' });
-
     var destination = "/projects/final-light-ttrpg/?utm_source=tshirt&utm_medium=qr&utm_campaign=prelaunch";
     var redirected = false;
     function goToFinalLight() {
