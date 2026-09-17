@@ -1,10 +1,15 @@
 /**
  * Final Light Quick Start signup.
  *
- * Subscribes an address to the EmailOctopus audience and applies the TAG below,
- * which is what the tag-triggered automation listens for. It must match an
- * existing tag name in EmailOctopus exactly - a mismatch silently creates a new
- * tag and the automation never fires.
+ * Subscribes an address to the EmailOctopus audience and tags it for the
+ * tag-triggered automation that sends the Quick Start.
+ *
+ * Which tag depends on whether the contact can receive email yet. Automations
+ * only run for subscribed contacts, so tagging someone who is still pending
+ * their double opt-in spends the trigger while they are ineligible - and
+ * confirming afterwards adds no tag, so nothing ever fires. Those contacts get
+ * PENDING_TAG instead, and eo-webhook.mjs swaps it for the real TAG the moment
+ * they confirm. Both names live in ../lib/emailoctopus.mjs.
  *
  * EmailOctopus v2 (https://emailoctopus.com/api-documentation/v2):
  *   - auth is `Authorization: Bearer <key>` (v1's api_key-in-body is legacy)
@@ -21,8 +26,8 @@
 
 import { createHash } from "node:crypto";
 
-const API_BASE = "https://api.emailoctopus.com";
-const TAG = "Final Light QS";
+import { TAG, PENDING_TAG, env, eo, statusOf } from "../lib/emailoctopus.mjs";
+
 const SIGNUP_PAGE = "/projects/final-light-ttrpg/";
 
 // The list's double opt-in setting effectively never changes, so remember it
@@ -95,18 +100,20 @@ async function subscribe(email, listId) {
       };
     }
 
-    // Already on the list: add the tag and say nothing about status, so their
+    // Already on the list: add a tag and say nothing about status, so their
     // existing subscribed/pending state is left exactly as it was.
+    //
+    // Someone still awaiting confirmation gets the placeholder - tagging them
+    // for real here would spend the automation's trigger while they cannot
+    // receive it. The webhook promotes them when they confirm.
+    const isPending = statusOf(existing.payload) === "pending";
     const tagged = await eo(`/lists/${encodeURIComponent(listId)}/contacts/${contactId}`, {
       method: "PUT",
-      body: { tags: { [TAG]: true } },
+      body: { tags: { [isPending ? PENDING_TAG : TAG]: true } },
     });
     if (!tagged.ok) return upstreamFailure("tagging an existing contact", tagged);
 
-    return {
-      status: 200,
-      body: { ok: true, state: "tagged", pending: existing.payload?.status === "pending" },
-    };
+    return { status: 200, body: { ok: true, state: "tagged", pending: isPending } };
   }
 
   if (existing.status === 404) {
@@ -115,7 +122,10 @@ async function subscribe(email, listId) {
       method: "PUT",
       body: {
         email_address: email,
-        tags: { [TAG]: true },
+        // Placeholder while pending; the webhook swaps it for TAG on
+        // confirmation. With double opt-in off they are subscribed straight
+        // away, so the real tag can go on now and the automation fires.
+        tags: { [pending ? PENDING_TAG : TAG]: true },
         status: pending ? "pending" : "subscribed",
       },
     });
@@ -142,28 +152,6 @@ async function usesDoubleOptIn(listId) {
   return doubleOptInCache;
 }
 
-async function eo(path, { method = "GET", body } = {}) {
-  const res = await fetch(API_BASE + path, {
-    method,
-    headers: {
-      Authorization: `Bearer ${env("EO_API_KEY")}`,
-      ...(body === undefined ? {} : { "content-type": "application/json" }),
-    },
-    body: body === undefined ? undefined : JSON.stringify(body),
-  });
-
-  const text = await res.text();
-  let payload = null;
-  if (text) {
-    try {
-      payload = JSON.parse(text);
-    } catch {
-      // Upstream sent something that isn't JSON; callers only need the status.
-    }
-  }
-
-  return { status: res.status, ok: res.ok, payload };
-}
 
 /**
  * Log the upstream detail, hand the visitor something generic.
@@ -233,9 +221,6 @@ async function readSubmission(req) {
   return null;
 }
 
-function env(name) {
-  return (process.env[name] || "").trim();
-}
 
 function normalise(value) {
   return typeof value === "string" ? value.trim().toLowerCase() : "";
