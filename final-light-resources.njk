@@ -1,0 +1,65 @@
+---
+title: Final Light Resources | Questadon
+description: Free extras for Final Light - character sheets and other printables for your table.
+layout: layout.njk
+permalink: /final-light/resources/index.html
+eleventyExcludeFromCollections: true
+# Unlisted for now: reached from the QR code in the book (via /fl), not linked
+# anywhere on the site. Drop this line to let search engines find it.
+noindex: true
+# One entry per download. To add one, put the file in /downloads/ and add an
+# entry here - the page lays itself out from this list.
+resources:
+  - title: Blank Character Sheet
+    blurb: A fresh sheet for a new survivor. No personal stakes section.
+    file: /downloads/FL-Character-Sheet-Blank.pdf
+    details: PDF · 1 page · 2.4 MB
+  - title: Pregen Character Sheets
+    blurb: Five pre-generated characters with backgrounds and personal stakes.
+    file: /downloads/FL-Character-Sheets-Pregens.pdf
+    details: PDF · 5 pages · 2.7 MB
+---
+{# Landing page for the QR code printed in the Final Light book. The QR code
+   points at /fl (fl.njk), never here, so this page can move or be renamed
+   without reprinting anything. #}
+<article class="prose fl-resources">
+  <p class="project-page__breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
+
+  <header class="prose__header">
+    <h1>Final Light Resources</h1>
+    <p class="project-page__lead">
+      Thanks for picking up Final Light. Here are some free extras for your
+      table. Download whatever you need and print as many as you like.
+    </p>
+  </header>
+
+  <ul class="fl-resources__list">
+    {% for item in resources %}
+    <li class="fl-resources__item">
+      <div class="fl-resources__text">
+        <h2 class="fl-resources__title">{{ item.title }}</h2>
+        <p class="fl-resources__blurb">{{ item.blurb }}</p>
+        <p class="fl-resources__details">{{ item.details }}</p>
+      </div>
+      <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource="{{ item.file | replace('/downloads/', '') }}" aria-label="Download {{ item.title }}">Download</a>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+
+<script>
+  {# One event for every file, told apart by file_name, so new resources show
+     up in GA4 without any changes here. Custom name for the same reason as
+     the Quick Start page: GA4's own `file_download` also fires on these
+     clicks, and keeping ours separate keeps the count clean. Files open in a
+     new tab; beacon transport is a safety net for browsers that open the PDF
+     in this one anyway. #}
+  document.querySelectorAll('[data-resource]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'resource_download', {
+        file_name: link.dataset.resource,
+        transport_type: 'beacon'
+      });
+    });
+  });
+</script>

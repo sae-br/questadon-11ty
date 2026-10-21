@@ -11,6 +11,8 @@
   {% set pageUrl = site.url + page.url %}
   <meta name="description" content="{{ pageDescription }}">
   <link rel="canonical" href="{{ pageUrl }}">
+  {# Set `noindex: true` in front matter for unlisted pages. #}
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
 
   <!-- Open Graph (Facebook, LinkedIn, Discord, Mastodon, iMessage) -->
   <meta property="og:type" content="{% if date %}article{% else %}website{% endif %}">

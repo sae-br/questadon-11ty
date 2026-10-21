@@ -1,0 +1,62 @@
+---
+title: Final Light Resources | Questadon
+permalink: /fl/index.html
+eleventyExcludeFromCollections: true
+---
+{# The short URL printed as a QR code in the Final Light book. Printed copies
+   can never change, so this is the stable address: to send scans somewhere
+   new, change `destination` below and nothing else.
+
+   Same approach as r.njk (the t-shirt QR): count the scan in GA4, then
+   forward with UTM tags so the visit is attributed to the book. #}
+{% set destination = "/final-light/resources/?utm_source=book&utm_medium=qr&utm_campaign=final-light" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ destination }}">
+  </noscript>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+    }
+    a { color: #9cf; }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Taking you to Final Light resources&hellip;</p>
+    <p><a href="{{ destination }}">Continue to Final Light resources</a></p>
+  </div>
+
+  {% set gaBeacon = true %}
+  {% include "analytics.njk" %}
+  <script>
+    var destination = "{{ destination | safe }}";
+    var redirected = false;
+    function goToResources() {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(destination);
+    }
+
+    {# qr_code tells this scan apart from the t-shirt's. #}
+    gtag('event', 'qr_code_scan', { qr_code: 'book' });
+
+    setTimeout(goToResources, 500);
+  </script>
+</body>
+</html>
