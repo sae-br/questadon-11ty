@@ -111,6 +111,9 @@ module.exports = function(eleventyConfig) {
   // ✅ Serverless functions live in the repo root alongside content, so keep
   //    Eleventy out of them (input dir is the project root).
   eleventyConfig.ignores.add("netlify/**");
+  // Repo notes and print files (QR codes) aren't site pages.
+  eleventyConfig.ignores.add("README.md");
+  eleventyConfig.ignores.add("print/**");
 
   // ✅ Passthrough files
   eleventyConfig.addPassthroughCopy("assets");

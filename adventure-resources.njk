@@ -1,0 +1,59 @@
+---
+pagination:
+  data: adventures
+  size: 1
+  alias: adventure
+permalink: "{{ adventure.pageUrl }}index.html"
+layout: layout.njk
+eleventyExcludeFromCollections: true
+# Unlisted: reached only from the QR code in each zine (via adventure-qr.njk),
+# and the random token in the URL keeps it from being guessed.
+noindex: true
+eleventyComputed:
+  title: "{{ adventure.title }} Resources | Questadon"
+  description: "Encounter maps and extras for {{ adventure.title }}, a Final Light adventure."
+---
+{# One resources page per adventure zine. The download list builds itself
+   from the files in the adventure's downloads folder - see _data/adventures.js. #}
+<article class="prose fl-resources">
+  <p class="project-page__breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
+
+  <header class="prose__header">
+    <h1>{{ adventure.title }} Resources</h1>
+    <p class="project-page__lead">
+      Thanks for picking up {{ adventure.title }}. Here are the encounter maps
+      and extras for your table. Download whatever you need and print as many
+      as you like.
+    </p>
+  </header>
+
+  {% if adventure.resources.length %}
+  <ul class="fl-resources__list">
+    {% for item in adventure.resources %}
+    <li class="fl-resources__item">
+      <div class="fl-resources__text">
+        <h2 class="fl-resources__title">{{ item.title }}</h2>
+        <p class="fl-resources__details">{{ item.details }}</p>
+      </div>
+      <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource="{{ item.fileName }}" aria-label="Download {{ item.title }}">Download</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>The files for this adventure are on their way. Check back soon.</p>
+  {% endif %}
+</article>
+
+<script>
+  {# Same event as the Final Light resources page, plus `adventure` so the
+     zines can be told apart in GA4. #}
+  document.querySelectorAll('[data-resource]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'resource_download', {
+        file_name: link.dataset.resource,
+        adventure: '{{ adventure.label }}',
+        transport_type: 'beacon'
+      });
+    });
+  });
+</script>

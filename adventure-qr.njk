@@ -1,0 +1,68 @@
+---
+pagination:
+  data: adventures
+  size: 1
+  alias: adventure
+permalink: "{{ adventure.shortUrl }}index.html"
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ adventure.title }} | Questadon"
+---
+{# The short URLs printed as QR codes in the four adventure zines, one page per
+   entry in _data/adventures.js. Printed copies can never change, so these are
+   the stable addresses: to send scans somewhere new, change `destination`
+   below (or pageUrl in the data file) and nothing else.
+
+   Same approach as fl.njk: count the scan in GA4, then forward with UTM tags
+   so the visit is attributed to the zine. #}
+{% set destination = adventure.pageUrl + "?utm_source=adventure&utm_medium=qr&utm_campaign=" + adventure.label %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ destination }}">
+  </noscript>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+    }
+    a { color: #9cf; }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Taking you to {{ adventure.title }} resources&hellip;</p>
+    <p><a href="{{ destination }}">Continue to {{ adventure.title }} resources</a></p>
+  </div>
+
+  {% set gaBeacon = true %}
+  {% include "analytics.njk" %}
+  <script>
+    var destination = "{{ destination | safe }}";
+    var redirected = false;
+    function goToResources() {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(destination);
+    }
+
+    {# qr_code tells the zines apart from each other and the other QR codes. #}
+    gtag('event', 'qr_code_scan', { qr_code: 'adventure-{{ adventure.label }}' });
+
+    setTimeout(goToResources, 500);
+  </script>
+</body>
+</html>
