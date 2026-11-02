@@ -1,0 +1,63 @@
+---
+title: Questadon Discord | Questadon
+permalink: /r/discord-fl/index.html
+eleventyExcludeFromCollections: true
+---
+{# The short URL printed as the Discord QR code in the Final Light books. The
+   first printing linked straight to a Discord invite that expired, so this is
+   the stable address now: when the invite changes, update `destination` below
+   and nothing else. The invite must be set to never expire.
+
+   Same approach as fl.njk: count the scan in GA4, then forward. Discord
+   invites ignore UTM tags, so the GA event is the only scan record. #}
+{% set destination = "https://discord.gg/tt3g2mkRZn" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ destination }}">
+  </noscript>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+    }
+    a { color: #9cf; }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Taking you to the Questadon Discord&hellip;</p>
+    <p><a href="{{ destination }}">Continue to Discord</a></p>
+  </div>
+
+  {% set gaBeacon = true %}
+  {% include "analytics.njk" %}
+  <script>
+    var destination = "{{ destination | safe }}";
+    var redirected = false;
+    function goToDiscord() {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(destination);
+    }
+
+    {# qr_code tells this scan apart from the t-shirt's and the book's. #}
+    gtag('event', 'qr_code_scan', { qr_code: 'discord-fl' });
+
+    setTimeout(goToDiscord, 500);
+  </script>
+</body>
+</html>
