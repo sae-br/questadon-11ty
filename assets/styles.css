@@ -2256,9 +2256,34 @@ hr {
   flex-shrink: 0;
 }
 
+/* Adventure pages: "Download all" above the list, and a smaller View /
+   Download pair on each file that stays side by side on phones. */
+.fl-resources__all {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.fl-resources__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.fl-resources__actions .fl-resources__cta {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
 @media screen and (max-width: 560px) {
   .fl-resources__item {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .fl-resources__actions .fl-resources__cta {
+    flex: 1;
   }
 }

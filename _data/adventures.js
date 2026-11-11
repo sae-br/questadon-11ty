@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { zipSize } = require("../lib/store-zip");
 
 // The four Final Light adventure zines. Each one has its own QR code printed
 // in the zine, pointing at /r/<token>/ (adventure-qr.njk), which forwards to
@@ -12,6 +13,10 @@ const path = require("path");
 // on the page on the next build, in filename order. The filename becomes the
 // title, so name them the way they should read: "01 Ferry Deck Map.pdf"
 // shows as "Ferry Deck Map".
+//
+// Each page also gets a "Download all" zip of every file in the folder. It is
+// built fresh on every build (see the eleventy.after hook in .eleventy.js) and
+// only exists in the built site, so there's nothing to keep up to date.
 const adventures = [
   { label: "maid", title: "Maid of the Mist", token: "mqa2wurgfz" },
   { label: "walls", title: "The Walls Around Us", token: "syzne5fqbm" },
@@ -43,18 +48,30 @@ module.exports = adventures.map((adventure) => {
     ? fs.readdirSync(dir).filter((name) => !name.startsWith(".")).sort()
     : [];
 
+  const sizes = files.map((name) => fs.statSync(path.join(dir, name)).size);
+  const slug = adventure.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const zipName = `${slug}-maps.zip`;
+
   return {
     ...adventure,
     folder,
     shortUrl: `/r/${adventure.token}/`,
     pageUrl: `/final-light/adventures/${folder}/`,
-    resources: files.map((name) => ({
+    resources: files.map((name, i) => ({
       title: titleFromFilename(name),
       file: `/downloads/adventures/${folder}/${encodeURIComponent(name)}`,
       fileName: name,
-      details: `${path.extname(name).slice(1).toUpperCase()} · ${formatSize(
-        fs.statSync(path.join(dir, name)).size
-      )}`,
+      sourcePath: path.join(dir, name),
+      details: `${path.extname(name).slice(1).toUpperCase()} · ${formatSize(sizes[i])}`,
     })),
+    zip: files.length
+      ? {
+          file: `/downloads/adventures/${folder}/${zipName}`,
+          fileName: zipName,
+          details: `ZIP · ${formatSize(
+            zipSize(files.map((name, i) => ({ name, size: sizes[i] })))
+          )}`,
+        }
+      : null,
   };
 });

@@ -27,6 +27,13 @@ eleventyComputed:
     </p>
   </header>
 
+  {% if adventure.zip %}
+  <p class="fl-resources__all">
+    <a class="project-page__cta" href="{{ adventure.zip.file }}" download="{{ adventure.zip.fileName }}" data-resource="{{ adventure.zip.fileName }}">Download all maps</a>
+    <span class="fl-resources__details">{{ adventure.zip.details }}</span>
+  </p>
+  {% endif %}
+
   {% if adventure.resources.length %}
   <ul class="fl-resources__list">
     {% for item in adventure.resources %}
@@ -35,7 +42,10 @@ eleventyComputed:
         <h2 class="fl-resources__title">{{ item.title }}</h2>
         <p class="fl-resources__details">{{ item.details }}</p>
       </div>
-      <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource="{{ item.fileName }}" aria-label="Download {{ item.title }}">Download</a>
+      <div class="fl-resources__actions">
+        <a class="project-page__cta project-page__cta--secondary fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource-view="{{ item.fileName }}" aria-label="View {{ item.title }}">View</a>
+        <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" download="{{ item.fileName }}" data-resource="{{ item.fileName }}" aria-label="Download {{ item.title }}">Download</a>
+      </div>
     </li>
     {% endfor %}
   </ul>
@@ -46,11 +56,22 @@ eleventyComputed:
 
 <script>
   {# Same event as the Final Light resources page, plus `adventure` so the
-     zines can be told apart in GA4. #}
+     zines can be told apart in GA4. "Download all" sends it too, with the zip
+     as the file name. View buttons send `resource_view` instead, so downloads
+     and views are counted separately. #}
   document.querySelectorAll('[data-resource]').forEach(function(link) {
     link.addEventListener('click', function() {
       gtag('event', 'resource_download', {
         file_name: link.dataset.resource,
+        adventure: '{{ adventure.label }}',
+        transport_type: 'beacon'
+      });
+    });
+  });
+  document.querySelectorAll('[data-resource-view]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'resource_view', {
+        file_name: link.dataset.resourceView,
         adventure: '{{ adventure.label }}',
         transport_type: 'beacon'
       });

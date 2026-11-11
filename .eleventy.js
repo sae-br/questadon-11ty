@@ -7,6 +7,7 @@ const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 const { default: Image, generateHTML } = require("@11ty/eleventy-img");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const { writeZip } = require("./lib/store-zip");
 
 module.exports = function(eleventyConfig) {
   console.log("✅ Loaded .eleventy.js, registering plugins and filters");
@@ -53,7 +54,7 @@ module.exports = function(eleventyConfig) {
   // never quote a stale size. Takes a site URL like "/downloads/foo.pdf".
   eleventyConfig.addFilter("fileSize", (url) => {
     const bytes = fs.statSync(path.join(__dirname, url)).size;
-    return `${Math.round(bytes / 1e6)} MB`;
+    return `${Math.round(bytes / 1e6)} MB`;
   });
 
   // ✅ Image shortcode
@@ -119,6 +120,8 @@ module.exports = function(eleventyConfig) {
   // ✅ Serverless functions live in the repo root alongside content, so keep
   //    Eleventy out of them (input dir is the project root).
   eleventyConfig.ignores.add("netlify/**");
+  // Build helpers, not pages.
+  eleventyConfig.ignores.add("lib/**");
   // Repo notes and print files (QR codes) aren't site pages.
   eleventyConfig.ignores.add("README.md");
   eleventyConfig.ignores.add("print/**");
@@ -132,6 +135,19 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon.svg");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("site.webmanifest");
+
+  // ✅ "Download all" zips for the adventure resources pages. Written straight
+  //    into the built site, never into downloads/, so the source folders only
+  //    ever hold the real files. Paths and sizes come from _data/adventures.js.
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    delete require.cache[require.resolve("./_data/adventures.js")];
+    for (const adventure of require("./_data/adventures.js")) {
+      if (!adventure.zip) continue;
+      const outPath = path.join(dir.output, adventure.zip.file);
+      fs.mkdirSync(path.dirname(outPath), { recursive: true });
+      writeZip(outPath, adventure.resources.map((item) => ({ name: item.fileName, path: item.sourcePath })));
+    }
+  });
 
   // ✅ Collections
   eleventyConfig.addCollection("posts", (collection) => {

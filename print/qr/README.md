@@ -31,7 +31,7 @@ The resources pages are unlisted. Nothing on the site links to them, they're mar
 | `/final-light/resources/` | `downloads/` (listed by hand in [`final-light-resources.njk`](../../final-light-resources.njk)) |
 | Each adventure page | `downloads/adventures/<label>-<code>/` (listed automatically from the folder) |
 
-Adventure files: drop them in the folder and they appear on the next build, sorted by filename. The filename becomes the title, without the extension or a leading number: `01 Ferry Deck Map.pdf` shows as "Ferry Deck Map".
+Adventure files: drop them in the folder and they appear on the next build, sorted by filename. The "Download all maps" zip is rebuilt from the folder on every build, so don't add a zip to the folder yourself. The filename becomes the title, without the extension or a leading number: `01 Ferry Deck Map.pdf` shows as "Ferry Deck Map".
 
 ## Tracking (GA4)
 
@@ -56,6 +56,8 @@ Download buttons on the resources pages send a `resource_download` event:
 |---|---|
 | Final Light resources | `file_name` |
 | Adventure pages | `file_name`, `adventure` (`maid`, `walls`, `terminal`, `home`) |
+
+On adventure pages, the "Download all maps" button also sends `resource_download`, with the zip's name (e.g. `maid-of-the-mist-maps.zip`) as `file_name`. The View buttons send `resource_view` with the same parameters, so opening a map in the browser isn't counted as a download.
 
 GA4's built-in `file_download` event also fires on these clicks. Use `resource_download` for counts.
 
