@@ -20,7 +20,7 @@ Each short URL page logs a GA4 event, then forwards the visitor after half a sec
 
 The adventure short URLs come from [`adventure-qr.njk`](../../adventure-qr.njk) and the pages from [`adventure-resources.njk`](../../adventure-resources.njk), one of each per entry in `_data/adventures.js`. The random codes in those URLs are printed, so never change them once a zine has gone to print.
 
-**Retired:** the first printing of the core book (p.20) and the Quick Start GM guide had a Discord QR that linked straight to `discord.gg/qA95JkSBB`. That invite expired and can't be fixed in printed copies. This is why every code now goes through a short URL.
+**Retired:** the first release of the core book (p.20) and the Quick Start GM guide had a Discord QR that linked straight to `discord.gg/qA95JkSBB`. That invite expired; thankfully only digital copies went out but if it had been printed it would have been unfixable. This is why every code now goes through a short URL.
 
 ## Hidden pages
 
