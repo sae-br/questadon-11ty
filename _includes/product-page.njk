@@ -12,15 +12,16 @@ layout: layout.njk
      toc: [{id, label}]          "On this page" links; ids are the H2 ids
 
    The body is written with the product-* classes (see the PRODUCT PAGE
-   section of styles.css). Styling is scoped to .product so it never leaks
-   into the rest of the site's brand palette. #}
+   section of styles.css) plus the shared components (.btn, .box, .eyebrow,
+   .pull-quote, .with-panel, ...). Styling is scoped to .product so it never
+   leaks into the rest of the site's brand palette. #}
 <article class="product"{% if accent %} style="--product-accent: {{ accent }};{% if accentLight %} --product-accent-light: {{ accentLight }};{% endif %}"{% endif %}>
-  <nav class="product__breadcrumb" aria-label="Breadcrumb">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/projects/"><span aria-hidden="true">←</span> Games &amp; More</a>
   </nav>
 
   {% if heroImage %}
-  <div class="product__media">
+  <div class="hero-media">
     {% heroPicture heroImage, heroImageTall, heroImageAlt or title,
         { sizes: "(max-width: 1204px) 100vw, 1140px", breakpoint: "860px", eager: true } %}
   </div>
@@ -29,23 +30,23 @@ layout: layout.njk
   <header class="product__header">
     <h1 class="product__title">{{ heading or title }}</h1>
     {% if subtitle %}<p class="product__subtitle">{{ subtitle }}</p>{% endif %}
-    {% if lead %}<p class="product__lead">{{ lead }}</p>{% endif %}
+    {% if lead %}<p class="product__lead product-lede">{{ lead }}</p>{% endif %}
   </header>
 
-  <div class="product__layout">
+  <div class="with-panel">
     {# First in the DOM so keyboard and screen-reader users reach the buy
        buttons before the long read; the grid puts it on the right. #}
-    <aside class="product__panel" aria-label="Get {{ heading or title }}">
-      <div class="product__actions">
-        {% if ctaUrl %}<a class="product-btn" href="{{ ctaUrl }}">{{ ctaText }}</a>{% endif %}
-        {% if ctaSecondaryUrl %}<a class="product-btn product-btn--ghost" href="{{ ctaSecondaryUrl }}">{{ ctaSecondaryText }}</a>{% endif %}
+    <aside class="product__panel with-panel__aside" aria-label="Get {{ heading or title }}">
+      <div class="btn-stack">
+        {% if ctaUrl %}<a class="btn" href="{{ ctaUrl }}">{{ ctaText }}</a>{% endif %}
+        {% if ctaSecondaryUrl %}<a class="btn btn--ghost" href="{{ ctaSecondaryUrl }}">{{ ctaSecondaryText }}</a>{% endif %}
       </div>
 
       {% if facts %}
       <dl class="product__facts">
         {% for fact in facts %}
         <div>
-          <dt>{{ fact.label }}</dt>
+          <dt class="eyebrow">{{ fact.label }}</dt>
           <dd>{{ fact.value }}</dd>
         </div>
         {% endfor %}
@@ -54,7 +55,7 @@ layout: layout.njk
 
       {% if toc %}
       <nav class="product__toc" aria-label="On this page">
-        <p class="product__toc-label">On this page</p>
+        <p class="product__toc-label eyebrow">On this page</p>
         <ul>
           {% for item in toc %}
           <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
@@ -64,7 +65,7 @@ layout: layout.njk
       {% endif %}
     </aside>
 
-    <div class="product__body">
+    <div class="product__body with-panel__main">
       {{ content | safe }}
     </div>
   </div>

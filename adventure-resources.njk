@@ -16,7 +16,7 @@ eleventyComputed:
 {# One resources page per adventure zine. The download list builds itself
    from the files in the adventure's downloads folder - see _data/adventures.js. #}
 <article class="prose fl-resources">
-  <p class="project-page__breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
+  <p class="breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
 
   <header class="prose__header">
     <h1>{{ adventure.title }} Resources</h1>
@@ -29,7 +29,7 @@ eleventyComputed:
 
   {% if adventure.zip %}
   <p class="fl-resources__all">
-    <a class="project-page__cta" href="{{ adventure.zip.file }}" download="{{ adventure.zip.fileName }}" data-resource="{{ adventure.zip.fileName }}">Download all maps</a>
+    <a class="btn" href="{{ adventure.zip.file }}" download="{{ adventure.zip.fileName }}" data-resource="{{ adventure.zip.fileName }}">Download all maps</a>
     <span class="fl-resources__details">{{ adventure.zip.details }}</span>
   </p>
   {% endif %}
@@ -37,14 +37,14 @@ eleventyComputed:
   {% if adventure.resources.length %}
   <ul class="fl-resources__list">
     {% for item in adventure.resources %}
-    <li class="fl-resources__item">
+    <li class="fl-resources__item box">
       <div class="fl-resources__text">
         <h2 class="fl-resources__title">{{ item.title }}</h2>
         <p class="fl-resources__details">{{ item.details }}</p>
       </div>
       <div class="fl-resources__actions">
-        <a class="project-page__cta project-page__cta--secondary fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource-view="{{ item.fileName }}" aria-label="View {{ item.title }}">View</a>
-        <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" download="{{ item.fileName }}" data-resource="{{ item.fileName }}" aria-label="Download {{ item.title }}">Download</a>
+        <a class="btn btn--secondary btn--sm fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource-view="{{ item.fileName }}" aria-label="View {{ item.title }}">View</a>
+        <a class="btn btn--sm fl-resources__cta" href="{{ item.file }}" download="{{ item.fileName }}" data-resource="{{ item.fileName }}" aria-label="Download {{ item.title }}">Download</a>
       </div>
     </li>
     {% endfor %}

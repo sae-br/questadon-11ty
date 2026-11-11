@@ -20,6 +20,11 @@
   /* Site-wide layout widths */
   --site-width: 1140px;
   --reading-width: 760px;
+
+  /* Corner radii: small for controls (buttons, fields), medium for boxes,
+     cards and images */
+  --radius-sm: 4px;
+  --radius-md: 8px;
 }
 
 /* 2) Light mode overrides */
@@ -182,8 +187,9 @@ h1, h2, h3 {
   }
   
 
-/* Header nav */  
-  nav a {
+/* Header and footer nav. :where() keeps this as weak as a bare `nav a`, so
+   any class rule (logo, toggle, breadcrumbs) still wins. */
+  :where(.site-nav, .site-footer__col) a {
     margin-right: 1rem;
     font-weight: bold;
   }
@@ -746,6 +752,262 @@ hr {
 
 
 
+/* ============================================
+   SHARED COMPONENTS - used across page types.
+
+   Each one takes its colours from custom
+   properties, falling back to the site palette.
+   A page restyles them by setting the variables
+   on an ancestor rather than overriding rules
+   (see "Shared components in the product
+   palette" in the PRODUCT PAGE section).
+   ============================================ */
+
+/* ---------- Buttons ----------
+   .btn              solid, brand pink by default
+   .btn--secondary   outlined in the button colour, fills on hover
+   .btn--ghost       outlined in the surrounding text colour
+   .btn--sm          compact, for rows of small actions
+   Variables: --btn-bg, --btn-fg, --btn-hover-bg, --btn-hover-fg,
+   --btn-hover-border, --btn-focus, --control-border-width */
+
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.85rem 1.5rem;
+  border: var(--control-border-width, 2px) solid var(--btn-bg, var(--color-primary));
+  border-radius: var(--radius-sm);
+  background-color: var(--btn-bg, var(--color-primary));
+  color: var(--btn-fg, #fff);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: inherit;   /* <button> doesn't inherit it by default */
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover-bg, var(--color-accent-dark));
+  border-color: var(--btn-hover-border, var(--btn-hover-bg, var(--color-accent-dark)));
+  color: var(--btn-hover-fg, var(--btn-fg, #fff));
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--btn-focus, var(--color-secondary));
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--btn-bg, var(--color-primary));
+}
+
+.btn--secondary:hover {
+  background-color: var(--btn-bg, var(--color-primary));
+  border-color: var(--btn-bg, var(--color-primary));
+  color: var(--btn-fg, #fff);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  border-color: color-mix(in srgb, currentColor 50%, transparent);
+  color: inherit;
+}
+
+.btn--ghost:hover {
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: currentColor;
+  color: inherit;
+}
+
+.btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* A column of buttons in a side panel. Once the panel stacks under the
+   content (the .with-panel breakpoint) they sit side by side instead. */
+.btn-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 920px) {
+  .btn-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .btn-stack .btn {
+    flex: 1 1 12rem;
+  }
+}
+
+/* ---------- Box ----------
+   A bordered panel. Variables: --box-pad, --box-border, --box-bg */
+
+.box {
+  padding: var(--box-pad, 1.5rem);
+  border: 1px solid var(--box-border, var(--color-accent-dark));
+  border-radius: var(--radius-md);
+  background: var(--box-bg, transparent);
+}
+
+.box > :first-child {
+  margin-top: 0;
+}
+
+.box > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Eyebrow ----------
+   Small uppercase label: spec names, table headers, kickers, credits.
+   Variable: --eyebrow-color. Parts that can't carry the class (pseudo-
+   elements, generated table headers, hand-written quote credits) are
+   listed here so there's still only one definition. */
+
+.eyebrow,
+.pull-quote figcaption,
+.product-buy thead th,
+.product-buy td::before,
+.product-steps li::before {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eyebrow-color, var(--color-secondary));
+}
+
+/* ---------- Breadcrumb ----------
+   Variables: --breadcrumb-color, --breadcrumb-hover */
+
+.breadcrumb {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: var(--breadcrumb-color, var(--color-accent-light));
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--breadcrumb-hover, var(--color-primary));
+  text-decoration: underline;
+}
+
+/* ---------- Hero image ----------
+   Key art across the top of a page. Variable: --hero-gap */
+
+.hero-media {
+  margin-bottom: var(--hero-gap, 2.5rem);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--color-bg);
+}
+
+.hero-media picture,
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Content beside a sticky side panel ----------
+   The panel comes first in the DOM, so keyboard and screen-reader users
+   reach it before the long read; the grid puts it on the right.
+   Variables: --panel-width, --panel-gap, --panel-gap-stacked */
+
+.with-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--panel-width, 300px);
+  gap: var(--panel-gap, 2.5rem);
+  align-items: start;
+}
+
+.with-panel__main {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.with-panel__aside {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Below this the content column gets too narrow to read beside the panel,
+   so stack: DOM order already puts the panel first. */
+@media screen and (max-width: 920px) {
+  .with-panel {
+    grid-template-columns: 1fr;
+    gap: var(--panel-gap-stacked, 2rem);
+  }
+
+  .with-panel__main,
+  .with-panel__aside {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .with-panel__aside {
+    position: static;
+  }
+}
+
+/* ---------- Pull quote ----------
+   <figure class="pull-quote"><blockquote><p>…</p></blockquote>
+   <figcaption>—Name</figcaption></figure>. Variable: --quote-accent */
+
+.pull-quote {
+  margin: 3rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--quote-accent, var(--color-accent-light));
+}
+
+.pull-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-style: normal;
+  color: inherit;
+}
+
+.pull-quote blockquote p {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.pull-quote figcaption {
+  margin-top: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+
 /* Pitch section (home) - a quiet break between the feature and the games */
   .pitch {
     padding: 3.5rem 2rem;
@@ -853,11 +1115,6 @@ hr {
     list-style: none;
     margin: 0 0 2rem;
     padding: 0;
-    font-size: 0.76rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #E6FF7C;
   }
 
   .featured__stats li {
@@ -881,43 +1138,6 @@ hr {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-  }
-
-  .featured__cta {
-    display: inline-block;
-    background-color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    color: white;
-    padding: 0.85rem 1.75rem;
-    font-size: 1.05rem;
-    font-weight: 500;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-
-  .featured__cta:hover {
-    background-color: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
-    color: white;
-    text-decoration: none;
-  }
-
-  .featured__cta:focus-visible {
-    outline: 2px solid #E6FF7C;
-    outline-offset: 3px;
-  }
-
-  .featured__cta--ghost {
-    background-color: transparent;
-    border-color: rgba(240, 240, 223, 0.5);
-    color: #f0f0df;
-  }
-
-  .featured__cta--ghost:hover {
-    background-color: rgba(240, 240, 223, 0.14);
-    border-color: #f0f0df;
-    color: #f0f0df;
   }
 
   /* Narrow: the square stacks to the top of the panel, fading downward, with
@@ -957,12 +1177,6 @@ hr {
 
     .featured__stats li + li::before {
       left: -0.6rem;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .featured__cta {
-      transition: none;
     }
   }
 
@@ -1225,18 +1439,7 @@ hr {
 }
 
 .quote-button {
-  background-color: var(--color-primary);
-  color: white; /* white text instead of var so it stays white in light mode */
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.quote-button:hover {
-  background-color: var(--color-accent-dark);
+  border-radius: 999px;
 }
 
 /* Floating back-to-top button */
@@ -1552,7 +1755,6 @@ hr {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text);
 }
 
 .fl-signup__row {
@@ -1561,26 +1763,28 @@ hr {
   column-gap: 0.75rem;
 }
 
+/* Variables: --field-border, --field-focus, --field-ring,
+   --control-border-width (shared with .btn) */
 .fl-signup__field {
   flex: 1 1 auto;
   min-width: 0;
   padding: 0.75rem 1.25rem;
-  border: 2px solid var(--color-primary);
-  border-radius: 3px;
+  border: var(--control-border-width, 2px) solid var(--field-border, var(--color-primary));
+  border-radius: var(--radius-sm);
   background-color: transparent;
-  color: var(--color-text);
-  font-family: 'General Sans', sans-serif;
+  color: inherit;
+  font-family: inherit;
   font-size: 1rem;
 }
 
 .fl-signup__field::placeholder {
-  color: var(--color-text);
+  color: inherit;
   opacity: 0.6;
 }
 
 .fl-signup__field:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary);
+  border-color: var(--field-focus, var(--color-primary));
+  box-shadow: 0 0 0 3px var(--field-ring, var(--color-primary));
   outline: none;
 }
 
@@ -1595,36 +1799,13 @@ hr {
 
 .fl-signup__field:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--color-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset, 0 0 0 3px var(--color-primary);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset, 0 0 0 3px var(--field-ring, var(--color-primary));
   caret-color: var(--color-text);
 }
 
+/* The button itself is a .btn */
 .fl-signup__submit {
   flex: 0 0 auto;
-  padding: 0.75rem 1.75rem;
-  border: none;
-  border-radius: 3px;
-  background-color: var(--color-primary);
-  color: #fff;
-  font-family: 'General Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.fl-signup__submit:hover {
-  background-color: var(--color-accent-dark);
-}
-
-.fl-signup__submit:focus-visible {
-  outline: 3px solid var(--color-text);
-  outline-offset: 2px;
-}
-
-.fl-signup__submit:disabled {
-  opacity: 0.65;
-  cursor: default;
 }
 
 /* Honeypot. Positioned off-screen rather than display:none, which some bots
@@ -1641,7 +1822,6 @@ hr {
   margin: 0.75rem 0 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--color-text);
 }
 
 /* The live region is always in the DOM so it can be announced; don't let it
@@ -1650,13 +1830,14 @@ hr {
   margin: 0;
 }
 
+/* Variables: --status-error, --status-success */
 .fl-signup__status.is-error {
-  color: var(--color-primary);
+  color: var(--status-error, var(--color-primary));
   font-weight: 600;
 }
 
 .fl-signup__status.is-success {
-  color: var(--color-secondary);
+  color: var(--status-success, var(--color-secondary));
   font-weight: 600;
 }
 
@@ -1718,39 +1899,10 @@ hr {
 /* ============================================
    PROJECT PAGE - key art, full-width title,
    then content beside a persistent buy panel
+   (_includes/project.njk). Layout, panel, buttons,
+   breadcrumb and key art are shared components:
+   .with-panel, .box, .btn, .breadcrumb, .hero-media
    ============================================ */
-
-.project-page__breadcrumb {
-  margin: 0 0 1.25rem;
-  font-size: 0.9rem;
-}
-
-.project-page__breadcrumb a {
-  color: var(--color-accent-light);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.project-page__breadcrumb a:hover,
-.project-page__breadcrumb a:focus-visible {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-.project-page__media {
-  margin-bottom: 2.5rem;
-  border-radius: 8px;
-  overflow: hidden;
-  line-height: 0;
-  background-color: var(--color-bg);
-}
-
-.project-page__media picture,
-.project-page__media img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 .project-page__title {
   margin: 0 0 2rem;
@@ -1759,74 +1911,9 @@ hr {
   overflow-wrap: break-word;
 }
 
-.project-page__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-.project-page__main {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
-}
-
-.project-page__panel {
-  grid-column: 2;
-  grid-row: 1;
-  position: sticky;
-  top: 2rem;
-  padding: 1.5rem;
-  border: 1px solid var(--color-accent-dark);
-  border-radius: 8px;
-}
-
 .project-page__lead {
   margin: 0 0 2rem;
   font-size: 1.25rem;
-}
-
-.project-page__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.project-page__cta {
-  display: block;
-  text-align: center;
-  background-color: var(--color-primary);
-  color: white;
-  padding: 0.85rem 1.5rem;
-  font-size: 1.05rem;
-  font-weight: 500;
-  border-radius: 4px;
-  text-decoration: none;
-  border: 2px solid var(--color-primary);
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.project-page__cta:hover {
-  background-color: var(--color-accent-dark);
-  border-color: var(--color-accent-dark);
-  color: white;
-  text-decoration: none;
-}
-
-.project-page__cta:focus-visible {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 3px;
-}
-
-.project-page__cta--secondary {
-  background-color: transparent;
-  color: var(--color-primary);
-}
-
-.project-page__cta--secondary:hover {
-  background-color: var(--color-primary);
-  color: white;
 }
 
 .project-page__cta-note {
@@ -1847,11 +1934,6 @@ hr {
 }
 
 .project-page__specs dt {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--color-secondary);
   margin-bottom: 0.15rem;
 }
 
@@ -1871,47 +1953,21 @@ hr {
   border-top: 1px solid var(--color-accent-dark);
 }
 
-/* Below this the content column gets too narrow to read beside the panel,
-   so stack: DOM order already puts the panel before the description. */
-@media screen and (max-width: 920px) {
-  .project-page__body {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .project-page__main,
-  .project-page__panel {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .project-page__panel {
-    position: static;
-  }
-
-  .project-page__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .project-page__cta {
-    display: inline-block;
-  }
+/* The divider separates panel sections, so not above the first one (a
+   project with no button, or no specs) */
+.project-page__specs:first-child,
+.project-page__tags:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 @media screen and (max-width: 768px) {
-  .project-page__media {
-    margin-bottom: 1.75rem;
+  .project-page {
+    --hero-gap: 1.75rem;
   }
 
   .project-page__title {
     margin-bottom: 1.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .project-page__cta {
-    transition: none;
   }
 }
 
@@ -2225,14 +2281,12 @@ hr {
   gap: 1rem;
 }
 
+/* Each row is also a .box */
 .fl-resources__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid var(--color-accent-dark);
-  border-radius: 8px;
 }
 
 .fl-resources__title {
@@ -2272,11 +2326,6 @@ hr {
   flex-shrink: 0;
 }
 
-.fl-resources__actions .fl-resources__cta {
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-}
-
 @media screen and (max-width: 560px) {
   .fl-resources__item {
     flex-direction: column;
@@ -2298,10 +2347,16 @@ hr {
    and one accent per product (front matter
    `accent` / `accentLight`). The site's brand
    pink and green stay in the nav and footer.
-   Everything sits inside the site width.
+
+   Layout, buttons, boxes, labels, breadcrumb,
+   key art and pull quotes are the SHARED
+   COMPONENTS: the .product block below maps
+   them onto this palette, and the rest of the
+   section is the product-only pieces.
    ============================================ */
 
 .product {
+  /* Palette */
   --p-text:    #f2efe8;
   --p-muted:   rgba(242, 239, 232, 0.66);
   --p-faint:   rgba(242, 239, 232, 0.42);
@@ -2311,7 +2366,42 @@ hr {
   --p-on-text: #0b0d0b;   /* type on a solid --p-text button */
   --p-shadow:  0 24px 60px rgba(0, 0, 0, 0.5);
 
-  --p-gap-section: clamp(4.5rem, 9vw, 7rem);
+  /* Type scale */
+  --p-size-display: clamp(2rem, 4.75vw, 2.9rem);   /* section headings, big statements */
+  --p-size-lg:      clamp(1.25rem, 2.6vw, 1.6rem); /* ledes, feature titles */
+  --p-size-body:    clamp(1.05rem, 1.6vw, 1.15rem);
+  --p-size-sm:      1rem;                           /* cards, steps, tables */
+  --p-size-xs:      0.875rem;                       /* notes, panel text */
+
+  /* Spacing */
+  --p-gap-section: clamp(4.5rem, 9vw, 7rem);  /* between sections */
+  --p-gap-block:   2.5rem;                    /* around steps, cards, spreads, tables */
+  --p-gap-feature: 3rem;                      /* before a feature, art or notify box */
+
+  /* Shared components in the product palette */
+  --btn-bg:             var(--p-text);
+  --btn-fg:             var(--p-on-text);
+  --btn-hover-bg:       transparent;
+  --btn-hover-fg:       var(--p-text);
+  --btn-hover-border:   var(--p-text);
+  --btn-focus:          var(--p-text);
+  --control-border-width: 1px;
+  --field-border:       var(--p-faint);
+  --field-focus:        var(--p-text);
+  --field-ring:         var(--p-line);
+  --status-error:       var(--p-accent);
+  --status-success:     var(--p-text);
+  --box-pad:            clamp(1.5rem, 4vw, 2.5rem);
+  --box-border:         var(--p-line);
+  --box-bg:             var(--p-surface);
+  --eyebrow-color:      var(--p-faint);
+  --quote-accent:       var(--p-accent);
+  --breadcrumb-color:   var(--p-muted);
+  --breadcrumb-hover:   var(--p-text);
+  --hero-gap:           clamp(2.5rem, 6vw, 4rem);
+  --panel-width:        17rem;
+  --panel-gap:          clamp(2.5rem, 6vw, 5rem);
+  --panel-gap-stacked:  3.5rem;
 
   color: var(--p-text);
   letter-spacing: 0.01em;
@@ -2328,23 +2418,27 @@ hr {
   --p-shadow:  0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
-/* ---------- Type ---------- */
+/* ---------- Base type ----------
+   Wrapped in :where() so these weigh no more than plain element rules:
+   any single class further down can restyle a p, a or h3 on its own,
+   without a `.product__body` prefix to outrank them. */
 
-.product h2,
-.product h3 {
+:where(.product) h2,
+.product-display {
+  margin: 0 0 1.75rem;
+  font-size: var(--p-size-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--p-text);
-  letter-spacing: -0.01em;
 }
 
-.product h2 {
-  margin: 0 0 1.75rem;
-  font-size: clamp(2rem, 4.5vw, 2.85rem);
-  line-height: 1.1;
+:where(.product) h2 {
   scroll-margin-top: 2rem;
 }
 
 /* A short rule in the product's colour marks the start of each section. */
-.product h2::before {
+:where(.product) h2::before {
   content: "";
   display: block;
   width: 2.5rem;
@@ -2353,28 +2447,30 @@ hr {
   background: var(--p-accent);
 }
 
-.product h3 {
+:where(.product) h3 {
   margin: 0;
   font-size: 1.3rem;
   line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--p-text);
 }
 
-.product__body p,
-.product__body li {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+:where(.product__body) p,
+:where(.product__body) li {
+  font-size: var(--p-size-body);
   line-height: 1.75;
 }
 
-.product__body p {
+:where(.product__body) p {
   margin: 0 0 1.25rem;
 }
 
-.product strong {
+:where(.product) strong {
   font-weight: 600;
   color: var(--p-text);
 }
 
-.product__body a {
+:where(.product__body) a {
   color: var(--p-text);
   text-decoration: underline;
   text-decoration-color: var(--p-accent);
@@ -2382,51 +2478,32 @@ hr {
   text-underline-offset: 4px;
 }
 
-.product__body a:hover,
-.product__body a:focus-visible {
+:where(.product__body) a:hover,
+:where(.product__body) a:focus-visible {
   color: var(--p-accent);
+  text-decoration-thickness: 2px;
 }
 
-.product a:focus-visible {
+:where(.product) a:focus-visible {
   outline: 2px solid var(--p-text);
   outline-offset: 3px;
 }
 
-/* The site-wide `nav a` rule (bold, right margin) is for the header nav. */
-.product nav a {
-  margin-right: 0;
-  font-weight: 500;
+/* A large paragraph: the header lead, an opening line, a story beat */
+.product-lede {
+  font-size: var(--p-size-lg);
+  line-height: 1.45;
+}
+
+/* Fine print: funding notes, "you'll also join the list" */
+.product-small {
+  margin-top: 1rem;
+  font-size: var(--p-size-xs);
+  line-height: 1.5;
+  color: var(--p-faint);
 }
 
 /* ---------- Header ---------- */
-
-.product__breadcrumb {
-  margin: 0 0 1.5rem;
-  font-size: 0.875rem;
-}
-
-.product__breadcrumb a {
-  color: var(--p-muted);
-  text-decoration: none;
-}
-
-.product__breadcrumb a:hover,
-.product__breadcrumb a:focus-visible {
-  color: var(--p-text);
-}
-
-.product__media {
-  margin-bottom: clamp(2.5rem, 6vw, 4rem);
-  border-radius: 6px;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.product__media img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 .product__header {
   max-width: 46rem;
@@ -2453,74 +2530,15 @@ hr {
 
 .product__lead {
   margin: 1.75rem 0 0;
-  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
-  line-height: 1.45;
-  color: var(--p-text);
 }
 
-/* ---------- Layout: content beside a sticky panel ---------- */
-
-.product__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 17rem;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: start;
-}
-
-.product__body {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
-}
+/* ---------- Panel: buttons, facts and "On this page" ---------- */
 
 .product__panel {
-  grid-column: 2;
-  grid-row: 1;
-  position: sticky;
-  top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-
-/* ---------- Buttons (reusable on any product page) ---------- */
-
-.product__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.product-btn {
-  display: block;
-  padding: 0.8rem 1.25rem;
-  border: 1px solid var(--p-text);
-  border-radius: 4px;
-  background: var(--p-text);
-  color: var(--p-on-text);
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.product-btn:hover {
-  background: transparent;
-  color: var(--p-text);
-}
-
-.product-btn--ghost {
-  background: transparent;
-  color: var(--p-text);
-  border-color: var(--p-faint);
-}
-
-.product-btn--ghost:hover {
-  border-color: var(--p-text);
-}
-
-/* ---------- Panel: facts and "On this page" ---------- */
 
 .product__facts {
   display: grid;
@@ -2532,28 +2550,14 @@ hr {
   border-bottom: 1px solid var(--p-line);
 }
 
-.product__facts dt {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--p-faint);
-}
-
 .product__facts dd {
   margin: 0.2rem 0 0;
-  font-size: 0.9rem;
+  font-size: var(--p-size-xs);
   line-height: 1.35;
-  color: var(--p-text);
 }
 
 .product__toc-label {
   margin: 0 0 0.6rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--p-faint);
 }
 
 .product__toc ul {
@@ -2566,7 +2570,8 @@ hr {
   display: block;
   padding: 0.3rem 0 0.3rem 0.85rem;
   border-left: 2px solid var(--p-line);
-  font-size: 0.875rem;
+  font-size: var(--p-size-xs);
+  font-weight: 500;
   line-height: 1.4;
   color: var(--p-muted);
   text-decoration: none;
@@ -2575,6 +2580,7 @@ hr {
 
 .product__toc a:hover {
   color: var(--p-text);
+  text-decoration: none;
 }
 
 .product__toc a[aria-current] {
@@ -2588,23 +2594,13 @@ hr {
   margin-top: var(--p-gap-section);
 }
 
-/* Opening pitch */
-.product__body .product-intro__lead {
-  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
-  line-height: 1.55;
-}
-
-.product-intro__lead strong {
-  display: block;
-  margin-top: 0.75rem;
-}
-
-.product__body .product-callout {
+/* Uppercase band between hairlines: "for fans of…" */
+.product-callout {
   margin: 2.25rem 0 1rem;
   padding: 1.5rem 0;
   border-top: 1px solid var(--p-line);
   border-bottom: 1px solid var(--p-line);
-  font-size: 0.95rem;
+  font-size: var(--p-size-sm);
   font-weight: 500;
   line-height: 1.7;
   letter-spacing: 0.1em;
@@ -2615,96 +2611,24 @@ hr {
   color: var(--p-accent);
 }
 
-.product__body .product-note {
-  font-size: 0.875rem;
-  color: var(--p-faint);
-}
-
-/* Setting: short, cinematic beats */
-.product__body .product-story__open {
-  margin-bottom: 1.75rem;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.product__body .product-story__beat {
-  font-size: clamp(1.25rem, 2.4vw, 1.45rem);
-  font-weight: 500;
-}
-
-.product__body .product-story__turn {
-  margin-top: 2rem;
-  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
-  line-height: 1.35;
-}
-
 /* A paragraph led by a bold line, read as a small titled feature */
-.product__body .product-feature {
-  margin-top: 3rem;
+.product-feature {
+  margin-top: var(--p-gap-feature);
   color: var(--p-muted);
+}
+
+h2 + .product-feature {
+  margin-top: 0;
 }
 
 .product-feature strong {
   display: block;
   margin-bottom: 0.4rem;
-  font-size: clamp(1.25rem, 2.4vw, 1.45rem);
+  font-size: var(--p-size-lg);
   line-height: 1.3;
 }
 
-/* ---------- Pull quotes (reusable anywhere) ---------- */
-
-.pull-quote {
-  margin: 3rem 0;
-  padding-left: 1.5rem;
-  border-left: 2px solid var(--p-accent, var(--color-accent-light));
-}
-
-.pull-quote blockquote {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-style: normal;
-}
-
-.pull-quote blockquote p,
-.product__body .pull-quote blockquote p {
-  margin: 0;
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  font-weight: 500;
-  line-height: 1.55;
-  color: var(--p-text, var(--color-text));
-}
-
-.pull-quote figcaption {
-  margin-top: 0.9rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--p-faint, var(--color-accent-light));
-}
-
-/* The headline quote: big, no rule */
-.pull-quote--feature {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.pull-quote--feature blockquote p,
-.product__body .pull-quote--feature blockquote p {
-  font-size: clamp(2rem, 5.5vw, 3.25rem);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.product-quotes .pull-quote--feature {
-  margin-top: 0;
-}
-
+/* Three quotes stacked beside/below the cover art */
 .product-quotes__list {
   display: grid;
   gap: 2.5rem;
@@ -2714,13 +2638,35 @@ hr {
   margin: 0;
 }
 
+/* ---------- Art (key art, product shots set into the page) ---------- */
+
+.product-art {
+  margin: 0 0 var(--p-gap-feature);
+}
+
+.product-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+h2 + .product-art {
+  margin-top: 0.5rem;
+}
+
+.product-feature + .product-art {
+  margin-top: 2rem;
+}
+
 /* ---------- Book spreads ---------- */
 
 .product-spread {
-  margin: 2.5rem 0 3rem;
+  margin: var(--p-gap-block) 0 var(--p-gap-feature);
 }
 
-.product-spread__link {
+.product-spread__link,
+.product-spread__link:hover {
   display: block;
   text-decoration: none;
 }
@@ -2729,22 +2675,14 @@ hr {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   box-shadow: var(--p-shadow);
-}
-
-.product__body .product-spread__link {
-  text-decoration: none;
 }
 
 .product-spread__hint {
   display: block;
   margin-top: 0.75rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
   text-align: right;
-  text-transform: uppercase;
-  color: var(--p-faint);
 }
 
 .product-spread__link:hover .product-spread__hint,
@@ -2760,7 +2698,7 @@ hr {
   aspect-ratio: 1.41;
   padding: 1rem;
   border: 2px dashed var(--p-accent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   color: var(--p-accent);
   font-weight: 600;
   text-align: center;
@@ -2774,31 +2712,29 @@ hr {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
-  margin: 2.5rem 0;
+  margin: var(--p-gap-block) 0;
   padding: 0;
   background: var(--p-line);
   border: 1px solid var(--p-line);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
-.product__body .product-steps li {
+.product-steps li {
   counter-increment: product-step;
   margin: 0;
   padding: 1.5rem;
   background: var(--color-bg);
-  font-size: 1rem;
+  font-size: var(--p-size-sm);
   line-height: 1.6;
   color: var(--p-muted);
 }
 
+/* The number; its type is the shared eyebrow */
 .product-steps li::before {
   content: counter(product-step, decimal-leading-zero);
   display: block;
   margin-bottom: 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
   color: var(--p-accent);
 }
 
@@ -2817,34 +2753,32 @@ hr {
   border-top: 1px solid var(--p-line);
 }
 
-.product__body .product-list li {
+.product-list li {
   margin: 0;
   padding: 1rem 0;
   border-bottom: 1px solid var(--p-line);
   color: var(--p-muted);
 }
 
-/* ---------- Cards (adventures, expansions, etc.) ---------- */
+/* ---------- Cards (adventures, expansions, etc.) ----------
+   Each card is also a .box */
 
 .product-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  margin: 2.5rem 0 0;
+  margin: var(--p-gap-block) 0 0;
 }
 
 .product-card {
+  --box-pad: 1.75rem;
   display: flex;
   flex-direction: column;
-  padding: 1.75rem;
-  border: 1px solid var(--p-line);
-  border-radius: 6px;
-  background: var(--p-surface);
 }
 
 .product-card__media {
   order: -2;
-  margin: -1.75rem -1.75rem 1.5rem;
+  margin: calc(-1 * var(--box-pad)) calc(-1 * var(--box-pad)) 1.5rem;
 }
 
 .product-card__media img {
@@ -2853,20 +2787,15 @@ hr {
   height: auto;
 }
 
-.product__body .product-card__kicker {
+.product-card__kicker {
   order: -1;
   margin: 0 0 0.5rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  line-height: 1.4;
-  text-transform: uppercase;
   color: var(--p-accent);
 }
 
-.product__body .product-card__text {
+.product-card__text {
   margin: 0.75rem 0 0;
-  font-size: 1rem;
+  font-size: var(--p-size-sm);
   line-height: 1.65;
   color: var(--p-muted);
 }
@@ -2875,9 +2804,9 @@ hr {
 
 .product-buy {
   width: 100%;
-  margin: 2.5rem 0 0;
+  margin: var(--p-gap-block) 0 0;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: var(--p-size-sm);
 }
 
 .product-buy th,
@@ -2891,18 +2820,10 @@ hr {
   line-height: 1.5;
 }
 
-.product-buy tr:nth-child(even) {
-  background: none;
-}
-
+/* Header type is the shared eyebrow */
 .product-buy thead th {
   padding-top: 0;
   padding-bottom: 0.75rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--p-faint);
 }
 
 .product-buy td {
@@ -2934,51 +2855,27 @@ hr {
   color: var(--p-faint);
 }
 
-/* ---------- Email signup inside a product page ---------- */
+/* ---------- Email signup and "Notify me" box ---------- */
 
-.product-signup .fl-signup {
-  margin: 2rem 0 0;
+/* The form's colours come from the variables in the .product block */
+.product .fl-signup {
+  margin: 1.5rem 0 0;
 }
 
-.product .fl-signup__label {
-  color: var(--p-text);
+/* Under the buy table; also a .box */
+.product-notify {
+  margin-top: var(--p-gap-feature);
 }
 
-.product .fl-signup__field {
-  border: 1px solid var(--p-faint);
-  border-radius: 4px;
-  color: var(--p-text);
+.product-notify__title {
+  margin: 0 0 0.75rem;
+  font-size: var(--p-size-lg);
 }
 
-.product .fl-signup__field:focus {
-  border-color: var(--p-text);
-  box-shadow: 0 0 0 3px var(--p-line);
-}
-
-.product .fl-signup__submit {
-  border: 1px solid var(--p-text);
-  border-radius: 4px;
-  background: var(--p-text);
-  color: var(--p-on-text);
-  font-weight: 600;
-}
-
-.product .fl-signup__submit:hover {
-  background: transparent;
-  color: var(--p-text);
-}
-
-.product .fl-signup__submit:focus-visible {
-  outline: 2px solid var(--p-text);
-  outline-offset: 3px;
-}
-
-.product .fl-signup__status.is-error {
-  color: var(--p-accent);
-}
-
-.product .fl-signup__status.is-success {
-  color: var(--p-text);
+.product-notify__text {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--p-muted);
 }
 
 /* ---------- FAQ ---------- */
@@ -2999,7 +2896,7 @@ hr {
   padding: 1.25rem 0;
   cursor: pointer;
   list-style: none;
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-size: var(--p-size-body);
   font-weight: 600;
   color: var(--p-text);
 }
@@ -3027,32 +2924,10 @@ hr {
   outline-offset: 2px;
 }
 
-.product__body .product-faq__item p {
+.product-faq__item p {
   margin: 0 0 1.5rem;
   max-width: 38rem;
   color: var(--p-muted);
-}
-
-/* ---------- Closing notes ---------- */
-
-.product-closing {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--p-line);
-}
-
-.product__body .product-closing p {
-  margin: 0 0 0.75rem;
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--p-muted);
-}
-
-.product-closing strong {
-  display: block;
-  margin-bottom: 0.25rem;
 }
 
 /* ---------- Video ---------- */
@@ -3067,39 +2942,37 @@ hr {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Closing notes ---------- */
+
+.product-closing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--p-line);
+}
+
+.product-closing p {
+  margin: 0 0 0.75rem;
+  font-size: var(--p-size-sm);
+  line-height: 1.65;
+  color: var(--p-muted);
+}
+
+.product-closing strong {
+  display: block;
+  margin-bottom: 0.25rem;
 }
 
 /* ---------- Narrower screens ---------- */
 
-/* Below this the content gets too narrow beside the panel: stack it under
-   the header as a compact buy box. The section list only earns its space
-   while it can follow you, so it goes. */
+/* The panel stacks under the header here (.with-panel), so lay the facts out
+   in one row. The section list only earns its space while it can follow
+   you, so it goes. */
 @media screen and (max-width: 920px) {
-  .product__layout {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-
-  .product__body,
-  .product__panel {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .product__panel {
-    position: static;
-  }
-
-  .product__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .product-btn {
-    flex: 1 1 12rem;
-  }
-
   .product__facts {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -3159,169 +3032,16 @@ hr {
     text-align: left;
   }
 
-  .product-buy__name {
-    font-size: 1.15rem;
-  }
-
+  /* The label; its type is the shared eyebrow */
   .product-buy td::before {
     content: attr(data-label);
     display: block;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--p-faint);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .product-btn,
   .product__toc a,
   .product-faq__item summary::after {
     transition: none;
   }
-}
-
-/* ---------- Art (key art, product shots set into the page) ---------- */
-
-.product-art {
-  margin: 0 0 3rem;
-}
-
-.product-art img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-h2 + .product-art {
-  margin-top: 0.5rem;
-}
-
-.product__body h2 + .product-feature {
-  margin-top: 0;
-}
-
-.product-feature + .product-art {
-  margin-top: 2rem;
-}
-
-/* ---------- Mailing list box inside a product page ----------
-   The newsletter embed in the product palette instead of brand pink/green.
-   Prefixed with .product to outrank both the base .newsletter-box overrides
-   and the styles the embed injects at runtime. */
-
-.product .newsletter-box {
-  margin: 3rem 0 0;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px solid var(--p-line);
-  border-radius: 6px;
-  background: var(--p-surface);
-  color: var(--p-text);
-}
-
-.product .newsletter-box__heading {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
-  color: var(--p-text);
-}
-
-.product__body .newsletter-box__blurb {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--p-muted);
-}
-
-.product .newsletter-box [data-form] {
-  --text-colour: var(--p-text);
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form {
-  --field-border-colour: var(--p-faint);
-  --button-colour: var(--p-text);
-  --button-text-colour: var(--p-on-text);
-  --label-colour: var(--p-text);
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form input.form-control {
-  border-width: 1px;
-  border-radius: 4px;
-  color: var(--p-text);
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form input.form-control:focus {
-  border-color: var(--p-text);
-  box-shadow: 0 0 0 3px var(--p-line);
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"] {
-  border: 1px solid var(--p-text);
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"]:hover {
-  background-color: transparent;
-  border-color: var(--p-text);
-  color: var(--p-text);
-}
-
-.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus-visible {
-  outline: 2px solid var(--p-text);
-}
-
-.product .newsletter-box [data-form] .mastfoot p,
-.product .newsletter-box [data-form] .mastfoot a,
-.product .newsletter-box__recaptcha {
-  color: var(--p-faint);
-  opacity: 1;
-}
-
-/* Fine print stays fine print, not product body text. */
-.product__body .newsletter-box__recaptcha {
-  margin: 0.75rem 0 0;
-  font-size: 0.7rem;
-  line-height: 1.5;
-}
-
-.product__body .newsletter-box__recaptcha a {
-  color: inherit;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-/* ---------- "Notify me" panel under the buy table ---------- */
-
-.product-notify {
-  margin: 3rem 0 0;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px solid var(--p-line);
-  border-radius: 6px;
-  background: var(--p-surface);
-}
-
-/* .product prefix: the generic `.product h3 { margin: 0 }` would win otherwise */
-.product .product-notify__title {
-  margin: 0 0 0.75rem;
-  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
-}
-
-.product__body .product-notify__text {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--p-muted);
-}
-
-.product-notify .fl-signup {
-  margin: 1.5rem 0 0;
-}
-
-.product__body .product-notify__fine {
-  margin: 1rem 0 0;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--p-faint);
 }

@@ -51,18 +51,20 @@ toc:
   - { id: faq, label: FAQ }
 ---
 {# ---------- Pitch ---------- #}
-<section class="product-section product-intro">
-  <p class="product-intro__lead"><em>Final Light</em> is a short-form survival-horror RPG set after the world has fallen apart. <strong>You are not heroes trying to fix it. You are survivors trying to get through it.</strong></p>
+<section class="product-section">
+  <p class="product-lede"><em>Final Light</em> is a short-form survival-horror RPG set after the world has fallen apart.</p>
+
+  <p class="product-lede"><strong>You are not heroes trying to fix it. You are survivors trying to get through it.</strong></p>
 
   <p>This is not a game about mowing down enemies or levelling up. It’s a game where tables lean into the humanity of horror, reaching for the will to survive, and wondering who will make it to the end of the story together.</p>
 
   <p class="product-callout"><strong>The zombie TTRPG for fans of</strong> <em>The Last of Us</em>, <em>28 Days Later</em>, <em>Train to Busan</em>, <em>The Walking Dead</em>, and more.</p>
 
-  <p class="product-note"><em>Funded in 2026 on Kickstarter by 264 backers at 4436% of goal.</em></p>
+  <p class="product-small"><em>Funded in 2026 on Kickstarter by 264 backers at 4436% of goal.</em></p>
 </section>
 
 {# ---------- Quotes ---------- #}
-<section class="product-section product-quotes" aria-label="What players say">
+<section class="product-section" aria-label="What players say">
   {# The headline quote is set into the art, so the alt text carries it. #}
   <figure class="product-art">
     {% artImage "./assets/post-images/final-light/final-light-core-book-quote.jpg", "“The tensest RPG I’ve ever run.” —Agis, beside the Final Light Core Book cover" %}
@@ -85,16 +87,16 @@ toc:
 </section>
 
 {# ---------- Setting ---------- #}
-<section class="product-section product-story">
-  <p class="product-story__open">The world ends in darkness.</p>
+<section class="product-section">
+  <p class="product-display">The world ends in darkness.</p>
 
   <p>Six years ago, five billion people became something no longer human. Millions more are dead. The blood-borne pathogen was only kept from completely eradicating humanity by the Blackout, a globally coordinated destruction of cities, infrastructure, and data centres. It was just enough to give us a chance.</p>
 
-  <p class="product-story__beat">But survival is still far from guaranteed.</p>
+  <p class="product-lede">But survival is still far from guaranteed.</p>
 
   <p>Some nights, you stare at the stars and contemplate the length of darkness a person would need to travel through to get to the light. Is it worth it?</p>
 
-  <p class="product-story__turn"><strong>This is a story about how you answer that question.</strong></p>
+  <p class="product-lede"><strong>This is a story about how you answer that question.</strong></p>
 
   {% set spread = finalLight.spreads.opener %}{% include "product-spread.njk" %}
 </section>
@@ -125,7 +127,7 @@ toc:
     <figcaption>—Owen</figcaption>
   </figure>
 
-    <p class="product-feature"><strong>Personal Stakes: messy humans with secret mechanics.</strong> Every survivor carries a burden or challenge, each with its own mechanics to drive roleplay at the table. Surviving the dead is the “easy” part. Surviving each other is where it gets interesting.</p>
+  <p class="product-feature"><strong>Personal Stakes: messy humans with secret mechanics.</strong> Every survivor carries a burden or challenge, each with its own mechanics to drive roleplay at the table. Surviving the dead is the “easy” part. Surviving each other is where it gets interesting.</p>
 
   {% set spread = finalLight.spreads.stakes %}{% include "product-spread.njk" %}
 
@@ -187,12 +189,12 @@ toc:
 
   <div class="product-cards">
     {% for adventure in finalLight.adventures %}
-    <article class="product-card">
+    <article class="product-card box">
       {% if adventure.cover %}
       <div class="product-card__media">{% image adventure.cover, adventure.title + " cover", "(max-width: 640px) 100vw, 360px" %}</div>
       {% endif %}
       <h3 class="product-card__title">{{ adventure.title }}</h3>
-      <p class="product-card__kicker">{{ adventure.place }}</p>
+      <p class="product-card__kicker eyebrow">{{ adventure.place }}</p>
       <p class="product-card__text">{{ adventure.blurb }}</p>
     </article>
     {% endfor %}
@@ -233,16 +235,16 @@ toc:
   {# Release notifications: tags signups "Final Light Notify Release" in
      EmailOctopus (see _includes/release-signup.njk), so the launch email can
      go to exactly these people. #}
-  <div class="product-notify">
+  <div class="product-notify box">
     <h3 class="product-notify__title">Get notified when Final Light goes on sale</h3>
     <p class="product-notify__text">The Core Book and adventures aren’t for sale just yet. Leave your email and I’ll let you know as soon as they are.</p>
     {% include "release-signup.njk" %}
-    <p class="product-notify__fine">You’ll also join the Questadon email list for occasional updates. Unsubscribe anytime.</p>
+    <p class="product-small">You’ll also join the Questadon email list for occasional updates. Unsubscribe anytime.</p>
   </div>
 </section>
 
 {# ---------- Quick Start ---------- #}
-<section class="product-section product-signup">
+<section class="product-section">
   <h2 id="quick-start">Download the Quick Start</h2>
 
   <p>The learn-to-play single-session quick start, <em>Local Anaesthetic</em>, is a way to learn the core pieces of the game and an option for tables that want to give the game a try.</p>

@@ -23,7 +23,7 @@ resources:
    points at /fl (fl.njk), never here, so this page can move or be renamed
    without reprinting anything. #}
 <article class="prose fl-resources">
-  <p class="project-page__breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
+  <p class="breadcrumb"><a href="/projects/final-light-ttrpg/">&larr; Final Light</a></p>
 
   <header class="prose__header">
     <h1>Final Light Resources</h1>
@@ -35,13 +35,13 @@ resources:
 
   <ul class="fl-resources__list">
     {% for item in resources %}
-    <li class="fl-resources__item">
+    <li class="fl-resources__item box">
       <div class="fl-resources__text">
         <h2 class="fl-resources__title">{{ item.title }}</h2>
         <p class="fl-resources__blurb">{{ item.blurb }}</p>
         <p class="fl-resources__details">{{ item.details }}</p>
       </div>
-      <a class="project-page__cta fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource="{{ item.file | replace('/downloads/', '') }}" aria-label="Download {{ item.title }}">Download</a>
+      <a class="btn fl-resources__cta" href="{{ item.file }}" target="_blank" rel="noopener" data-resource="{{ item.file | replace('/downloads/', '') }}" aria-label="Download {{ item.title }}">Download</a>
     </li>
     {% endfor %}
   </ul>

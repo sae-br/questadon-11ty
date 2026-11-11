@@ -134,7 +134,7 @@ module.exports = function(eleventyConfig) {
       loading: "lazy",
       decoding: "async",
     });
-    return `<a class="product-spread__link" href="${full.url}" target="_blank" rel="noopener">${picture}<span class="product-spread__hint">View full size</span></a>`;
+    return `<a class="product-spread__link" href="${full.url}" target="_blank" rel="noopener">${picture}<span class="product-spread__hint eyebrow">View full size</span></a>`;
   });
 
   // ✅ Art image: a photo or illustration in page content, as webp + jpeg.
