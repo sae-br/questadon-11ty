@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -46,6 +48,12 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter("year", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy");
+  });
+  // Human-readable size of a site file, read at build time so download pages
+  // never quote a stale size. Takes a site URL like "/downloads/foo.pdf".
+  eleventyConfig.addFilter("fileSize", (url) => {
+    const bytes = fs.statSync(path.join(__dirname, url)).size;
+    return `${Math.round(bytes / 1e6)} MB`;
   });
 
   // ✅ Image shortcode

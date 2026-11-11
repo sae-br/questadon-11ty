@@ -1,20 +1,24 @@
 ---
-title: Downloading the Final Light Quick Start | Questadon
+title: Download the Final Light Quick Start | Questadon
 permalink: /final-light-quickstart/index.html
 eleventyExcludeFromCollections: true
-# The one place the filename lives. Re-cut the zip under a new name and this
-# is the only line to change - the public URL never moves.
-zipUrl: /downloads/final-light-quickstart.zip
+# The one place the filenames live. Re-cut a PDF under a new name and these
+# are the only lines to change - the public URL never moves. Sizes are read
+# from the files at build time.
+rulesUrl: /downloads/final-light-quick-start-rules.pdf
+gmUrl: /downloads/final-light-quick-start-gm.pdf
 ---
-{# Download gateway for the Final Light Quick Start.
+{# Download page for the Final Light Quick Start.
 
-   This page exists to make the download countable. A direct link to the zip
-   runs no JavaScript, so GA4 can never see it; landing here first means we can
-   fire an event and then hand the browser the file.
+   This page exists to make the downloads countable. A direct link to a PDF
+   runs no JavaScript, so GA4 can never see it; landing here first means each
+   button can fire an event as it hands over its file.
 
-   Navigating to a .zip does not replace the page - the browser starts the
-   download and leaves this page on screen - so the visitor ends up here
-   reading "your download is starting" rather than staring at a blank flash.
+   It offers two buttons rather than starting a download on load: browsers
+   block a page from downloading several files on its own. Each button opens
+   its PDF in a new tab - the browser's own viewer, which on a phone is where
+   readers can save it or send it to Books - and leaves this page in place
+   for the other file.
 
    Because this is a real page, UTM tags on the URL work too:
    /final-light-quickstart?utm_source=kickstarter picks up channel attribution
@@ -25,7 +29,7 @@ zipUrl: /downloads/final-light-quickstart.zip
   <meta charset="UTF-8">
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {# Not a page we want in search results - it triggers a download. #}
+  {# Not a page we want in search results - it exists to hand over files. #}
   <meta name="robots" content="noindex, nofollow">
   <link rel="preload" href="/assets/fonts/general-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/favicon.ico">
@@ -81,7 +85,7 @@ zipUrl: /downloads/final-light-quickstart.zip
       line-height: 1.5;
     }
 
-    .gate { max-width: 30rem; }
+    .gate { max-width: 30rem; width: 100%; }
 
     .gate__logo {
       width: clamp(160px, 40vw, 260px);
@@ -101,12 +105,41 @@ zipUrl: /downloads/final-light-quickstart.zip
       opacity: 0.85;
     }
 
-    .gate__fallback a {
-      color: var(--color-primary);
-      font-weight: 600;
+    .gate__files {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      max-width: 22rem;
+      margin: 0 auto;
     }
 
-    :root[data-theme="light"] .gate__fallback a { color: #A20041; }
+    .gate__file {
+      display: flex;
+      flex-direction: column;
+      padding: 0.9rem 1.25rem;
+      border-radius: 0.5rem;
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.0625rem;
+    }
+
+    .gate__file:hover,
+    .gate__file:focus-visible { filter: brightness(1.1); }
+
+    .gate__file:focus-visible {
+      outline: 3px solid var(--color-secondary);
+      outline-offset: 3px;
+    }
+
+    .gate__size {
+      font-weight: 400;
+      font-size: 0.875rem;
+      opacity: 0.9;
+    }
+
+    :root[data-theme="light"] .gate__file { background: #A20041; }
 
     .gate__back {
       display: inline-block;
@@ -120,46 +153,38 @@ zipUrl: /downloads/final-light-quickstart.zip
 <body>
   <div class="gate">
     <img class="gate__logo" src="/assets/final-light-logo-web.png" alt="Final Light" width="400" height="200">
-    <h1 class="gate__heading">Your download is starting</h1>
+    <h1 class="gate__heading">Download the Quick Start</h1>
     <p class="gate__note">
-      <em>Local Anaesthetic</em>, the learn-to-play Quick Start for Final Light.
-      It's a 28&nbsp;MB zip, so give it a moment on a slow connection.
+      <em>Local Anaesthetic</em>, the learn-to-play Quick Start for Final Light,
+      comes in two PDFs. Players need the rules; the GM needs both.
     </p>
-    <p class="gate__fallback">
-      Nothing happening?
-      <a href="{{ zipUrl }}" download>Download it directly</a>.
-    </p>
+    <div class="gate__files">
+      <a class="gate__file" href="{{ rulesUrl }}" target="_blank" rel="noopener" data-file="{{ rulesUrl }}">
+        Quick Start Rules
+        <span class="gate__size">PDF, {{ rulesUrl | fileSize }}</span>
+      </a>
+      <a class="gate__file" href="{{ gmUrl }}" target="_blank" rel="noopener" data-file="{{ gmUrl }}">
+        Quick Start GM Book
+        <span class="gate__size">PDF, {{ gmUrl | fileSize }}</span>
+      </a>
+    </div>
     <a class="gate__back" href="/projects/final-light-ttrpg/">&larr; Back to Final Light</a>
   </div>
 
   {% set gaBeacon = true %}
   {% include "analytics.njk" %}
   <script>
-    var fileUrl = "{{ zipUrl }}";
-
     {# Custom event name rather than GA4's built-in `file_download`, which
-       Enhanced Measurement also fires on its own when someone clicks the
-       fallback link above. Keeping our own name means the count is exactly
-       "times this page handed over the file", with nothing else mixed in. #}
-    gtag('event', 'quickstart_download', {
-      file_name: 'final-light-quickstart.zip'
+       Enhanced Measurement also fires on its own for these clicks. Keeping our
+       own name means the count is exactly "times this page handed over a
+       file", split by file_name, with nothing else mixed in. #}
+    document.querySelectorAll('.gate__file').forEach(function(link) {
+      link.addEventListener('click', function() {
+        gtag('event', 'quickstart_download', {
+          file_name: link.dataset.file.split('/').pop()
+        });
+      });
     });
-
-    var started = false;
-    function startDownload() {
-      if (started) return;
-      started = true;
-      {# Navigating to a zip downloads it and leaves this page in place. #}
-      window.location.href = fileUrl;
-    }
-
-    {# Brief pause to let the beacon leave before the navigation. #}
-    setTimeout(startDownload, 500);
   </script>
-
-  <noscript>
-    {# No JS means no event, but never block the download over analytics. #}
-    <meta http-equiv="refresh" content="0;url={{ zipUrl }}">
-  </noscript>
 </body>
 </html>
