@@ -24,6 +24,11 @@ export const API_BASE = "https://api.emailoctopus.com";
 export const TAG = "Final Light QS";
 export const PENDING_TAG = "Final Light QS unconfirmed";
 
+/** "Notify me when Final Light goes on sale." Nothing automated listens for
+ *  it - it marks who to email at launch - so unlike TAG it can go on straight
+ *  away, even while a contact is still pending. Must match EmailOctopus. */
+export const RELEASE_TAG = "Final Light Notify Release";
+
 /** Trimmed: a stray newline in a dashboard env var makes a malformed Bearer
  *  header (401) or a %0A in a list URL (400), both surfacing as the same 502. */
 export function env(name) {

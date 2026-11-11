@@ -1,0 +1,21 @@
+{# "Notify me when Final Light goes on sale." Same form and endpoint as the
+   Quick Start signup (final-light-signup.njk), but interest=release, so
+   /api/subscribe applies the "Final Light Notify Release" tag instead of
+   sending the Quick Start. Its own ids, so both forms can share a page.
+   Keep this file free of blank lines - markdown-it ends an HTML block at the
+   first one, should this ever be included from a markdown body. #}
+<form class="fl-signup" method="post" action="/api/subscribe" data-interest="release" novalidate>
+  <input type="hidden" name="interest" value="release">
+  <label class="fl-signup__label" for="fl-release-email">Email address</label>
+  <div class="fl-signup__row">
+    <input class="fl-signup__field" id="fl-release-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+    <button class="fl-signup__submit" type="submit">Notify me</button>
+  </div>
+  {# Honeypot: hidden from people, catnip to bots. #}
+  <div class="fl-signup__hp" aria-hidden="true">
+    <label for="fl-release-company">Company</label>
+    <input id="fl-release-company" name="company" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <p class="fl-signup__status" role="status" aria-live="polite"></p>
+</form>
+<script src="/assets/fl-signup.js" defer></script>

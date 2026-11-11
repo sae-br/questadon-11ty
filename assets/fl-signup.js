@@ -1,13 +1,44 @@
-// Final Light Quick Start signup. Progressive enhancement only: without this
-// file the form still posts natively to /api/subscribe and gets an HTML reply.
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector(".fl-signup");
-  if (!form) return;
+// Final Light signup forms (.fl-signup): the Quick Start, and "notify me when
+// it goes on sale". Progressive enhancement only: without this file each form
+// still posts natively to /api/subscribe and gets an HTML reply.
+//
+// A form's data-interest says what it's for ("quickstart" when absent) and is
+// sent to the server, which picks the EmailOctopus tag from it. Several forms
+// can share a page, and the script can be included more than once safely.
 
-  const field = form.querySelector(".fl-signup__field");
-  const submit = form.querySelector(".fl-signup__submit");
-  const status = form.querySelector(".fl-signup__status");
-  const submitLabel = submit ? submit.textContent : "";
+// Success messages and the GA4 event name for each interest.
+var FL_SIGNUP_INTERESTS = {
+  quickstart: {
+    event: "quickstart_signup",
+    pending: "Almost there - check your inbox for a confirmation email. The Quick Start follows once you've confirmed.",
+    tagged: "You're already on the list - the Quick Start is on its way.",
+    created: "You're on the list. The Quick Start is on its way.",
+  },
+  release: {
+    event: "release_notify_signup",
+    pending: "Almost there - check your inbox for a confirmation email. Once you've confirmed, you'll hear from me when Final Light goes on sale.",
+    tagged: "You're already on the list - I'll email you when Final Light goes on sale.",
+    created: "You're on the list. I'll email you when Final Light goes on sale.",
+  },
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".fl-signup").forEach(function (form) {
+    // Bind once, even if the script tag appears twice on the page.
+    if (form.dataset.flBound) return;
+    form.dataset.flBound = "true";
+    enhance(form);
+  });
+});
+
+function enhance(form) {
+  var interest = form.dataset.interest || "quickstart";
+  var copy = FL_SIGNUP_INTERESTS[interest] || FL_SIGNUP_INTERESTS.quickstart;
+
+  var field = form.querySelector(".fl-signup__field");
+  var submit = form.querySelector(".fl-signup__submit");
+  var status = form.querySelector(".fl-signup__status");
+  var submitLabel = submit ? submit.textContent : "";
 
   function setStatus(message, kind) {
     if (!status) return;
@@ -21,13 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (result.state === "tagged" && result.pending) {
       return "You're already on the list but haven't confirmed yet - check your inbox for the confirmation email.";
     }
-    if (result.pending) {
-      return "Almost there - check your inbox for a confirmation email. The Quick Start follows once you've confirmed.";
-    }
-    if (result.state === "tagged") {
-      return "You're already on the list - the Quick Start is on its way.";
-    }
-    return "You're on the list. The Quick Start is on its way.";
+    if (result.pending) return copy.pending;
+    if (result.state === "tagged") return copy.tagged;
+    return copy.created;
   }
 
   form.addEventListener("submit", function (event) {
@@ -48,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({
         email: field ? field.value : "",
         company: form.company ? form.company.value : "",
+        interest: interest,
       }),
     })
       .then(function (response) {
@@ -72,11 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // can be told apart from one who still owes us a double opt-in click:
         //   subscribed - on the list, confirmed
         //   pending    - added, waiting on the confirmation email
-        //   tagged     - already subscribed, newly tagged for Final Light
-        // Guarded because this file is plain JS that could be loaded on a page
-        // without the analytics partial; layout.njk always defines gtag.
+        //   tagged     - already subscribed, newly tagged
+        // Each interest has its own event name (quickstart_signup,
+        // release_notify_signup). Guarded because this file is plain JS that
+        // could be loaded on a page without the analytics partial.
         if (typeof gtag === "function") {
-          gtag("event", "quickstart_signup", {
+          gtag("event", copy.event, {
             signup_state: result.body.pending
               ? "pending"
               : result.body.state === "tagged"
@@ -97,4 +126,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
   });
-});
+}

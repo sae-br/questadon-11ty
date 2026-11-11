@@ -1,5 +1,10 @@
 /**
- * Final Light Quick Start signup.
+ * Final Light signups: the Quick Start, and "notify me at release".
+ *
+ * The form says which with `interest` (see INTERESTS below). The Quick Start
+ * is the default, so a form that sends nothing behaves exactly as before.
+ *
+ * Quick Start:
  *
  * Subscribes an address to the EmailOctopus audience and tags it for the
  * tag-triggered automation that sends the Quick Start.
@@ -26,7 +31,15 @@
 
 import { createHash } from "node:crypto";
 
-import { TAG, PENDING_TAG, env, eo, statusOf } from "../lib/emailoctopus.mjs";
+import { TAG, PENDING_TAG, RELEASE_TAG, env, eo, statusOf } from "../lib/emailoctopus.mjs";
+
+// What a signup is for, and the tag it gets. `pendingTag` is only for tags an
+// automation listens to: those must wait for double opt-in (see the header
+// above). A tag nothing listens to goes on straight away.
+const INTERESTS = {
+  quickstart: { tag: TAG, pendingTag: PENDING_TAG },
+  release: { tag: RELEASE_TAG },
+};
 
 const SIGNUP_PAGE = "/projects/final-light-ttrpg/";
 
@@ -66,21 +79,26 @@ export default async (req) => {
     return respond(wantsHtml, { ok: true, state: "created", pending: false });
   }
 
+  const interest = submission.interest || "quickstart";
+  if (!INTERESTS[interest]) {
+    return respond(wantsHtml, { error: "Invalid request." }, 400);
+  }
+
   const email = submission.email;
   if (!isEmailAddress(email)) {
     return respond(wantsHtml, { error: "Please enter a valid email address." }, 400);
   }
 
   try {
-    const result = await subscribe(email, EO_LIST_ID);
-    return respond(wantsHtml, result.body, result.status);
+    const result = await subscribe(email, EO_LIST_ID, INTERESTS[interest]);
+    return respond(wantsHtml, { ...result.body, interest }, result.status);
   } catch (err) {
     console.error("subscribe: unexpected failure", err);
     return respond(wantsHtml, { error: "Something went wrong. Please try again." }, 502);
   }
 };
 
-async function subscribe(email, listId) {
+async function subscribe(email, listId, { tag, pendingTag }) {
   const contactId = createHash("md5").update(email).digest("hex");
   const existing = await eo(`/lists/${encodeURIComponent(listId)}/contacts/${contactId}`);
 
@@ -109,7 +127,7 @@ async function subscribe(email, listId) {
     const isPending = statusOf(existing.payload) === "pending";
     const tagged = await eo(`/lists/${encodeURIComponent(listId)}/contacts/${contactId}`, {
       method: "PUT",
-      body: { tags: { [isPending ? PENDING_TAG : TAG]: true } },
+      body: { tags: { [isPending && pendingTag ? pendingTag : tag]: true } },
     });
     if (!tagged.ok) return upstreamFailure("tagging an existing contact", tagged);
 
@@ -125,7 +143,7 @@ async function subscribe(email, listId) {
         // Placeholder while pending; the webhook swaps it for TAG on
         // confirmation. With double opt-in off they are subscribed straight
         // away, so the real tag can go on now and the automation fires.
-        tags: { [pending ? PENDING_TAG : TAG]: true },
+        tags: { [pending && pendingTag ? pendingTag : tag]: true },
         status: pending ? "pending" : "subscribed",
       },
     });
@@ -203,6 +221,7 @@ async function readSubmission(req) {
         encoding: "json",
         email: normalise(body?.email),
         company: normalise(body?.company),
+        interest: normalise(body?.interest),
       };
     }
 
@@ -212,6 +231,7 @@ async function readSubmission(req) {
         encoding: "form",
         email: normalise(form.get("email")),
         company: normalise(form.get("company")),
+        interest: normalise(form.get("interest")),
       };
     }
   } catch {
@@ -244,13 +264,14 @@ function json(body, status = 200) {
 /** No-JS fallback: a plain confirmation page rather than a screenful of JSON. */
 function html(body, status = 200) {
   const message = body.error || body.message || messageFor(body);
+  const heading = body.interest === "release" ? "Final Light" : "Final Light Quick Start";
   const page = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Final Light Quick Start</title>
+<title>${heading}</title>
 <style>
   body { margin: 0; padding: 3rem 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6; }
   main { max-width: 34rem; margin: 0 auto; }
@@ -258,7 +279,7 @@ function html(body, status = 200) {
 </head>
 <body>
 <main>
-<h1>Final Light Quick Start</h1>
+<h1>${heading}</h1>
 <p>${escapeHtml(message)}</p>
 <p><a href="${SIGNUP_PAGE}">Back to Final Light</a></p>
 </main>
@@ -273,6 +294,12 @@ function html(body, status = 200) {
 
 function messageFor(body) {
   if (!body.ok) return "Something went wrong. Please try again.";
+  if (body.interest === "release") {
+    if (body.pending) {
+      return "Almost there - check your inbox for a confirmation email. Once you've confirmed, you'll hear from me when Final Light goes on sale.";
+    }
+    return "You're on the list. I'll email you when Final Light goes on sale.";
+  }
   if (body.pending) {
     return "Almost there - check your inbox for a confirmation email. The Quick Start follows once you've confirmed.";
   }
