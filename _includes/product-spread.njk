@@ -1,0 +1,12 @@
+{# One wide book spread for a product page. Set `spread` ({src, alt, label})
+   before including. Without an image file: a marked placeholder on local
+   builds and deploy previews, nothing at all in production. #}
+{% if spread.src %}
+<figure class="product-spread">{% spreadImage spread.src, spread.alt %}</figure>
+{% elif not site.isProduction %}
+<figure class="product-spread">
+  <div class="product-spread__placeholder" role="img" aria-label="{{ spread.alt }}">
+    <span>Image needed: {{ spread.label }}</span>
+  </div>
+</figure>
+{% endif %}

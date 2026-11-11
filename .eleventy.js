@@ -117,6 +117,38 @@ module.exports = function(eleventyConfig) {
     return `<picture>${sources.join("")}<img ${attrs.join(" ")}></picture>`;
   });
 
+  // ✅ Book spread: a wide two-page image at content width, wrapped in a link
+  //    to the full-size file so readers can open it to read the page. The
+  //    "auto" width keeps the original size for that link.
+  eleventyConfig.addShortcode("spreadImage", async function(src, alt) {
+    const metadata = await Image(src, {
+      widths: [800, 1400, "auto"],
+      formats: ["webp", "jpeg"],
+      outputDir: "./_site/img/",
+      urlPath: "/img/",
+    });
+    const full = metadata.jpeg[metadata.jpeg.length - 1];
+    const picture = generateHTML(metadata, {
+      alt,
+      sizes: "(max-width: 920px) 100vw, 760px",
+      loading: "lazy",
+      decoding: "async",
+    });
+    return `<a class="product-spread__link" href="${full.url}" target="_blank" rel="noopener">${picture}<span class="product-spread__hint">View full size</span></a>`;
+  });
+
+  // ✅ Art image: a photo or illustration in page content, as webp + jpeg.
+  //    (The `image` shortcode makes PNGs, which are heavy for photos.)
+  eleventyConfig.addShortcode("artImage", async function(src, alt, sizes = "(max-width: 920px) 100vw, 760px") {
+    const metadata = await Image(src, {
+      widths: [800, 1400, 2000],
+      formats: ["webp", "jpeg"],
+      outputDir: "./_site/img/",
+      urlPath: "/img/",
+    });
+    return generateHTML(metadata, { alt, sizes, loading: "lazy", decoding: "async" });
+  });
+
   // ✅ Serverless functions live in the repo root alongside content, so keep
   //    Eleventy out of them (input dir is the project root).
   eleventyConfig.ignores.add("netlify/**");

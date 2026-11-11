@@ -2287,3 +2287,1041 @@ hr {
     flex: 1;
   }
 }
+
+
+/* ============================================
+   PRODUCT PAGE - a game being sold, not a
+   project write-up (_includes/product-page.njk).
+
+   Scoped to .product with its own neutral
+   palette: off-white type, greys, hairlines,
+   and one accent per product (front matter
+   `accent` / `accentLight`). The site's brand
+   pink and green stay in the nav and footer.
+   Everything sits inside the site width.
+   ============================================ */
+
+.product {
+  --p-text:    #f2efe8;
+  --p-muted:   rgba(242, 239, 232, 0.66);
+  --p-faint:   rgba(242, 239, 232, 0.42);
+  --p-line:    rgba(242, 239, 232, 0.14);
+  --p-surface: rgba(242, 239, 232, 0.035);
+  --p-accent:  var(--product-accent, #e2463c);
+  --p-on-text: #0b0d0b;   /* type on a solid --p-text button */
+  --p-shadow:  0 24px 60px rgba(0, 0, 0, 0.5);
+
+  --p-gap-section: clamp(4.5rem, 9vw, 7rem);
+
+  color: var(--p-text);
+  letter-spacing: 0.01em;
+}
+
+[data-theme='light'] .product {
+  --p-text:    #161616;
+  --p-muted:   rgba(22, 22, 22, 0.68);
+  --p-faint:   rgba(22, 22, 22, 0.46);
+  --p-line:    rgba(22, 22, 22, 0.14);
+  --p-surface: rgba(22, 22, 22, 0.03);
+  --p-accent:  var(--product-accent-light, var(--product-accent, #b3261e));
+  --p-on-text: #ffffff;
+  --p-shadow:  0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Type ---------- */
+
+.product h2,
+.product h3 {
+  color: var(--p-text);
+  letter-spacing: -0.01em;
+}
+
+.product h2 {
+  margin: 0 0 1.75rem;
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  line-height: 1.1;
+  scroll-margin-top: 2rem;
+}
+
+/* A short rule in the product's colour marks the start of each section. */
+.product h2::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  background: var(--p-accent);
+}
+
+.product h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.product__body p,
+.product__body li {
+  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.product__body p {
+  margin: 0 0 1.25rem;
+}
+
+.product strong {
+  font-weight: 600;
+  color: var(--p-text);
+}
+
+.product__body a {
+  color: var(--p-text);
+  text-decoration: underline;
+  text-decoration-color: var(--p-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.product__body a:hover,
+.product__body a:focus-visible {
+  color: var(--p-accent);
+}
+
+.product a:focus-visible {
+  outline: 2px solid var(--p-text);
+  outline-offset: 3px;
+}
+
+/* The site-wide `nav a` rule (bold, right margin) is for the header nav. */
+.product nav a {
+  margin-right: 0;
+  font-weight: 500;
+}
+
+/* ---------- Header ---------- */
+
+.product__breadcrumb {
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+}
+
+.product__breadcrumb a {
+  color: var(--p-muted);
+  text-decoration: none;
+}
+
+.product__breadcrumb a:hover,
+.product__breadcrumb a:focus-visible {
+  color: var(--p-text);
+}
+
+.product__media {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  border-radius: 6px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.product__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product__header {
+  max-width: 46rem;
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.product__title {
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--p-text);
+}
+
+.product__subtitle {
+  margin: 1.1rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+}
+
+.product__lead {
+  margin: 1.75rem 0 0;
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  line-height: 1.45;
+  color: var(--p-text);
+}
+
+/* ---------- Layout: content beside a sticky panel ---------- */
+
+.product__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17rem;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.product__body {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.product__panel {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---------- Buttons (reusable on any product page) ---------- */
+
+.product__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.product-btn {
+  display: block;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid var(--p-text);
+  border-radius: 4px;
+  background: var(--p-text);
+  color: var(--p-on-text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.product-btn:hover {
+  background: transparent;
+  color: var(--p-text);
+}
+
+.product-btn--ghost {
+  background: transparent;
+  color: var(--p-text);
+  border-color: var(--p-faint);
+}
+
+.product-btn--ghost:hover {
+  border-color: var(--p-text);
+}
+
+/* ---------- Panel: facts and "On this page" ---------- */
+
+.product__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  margin: 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--p-line);
+  border-bottom: 1px solid var(--p-line);
+}
+
+.product__facts dt {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-faint);
+}
+
+.product__facts dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: var(--p-text);
+}
+
+.product__toc-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-faint);
+}
+
+.product__toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.product__toc a {
+  display: block;
+  padding: 0.3rem 0 0.3rem 0.85rem;
+  border-left: 2px solid var(--p-line);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--p-muted);
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.product__toc a:hover {
+  color: var(--p-text);
+}
+
+.product__toc a[aria-current] {
+  color: var(--p-text);
+  border-left-color: var(--p-accent);
+}
+
+/* ---------- Sections ---------- */
+
+.product-section + .product-section {
+  margin-top: var(--p-gap-section);
+}
+
+/* Opening pitch */
+.product__body .product-intro__lead {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  line-height: 1.55;
+}
+
+.product-intro__lead strong {
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.product__body .product-callout {
+  margin: 2.25rem 0 1rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--p-line);
+  border-bottom: 1px solid var(--p-line);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-callout strong {
+  color: var(--p-accent);
+}
+
+.product__body .product-note {
+  font-size: 0.875rem;
+  color: var(--p-faint);
+}
+
+/* Setting: short, cinematic beats */
+.product__body .product-story__open {
+  margin-bottom: 1.75rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.product__body .product-story__beat {
+  font-size: clamp(1.25rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+}
+
+.product__body .product-story__turn {
+  margin-top: 2rem;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  line-height: 1.35;
+}
+
+/* A paragraph led by a bold line, read as a small titled feature */
+.product__body .product-feature {
+  margin-top: 3rem;
+  color: var(--p-muted);
+}
+
+.product-feature strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.45rem);
+  line-height: 1.3;
+}
+
+/* ---------- Pull quotes (reusable anywhere) ---------- */
+
+.pull-quote {
+  margin: 3rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--p-accent, var(--color-accent-light));
+}
+
+.pull-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-style: normal;
+}
+
+.pull-quote blockquote p,
+.product__body .pull-quote blockquote p {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--p-text, var(--color-text));
+}
+
+.pull-quote figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-faint, var(--color-accent-light));
+}
+
+/* The headline quote: big, no rule */
+.pull-quote--feature {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.pull-quote--feature blockquote p,
+.product__body .pull-quote--feature blockquote p {
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.product-quotes .pull-quote--feature {
+  margin-top: 0;
+}
+
+.product-quotes__list {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.product-quotes__list .pull-quote {
+  margin: 0;
+}
+
+/* ---------- Book spreads ---------- */
+
+.product-spread {
+  margin: 2.5rem 0 3rem;
+}
+
+.product-spread__link {
+  display: block;
+  text-decoration: none;
+}
+
+.product-spread img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: var(--p-shadow);
+}
+
+.product__body .product-spread__link {
+  text-decoration: none;
+}
+
+.product-spread__hint {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--p-faint);
+}
+
+.product-spread__link:hover .product-spread__hint,
+.product-spread__link:focus-visible .product-spread__hint {
+  color: var(--p-text);
+}
+
+/* Local and preview builds only, while an image is missing */
+.product-spread__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1.41;
+  padding: 1rem;
+  border: 2px dashed var(--p-accent);
+  border-radius: 4px;
+  color: var(--p-accent);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---------- Numbered steps ---------- */
+
+.product-steps {
+  list-style: none;
+  counter-reset: product-step;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2.5rem 0;
+  padding: 0;
+  background: var(--p-line);
+  border: 1px solid var(--p-line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.product__body .product-steps li {
+  counter-increment: product-step;
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--color-bg);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+
+.product-steps li::before {
+  content: counter(product-step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--p-accent);
+}
+
+.product-steps strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+}
+
+/* ---------- Feature list ---------- */
+
+.product-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--p-line);
+}
+
+.product__body .product-list li {
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--p-line);
+  color: var(--p-muted);
+}
+
+/* ---------- Cards (adventures, expansions, etc.) ---------- */
+
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border: 1px solid var(--p-line);
+  border-radius: 6px;
+  background: var(--p-surface);
+}
+
+.product-card__media {
+  order: -2;
+  margin: -1.75rem -1.75rem 1.5rem;
+}
+
+.product-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product__body .product-card__kicker {
+  order: -1;
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--p-accent);
+}
+
+.product__body .product-card__text {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--p-muted);
+}
+
+/* ---------- Buy table ---------- */
+
+.product-buy {
+  width: 100%;
+  margin: 2.5rem 0 0;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.product-buy th,
+.product-buy td {
+  padding: 1.1rem 1rem 1.1rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--p-line);
+  background: none;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.product-buy tr:nth-child(even) {
+  background: none;
+}
+
+.product-buy thead th {
+  padding-top: 0;
+  padding-bottom: 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-faint);
+}
+
+.product-buy td {
+  color: var(--p-muted);
+}
+
+.product-buy__name {
+  font-weight: 600;
+  color: var(--p-text);
+}
+
+/* The product is what people scan for: give it the room. */
+.product-buy thead .product-buy__name {
+  width: 55%;
+}
+
+.product-buy tbody .product-buy__name {
+  font-size: 1.1rem;
+}
+
+.product-buy .product-buy__price {
+  padding-right: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.product-buy__soon {
+  font-style: italic;
+  color: var(--p-faint);
+}
+
+/* ---------- Email signup inside a product page ---------- */
+
+.product-signup .fl-signup {
+  margin: 2rem 0 0;
+}
+
+.product .fl-signup__label {
+  color: var(--p-text);
+}
+
+.product .fl-signup__field {
+  border: 1px solid var(--p-faint);
+  border-radius: 4px;
+  color: var(--p-text);
+}
+
+.product .fl-signup__field:focus {
+  border-color: var(--p-text);
+  box-shadow: 0 0 0 3px var(--p-line);
+}
+
+.product .fl-signup__submit {
+  border: 1px solid var(--p-text);
+  border-radius: 4px;
+  background: var(--p-text);
+  color: var(--p-on-text);
+  font-weight: 600;
+}
+
+.product .fl-signup__submit:hover {
+  background: transparent;
+  color: var(--p-text);
+}
+
+.product .fl-signup__submit:focus-visible {
+  outline: 2px solid var(--p-text);
+  outline-offset: 3px;
+}
+
+.product .fl-signup__status.is-error {
+  color: var(--p-accent);
+}
+
+.product .fl-signup__status.is-success {
+  color: var(--p-text);
+}
+
+/* ---------- FAQ ---------- */
+
+.product-faq {
+  border-top: 1px solid var(--p-line);
+}
+
+.product-faq__item {
+  border-bottom: 1px solid var(--p-line);
+}
+
+.product-faq__item summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: var(--p-text);
+}
+
+.product-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.product-faq__item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--p-faint);
+  transition: transform 0.2s ease;
+}
+
+.product-faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.product-faq__item summary:focus-visible {
+  outline: 2px solid var(--p-text);
+  outline-offset: 2px;
+}
+
+.product__body .product-faq__item p {
+  margin: 0 0 1.5rem;
+  max-width: 38rem;
+  color: var(--p-muted);
+}
+
+/* ---------- Closing notes ---------- */
+
+.product-closing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--p-line);
+}
+
+.product__body .product-closing p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--p-muted);
+}
+
+.product-closing strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Video ---------- */
+
+.product-video {
+  margin: 2rem 0 0;
+  aspect-ratio: 16 / 9;
+}
+
+.product-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 4px;
+}
+
+/* ---------- Narrower screens ---------- */
+
+/* Below this the content gets too narrow beside the panel: stack it under
+   the header as a compact buy box. The section list only earns its space
+   while it can follow you, so it goes. */
+@media screen and (max-width: 920px) {
+  .product__layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .product__body,
+  .product__panel {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .product__panel {
+    position: static;
+  }
+
+  .product__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .product-btn {
+    flex: 1 1 12rem;
+  }
+
+  .product__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .product__toc {
+    display: none;
+  }
+
+  .product-closing {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .product__facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-steps,
+  .product-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Buy table: one block per product, labelled from data-label */
+  .product-buy,
+  .product-buy tbody,
+  .product-buy tr,
+  .product-buy th,
+  .product-buy td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .product-buy thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .product-buy tr {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--p-line);
+  }
+
+  .product-buy tbody tr:first-child {
+    border-top: 1px solid var(--p-line);
+  }
+
+  .product-buy th,
+  .product-buy td,
+  .product-buy .product-buy__price {
+    padding: 0.3rem 0;
+    border: 0;
+    text-align: left;
+  }
+
+  .product-buy__name {
+    font-size: 1.15rem;
+  }
+
+  .product-buy td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--p-faint);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-btn,
+  .product__toc a,
+  .product-faq__item summary::after {
+    transition: none;
+  }
+}
+
+/* ---------- Art (key art, product shots set into the page) ---------- */
+
+.product-art {
+  margin: 0 0 3rem;
+}
+
+.product-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+h2 + .product-art {
+  margin-top: 0.5rem;
+}
+
+.product__body h2 + .product-feature {
+  margin-top: 0;
+}
+
+.product-feature + .product-art {
+  margin-top: 2rem;
+}
+
+/* ---------- Mailing list box inside a product page ----------
+   The newsletter embed in the product palette instead of brand pink/green.
+   Prefixed with .product to outrank both the base .newsletter-box overrides
+   and the styles the embed injects at runtime. */
+
+.product .newsletter-box {
+  margin: 3rem 0 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--p-line);
+  border-radius: 6px;
+  background: var(--p-surface);
+  color: var(--p-text);
+}
+
+.product .newsletter-box__heading {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  color: var(--p-text);
+}
+
+.product__body .newsletter-box__blurb {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--p-muted);
+}
+
+.product .newsletter-box [data-form] {
+  --text-colour: var(--p-text);
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form {
+  --field-border-colour: var(--p-faint);
+  --button-colour: var(--p-text);
+  --button-text-colour: var(--p-on-text);
+  --label-colour: var(--p-text);
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form input.form-control {
+  border-width: 1px;
+  border-radius: 4px;
+  color: var(--p-text);
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form input.form-control:focus {
+  border-color: var(--p-text);
+  box-shadow: 0 0 0 3px var(--p-line);
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"] {
+  border: 1px solid var(--p-text);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"]:hover {
+  background-color: transparent;
+  border-color: var(--p-text);
+  color: var(--p-text);
+}
+
+.product .newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus-visible {
+  outline: 2px solid var(--p-text);
+}
+
+.product .newsletter-box [data-form] .mastfoot p,
+.product .newsletter-box [data-form] .mastfoot a,
+.product .newsletter-box__recaptcha {
+  color: var(--p-faint);
+  opacity: 1;
+}
+
+/* Fine print stays fine print, not product body text. */
+.product__body .newsletter-box__recaptcha {
+  margin: 0.75rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.product__body .newsletter-box__recaptcha a {
+  color: inherit;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* ---------- "Notify me" panel under the buy table ---------- */
+
+.product-notify {
+  margin: 3rem 0 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--p-line);
+  border-radius: 6px;
+  background: var(--p-surface);
+}
+
+/* .product prefix: the generic `.product h3 { margin: 0 }` would win otherwise */
+.product .product-notify__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+}
+
+.product__body .product-notify__text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+
+.product-notify .fl-signup {
+  margin: 1.5rem 0 0;
+}
+
+.product__body .product-notify__fine {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--p-faint);
+}
