@@ -14,6 +14,7 @@
     <label for="fl-company">Company</label>
     <input id="fl-company" name="company" type="text" tabindex="-1" autocomplete="off">
   </div>
+  {% if site.turnstileSiteKey %}<div class="cf-turnstile fl-signup__captcha" data-sitekey="{{ site.turnstileSiteKey }}" data-appearance="interaction-only" data-action="quickstart"></div>{% endif %}
   <p class="fl-signup__status" role="status" aria-live="polite"></p>
 </form>
 <script src="/assets/fl-signup.js" defer></script>

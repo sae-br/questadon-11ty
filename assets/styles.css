@@ -1818,6 +1818,12 @@ hr {
   overflow: hidden;
 }
 
+/* Turnstile bot check. In interaction-only mode it stays empty (and takes no
+   room) unless Cloudflare decides it needs a click from this visitor. */
+.fl-signup__captcha:not(:empty) {
+  margin-top: 0.75rem;
+}
+
 .fl-signup__status {
   margin: 0.75rem 0 0;
   font-size: 1rem;

@@ -47,7 +47,20 @@ const SIGNUP_PAGE = "/projects/final-light-ttrpg/";
 // for the life of the container instead of looking it up on every submit.
 let doubleOptInCache = null;
 
-export const config = { path: "/api/subscribe" };
+export const config = {
+  path: "/api/subscribe",
+  // Netlify rejects anything over this with a 429 before the function runs.
+  // Generous for a person (a typo and a retry or two), useless to a script
+  // hammering from one address. Distributed bots get past it, which is what
+  // the Turnstile check below is for.
+  rateLimit: {
+    windowLimit: 5,
+    windowSize: 60,
+    aggregateBy: ["ip", "domain"],
+  },
+};
+
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 export default async (req) => {
   if (req.method !== "POST") {
@@ -87,6 +100,22 @@ export default async (req) => {
   const email = submission.email;
   if (!isEmailAddress(email)) {
     return respond(wantsHtml, { error: "Please enter a valid email address." }, 400);
+  }
+
+  // Bot check. Off until TURNSTILE_SECRET_KEY is set, so deploying this before
+  // the keys exist changes nothing. Checked before EmailOctopus is touched:
+  // a bot that fails here never causes a confirmation email to a stranger.
+  const turnstileSecret = env("TURNSTILE_SECRET_KEY");
+  if (turnstileSecret) {
+    const ip = req.headers.get("x-nf-client-connection-ip") || "";
+    const human = await passesTurnstile(submission.turnstile, ip, turnstileSecret);
+    if (!human) {
+      return respond(
+        wantsHtml,
+        { error: "Couldn't confirm you're not a bot. Please reload the page and try again." },
+        403
+      );
+    }
   }
 
   try {
@@ -153,6 +182,31 @@ async function subscribe(email, listId, { tag, pendingTag }) {
   }
 
   return upstreamFailure("looking up a contact", existing);
+}
+
+/**
+ * Ask Cloudflare whether a Turnstile token is genuine and unused.
+ * https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+ *
+ * Fails closed: if Cloudflare can't be reached, the signup is refused rather
+ * than waved through, since waving through is exactly what a bot wants.
+ */
+async function passesTurnstile(token, ip, secret) {
+  if (!token) return false;
+
+  try {
+    const body = new URLSearchParams({ secret, response: token });
+    if (ip) body.set("remoteip", ip);
+    const res = await fetch(TURNSTILE_VERIFY_URL, { method: "POST", body });
+    const result = await res.json();
+    if (!result.success) {
+      console.log(`subscribe: Turnstile rejected a signup: ${(result["error-codes"] || []).join(", ")}`);
+    }
+    return Boolean(result.success);
+  } catch (err) {
+    console.error("subscribe: could not reach Turnstile, refusing the signup", err);
+    return false;
+  }
 }
 
 async function usesDoubleOptIn(listId) {
@@ -222,6 +276,8 @@ async function readSubmission(req) {
         email: normalise(body?.email),
         company: normalise(body?.company),
         interest: normalise(body?.interest),
+        // Not normalise()d: the token is case-sensitive.
+        turnstile: typeof body?.turnstile === "string" ? body.turnstile.trim() : "",
       };
     }
 
@@ -232,6 +288,8 @@ async function readSubmission(req) {
         email: normalise(form.get("email")),
         company: normalise(form.get("company")),
         interest: normalise(form.get("interest")),
+        // Turnstile names its hidden input; case-sensitive, so not normalise()d.
+        turnstile: String(form.get("cf-turnstile-response") || "").trim(),
       };
     }
   } catch {

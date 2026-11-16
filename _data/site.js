@@ -8,6 +8,11 @@ module.exports = {
     // every page at once.
     googleAnalyticsId: "G-M28KM46L5W",
 
+    // Cloudflare Turnstile site key for the Final Light signup forms. Public by
+    // design (it ships in the page). Set TURNSTILE_SITE_KEY in Netlify alongside
+    // TURNSTILE_SECRET_KEY; while it's unset the widget simply isn't rendered.
+    turnstileSiteKey: (process.env.TURNSTILE_SITE_KEY || "").trim(),
+
     // Netlify sets CONTEXT=production only when it builds the production
     // branch. Deploy previews, branch deploys and anything run locally all
     // fall through to false, which keeps our own traffic out of the reports.

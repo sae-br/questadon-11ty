@@ -22,7 +22,22 @@ var FL_SIGNUP_INTERESTS = {
   },
 };
 
+// Cloudflare Turnstile (bot check). The forms only contain a .cf-turnstile
+// element when a site key is configured; load Cloudflare's script once for the
+// whole page, however many forms there are. It renders every .cf-turnstile it
+// finds, each of which puts its token in a hidden cf-turnstile-response input.
+function loadTurnstile() {
+  if (window.__flTurnstileLoading || !document.querySelector(".fl-signup .cf-turnstile")) return;
+  window.__flTurnstileLoading = true;
+  var script = document.createElement("script");
+  script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  loadTurnstile();
   document.querySelectorAll(".fl-signup").forEach(function (form) {
     // Bind once, even if the script tag appears twice on the page.
     if (form.dataset.flBound) return;
@@ -63,6 +78,16 @@ function enhance(form) {
     // Let the browser's own validation speak first.
     if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
 
+    // Turnstile usually finishes silently within a second of the page loading,
+    // but someone fast (or on a slow connection) can beat it.
+    var captcha = form.querySelector(".cf-turnstile");
+    var tokenField = form.querySelector('[name="cf-turnstile-response"]');
+    var token = tokenField ? tokenField.value : "";
+    if (captcha && !token) {
+      setStatus("Just a moment - still checking you're not a bot. Try again in a second.", "is-error");
+      return;
+    }
+
     if (submit) {
       submit.disabled = true;
       submit.textContent = "Signing you up…";
@@ -76,6 +101,7 @@ function enhance(form) {
         email: field ? field.value : "",
         company: form.company ? form.company.value : "",
         interest: interest,
+        turnstile: token,
       }),
     })
       .then(function (response) {
@@ -124,6 +150,9 @@ function enhance(form) {
           submit.disabled = false;
           submit.textContent = submitLabel;
         }
+        // A token is single-use: the server has spent this one whatever the
+        // outcome, so fetch a fresh one for a retry or a second signup.
+        if (captcha && window.turnstile) window.turnstile.reset(captcha);
       });
   });
 }
