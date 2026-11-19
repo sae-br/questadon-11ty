@@ -143,4 +143,4 @@ Download the creature stat cards and tokens for use in your VTT or for printing 
 - [Creature Cards](https://drive.google.com/uc?export=download&id=1Qqb2l1cx-crmxUld8r2KUQWFiMO1OJ2d) — Stats and abilities for all five creatures
 - [Creature Tokens](https://drive.google.com/uc?export=download&id=1GIGk0vdNiYnxNns0lgfvRWTrVCxt5c2Z) — For use in Owlbear Rodeo, Foundry, Roll20, etc.
 
-*Disclaimer: I ran this one time, and we had fun! Has not been playtested beyond that—but if you give it a spin and have some thoughts, let me know! ++ hello@questadon.com*
+*Disclaimer: I ran this one time, and we had fun! Has not been playtested beyond that—but if you give it a spin and have some thoughts, let me know! ++ {% email %}*

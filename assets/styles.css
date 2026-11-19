@@ -478,6 +478,17 @@ main.main--reading > * {
 
 .site-footer__bottom p { margin: 0; }
 
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__legal li { margin: 0; }
+
 @media (max-width: 760px) {
   .site-footer__inner { grid-template-columns: 1fr 1fr; }
   .site-footer__brand { grid-column: 1 / -1; }

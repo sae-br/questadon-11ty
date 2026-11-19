@@ -33,8 +33,8 @@ eleventyNavigation:
     <p class="eyebrow">The founder</p>
     <h2 id="founder-title">Sarah Brown</h2>
     <p class="lede">Hi, I’m Sarah. I play, run, and design TTRPGs, because I like to make my friends laugh and cry. (And you and your friends, too, if you’re into that kind of thing.)</p>
-    <p>My first published game, <em>Final Light</em>, is a short-form horror-survival zombie RPG with a focus on intense escape, limited inventory, and personal stakes. It was funded on Kickstarter within the first minute! You can <a href="/projects/final-light-ttrpg/">find out more about Final Light</a>, including how to try it for free.</p>
-    <p>One of my favourite things about this community is how generous and creative folks are. I’ve learned a ton from other creators, and hope to pay it forward! If you’re making TTRPG content too—or just want to trade ideas—I’d love to hear from you.</p>
+    <p>I discovered TTRPGs later in life, but imagination and play has surprised me through every season—real life is hard for most of us, and we need things to look forward to, things to keep us spending time with friends. I have been running and playing TTRPGs with a weekly group of friends since 2020 and attribute a lot of my (dubious) sanity to it.</p>
+    <p>My background is in marketing, design, and web development, stuff that turns out to be useful for this kind of thing. I'm also a proud staff member at <a href="https://www.ravenwoodtabletop.ca" target="_blank" rel="noopener">Ravenwood Tabletop</a> in Kitchener, Ontario—come play a game in person if you're in the area!</p>
     <div class="founder__links">
       <a class="link-arrow" href="https://www.instagram.com/questadon" rel="me">Say hi on Instagram <span aria-hidden="true">→</span></a>
       <a class="link-arrow" href="/#newsletter">Join the email list <span aria-hidden="true">→</span></a>

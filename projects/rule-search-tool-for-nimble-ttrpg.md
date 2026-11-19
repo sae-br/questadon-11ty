@@ -67,4 +67,4 @@ That last one is the main trick. It's keyword search, not a chatbot—it's looki
 
 If people actually use it, I might add a proper front-end that doesn't look like a Craigslist post, make an easier way to drop in updated rulebooks, and maybe improve it with a smarter search that handles a real question. 
 
-> UPDATE (AUG 2026): If you play Nimble and you try this, I'd love to know whether it was useful, or what you'd want it to do instead. My regular group finished our Nimble campaign and we don't use this anymore but I'd improve it if someone does want it! Or if you've built something similar for your own table, please show me—I'm nosy about other people's game tools. ++ hello@questadon.com ++ @questadon
+> UPDATE (AUG 2026): If you play Nimble and you try this, I'd love to know whether it was useful, or what you'd want it to do instead. My regular group finished our Nimble campaign and we don't use this anymore but I'd improve it if someone does want it! Or if you've built something similar for your own table, please show me—I'm nosy about other people's game tools. ++ {% email %} ++ @questadon

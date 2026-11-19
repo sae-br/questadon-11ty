@@ -1,0 +1,17 @@
+---
+layout: layout.njk
+mainClass: main--reading
+---
+{# A legal page (privacy, terms): one reading column, with the date it was
+   last changed. Set `updated` in front matter whenever the wording changes. #}
+<article class="post legal">
+  <header class="post__header">
+    <p class="eyebrow">Legal</p>
+    <h1 class="post__title">{{ heading or title }}</h1>
+    {% if updated %}<p class="lede">Last updated {{ updated | readableDate }}</p>{% endif %}
+  </header>
+
+  <div class="prose__content">
+    {{ content | safe }}
+  </div>
+</article>

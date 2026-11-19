@@ -253,6 +253,7 @@ toc:
   <p>The learn-to-play single-session quick start, <em>Local Anaesthetic</em>, is a way to learn the core pieces of the game and an option for tables that want to give the game a try.</p>
 
   {% include "final-light-signup.njk" %}
+  <p class="product-small">You’ll also join the Questadon email list for occasional updates. Unsubscribe anytime. <a href="/privacy/">Privacy policy</a></p>
 </section>
 
 {# ---------- FAQ ---------- #}

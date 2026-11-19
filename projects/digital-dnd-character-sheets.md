@@ -64,7 +64,7 @@ This is meant a highly flexible BYO-content digital character sheet that sticks 
 
 <figure class="pull-quote"><blockquote><p>A way to make unlimited player characters and use all the homebrew you want—for free!</p></blockquote></figure>
 
-> If you have any feedback or suggestions, while I will stick with the end user experience I'm personally aiming for and can't guarantee timeframes, I welcome your thoughts! You can email me (Sarah) at hello@questadon.com.  
+> If you have any feedback or suggestions, while I will stick with the end user experience I'm personally aiming for and can't guarantee timeframes, I welcome your thoughts! You can email me (Sarah) at {% email %}.  
 
 ## Features Currently Available
 - Free to use, no subscription required
@@ -98,6 +98,6 @@ This is meant a highly flexible BYO-content digital character sheet that sticks 
 
 Full Disclosure: this isn't free for ME. But I found a way to do it affordably and support it at a scale that a good amount of people can use it, because while I built this for my own preferences, it always feels better to share things!
 
-So you using this and enjoying it is part of the point of me making this. 🙂 I love hearing from people who are happy to have found DDCS. (You can email me (Sarah) at hello@questadon.com)
+So you using this and enjoying it is part of the point of me making this. 🙂 I love hearing from people who are happy to have found DDCS. (You can email me (Sarah) at {% email %})
 
 That said, I'm just one person, and this is a little side project (among many). Kindness is appreciated.

@@ -81,6 +81,6 @@ I think there's absolutely a reason to offer the premium version and there are a
 
 You might find your best fit with one of the options above, or something totally different! The more the merrier, I say, because there are so many different (and right) ways to play and enjoy this game. That's something I definitely see as a feature, not a bug.
 
-If you give D&D Character Sheets a try and like it, it's always nice to hear if you feel like sending a note by. You can reach me (Sarah) at hello@questadon.com.
+If you give D&D Character Sheets a try and like it, it's always nice to hear if you feel like sending a note by. You can reach me (Sarah) at {% email %}.
 
 [++ D&D Character Sheets](https://ddcs.questadon.com/)

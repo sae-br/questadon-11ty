@@ -68,6 +68,13 @@ module.exports = function(eleventyConfig) {
     return `${Math.round(bytes / 1e6)} MB`;
   });
 
+  // Email address that bots scraping the HTML can't read. The page only
+  // contains "hello [at] questadon.com"; assets/nav.js turns it into a real
+  // mailto link in the browser. Usage: {% email %} or {% email "privacy" %}
+  eleventyConfig.addShortcode("email", (user) =>
+    `<span class="js-email" data-user="${user || "hello"}" data-domain="questadon.com">${user || "hello"} [at] questadon.com</span>`
+  );
+
   // ✅ Image shortcode
   eleventyConfig.addShortcode("image", async function(src, alt, sizes = "900px") {
     let metadata = await Image(src, {
