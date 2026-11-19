@@ -1,3 +1,24 @@
+/* ==========================================================
+   QUESTADON - site styles (dark only)
+
+   1. Tokens            7. Home
+   2. Base              8. Lists: projects + updates
+   3. Layout            9. Prose: posts and project pages
+   4. Header + nav     10. About, 404, resources
+   5. Footer           11. Forms: newsletter + Final Light signup
+   6. Components       12. Product page (Final Light)
+
+   Colour roles: mostly neutral (cream on near-black). Pink is the
+   action colour - buttons, section ticks, the active nav item, link
+   underlines. Lime is a rare highlight - one small label per screen
+   at most, never headings.
+   ========================================================== */
+
+
+/* ==========================================================
+   1. TOKENS
+   ========================================================== */
+
 /* General Sans Variable - self-hosted from Fontshare */
 @font-face {
   font-family: 'General Sans';
@@ -8,70 +29,161 @@
   font-display: swap;
 }
 
-/* 1) Default (dark) theme in :root, so JS toggle or attribute fallbacks both work */
 :root {
-  --color-bg:          #08100a;
-  --color-text:        #f0f0df;
-  --color-primary:     #ED1E79;
-  --color-secondary:   #E6FF7C;
-  --color-accent-light:#FFA4C8;
-  --color-accent-dark: #A20041;
+  color-scheme: dark;
 
-  /* Site-wide layout widths */
-  --site-width: 1140px;
-  --reading-width: 760px;
+  /* Brand */
+  --pink:        #ED1E79;
+  --pink-deep:   #D1145F;   /* button fill: white text on it is 5.3:1 (AA) */
+  --pink-deeper: #b80f52;   /* button hover */
+  --lime:        #E6FF7C;
+  --cream:       #f0f0df;
+  --ink:         #08100a;
 
-  /* Corner radii: small for controls (buttons, fields), medium for boxes,
-     cards and images */
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  /* Roles */
+  --bg:        var(--ink);
+  --bg-raised: #0d1710;
+  --text:      var(--cream);
+  --muted:     rgba(240, 240, 223, 0.68);   /* body copy, ~7.8:1 */
+  --faint:     rgba(240, 240, 223, 0.56);   /* labels, notes, ~5.3:1 */
+  --line:      rgba(240, 240, 223, 0.13);
+  --surface:   rgba(240, 240, 223, 0.035);
+  --accent:    var(--pink);
+  --highlight: var(--lime);
+
+  /* Type scale */
+  --size-hero:    clamp(2.75rem, 8vw, 5.5rem);    /* page titles */
+  --size-display: clamp(2rem, 4.75vw, 2.9rem);    /* section headings */
+  --size-title:   clamp(2.25rem, 5.5vw, 3.75rem); /* post titles */
+  --size-lg:      clamp(1.2rem, 2.6vw, 1.5rem);   /* ledes */
+  --size-body:    clamp(1.05rem, 1.6vw, 1.15rem);
+  --size-sm:      1rem;
+  --size-xs:      0.875rem;
+
+  /* Layout */
+  --site-width:    1200px;
+  --gutter:        clamp(1rem, 4vw, 2.5rem);
+  --reading-width: 700px;   /* running text */
+  --article-width: 760px;   /* a post's whole column */
+  --header-h:      68px;
+  --gap-section:   clamp(4.5rem, 9vw, 7rem);
+
+  /* Shape */
+  --radius-sm: 3px;   /* buttons, fields, chips */
+  --radius-md: 8px;   /* media, boxes, cards */
+
+  /* Older names, kept so nothing that still uses them breaks */
+  --color-bg:           var(--bg);
+  --color-text:         var(--text);
+  --color-primary:      var(--pink);
+  --color-secondary:    var(--lime);
+  --color-accent-light: var(--muted);
+  --color-accent-dark:  var(--line);
 }
 
-/* 2) Light mode overrides */
-[data-theme='light'] {
-  --color-bg:          #f6feef;
-  --color-text:        #05220c;
-  --color-primary:     #ED1E79;
-  --color-secondary:   #266201;
-  --color-accent-light:#A20041;
-  --color-accent-dark: #A20041;
-}
-  
-html, body {
-    background-color: var(--color-bg) !important;
-    background-image: none !important;
-    min-height: 100vh;
-    color: var(--color-text);
-    font-family: 'General Sans', sans-serif;
-    font-size: medium;
-    margin: 0;
-    line-height: 1.7;
-    letter-spacing: 0.03em;
-    /* `clip`, not `hidden`: hidden makes <body> a scroll container, which
-       silently breaks position:sticky (the project page's buy panel). */
-    overflow-x: clip;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-/* Theme transition for key elements */
-header, footer, main, .preview-box, .site-nav, .site-nav__links {
-  transition: background-color 0.3s ease, color 0.3s ease;
+@media (max-width: 760px) {
+  :root { --header-h: 60px; }
 }
 
-/* Text utilities */
-.text-sm {
-  font-size: 1.1rem;
+
+/* ==========================================================
+   2. BASE
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background-color: var(--bg);
+  /* Anchored headings land below the sticky header */
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'General Sans', system-ui, sans-serif;
+  font-size: var(--size-body);
   line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  /* `clip`, not `hidden`: hidden makes <body> a scroll container, which
+     silently breaks position:sticky (the header and side panels). */
+  overflow-x: clip;
 }
 
-/* Full-viewport background fallback (fixes edge/gutter leaks) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-color: var(--color-bg);
-  z-index: -1;
-  transition: background-color 0.3s ease;
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+h1 { font-size: var(--size-hero); line-height: 0.98; letter-spacing: -0.03em; }
+h2 { font-size: var(--size-display); line-height: 1.08; letter-spacing: -0.02em; }
+h3 { font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.01em; }
+h4 { font-size: 1.1rem; }
+
+p { margin: 0 0 1.25rem; }
+
+ul, ol { margin: 0 0 1.25rem; padding-left: 1.25rem; }
+li { margin-bottom: 0.4rem; }
+li::marker { color: var(--accent); }
+
+a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a:hover { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; height: auto; }
+
+strong { font-weight: 600; color: var(--text); }
+
+hr {
+  height: 1px;
+  margin: 2.5rem 0;
+  border: 0;
+  background: var(--line);
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--accent);
+  color: var(--text);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th, td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: bottom;
+  color: var(--faint);
 }
 
 /* Skip to main content link - visually hidden until focused */
@@ -81,800 +193,428 @@ body::before {
   left: 1rem;
   z-index: 9999;
   padding: 0.75rem 1.5rem;
-  background-color: var(--color-primary);
-  color: white;
-  text-decoration: none;
+  background-color: var(--pink-deep);
+  color: #fff;
   font-weight: 600;
-  border-radius: 0 0 4px 4px;
-  transition: top 0.2s ease;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 }
 
-.skip-link:focus {
+.skip-link:focus { top: 0; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   3. LAYOUT
+   ========================================================== */
+
+.wrap,
+main {
+  width: 100%;
+  max-width: calc(var(--site-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+main {
+  display: block;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Home: spans the whole window so the hero and newsletter band can fill
+   it; the other sections sit in a .wrap */
+main.main--home {
+  max-width: none;
+  padding: 0;
+}
+
+/* Posts: one centred reading column */
+main.main--reading > * {
+  max-width: var(--article-width);
+  margin-inline: auto;
+}
+
+.section { margin-top: var(--gap-section); }
+
+
+/* ==========================================================
+   4. HEADER + NAV
+   ========================================================== */
+
+.site-header {
+  position: sticky;
   top: 0;
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 2px;
+  z-index: 100;
+  background: rgba(8, 16, 10, 0.84);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
 
-  main {
-    padding: 2rem;
-    max-width: var(--site-width);
-    margin: 0 auto;
-  }
+.site-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: var(--header-h);
+  max-width: calc(var(--site-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
 
-  /* Text-led pages keep the full shell so they stay aligned with the nav
-     and footer rail, but constrain each block to a readable measure. */
-  main.main--reading > * {
-    max-width: var(--reading-width);
-    /* beats `.prose { margin: 0 auto }`, which would re-centre the column */
-    margin-inline: 0 auto;
-  }
+.site-nav__brand {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
 
-  main img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-/* Headings */
-h1, h2, h3 {
-    font-family: 'General Sans', sans-serif;
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--color-secondary);
-    margin: 1.5rem 0 1rem;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-  }
-  
-  h2 {
-    font-size: 2.5rem;
-    margin-top: 3rem;
-  }
-  
-  h3 {
-    font-size: 2rem;
-    margin-top: 2.5rem;
-  }
+.site-logo {
+  display: block;
+  width: 168px;
+  height: auto;
+}
 
-  p {
-    font-size: 1.3rem;
-    line-height: 1.8;
-  }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
 
-  /* Lead/intro paragraph - slightly larger for page intros */
-  .lead {
-    font-size: 1.4rem;
-    line-height: 1.7;
-    color: var(--color-text);
-  }
+.site-nav__links {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
 
-  /* Lists */
-  ul, ol {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-    line-height: 1.8;
-    padding-left: 1.5rem;
-    margin: 1rem 0;
-  }
+.site-nav__links li { margin: 0; }
 
-  li {
-    margin-bottom: 0.5rem;
-  }
+.site-nav__links a {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
 
-  li::marker {
-    color: var(--color-primary);
-  }
+.site-nav__links a:hover,
+.site-nav__links a[aria-current] {
+  color: var(--text);
+}
 
-  a {
-    color: var(--color-primary);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: var(--color-accent-light);
-    text-decoration: underline;
-    text-decoration-thickness: .16em;
-  }
-  
-  header, footer {
-    position: relative;
-    z-index: 1000;
-    padding: 0rem;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
-  
+.site-nav__links a[aria-current]::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: calc((var(--header-h) - 2.6rem) / -2);
+  height: 2px;
+  background: var(--accent);
+}
 
-/* Header and footer nav. :where() keeps this as weak as a bare `nav a`, so
-   any class rule (logo, toggle, breadcrumbs) still wins. */
-  :where(.site-nav, .site-footer__col) a {
-    margin-right: 1rem;
-    font-weight: bold;
-  }
-
-  /* Theme toggle button */
-  .theme-toggle {
-    background: none;
-    border: none;
-    color: var(--color-text);
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    transition: background-color 0.2s ease, transform 0.3s ease;
-  }
-
-  .theme-toggle:hover {
-    background-color: rgba(128, 128, 128, 0.15);
-  }
-
-  .theme-toggle:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .theme-toggle:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  .theme-toggle:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .theme-toggle:active {
-    transform: scale(0.95);
-  }
-
-  /* Icon styling and animation */
-  .theme-toggle__icon {
-    transition: opacity 0.3s ease, transform 0.4s ease;
-    position: absolute;
-  }
-
-  .theme-toggle__sun {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.8);
-  }
-
-  .theme-toggle__moon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-
-  /* Light mode: show sun, hide moon */
-  [data-theme='light'] .theme-toggle__sun {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-
-  [data-theme='light'] .theme-toggle__moon {
-    opacity: 0;
-    transform: rotate(90deg) scale(0.8);
-  }
-  
-  .site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    max-width: var(--site-width);
-    margin: 0 auto;
-  }
-  
-  @media (max-width: 860px) {
-
-    .site-nav {
-      flex-wrap: wrap;
-    }
-  }
-  
-  .site-nav__brand {
-    font-weight: 500;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-right: 3rem;
-    padding: 0.25rem 0.5rem 0.25rem 0;
-    border-radius: 6px;
-  }
-
-  .site-nav__brand:hover {
-    text-decoration: none;
-  }
-
-  .site-nav__brand:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .site-nav__brand:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  .site-nav__brand:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 0px 4px 4px;
-    color: var(--color-primary);
-    transition: color 0.2s ease;
-  }
-
-  /* Wide logo, swapped by theme. :root is the dark palette, so the white
-     mark is the default and the pink one takes over in light mode. */
-  .site-logo {
-    display: block;
-    /* Fluid so it never crowds the nav controls on narrow screens. */
-    width: clamp(150px, 26vw, 248px);
-    height: auto;
-  }
-
-  .site-logo--light {
-    display: none;
-  }
-
-  :root[data-theme="light"] .site-logo--dark {
-    display: none;
-  }
-
-  :root[data-theme="light"] .site-logo--light {
-    display: block;
-  }
-
-  /* Nav links */
-  .site-nav__links {
-    list-style: none;
-    display: flex;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .site-nav__links a {
-    text-decoration: none;
-    color: var(--color-text);
-    font-weight: 500;
-    padding: 0.75rem 1rem;
-    display: inline-block;
-    position: relative;
-    transition: color 0.2s ease;
-  }
-
-  /* Animated underline */
-  .site-nav__links a::after {
-    content: "";
-    position: absolute;
-    bottom: 0.5rem;
-    left: 1rem;
-    right: 1rem;
-    height: 2px;
-    background-color: var(--color-secondary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-  }
-
-  .site-nav__links a:hover {
-    color: var(--color-secondary);
-  }
-
-  .site-nav__links a:hover::after {
-    transform: scaleX(1);
-  }
-
-  /* Focus states for keyboard navigation */
-  .site-nav__links a:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  .site-nav__links a:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  .site-nav__links a:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  /* Active page indicator */
-  .site-nav__links a.active {
-    color: var(--color-primary);
-  }
-
-  .site-nav__links a.active::after {
-    background-color: var(--color-primary);
-    transform: scaleX(1);
-  }
-
-/* Hamburger toggle button */
 .nav-toggle {
   display: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   background: none;
-  border: none;
+  color: var(--text);
   cursor: pointer;
-  width: 44px;
-  height: 44px;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
 }
 
-.nav-toggle:hover {
-  background-color: rgba(128, 128, 128, 0.15);
-}
-
-.nav-toggle:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.nav-toggle:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.nav-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Hamburger icon bars */
 .nav-toggle__icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
   position: relative;
+  display: block;
+  width: 18px;
+  height: 14px;
 }
 
 .nav-toggle__bar {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: var(--color-text);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
   position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.nav-toggle__bar:nth-child(1) {
-  transform: translateY(-6px);
-}
+.nav-toggle__bar:nth-child(1) { top: 0; }
+.nav-toggle__bar:nth-child(2) { top: 6px; }
+.nav-toggle__bar:nth-child(3) { top: 12px; }
 
-.nav-toggle__bar:nth-child(2) {
-  transform: translateY(0);
-}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-.nav-toggle__bar:nth-child(3) {
-  transform: translateY(6px);
-}
-
-/* Animate to X when open */
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
-  transform: rotate(45deg) translateY(0);
-}
-
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
-  transform: rotate(-45deg) translateY(0);
-}
-
-/* group to the right */
-.nav-right {
-  margin-left: auto; 
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* separator styling */
-.nav-separator {
-  color: var(--color-text);
-  margin: 0 0.5rem;
-}
-
-/* hide the separator on mobile */
-@media screen and (max-width: 860px) {
-  .nav-separator {
-    display: none;
-  }
-}
-
-/* Mobile navigation */
-@media screen and (max-width: 860px) {
-  .site-nav {
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-
-  .nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-  }
+@media (max-width: 760px) {
+  .site-nav { gap: 0.75rem; }
+  .site-logo { width: 140px; }
+  .nav-toggle { display: grid; }
 
   .site-nav__links {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0;
-    background-color: var(--color-bg);
-    flex-direction: column;
-    width: 100vw;
-    text-align: right;
-    padding: 1rem 2rem;
-    z-index: 1000;
-  }
-
-  .site-nav__links.open {
-    display: flex;
-  }
-
-  .site-nav__links li {
-    margin: 0.5rem 1rem;
-  }
-
-  /* Adjust link padding for mobile touch targets */
-  .site-nav__links a {
-    padding: 1rem;
-    display: block;
-  }
-
-  .site-nav__links a::after {
     left: 0;
     right: 0;
-    bottom: 0.75rem;
-  }
-}
-  
-
-/* Center anything that isn't in main */
-  .centered {
-    max-width: var(--site-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  
-
-/* Footer */
-  .site-footer {
-    margin-top: 5rem;
-    padding: 3rem 2rem 1.5rem;
-    font-size: 0.85rem;
-    color: var(--color-text);
-    border-top: 1px solid var(--color-accent-dark);
-  }
-
-  .site-footer__inner {
-    max-width: var(--site-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr 1.1fr 0.8fr;
-    gap: 2.25rem;
-    align-items: start;
-  }
-
-  .site-footer__col {
-    min-width: 0;
-  }
-
-  .site-footer__wordmark {
-    margin: 0 0 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--color-primary);
-  }
-
-  .site-footer__mark {
-    position: relative;
-    width: min(190px, 100%);
-    margin-bottom: 1rem;
-    line-height: 0;
-  }
-
-  .site-footer__mark img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .site-footer__mark-hover {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-  }
-
-  .site-footer__mark:hover .site-footer__mark-default {
-    opacity: 0;
-  }
-
-  .site-footer__mark:hover .site-footer__mark-hover {
-    opacity: 1;
-  }
-
-  .site-footer__heading {
-    margin: 0 0 0.75rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-secondary);
-  }
-
-  .site-footer__list {
-    list-style: none;
     margin: 0;
-    padding: 0;
-    /* beats the global `ul, ol` font-size */
-    font-size: 0.85rem;
-    line-height: 1.4;
+    padding: 0.5rem var(--gutter) 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
 
-  .site-footer__list li + li {
-    margin-top: 0.45rem;
+  .site-nav__links.open { display: block; }
+
+  .site-nav__links a {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.1rem;
   }
 
-  .site-footer__list a {
-    text-decoration: none;
-    line-height: 1.4;
+  .site-nav__links a[aria-current]::after {
+    left: 0;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: 3px;
+    height: 1.1rem;
+    margin-left: -0.85rem;
+    transform: translateY(-50%);
   }
+}
 
-  .site-footer__list a:hover,
-  .site-footer__list a:focus-visible {
-    text-decoration: underline;
-  }
-
-  .site-footer__bottom {
-    max-width: var(--site-width);
-    margin: 2.5rem auto 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-accent-dark);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 0.78rem;
-  }
-
-  .site-footer__bottom p {
-    margin: 0;
-    color: inherit;
-    font-size: inherit;
-  }
-
-  .back-to-top {
-    text-decoration: none;
-  }
-
-  .back-to-top:hover,
-  .back-to-top:focus-visible {
-    text-decoration: underline;
-  }
-
-  @media screen and (max-width: 768px) {
-    .site-footer {
-      padding: 2.5rem 1.5rem 1.5rem;
-    }
-
-    .site-footer__inner {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem 1.5rem;
-    }
-
-    .site-footer__brand {
-      grid-column: 1 / -1;
-    }
-
-    .site-footer__bottom {
-      justify-content: flex-start;
-    }
-  }
-
-
-/* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    font-size: 1rem;
-  }
-  
-  table th,
-  table td {
-    border: 1px solid var(--color-accent-dark);
-    padding: 0.75rem 1rem;
-    text-align: left;
-  }
-  
-  table th {
-    background-color: var(--color-bg);
-    color: var(--color-secondary);
-    background-color:(0 0 1px var(--color-bg));
-    font-weight: bold;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: (0 0 1px var(--color-bg)); /* soft zebra striping */
-  }
-
-
-/* Blockquote */
-blockquote {
-  border-left: 4px solid var(--color-accent-light);
-  padding-left: 1rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--color-text);
+@media (max-width: 380px) {
+  .site-nav__cta { display: none; }
 }
 
 
-/* Horizontal rule / separator */
-hr {
-  border: none;
-  height: 2px;
-  margin: 2rem 0;
-  background: radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-    0 0 / 7px 2px repeat-x;
+/* ==========================================================
+   5. FOOTER
+   ========================================================== */
+
+.site-footer {
+  margin-top: var(--gap-section);
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--size-xs);
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.site-footer__mark {
+  position: relative;
+  width: 150px;
+  margin-bottom: 1rem;
+  line-height: 0;
+}
+
+.site-footer__mark img { display: block; width: 100%; height: auto; }
+
+.site-footer__mark-hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.site-footer__mark:hover .site-footer__mark-default { opacity: 0; }
+.site-footer__mark:hover .site-footer__mark-hover { opacity: 1; }
+
+.site-footer__tagline {
+  max-width: 26ch;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Doubled class: outranks the .eyebrow margin reset further down */
+.site-footer__heading.site-footer__heading { margin: 0 0 1rem; }
+
+.site-footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__list li { margin: 0; }
+.site-footer__list li + li { margin-top: 0.5rem; }
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover { color: var(--text); }
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--faint);
+}
+
+.site-footer__bottom p { margin: 0; }
+
+@media (max-width: 760px) {
+  .site-footer__inner { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
 }
 
 
-/* Tiny text */
-  p.tiny {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 0px;
-    color: var(--color-accent-light);
-  }
-
-
-
-/* ============================================
-   SHARED COMPONENTS - used across page types.
-
-   Each one takes its colours from custom
-   properties, falling back to the site palette.
-   A page restyles them by setting the variables
-   on an ancestor rather than overriding rules
-   (see "Shared components in the product
-   palette" in the PRODUCT PAGE section).
-   ============================================ */
+/* ==========================================================
+   6. COMPONENTS
+   Each takes its colours from custom properties, falling back
+   to the site palette. A page restyles them by setting the
+   variables on an ancestor (see .product).
+   ========================================================== */
 
 /* ---------- Buttons ----------
-   .btn              solid, brand pink by default
+   .btn              solid, deep pink with white text
    .btn--secondary   outlined in the button colour, fills on hover
    .btn--ghost       outlined in the surrounding text colour
-   .btn--sm          compact, for rows of small actions
+   .btn--sm          compact
    Variables: --btn-bg, --btn-fg, --btn-hover-bg, --btn-hover-fg,
    --btn-hover-border, --btn-focus, --control-border-width */
 
 .btn {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0.85rem 1.5rem;
-  border: var(--control-border-width, 2px) solid var(--btn-bg, var(--color-primary));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.6rem 1.4rem;
+  border: var(--control-border-width, 1px) solid var(--btn-bg, var(--pink-deep));
   border-radius: var(--radius-sm);
-  background-color: var(--btn-bg, var(--color-primary));
+  background-color: var(--btn-bg, var(--pink-deep));
   color: var(--btn-fg, #fff);
   font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: inherit;   /* <button> doesn't inherit it by default */
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .btn:hover {
-  background-color: var(--btn-hover-bg, var(--color-accent-dark));
-  border-color: var(--btn-hover-border, var(--btn-hover-bg, var(--color-accent-dark)));
+  background-color: var(--btn-hover-bg, var(--pink-deeper));
+  border-color: var(--btn-hover-border, var(--btn-hover-bg, var(--pink-deeper)));
   color: var(--btn-hover-fg, var(--btn-fg, #fff));
   text-decoration: none;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--btn-focus, var(--color-secondary));
+  outline: 2px solid var(--btn-focus, var(--text));
   outline-offset: 3px;
 }
 
-.btn:disabled {
-  opacity: 0.65;
-  cursor: default;
-}
+.btn:disabled { opacity: 0.65; cursor: default; }
 
 .btn--secondary {
   background-color: transparent;
-  color: var(--btn-bg, var(--color-primary));
+  color: var(--btn-bg, var(--text));
+  border-color: var(--btn-bg, var(--pink-deep));
 }
 
 .btn--secondary:hover {
-  background-color: var(--btn-bg, var(--color-primary));
-  border-color: var(--btn-bg, var(--color-primary));
+  background-color: var(--btn-bg, var(--pink-deep));
+  border-color: var(--btn-bg, var(--pink-deep));
   color: var(--btn-fg, #fff);
 }
 
 .btn--ghost {
   background-color: transparent;
-  border-color: color-mix(in srgb, currentColor 50%, transparent);
+  border-color: color-mix(in srgb, currentColor 45%, transparent);
   color: inherit;
 }
 
 .btn--ghost:hover {
-  background-color: color-mix(in srgb, currentColor 12%, transparent);
+  background-color: color-mix(in srgb, currentColor 8%, transparent);
   border-color: currentColor;
   color: inherit;
 }
 
 .btn--sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
+  min-height: 38px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
 }
 
-/* A column of buttons in a side panel. Once the panel stacks under the
-   content (the .with-panel breakpoint) they sit side by side instead. */
+/* A column of full-width buttons in a side panel. Once the panel stacks
+   under the content (the .with-panel breakpoint) they sit side by side. */
 .btn-stack {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-@media screen and (max-width: 920px) {
-  .btn-stack {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .btn-stack .btn {
-    flex: 1 1 12rem;
-  }
+@media (max-width: 920px) {
+  .btn-stack { flex-direction: row; flex-wrap: wrap; }
+  .btn-stack .btn { flex: 1 1 12rem; }
 }
+
+/* ---------- Text link with an arrow ---------- */
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--size-xs);
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.link-arrow span {
+  color: var(--accent);
+  transition: transform 0.15s ease;
+}
+
+.link-arrow:hover { color: var(--text); }
+.link-arrow:hover span { transform: translateX(3px); }
 
 /* ---------- Box ----------
    A bordered panel. Variables: --box-pad, --box-border, --box-bg */
 
 .box {
-  padding: var(--box-pad, 1.5rem);
-  border: 1px solid var(--box-border, var(--color-accent-dark));
+  padding: var(--box-pad, clamp(1.5rem, 4vw, 2.25rem));
+  border: 1px solid var(--box-border, var(--line));
   border-radius: var(--radius-md);
-  background: var(--box-bg, transparent);
+  background: var(--box-bg, var(--surface));
 }
 
-.box > :first-child {
-  margin-top: 0;
-}
-
-.box > :last-child {
-  margin-bottom: 0;
-}
+.box > :first-child { margin-top: 0; }
+.box > :last-child { margin-bottom: 0; }
 
 /* ---------- Eyebrow ----------
-   Small uppercase label: spec names, table headers, kickers, credits.
-   Variable: --eyebrow-color. Parts that can't carry the class (pseudo-
-   elements, generated table headers, hand-written quote credits) are
+   Small uppercase label: kickers, spec names, table headers, dates.
+   Variable: --eyebrow-color. Parts that can't carry the class are
    listed here so there's still only one definition. */
 
 .eyebrow,
@@ -882,42 +622,119 @@ hr {
 .product-buy thead th,
 .product-buy td::before,
 .product-steps li::before {
+  margin: 0;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.14em;
+  line-height: 1.5;
   text-transform: uppercase;
-  color: var(--eyebrow-color, var(--color-secondary));
+  color: var(--eyebrow-color, var(--faint));
+}
+
+.eyebrow--hi { --eyebrow-color: var(--highlight); }
+
+/* ---------- Big statement text ---------- */
+
+.lede {
+  font-size: var(--size-lg);
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* The short pink rule above a section heading */
+.ticked::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  background: var(--accent);
+}
+
+/* ---------- Section heading row: title left, "View all" right ---------- */
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.section-head .eyebrow { margin-bottom: 0.6rem; }
+
+/* ---------- Page header: title pages (lists, about, projects) ---------- */
+
+.page-head {
+  max-width: 48rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.page-head .eyebrow { margin-bottom: 1.25rem; }
+
+.page-head .lede {
+  margin: 1.5rem 0 0;
+  max-width: 40rem;
 }
 
 /* ---------- Breadcrumb ----------
    Variables: --breadcrumb-color, --breadcrumb-hover */
 
 .breadcrumb {
-  margin: 0 0 1.25rem;
-  font-size: 0.9rem;
+  margin: 0 0 2rem;
+  font-size: var(--size-xs);
 }
 
 .breadcrumb a {
-  color: var(--breadcrumb-color, var(--color-accent-light));
+  color: var(--breadcrumb-color, var(--muted));
   font-weight: 500;
   text-decoration: none;
 }
 
-.breadcrumb a:hover,
-.breadcrumb a:focus-visible {
-  color: var(--breadcrumb-hover, var(--color-primary));
-  text-decoration: underline;
+.breadcrumb a:hover {
+  color: var(--breadcrumb-hover, var(--text));
+}
+
+/* ---------- Chips (tags) ---------- */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li { margin: 0; }
+
+.tag-pill {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.tag-pill:hover {
+  color: var(--text);
+  border-color: var(--faint);
 }
 
 /* ---------- Hero image ----------
    Key art across the top of a page. Variable: --hero-gap */
 
 .hero-media {
-  margin-bottom: var(--hero-gap, 2.5rem);
+  margin-bottom: var(--hero-gap, clamp(3rem, 7vw, 4.5rem));
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
   line-height: 0;
-  background-color: var(--color-bg);
+  background-color: var(--bg);
 }
 
 .hero-media picture,
@@ -934,8 +751,8 @@ hr {
 
 .with-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--panel-width, 300px);
-  gap: var(--panel-gap, 2.5rem);
+  grid-template-columns: minmax(0, 1fr) var(--panel-width, 18rem);
+  gap: var(--panel-gap, clamp(2.5rem, 4vw, 3.5rem));
   align-items: start;
 }
 
@@ -949,15 +766,15 @@ hr {
   grid-column: 2;
   grid-row: 1;
   position: sticky;
-  top: 2rem;
+  top: calc(var(--header-h) + 2rem);
 }
 
 /* Below this the content column gets too narrow to read beside the panel,
    so stack: DOM order already puts the panel first. */
-@media screen and (max-width: 920px) {
+@media (max-width: 920px) {
   .with-panel {
     grid-template-columns: 1fr;
-    gap: var(--panel-gap-stacked, 2rem);
+    gap: var(--panel-gap-stacked, 3rem);
   }
 
   .with-panel__main,
@@ -966,9 +783,32 @@ hr {
     grid-row: auto;
   }
 
-  .with-panel__aside {
-    position: static;
-  }
+  .with-panel__aside { position: static; }
+}
+
+/* Facts in a side panel: two columns of label + value between hairlines */
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  margin: 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts dd {
+  margin: 0.2rem 0 0;
+  font-size: var(--size-xs);
+  line-height: 1.4;
+}
+
+@media (max-width: 920px) {
+  .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .facts { grid-template-columns: 1fr 1fr; }
 }
 
 /* ---------- Pull quote ----------
@@ -978,1313 +818,733 @@ hr {
 .pull-quote {
   margin: 3rem 0;
   padding-left: 1.5rem;
-  border-left: 2px solid var(--quote-accent, var(--color-accent-light));
+  border-left: 2px solid var(--quote-accent, var(--accent));
 }
 
 .pull-quote blockquote {
   margin: 0;
   padding: 0;
   border: 0;
-  background: none;
-  font-style: normal;
-  color: inherit;
 }
 
 .pull-quote blockquote p {
   margin: 0;
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-size: var(--size-lg);
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.45;
+  color: var(--text);
 }
 
-.pull-quote figcaption {
-  margin-top: 0.9rem;
+.pull-quote figcaption { margin-top: 0.9rem; }
+
+/* ---------- Cards: a project tile, art first, the whole tile a link ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem clamp(1rem, 2.5vw, 2rem);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card:hover { color: var(--text); }
+
+.card__media {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  line-height: 0;
+}
+
+/* eleventy-img emits <picture><img>, so size both */
+.card__media picture { display: block; width: 100%; height: 100%; }
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* --card-focus comes from cardImageFocus in front matter */
+  object-position: var(--card-focus, center);
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card__media img { transform: scale(1.03); }
+
+.card .eyebrow { margin: 1.1rem 0 0.4rem; }
+
+.card__title {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.card:hover .card__title {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.card__text {
+  margin: 0.4rem 0 0;
+  font-size: var(--size-xs);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .card-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Phones: a swipeable row instead of a tall stack */
+@media (max-width: 540px) {
+  .card-grid--scroll {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-right: calc(-1 * var(--gutter));
+    padding-right: var(--gutter);
+    padding-bottom: 0.5rem;
+  }
+
+  .card-grid--scroll .card { scroll-snap-align: start; }
+  .card-grid:not(.card-grid--scroll) { grid-template-columns: 1fr; }
+}
+
+/* ---------- Updates list: date, title + summary, arrow ---------- */
+
+.post-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.post-list li { margin: 0; }
+
+.post-list__link {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
+  gap: 0.5rem 2rem;
+  align-items: baseline;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-list__link:hover { color: var(--text); }
+
+.post-list__title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.post-list__text {
+  margin: 0.35rem 0 0;
+  font-size: var(--size-xs);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.post-list__arrow {
+  color: var(--accent);
+  transition: transform 0.15s ease;
+}
+
+.post-list__link:hover .post-list__title {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.post-list__link:hover .post-list__arrow { transform: translateX(4px); }
+
+@media (max-width: 640px) {
+  .post-list__link { grid-template-columns: minmax(0, 1fr) auto; }
+  .post-list__link .eyebrow { grid-column: 1 / -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn {
-    transition: none;
+  *, *::before, *::after {
+    transition: none !important;
   }
 }
 
 
-/* Pitch section (home) - a quiet break between the feature and the games */
-  .pitch {
-    padding: 3.5rem 2rem;
-    margin: 4rem 0;
-    text-align: center;
-    border-top: 1px solid var(--color-accent-dark);
-    border-bottom: 1px solid var(--color-accent-dark);
-  }
+/* ==========================================================
+   7. HOME
+   ========================================================== */
 
-  .pitch__title {
-    margin: 0 0 1rem;
-    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-    line-height: 1.25;
-    color: var(--color-secondary);
-  }
+/* ---------- Hero: full-bleed key art under the header ---------- */
 
-  .pitch__blurb {
-    margin: 0 auto;
-    max-width: 46ch;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    line-height: 1.6;
-  }
-
-  @media screen and (max-width: 768px) {
-    .pitch {
-      padding: 2.5rem 0;
-      margin: 3rem 0;
-    }
-  }
-
-
-/* Featured block (home) */
-
-.featured {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-items: center;
-    margin: 0 0 5rem;
-    /* Fixed dark panel, so the feature reads identically in both themes. */
-    background-color: #08100a;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  /* Art and copy share one grid cell so the copy can sit over the art's
-     faded edge instead of beside it. The art's square defines the height. */
-  .featured__art,
-  .featured__inner {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .featured__art {
-    justify-self: end;
-    width: min(62%, 700px);
-    aspect-ratio: 1;
-    line-height: 0;
-    /* Dissolves left into the panel colour rather than cutting off. */
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 20%, #000 52%);
-            mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 20%, #000 52%);
-  }
-
-  .featured__art picture,
-  .featured__art img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .featured__inner {
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 3.5rem;
-  }
-
-  .featured__content {
-    max-width: 34rem;
-  }
-
-  .featured__heading {
-    margin: 0 0 1.5rem;
-  }
-
-  .featured__logo {
-    display: block;
-    width: clamp(190px, 22vw, 300px);
-    height: auto;
-  }
-
-  .featured__tagline {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    line-height: 1.55;
-    margin: 0 0 1.5rem;
-    color: #f0f0df;
-  }
-
-  .featured__stats {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1.15rem;
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-  }
-
-  .featured__stats li {
-    position: relative;
-    margin: 0;
-  }
-
-  .featured__stats li + li::before {
-    content: "";
-    position: absolute;
-    left: -0.68rem;
-    top: 50%;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background-color: #ED1E79;
-    transform: translateY(-50%);
-  }
-
-  .featured__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  /* Narrow: the square stacks to the top of the panel, fading downward, with
-     the copy beneath it inside the panel's padding. */
-  @media screen and (max-width: 860px) {
-    .featured {
-      display: block;
-      margin-bottom: 3.5rem;
-    }
-
-    .featured__art {
-      width: 100%;
-      -webkit-mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
-              mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
-    }
-
-    .featured__inner {
-      padding: 0 1.75rem 2.25rem;
-      margin-top: -2.5rem;
-    }
-
-    .featured__content {
-      max-width: none;
-    }
-
-    .featured__logo {
-      width: clamp(160px, 44vw, 230px);
-    }
-
-    /* Nav collapses to the hamburger at this same width, so the stats step
-       down with it. */
-    .featured__stats {
-      font-size: 0.7rem;
-      letter-spacing: 0.07em;
-      gap: 0.45rem 1rem;
-    }
-
-    .featured__stats li + li::before {
-      left: -0.6rem;
-    }
-  }
-
-  /* Previews */
-
-  .post-preview { /* On the collection list page */
-    margin-bottom: 4rem;
-  }
-
-  .post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--color-accent-light);
-  }
-
-  .post-date {
-    margin-right: 0.5rem;
-  }
-
-  .tag-pill {
-    display: inline-block;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.75rem;
-    border: 1px solid var(--color-primary);
-    border-radius: 1rem;
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
-  }
-
-  .tag-pill:hover {
-    background-color: var(--color-primary);
-    text-decoration: none;
-    color: var(--color-bg);
-  }
-  
-  .preview-box {
-    position: relative;
-    border: none;
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 2rem 0;
-    background-color: var(--color-bg);
-  }
-
-  .preview-box::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    background:
-      /* Top edge */
-      radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-        0 0 / 7px 2px repeat-x,
-      /* Bottom edge */
-      radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-        0 100% / 7px 2px repeat-x,
-      /* Left edge */
-      radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-        0 0 / 2px 7px repeat-y,
-      /* Right edge */
-      radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-        100% 0 / 2px 7px repeat-y;
-    pointer-events: none;
-  }
-  
-  .preview-heading {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-    margin-top: 0px;
-    color: var(--color-secondary);
-  }
-  
-  .preview-link {
-    font-size: 1rem;
-    color: var(--color-primary);
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-    margin-top: 0.5rem;
-    margin-bottom: 0rem;
-  }
-
-  .preview-box > *:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Projects preview grid */
-
-  .preview-section {
-    margin: 2rem 0;
-  }
-
-  /* Extra breathing room only between two stacked preview sections */
-  .preview-section + .preview-section {
-    margin-top: 5rem;
-  }
-
-  .project-grid {
-    display: grid;
-    /* Track count follows the space actually available, not the viewport:
-       auto-fit drops to a single column as soon as a second 300px column
-       won't fit. min() keeps the track from overflowing containers that are
-       themselves narrower than 300px. */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 2.5rem 1.5rem;
-    margin-bottom: 1rem;
-    justify-items: center;
-  }
-
-  /* Product-tile card: art leads, whole tile is the link. */
-  .project-card {
-    margin: 0;
-    width: 100%;
-    /* Stops a single-column row from stretching one 3:4 cover to full width. */
-    max-width: 440px;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: var(--color-text);
-    border-radius: 8px;
-    transition: transform 0.15s ease;
-  }
-
-  .project-card:hover,
-  .project-card:focus-visible {
-    text-decoration: none;
-    transform: translateY(-3px);
-  }
-
-  .project-card:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 6px;
-  }
-
-  .project-card__media {
-    line-height: 0;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 0.9rem;
-    background-color: var(--color-bg);
-    transition: box-shadow 0.15s ease;
-  }
-
-  .project-card:hover .project-card__media,
-  .project-card:focus-visible .project-card__media {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  }
-
-  /* eleventy-img emits <picture><img>, so size both. */
-  .project-card__media picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .project-card__media img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    /* --card-focus comes from the cardImageFocus front matter field, so a
-       landscape source can be cropped to 3:4 without losing the subject. */
-    object-position: var(--card-focus, center);
-  }
-
-  .project-card__title {
-    margin: 0 0 0.4rem;
-    font-size: 1.15rem;
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--color-secondary);
-  }
-
-  .project-card:hover .project-card__title {
-    text-decoration: underline;
-  }
-
-  .project-card__blurb {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .project-card {
-      transition: none;
-    }
-    .project-card:hover,
-    .project-card:focus-visible {
-      transform: none;
-    }
-  }
-
-  /* Garden preview stack */
-
-  .preview-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .posts-card {
-    margin: 0;
-  }
-
-  .posts-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  .posts-card h3 a {
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .posts-card h3 a:hover {
-    text-decoration: underline;
-  }
-
-  .posts-card p:last-child {
-    margin-bottom: 0;
-  }
-
-/* Quote Box */
-
-.quote-section {
-  padding: 2rem;
-  text-align: center;
-}
-
-.quote-container {
-  margin: 0 auto;
-  padding-bottom: 1rem;
-  background-color: var(--color-bg);
-}
-
-.quote-h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-secondary);
-}
-
-.quote-output {
-  margin: 2rem auto;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-text);
-  max-width: 30ch; /* sets a readable line length */
-  text-align: center;
-  line-height: 1.4;
-}
-
-.quote-button {
-  border-radius: 999px;
-}
-
-/* Floating back-to-top button */
-.floating-top-btn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  line-height: 1;
+.hero {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
-  z-index: 999;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.floating-top-btn.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.floating-top-btn:hover {
-  background-color: var(--color-accent-dark);
-}
-
-.floating-top-btn:focus {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 2px;
-}
-
-.floating-top-btn:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.floating-top-btn:focus-visible {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 2px;
-}
-
-/* 404 Error Page */
-.error-page {
-  text-align: center;
-  padding: 4rem 2rem;
-}
-
-.error-code {
-  font-size: 8rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin: 0;
-  line-height: 1;
-}
-
-.error-message {
-  font-size: 1.5rem;
-  color: var(--color-secondary);
-  margin: 1.5rem 0;
-}
-
-.error-home-link {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 2rem;
-  background-color: var(--color-primary);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
-}
-
-.error-home-link:hover {
-  background-color: var(--color-accent-dark);
-  color: white;
-  text-decoration: none;
-}
-
-
-/* ============================================
-   NEWSLETTER BOX - EmailOctopus embed
-   ============================================ */
-
-.newsletter-box {
-  background-color: transparent;
-  color: var(--color-secondary);
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
-  padding: 4rem;
-  margin: 5rem 0;
-  transition: border-color 0.3s ease, color 0.3s ease;
-}
-
-.newsletter-box__heading {
-  font-size: 1.8rem;
-  margin: 0 0 0.75rem;
-  color: var(--color-secondary);
-}
-
-.newsletter-box__blurb {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  max-width: 55ch;
-  margin: 0;
-  color: var(--color-text);
-}
-
-/* --- Embed overrides ---
-   The embed injects its own <style> into the body at runtime, so it always
-   lands after styles.css in source order. Its rules are scoped to
-   [data-form="..."] and top out around (0,3,1) specificity, so each override
-   below is deliberately prefixed to outrank it. !important is only used where
-   the embed itself uses !important. */
-
-.newsletter-box [data-form] {
-  --font-family: 'General Sans', sans-serif;
-  --base-font-size: 1rem;
-  --text-colour: var(--color-text);
-}
-
-.newsletter-box [data-form] .emailoctopus-form {
-  --field-colour: transparent;
-  --field-border-colour: var(--color-primary);
-  --button-colour: var(--color-primary);
-  --button-text-colour: #fff;
-  --label-colour: var(--color-text);
-}
-
-/* Fill the box instead of the embed's 600px / 520px caps */
-.newsletter-box .inline-container[data-form] {
-  max-width: none !important;
-}
-
-.newsletter-box [data-form] .form-container {
-  max-width: none;
-}
-
-.newsletter-box [data-form] .emailoctopus-form-wrapper {
-  margin-top: 1.5rem;
-}
-
-/* Field + button share a row; the embed's 2px side margins become a real gap */
-.newsletter-box [data-form] .main-form {
-  align-items: stretch;
-  justify-content: flex-start;
-  column-gap: 0.75rem;
-}
-
-.newsletter-box [data-form] .main-form .emailoctopus-form-row,
-.newsletter-box [data-form] .main-form input[type="submit"] {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.newsletter-box [data-form] .emailoctopus-form input.form-control {
-  height: auto;
-  padding: 0.75rem 1.25rem;
-  border-radius: 3px;
-  color: var(--color-text);
-  font-family: 'General Sans', sans-serif;
-  font-size: 1rem;
-}
-
-.newsletter-box [data-form] .emailoctopus-form input.form-control::placeholder {
-  color: var(--color-text);
-  opacity: 0.6;
-}
-
-.newsletter-box [data-form] .emailoctopus-form input.form-control:focus {
-  background-color: transparent;
-  color: var(--color-text);
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary);
-  outline: none;
-}
-
-/* The field is transparent, but Chrome/Safari repaint autofilled inputs with
-   their own opaque background - force it back onto the page colour */
-.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill,
-.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:hover {
-  -webkit-text-fill-color: var(--color-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset;
-  caret-color: var(--color-text);
-}
-
-.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--color-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset, 0 0 0 3px var(--color-primary);
-  caret-color: var(--color-text);
-}
-
-.newsletter-box [data-form] .emailoctopus-form input[type="submit"] {
-  height: auto;
-  padding: 0.75rem 1.75rem;
-  border: none;
-  border-radius: 3px;
-  font-family: 'General Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:hover {
-  background-color: var(--color-accent-dark);
-  border-color: var(--color-accent-dark);
-}
-
-.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus {
-  box-shadow: none;
-}
-
-.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus-visible {
-  outline: 3px solid var(--color-text);
-  outline-offset: 2px;
-}
-
-.newsletter-box [data-form] .emailoctopus-success-message,
-.newsletter-box [data-form] .emailoctopus-error-message {
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: left;
-}
-
-/* EmailOctopus' "powered by" credit - recolour it for both themes */
-.newsletter-box [data-form] .text-center {
-  text-align: left;
-}
-
-.newsletter-box [data-form] .mastfoot {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.newsletter-box [data-form] .mastfoot .inner {
-  text-align: left;
-}
-
-.newsletter-box [data-form] .mastfoot p,
-.newsletter-box [data-form] .mastfoot a {
-  color: var(--color-text);
-  opacity: 0.75;
-}
-
-/* The embed loads reCAPTCHA v3, which floats a badge over the bottom-right
-   corner - where the back-to-top link already lives. Google's terms allow
-   hiding it as long as the branding text is shown in the form instead, which
-   .newsletter-box__recaptcha does. Keep the two together. */
-.grecaptcha-badge {
-  visibility: hidden;
-}
-
-.newsletter-box__recaptcha {
-  font-size: 0.6rem;
-  line-height: 1.5;
-  margin: 0.75rem 0 0;
-  color: var(--color-text);
-  opacity: 0.75;
-}
-
-.newsletter-box__recaptcha a {
-  color: inherit;
-}
-
-/* The embed wraps at ~200px, which is too cramped for a phone - stack instead */
-@media screen and (max-width: 600px) {
-  .newsletter-box {
-    padding: 1.5rem;
-  }
-
-  .newsletter-box__heading {
-    font-size: 1.5rem;
-  }
-
-  .newsletter-box [data-form] .main-form {
-    flex-direction: column;
-    column-gap: 0;
-  }
-
-  .newsletter-box [data-form] .main-form .emailoctopus-form-row,
-  .newsletter-box [data-form] .main-form input[type="submit"] {
-    width: 100%;
-    min-width: 0;
-  }
-}
-
-
-/* ============================================
-   FINAL LIGHT SIGNUP - Quick Start form
-   ============================================ */
-
-/* Our own form rather than an embed, because it has to apply a tag via the API.
-   The visual language deliberately mirrors the EmailOctopus overrides above so
-   the two forms read as one component. */
-
-.fl-signup {
-  margin: 2.5rem 0;
-}
-
-.fl-signup__label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.fl-signup__row {
-  display: flex;
-  align-items: stretch;
-  column-gap: 0.75rem;
-}
-
-/* Variables: --field-border, --field-focus, --field-ring,
-   --control-border-width (shared with .btn) */
-.fl-signup__field {
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: 0.75rem 1.25rem;
-  border: var(--control-border-width, 2px) solid var(--field-border, var(--color-primary));
-  border-radius: var(--radius-sm);
-  background-color: transparent;
-  color: inherit;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.fl-signup__field::placeholder {
-  color: inherit;
-  opacity: 0.6;
-}
-
-.fl-signup__field:focus {
-  border-color: var(--field-focus, var(--color-primary));
-  box-shadow: 0 0 0 3px var(--field-ring, var(--color-primary));
-  outline: none;
-}
-
-/* The field is transparent, but Chrome/Safari repaint autofilled inputs with
-   their own opaque background - force it back onto the page colour */
-.fl-signup__field:-webkit-autofill,
-.fl-signup__field:-webkit-autofill:hover {
-  -webkit-text-fill-color: var(--color-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset;
-  caret-color: var(--color-text);
-}
-
-.fl-signup__field:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--color-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-bg) inset, 0 0 0 3px var(--field-ring, var(--color-primary));
-  caret-color: var(--color-text);
-}
-
-/* The button itself is a .btn */
-.fl-signup__submit {
-  flex: 0 0 auto;
-}
-
-/* Honeypot. Positioned off-screen rather than display:none, which some bots
-   know to skip. aria-hidden + tabindex="-1" keep it away from real users. */
-.fl-signup__hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
+  align-items: flex-end;
+  min-height: min(86vh, 800px);
+  margin-top: calc(-1 * var(--header-h) - 1px);
+  padding: calc(var(--header-h) + 5rem) 0 clamp(3rem, 6vw, 4.5rem);
   overflow: hidden;
+  isolation: isolate;
 }
 
-/* Turnstile bot check. In interaction-only mode it stays empty (and takes no
-   room) unless Cloudflare decides it needs a click from this visitor. */
-.fl-signup__captcha:not(:empty) {
-  margin-top: 0.75rem;
+.hero__art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  line-height: 0;
 }
 
-.fl-signup__status {
-  margin: 0.75rem 0 0;
-  font-size: 1rem;
-  line-height: 1.5;
+.hero__art picture,
+.hero__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
 }
 
-/* The live region is always in the DOM so it can be announced; don't let it
-   take up space until it has something to say. */
-.fl-signup__status:empty {
-  margin: 0;
+/* Darkens the left for the copy and fades the bottom into the page */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(8, 16, 10, 0.92) 0%, rgba(8, 16, 10, 0.55) 38%, rgba(8, 16, 10, 0) 65%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(8, 16, 10, 0) 35%);
 }
 
-/* Variables: --status-error, --status-success */
-.fl-signup__status.is-error {
-  color: var(--status-error, var(--color-primary));
-  font-weight: 600;
+.hero__content { max-width: 34rem; }
+.hero .eyebrow { margin-bottom: 1.5rem; }
+
+.hero__title { line-height: 0; }
+
+.hero__logo {
+  display: block;
+  width: clamp(220px, 28vw, 340px);
+  height: auto;
+  margin-bottom: 1.75rem;
 }
 
-.fl-signup__status.is-success {
-  color: var(--status-success, var(--color-secondary));
-  font-weight: 600;
+.hero__tagline {
+  margin: 0 0 2rem;
+  color: var(--text);
 }
 
-/* Same breakpoint the embed stacks at - the row is too cramped on a phone */
-@media screen and (max-width: 600px) {
-  .fl-signup__row {
-    flex-direction: column;
-    column-gap: 0;
-    row-gap: 0.75rem;
-  }
-
-  .fl-signup__submit {
-    width: 100%;
-  }
-}
-
-
-/* ============================================
-   PROSE - Article/Post Body Typography
-   ============================================ */
-
-.prose {
-  margin: 0 auto;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Article header - full width within main */
-.prose__header {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  max-width: 100%;
-}
-
-.prose__header h1 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: clamp(2rem, 5vw, 3.6rem);
-  line-height: 1.2;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  max-width: 100%;
-}
-
-.prose__meta {
+.hero__actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--color-accent-light);
-  margin: 0;
+  gap: 0.75rem;
 }
 
-.prose__meta time {
-  margin-right: 0.5rem;
+@media (max-width: 760px) {
+  .hero {
+    min-height: 0;
+    padding-top: 52vh;
+  }
+
+  .hero__art img { object-position: center top; }
+
+  .hero::after {
+    background: linear-gradient(0deg, var(--bg) 30%, rgba(8, 16, 10, 0.6) 55%, rgba(8, 16, 10, 0) 80%);
+  }
+
+  .hero__actions .btn { flex: 1 1 auto; }
 }
 
-/* ============================================
-   PROJECT PAGE - key art, full-width title,
-   then content beside a persistent buy panel
-   (_includes/project.njk). Layout, panel, buttons,
-   breadcrumb and key art are shared components:
-   .with-panel, .box, .btn, .breadcrumb, .hero-media
-   ============================================ */
+/* ---------- One quote, said loudly ---------- */
 
-.project-page__title {
-  margin: 0 0 2rem;
-  font-size: clamp(2rem, 4.5vw, 2.6rem);
-  line-height: 1.15;
-  overflow-wrap: break-word;
-}
-
-.project-page__lead {
-  margin: 0 0 2rem;
-  font-size: 1.25rem;
-}
-
-.project-page__cta-note {
-  margin: 0.9rem 0 0;
-  font-size: 0.95rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-accent-light);
-}
-
-.project-page__specs {
+.proof {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.9rem;
-  margin: 1.5rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-accent-dark);
-}
-
-.project-page__specs dt {
-  margin-bottom: 0.15rem;
-}
-
-.project-page__specs dd {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.project-page__tags {
-  display: flex;
-  flex-wrap: wrap;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1.5rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-accent-dark);
+  gap: 2rem;
+  margin: 0;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
-/* The divider separates panel sections, so not above the first one (a
-   project with no button, or no specs) */
-.project-page__specs:first-child,
-.project-page__tags:first-child {
-  padding-top: 0;
-  border-top: 0;
+.proof blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .project-page {
-    --hero-gap: 1.75rem;
-  }
-
-  .project-page__title {
-    margin-bottom: 1.5rem;
-  }
+.proof blockquote p {
+  margin: 0;
+  font-size: var(--size-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-/* Main content area */
-.prose__content {
-  line-height: 1.75;
+.proof__accent { color: var(--accent); }
+.proof figcaption { margin-top: 1rem; }
+
+@media (max-width: 760px) {
+  .proof { grid-template-columns: 1fr; }
 }
 
-/* Headings within prose */
-.prose__content h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+/* ---------- Studio statement ---------- */
+
+.studio {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
 }
+
+.studio__mark {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+}
+
+.studio .eyebrow { margin-bottom: 0.9rem; }
+.studio h2 { margin-bottom: 1.25rem; }
+
+.studio p {
+  max-width: 40rem;
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+}
+
+.studio .studio__lines {
+  font-size: var(--size-lg);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+@media (max-width: 760px) {
+  .studio { grid-template-columns: 1fr; }
+  .studio__mark { max-width: 110px; }
+}
+
+
+/* ---------- Discord invite ---------- */
+
+.community {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem 3rem;
+  align-items: center;
+}
+
+.community .eyebrow { margin-bottom: 0.75rem; }
+
+.community__text {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .community { grid-template-columns: 1fr; }
+  .community .btn { width: 100%; }
+}
+
+
+/* ==========================================================
+   8. LIST PAGES (Games & More, Updates, tags)
+   ========================================================== */
+
+/* Nothing extra: they're a .page-head plus .card-grid or .post-list. */
+
+
+/* ==========================================================
+   9. PROSE - posts and project pages
+   ========================================================== */
+
+/* ---------- Post header ---------- */
+
+.post__header {
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  padding-bottom: clamp(2rem, 5vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.post__header .eyebrow { margin-bottom: 1rem; }
+
+.post__title {
+  font-size: var(--size-title);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  overflow-wrap: break-word;
+}
+
+.post__header .lede { margin: 1.25rem 0 0; }
+.post__header .tag-list { margin-top: 1.5rem; }
+
+/* ---------- Running text ----------
+   Shared by posts and project pages. Only running text is held to the
+   reading width; tables, code, images and quotes use the whole column. */
+
+.prose__content { line-height: 1.75; }
+
+.prose__content > :first-child { margin-top: 0; }
+
+.prose__content p,
+.prose__content ul,
+.prose__content ol,
+.prose__content h3,
+.prose__content h4,
+.prose__content dl {
+  max-width: var(--reading-width);
+}
+
+.prose__content p,
+.prose__content li { color: var(--muted); }
+
+.prose__content p { margin: 0 0 1.25rem; }
 
 .prose__content h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  margin-top: 3.5rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.25;
+  margin: 3.5rem 0 1.25rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
 }
 
 .prose__content h3 {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  line-height: 1.3
+  margin: 2.5rem 0 0.9rem;
+  font-size: 1.3rem;
 }
 
 .prose__content h4 {
-  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-  margin-top: 1.75rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.35;
-  color: var(--color-secondary);
+  margin: 2rem 0 0.5rem;
+  font-size: 1.1rem;
 }
 
-/* Remove top margin when heading is first child */
-.prose__content > h1:first-child,
-.prose__content > h2:first-child,
-.prose__content > h3:first-child,
-.prose__content > h4:first-child {
-  margin-top: 0;
-}
+.prose__content h2 + h3 { margin-top: 1.5rem; }
 
-/* Paragraphs */
-.prose__content p {
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-  margin-top: 0;
-  margin-bottom: 1.3rem;
-  line-height: 1.8;
-}
-
-/* Tighter spacing for consecutive paragraphs */
-.prose__content p + p {
-  margin-top: 0;
-}
-
-/* Lead paragraph in prose */
-.prose__content .lead {
-  font-size: clamp(1.3rem, 3vw, 1.4rem);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-
-/* Lists */
 .prose__content ul,
 .prose__content ol {
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-  margin-top: 0;
-  margin-bottom: 1.3rem;
-  padding-left: 1.5rem;
-  line-height: 1.7;
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
 }
 
-.prose__content li {
-  margin-bottom: 0.5rem;
-}
-
-.prose__content li::marker {
-  color: var(--color-primary);
-}
-
-/* Nested lists */
 .prose__content ul ul,
 .prose__content ol ol,
 .prose__content ul ol,
 .prose__content ol ul {
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
+  margin: 0.5rem 0;
 }
 
-/* Links */
-.prose__content a {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.15em;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
+.prose__content li { margin-bottom: 0.5rem; }
 
-.prose__content a:hover {
-  color: var(--color-accent-light);
-  text-decoration-thickness: 0.16em;
-}
+.prose__content a:hover { color: var(--accent); }
 
-/* Images */
+.prose__content strong { color: var(--text); }
+
 .prose__content img {
-  max-width: 100%;
-  height: auto;
-  margin: 1.5rem 0;
-  border-radius: 4px;
+  display: block;
+  margin: 2rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
 }
 
-.prose__content figure {
-  margin: 2rem 0;
-}
+.prose__content figure { margin: 2rem 0; }
+.prose__content figure img { margin: 0; }
 
 .prose__content figcaption {
-  font-size: 0.9rem;
-  color: var(--color-accent-light);
-  text-align: center;
-  margin-top: 0.5rem;
-  font-style: italic;
+  margin-top: 0.75rem;
+  font-size: var(--size-xs);
+  color: var(--faint);
 }
 
-/* Blockquotes */
 .prose__content blockquote {
-  border-left: 4px solid var(--color-primary);
-  padding: 1rem 1rem 1rem 1.5rem;
+  max-width: var(--reading-width);
   margin: 2rem 0;
-  font-style: italic;
-  color: var(--color-text);
-  background-color: rgba(128, 128, 128, 0.05);
-  border-radius: 0 4px 4px 0;
 }
 
 .prose__content blockquote p {
-  margin-bottom: 0.5rem;
-}
-
-.prose__content blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-/* Code - inline */
-.prose__content code {
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-  font-size: 0.9em;
-  background-color: rgba(128, 128, 128, 0.15);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
-}
-
-/* Code - blocks (pre) */
-.prose__content pre {
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-size: 1.15rem;
   line-height: 1.6;
-  margin: 1.5rem 0;
+  color: var(--text);
+}
+
+.prose__content blockquote p:last-child { margin-bottom: 0; }
+
+.prose__content hr { margin: 3rem 0; }
+
+.prose__content small { font-size: var(--size-xs); color: var(--faint); }
+
+.prose__content dt { font-weight: 600; margin-top: 1rem; }
+.prose__content dd { margin: 0 0 0.5rem 1.25rem; color: var(--muted); }
+
+/* Code */
+.prose__content code {
+  font-family: 'Fira Code', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.88em;
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.prose__content pre {
+  margin: 2rem 0;
   padding: 1.25rem;
   overflow-x: auto;
-  border-radius: 6px;
-  background-color: #1d1f21; /* Match prism-tomorrow theme */
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: #111a14 !important;   /* beats the Prism theme */
+  font-size: 0.88rem;
+  line-height: 1.6;
 }
 
 .prose__content pre code {
-  background: none;
   padding: 0;
+  border: 0;
+  background: none;
   font-size: inherit;
 }
 
-/* Tables */
+/* Tables: scroll sideways inside the column rather than squash */
 .prose__content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  display: block;
+  max-width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
 }
 
 .prose__content th,
-.prose__content td {
-  border: 1px solid var(--color-accent-dark);
-  padding: 0.6rem 0.8rem;
+.prose__content td { color: var(--muted); }
+
+.prose__content tbody th,
+.prose__content td:first-child { color: var(--text); }
+
+/* ---------- Comparison table ----------
+   Wrap a Markdown table in <div class="table-wrap compare"> (with blank
+   lines around the table). The last column is "ours" and is highlighted;
+   the first column stays put while the rest scroll on a phone. */
+
+.table-wrap {
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.prose__content .table-wrap table {
+  display: table;
+  min-width: 640px;
+  margin: 0;
+}
+
+.table-wrap thead th { background: var(--surface); }
+.table-wrap tbody tr:last-child > * { border-bottom: 0; }
+
+.compare th,
+.compare td { text-align: center; }
+
+.compare th:first-child,
+.compare td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
   text-align: left;
+  font-weight: 500;
+  background: var(--bg);
+  box-shadow: 1px 0 0 var(--line);
 }
 
-.prose__content th {
-  background-color: rgba(128, 128, 128, 0.1);
-  color: var(--color-secondary);
-  font-weight: 600;
+.compare thead th:first-child { background: #0d150f; }
+
+.compare td { font-weight: 600; color: var(--text); }
+.compare td:first-child { font-weight: 500; }
+
+.compare th:last-child,
+.compare td:last-child { background: rgba(237, 30, 121, 0.08); }
+
+.compare thead th:last-child {
+  color: var(--text);
+  box-shadow: inset 0 3px 0 var(--accent);
 }
 
-.prose__content tr:nth-child(even) {
-  background-color: rgba(128, 128, 128, 0.05);
+/* ---------- Project page ---------- */
+
+.project-head {
+  max-width: 50rem;
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
 }
 
-/* Horizontal rules */
-.prose__content hr {
-  border: none;
+.project-head .eyebrow { margin-bottom: 1.25rem; }
+.project-head h1 { overflow-wrap: break-word; }
+.project-head .lede { margin: 1.75rem 0 0; }
+
+.project-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-panel .btn { width: 100%; }
+
+.project-panel__note {
+  margin: -0.75rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--faint);
+  text-align: center;
+}
+
+/* Project write-ups: big section heads with the pink tick, and feature
+   lists as hairline rows. */
+.project-page .prose__content h2 {
+  margin: var(--gap-section) 0 1.5rem;
+  font-size: var(--size-display);
+  line-height: 1.08;
+}
+
+.project-page .prose__content > h2:first-child { margin-top: 0; }
+
+.project-page .prose__content h2::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  background: var(--accent);
+}
+
+.project-page .prose__content > ul {
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.project-page .prose__content > ul > li {
+  position: relative;
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-page .prose__content > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.65em;
+  width: 0.55rem;
   height: 2px;
-  margin: 2.5rem 0;
-  background: radial-gradient(circle, var(--color-accent-dark) 1px, transparent 1px)
-    0 0 / 7px 2px repeat-x;
+  background: var(--accent);
 }
 
-/* Strong/Bold and Emphasis */
-.prose__content strong {
-  font-weight: 700;
-  color: var(--color-text);
+.project-more {
+  margin-top: var(--gap-section);
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
 }
 
-.prose__content em {
-  font-style: italic;
-}
 
-/* Small text / asides */
-.prose__content small {
-  font-size: 0.875rem;
-  color: var(--color-accent-light);
-}
+/* ==========================================================
+   10. ABOUT, 404, RESOURCES
+   ========================================================== */
 
-/* Definition lists (if used) */
-.prose__content dl {
-  margin: 1.25rem 0;
-}
+/* ---------- About ---------- */
 
-.prose__content dt {
+.about-statement,
+.studio .about-statement {
+  max-width: none;
+  margin: 0 0 1.5rem;
+  font-size: var(--size-display);
   font-weight: 600;
-  color: var(--color-secondary);
-  margin-top: 1rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
-.prose__content dd {
-  margin-left: 1.5rem;
-  margin-bottom: 0.5rem;
+.founder {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-  .prose__header {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-  }
-
-  .prose__content h2 {
-    margin-top: 1.25rem;
-  }
-
-  .prose__content h3 {
-    margin-top: 1.5rem;
-  }
-
-  .prose__content ul,
-  .prose__content ol {
-    padding-left: 1.25rem;
-  }
-
-  .prose__content pre {
-    padding: 1rem;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-    border-radius: 0;
-  }
-
-  .prose__content table {
-    font-size: 0.85rem;
-  }
-
-  .prose__content th,
-  .prose__content td {
-    padding: 0.5rem;
-  }
+.founder__photo {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  line-height: 0;
 }
 
-/* Extra small screens */
-@media screen and (max-width: 480px) {
-  .prose__header h1 {
-    font-size: 1.75rem;
-  }
-
-  .prose__content p,
-  .prose__content li {
-    font-size: 1.1rem;
-  }
-
-  /* Make tables scrollable on very small screens */
-  .prose__content table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+.founder__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* ============================================
-   FINAL LIGHT RESOURCES - one row per download,
-   reached from the QR code in the book
-   ============================================ */
+.founder .eyebrow { margin-bottom: 0.9rem; }
+.founder h2 { margin-bottom: 1.5rem; }
 
-.fl-resources {
+.founder p {
   max-width: var(--reading-width);
+  color: var(--muted);
 }
+
+.founder .lede { color: var(--text); }
+
+.founder__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 760px) {
+  .founder { grid-template-columns: 1fr; }
+  .founder__photo { max-width: 340px; }
+}
+
+/* ---------- 404 ---------- */
+
+.error-page {
+  max-width: 40rem;
+  padding: clamp(2rem, 8vw, 5rem) 0;
+}
+
+.error-code {
+  margin: 0 0 1.5rem;
+  font-size: clamp(6rem, 18vw, 10rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.error-message {
+  margin: 0 0 1rem;
+  font-size: var(--size-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.error-page p:not(.error-message) { color: var(--muted); }
+.error-page .btn { margin-top: 1rem; }
+
+/* ---------- Final Light resources: one row per download ---------- */
+
+.fl-resources { max-width: var(--article-width); }
 
 .fl-resources__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Each row is also a .box */
@@ -2293,28 +1553,27 @@ hr {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  margin: 0;
+  --box-pad: 1.5rem;
 }
 
 .fl-resources__title {
   margin: 0 0 0.35rem;
-  font-size: 1.25rem;
-  line-height: 1.25;
-  color: var(--color-secondary);
+  font-size: 1.2rem;
 }
 
 .fl-resources__blurb {
   margin: 0 0 0.35rem;
+  color: var(--muted);
 }
 
 .fl-resources__details {
   margin: 0;
-  font-size: 0.9rem;
-  color: var(--color-accent-light);
+  font-size: var(--size-xs);
+  color: var(--faint);
 }
 
-.fl-resources__cta {
-  flex-shrink: 0;
-}
+.fl-resources__cta { flex-shrink: 0; }
 
 /* Adventure pages: "Download all" above the list, and a smaller View /
    Download pair on each file that stays side by side on phones. */
@@ -2332,57 +1591,359 @@ hr {
   flex-shrink: 0;
 }
 
-@media screen and (max-width: 560px) {
+@media (max-width: 560px) {
   .fl-resources__item {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .fl-resources__actions .fl-resources__cta {
-    flex: 1;
-  }
+  .fl-resources__actions .fl-resources__cta { flex: 1; }
+}
+
+/* ---------- Idea generator (archived project page) ---------- */
+
+.quote-section { margin: 3rem 0; text-align: center; }
+.quote-h2 { font-size: 1.25rem; }
+
+.quote-output {
+  max-width: 30ch;
+  margin: 2rem auto;
+  font-size: var(--size-lg);
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 
-/* ============================================
-   PRODUCT PAGE - a game being sold, not a
-   project write-up (_includes/product-page.njk).
+/* ==========================================================
+   11. FORMS
+   ========================================================== */
 
-   Scoped to .product with its own neutral
-   palette: off-white type, greys, hairlines,
-   and one accent per product (front matter
-   `accent` / `accentLight`). The site's brand
-   pink and green stay in the nav and footer.
+/* ---------- Newsletter band (home) - EmailOctopus embed ---------- */
 
-   Layout, buttons, boxes, labels, breadcrumb,
-   key art and pull quotes are the SHARED
-   COMPONENTS: the .product block below maps
-   them onto this palette, and the rest of the
-   section is the product-only pieces.
-   ============================================ */
+.newsletter-box {
+  margin-top: var(--gap-section);
+  background: var(--bg-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.newsletter-box__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem 4rem;
+  align-items: center;
+  max-width: calc(var(--site-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 4.5rem) var(--gutter);
+}
+
+.newsletter-box__heading { margin-bottom: 0.75rem; }
+
+.newsletter-box__blurb {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .newsletter-box__inner { grid-template-columns: 1fr; }
+}
+
+/* --- Embed overrides ---
+   The embed injects its own <style> into the body at runtime, so it always
+   lands after styles.css in source order. Its rules are scoped to
+   [data-form="..."] and top out around (0,3,1) specificity, so each override
+   below is deliberately prefixed to outrank it. !important is only used where
+   the embed itself uses !important. */
+
+.newsletter-box [data-form] {
+  --font-family: 'General Sans', sans-serif;
+  --base-font-size: 1rem;
+  --text-colour: var(--text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form {
+  --field-colour: transparent;
+  --field-border-colour: var(--faint);
+  --button-colour: var(--pink-deep);
+  --button-text-colour: #fff;
+  --label-colour: var(--muted);
+}
+
+/* Fill the column instead of the embed's 600px / 520px caps */
+.newsletter-box .inline-container[data-form] {
+  max-width: none !important;
+}
+
+.newsletter-box [data-form] .form-container { max-width: none; }
+
+.newsletter-box [data-form] .emailoctopus-form-wrapper { margin-top: 0; }
+
+/* Field + button share a row; the embed's 2px side margins become a real gap */
+.newsletter-box [data-form] .main-form {
+  align-items: stretch;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+}
+
+.newsletter-box [data-form] .main-form .emailoctopus-form-row,
+.newsletter-box [data-form] .main-form input[type="submit"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control {
+  height: auto;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-width: 1px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'General Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control::placeholder {
+  color: var(--text);
+  opacity: 0.55;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control:focus {
+  background-color: transparent;
+  color: var(--text);
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--line);
+  outline: none;
+}
+
+/* The field is transparent, but Chrome/Safari repaint autofilled inputs with
+   their own opaque background - force it back onto the band colour */
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill,
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-raised) inset;
+  caret-color: var(--text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input.form-control:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-raised) inset, 0 0 0 3px var(--line);
+  caret-color: var(--text);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"] {
+  height: auto;
+  min-height: 48px;
+  padding: 0.75rem 1.4rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'General Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:hover {
+  background-color: var(--pink-deeper);
+  border-color: var(--pink-deeper);
+}
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus { box-shadow: none; }
+
+.newsletter-box [data-form] .emailoctopus-form input[type="submit"]:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.newsletter-box [data-form] .emailoctopus-success-message,
+.newsletter-box [data-form] .emailoctopus-error-message {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* EmailOctopus' "powered by" credit */
+.newsletter-box [data-form] .text-center { text-align: left; }
+.newsletter-box [data-form] .mastfoot { margin-left: 0; margin-right: 0; }
+.newsletter-box [data-form] .mastfoot .inner { text-align: left; }
+
+.newsletter-box [data-form] .mastfoot p,
+.newsletter-box [data-form] .mastfoot a {
+  color: var(--faint);
+}
+
+/* The embed loads reCAPTCHA v3, which floats a badge over the bottom-right
+   corner. Google's terms allow hiding it as long as the branding text is
+   shown in the form instead, which .newsletter-box__recaptcha does. Keep
+   the two together. */
+.grecaptcha-badge { visibility: hidden; }
+
+.newsletter-box__recaptcha {
+  margin: 0.75rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--faint);
+}
+
+.newsletter-box__recaptcha a {
+  color: inherit;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+}
+
+/* The embed wraps at ~200px, which is too cramped for a phone - stack instead */
+@media (max-width: 600px) {
+  .newsletter-box [data-form] .main-form {
+    flex-direction: column;
+    column-gap: 0;
+  }
+
+  .newsletter-box [data-form] .main-form .emailoctopus-form-row,
+  .newsletter-box [data-form] .main-form input[type="submit"] {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ---------- Final Light signup: Quick Start and "Notify me" ----------
+   Our own form rather than an embed, because it has to apply a tag via
+   the API. Variables: --field-border, --field-focus, --field-ring,
+   --status-error, --status-success, --control-border-width */
+
+.fl-signup { margin: 2.5rem 0; }
+
+.fl-signup__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: var(--size-xs);
+  font-weight: 600;
+}
+
+.fl-signup__row {
+  display: flex;
+  align-items: stretch;
+  column-gap: 0.5rem;
+}
+
+.fl-signup__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border: var(--control-border-width, 1px) solid var(--field-border, var(--faint));
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.fl-signup__field::placeholder {
+  color: inherit;
+  opacity: 0.55;
+}
+
+.fl-signup__field:focus {
+  border-color: var(--field-focus, var(--text));
+  box-shadow: 0 0 0 3px var(--field-ring, var(--line));
+  outline: none;
+}
+
+/* The field is transparent, but Chrome/Safari repaint autofilled inputs with
+   their own opaque background - force it back onto the page colour */
+.fl-signup__field:-webkit-autofill,
+.fl-signup__field:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+  caret-color: var(--text);
+}
+
+.fl-signup__field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset, 0 0 0 3px var(--field-ring, var(--line));
+  caret-color: var(--text);
+}
+
+/* The button itself is a .btn */
+.fl-signup__submit { flex: 0 0 auto; }
+
+/* Honeypot. Positioned off-screen rather than display:none, which some bots
+   know to skip. aria-hidden + tabindex="-1" keep it away from real users. */
+.fl-signup__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Turnstile bot check. In interaction-only mode it stays empty (and takes no
+   room) unless Cloudflare decides it needs a click from this visitor. */
+.fl-signup__captcha:not(:empty) { margin-top: 0.75rem; }
+
+.fl-signup__status {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* The live region is always in the DOM so it can be announced; don't let it
+   take up space until it has something to say. */
+.fl-signup__status:empty { margin: 0; }
+
+.fl-signup__status.is-error {
+  color: var(--status-error, var(--accent));
+  font-weight: 600;
+}
+
+.fl-signup__status.is-success {
+  color: var(--status-success, var(--highlight));
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .fl-signup__row {
+    flex-direction: column;
+    column-gap: 0;
+    row-gap: 0.5rem;
+  }
+
+  .fl-signup__submit { width: 100%; }
+}
+
+
+/* ==========================================================
+   12. PRODUCT PAGE - a game being sold, not a project
+   write-up (_includes/product-page.njk).
+
+   Scoped to .product: the site's neutrals, plus one accent per
+   product (front matter `accent`). Buttons are cream on this
+   page, so the brand pink stays in the nav and footer.
+   ========================================================== */
 
 .product {
   /* Palette */
-  --p-text:    #f2efe8;
-  --p-muted:   rgba(242, 239, 232, 0.66);
-  --p-faint:   rgba(242, 239, 232, 0.42);
-  --p-line:    rgba(242, 239, 232, 0.14);
-  --p-surface: rgba(242, 239, 232, 0.035);
+  --p-text:    var(--text);
+  --p-muted:   var(--muted);
+  --p-faint:   var(--faint);
+  --p-line:    var(--line);
+  --p-surface: var(--surface);
   --p-accent:  var(--product-accent, #e2463c);
   --p-on-text: #0b0d0b;   /* type on a solid --p-text button */
   --p-shadow:  0 24px 60px rgba(0, 0, 0, 0.5);
+  --accent:    var(--p-accent);
 
   /* Type scale */
-  --p-size-display: clamp(2rem, 4.75vw, 2.9rem);   /* section headings, big statements */
-  --p-size-lg:      clamp(1.25rem, 2.6vw, 1.6rem); /* ledes, feature titles */
-  --p-size-body:    clamp(1.05rem, 1.6vw, 1.15rem);
-  --p-size-sm:      1rem;                           /* cards, steps, tables */
-  --p-size-xs:      0.875rem;                       /* notes, panel text */
+  --p-size-display: var(--size-display);
+  --p-size-lg:      clamp(1.25rem, 2.6vw, 1.6rem);
+  --p-size-body:    var(--size-body);
+  --p-size-sm:      var(--size-sm);
+  --p-size-xs:      var(--size-xs);
 
   /* Spacing */
-  --p-gap-section: clamp(4.5rem, 9vw, 7rem);  /* between sections */
-  --p-gap-block:   2.5rem;                    /* around steps, cards, spreads, tables */
-  --p-gap-feature: 3rem;                      /* before a feature, art or notify box */
+  --p-gap-section: var(--gap-section);
+  --p-gap-block:   2.5rem;
+  --p-gap-feature: 3rem;
 
   /* Shared components in the product palette */
   --btn-bg:             var(--p-text);
@@ -2391,7 +1952,6 @@ hr {
   --btn-hover-fg:       var(--p-text);
   --btn-hover-border:   var(--p-text);
   --btn-focus:          var(--p-text);
-  --control-border-width: 1px;
   --field-border:       var(--p-faint);
   --field-focus:        var(--p-text);
   --field-ring:         var(--p-line);
@@ -2406,28 +1966,14 @@ hr {
   --breadcrumb-hover:   var(--p-text);
   --hero-gap:           clamp(2.5rem, 6vw, 4rem);
   --panel-width:        17rem;
-  --panel-gap:          clamp(2.5rem, 6vw, 5rem);
   --panel-gap-stacked:  3.5rem;
 
   color: var(--p-text);
-  letter-spacing: 0.01em;
-}
-
-[data-theme='light'] .product {
-  --p-text:    #161616;
-  --p-muted:   rgba(22, 22, 22, 0.68);
-  --p-faint:   rgba(22, 22, 22, 0.46);
-  --p-line:    rgba(22, 22, 22, 0.14);
-  --p-surface: rgba(22, 22, 22, 0.03);
-  --p-accent:  var(--product-accent-light, var(--product-accent, #b3261e));
-  --p-on-text: #ffffff;
-  --p-shadow:  0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
 /* ---------- Base type ----------
    Wrapped in :where() so these weigh no more than plain element rules:
-   any single class further down can restyle a p, a or h3 on its own,
-   without a `.product__body` prefix to outrank them. */
+   any single class further down can restyle a p, a or h3 on its own. */
 
 :where(.product) h2,
 .product-display {
@@ -2437,10 +1983,6 @@ hr {
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--p-text);
-}
-
-:where(.product) h2 {
-  scroll-margin-top: 2rem;
 }
 
 /* A short rule in the product's colour marks the start of each section. */
@@ -2467,27 +2009,16 @@ hr {
   line-height: 1.75;
 }
 
-:where(.product__body) p {
-  margin: 0 0 1.25rem;
-}
+:where(.product__body) p { margin: 0 0 1.25rem; }
 
 :where(.product) strong {
   font-weight: 600;
   color: var(--p-text);
 }
 
-:where(.product__body) a {
-  color: var(--p-text);
-  text-decoration: underline;
-  text-decoration-color: var(--p-accent);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-
 :where(.product__body) a:hover,
 :where(.product__body) a:focus-visible {
   color: var(--p-accent);
-  text-decoration-thickness: 2px;
 }
 
 :where(.product) a:focus-visible {
@@ -2534,9 +2065,7 @@ hr {
   color: var(--p-accent);
 }
 
-.product__lead {
-  margin: 1.75rem 0 0;
-}
+.product__lead { margin: 1.75rem 0 0; }
 
 /* ---------- Panel: buttons, facts and "On this page" ---------- */
 
@@ -2562,15 +2091,15 @@ hr {
   line-height: 1.35;
 }
 
-.product__toc-label {
-  margin: 0 0 0.6rem;
-}
+.product__toc-label { margin: 0 0 0.6rem; }
 
 .product__toc ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
+.product__toc li { margin: 0; }
 
 .product__toc a {
   display: block;
@@ -2584,10 +2113,7 @@ hr {
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.product__toc a:hover {
-  color: var(--p-text);
-  text-decoration: none;
-}
+.product__toc a:hover { color: var(--p-text); }
 
 .product__toc a[aria-current] {
   color: var(--p-text);
@@ -2596,9 +2122,7 @@ hr {
 
 /* ---------- Sections ---------- */
 
-.product-section + .product-section {
-  margin-top: var(--p-gap-section);
-}
+.product-section + .product-section { margin-top: var(--p-gap-section); }
 
 /* Uppercase band between hairlines: "for fans of…" */
 .product-callout {
@@ -2613,9 +2137,7 @@ hr {
   text-transform: uppercase;
 }
 
-.product-callout strong {
-  color: var(--p-accent);
-}
+.product-callout strong { color: var(--p-accent); }
 
 /* A paragraph led by a bold line, read as a small titled feature */
 .product-feature {
@@ -2623,9 +2145,7 @@ hr {
   color: var(--p-muted);
 }
 
-h2 + .product-feature {
-  margin-top: 0;
-}
+h2 + .product-feature { margin-top: 0; }
 
 .product-feature strong {
   display: block;
@@ -2640,15 +2160,11 @@ h2 + .product-feature {
   gap: 2.5rem;
 }
 
-.product-quotes__list .pull-quote {
-  margin: 0;
-}
+.product-quotes__list .pull-quote { margin: 0; }
 
 /* ---------- Art (key art, product shots set into the page) ---------- */
 
-.product-art {
-  margin: 0 0 var(--p-gap-feature);
-}
+.product-art { margin: 0 0 var(--p-gap-feature); }
 
 .product-art img {
   display: block;
@@ -2657,19 +2173,12 @@ h2 + .product-feature {
   border-radius: var(--radius-md);
 }
 
-h2 + .product-art {
-  margin-top: 0.5rem;
-}
-
-.product-feature + .product-art {
-  margin-top: 2rem;
-}
+h2 + .product-art { margin-top: 0.5rem; }
+.product-feature + .product-art { margin-top: 2rem; }
 
 /* ---------- Book spreads ---------- */
 
-.product-spread {
-  margin: var(--p-gap-block) 0 var(--p-gap-feature);
-}
+.product-spread { margin: var(--p-gap-block) 0 var(--p-gap-feature); }
 
 .product-spread__link,
 .product-spread__link:hover {
@@ -2730,7 +2239,7 @@ h2 + .product-art {
   counter-increment: product-step;
   margin: 0;
   padding: 1.5rem;
-  background: var(--color-bg);
+  background: var(--bg);
   font-size: var(--p-size-sm);
   line-height: 1.6;
   color: var(--p-muted);
@@ -2832,9 +2341,7 @@ h2 + .product-art {
   padding-bottom: 0.75rem;
 }
 
-.product-buy td {
-  color: var(--p-muted);
-}
+.product-buy td { color: var(--p-muted); }
 
 .product-buy__name {
   font-weight: 600;
@@ -2842,13 +2349,8 @@ h2 + .product-art {
 }
 
 /* The product is what people scan for: give it the room. */
-.product-buy thead .product-buy__name {
-  width: 55%;
-}
-
-.product-buy tbody .product-buy__name {
-  font-size: 1.1rem;
-}
+.product-buy thead .product-buy__name { width: 55%; }
+.product-buy tbody .product-buy__name { font-size: 1.1rem; }
 
 .product-buy .product-buy__price {
   padding-right: 0;
@@ -2863,15 +2365,10 @@ h2 + .product-art {
 
 /* ---------- Email signup and "Notify me" box ---------- */
 
-/* The form's colours come from the variables in the .product block */
-.product .fl-signup {
-  margin: 1.5rem 0 0;
-}
+.product .fl-signup { margin: 1.5rem 0 0; }
 
 /* Under the buy table; also a .box */
-.product-notify {
-  margin-top: var(--p-gap-feature);
-}
+.product-notify { margin-top: var(--p-gap-feature); }
 
 .product-notify__title {
   margin: 0 0 0.75rem;
@@ -2886,13 +2383,9 @@ h2 + .product-art {
 
 /* ---------- FAQ ---------- */
 
-.product-faq {
-  border-top: 1px solid var(--p-line);
-}
+.product-faq { border-top: 1px solid var(--p-line); }
 
-.product-faq__item {
-  border-bottom: 1px solid var(--p-line);
-}
+.product-faq__item { border-bottom: 1px solid var(--p-line); }
 
 .product-faq__item summary {
   display: flex;
@@ -2907,9 +2400,7 @@ h2 + .product-art {
   color: var(--p-text);
 }
 
-.product-faq__item summary::-webkit-details-marker {
-  display: none;
-}
+.product-faq__item summary::-webkit-details-marker { display: none; }
 
 .product-faq__item summary::after {
   content: "+";
@@ -2921,9 +2412,7 @@ h2 + .product-art {
   transition: transform 0.2s ease;
 }
 
-.product-faq__item[open] summary::after {
-  transform: rotate(45deg);
-}
+.product-faq__item[open] summary::after { transform: rotate(45deg); }
 
 .product-faq__item summary:focus-visible {
   outline: 2px solid var(--p-text);
@@ -2978,29 +2467,17 @@ h2 + .product-art {
 /* The panel stacks under the header here (.with-panel), so lay the facts out
    in one row. The section list only earns its space while it can follow
    you, so it goes. */
-@media screen and (max-width: 920px) {
-  .product__facts {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .product__toc {
-    display: none;
-  }
-
-  .product-closing {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 920px) {
+  .product__facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .product__toc { display: none; }
+  .product-closing { grid-template-columns: 1fr; }
 }
 
-@media screen and (max-width: 640px) {
-  .product__facts {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width: 640px) {
+  .product__facts { grid-template-columns: 1fr 1fr; }
 
   .product-steps,
-  .product-cards {
-    grid-template-columns: 1fr;
-  }
+  .product-cards { grid-template-columns: 1fr; }
 
   /* Buy table: one block per product, labelled from data-label */
   .product-buy,
@@ -3010,7 +2487,6 @@ h2 + .product-art {
   .product-buy td {
     display: block;
     width: 100%;
-    box-sizing: border-box;
   }
 
   .product-buy thead {
@@ -3026,9 +2502,7 @@ h2 + .product-art {
     border-bottom: 1px solid var(--p-line);
   }
 
-  .product-buy tbody tr:first-child {
-    border-top: 1px solid var(--p-line);
-  }
+  .product-buy tbody tr:first-child { border-top: 1px solid var(--p-line); }
 
   .product-buy th,
   .product-buy td,
@@ -3042,12 +2516,5 @@ h2 + .product-art {
   .product-buy td::before {
     content: attr(data-label);
     display: block;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .product__toc a,
-  .product-faq__item summary::after {
-    transition: none;
   }
 }

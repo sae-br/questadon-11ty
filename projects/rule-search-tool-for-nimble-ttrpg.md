@@ -3,6 +3,11 @@ title: Nimble Rules Search - Fast, Free Rule Lookups Mid-Game
 description: A free, searchable web tool for finding rules across the Nimble rulebooks mid-session, so you're not flipping through PDFs while everyone waits.
 date: 2025-04-23
 tags: [project, nimble, tool]
+# Cards and page header: a short name (`title` stays the SEO <title>),
+# the small label above the card title, and a one-line card summary.
+heading: Nimble Rules Search
+kicker: Free tool · Nimble
+cardBlurb: Find any rule mid-session, so nobody waits while you flip through PDFs.
 cardImage: ./assets/post-images/nimble-rules/cover.png
 cardImageAlt: "Nimble Rules Search: a free tool for looking up Nimble rules mid-game"
 cardImageFocus: center

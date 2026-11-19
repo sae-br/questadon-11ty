@@ -1,22 +1,18 @@
-<section class="preview-section">
-  <h2 class="preview-heading">Games &amp; More</h2>
-  {% if collections.projects | length %}
-  <div class="project-grid">
-    {% for project in collections.projects %}
-      {% if loop.index <= 3 %}
-      <a class="project-card" href="{{ project.url }}">
-        {% if project.data.cardImage %}
-        <div class="project-card__media" style="--card-focus: {{ project.data.cardImageFocus | default('center') }}">
-          {% image project.data.cardImage, project.data.cardImageAlt or project.data.title, "(max-width: 540px) 100vw, 440px" %}
-        </div>
-        {% endif %}
-        <h3 class="project-card__title">{{ project.data.title }}</h3>
-        <p class="project-card__blurb">{{ project.data.description }}</p>
-      </a>
-      {% endif %}
-    {% endfor %}
+{# Home: three projects, skipping Final Light (it's the hero). #}
+{% set homeProjects = collections.projects | except("/projects/final-light-ttrpg/", 3) %}
+<section class="section" aria-labelledby="games-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Games &amp; More</p>
+      <h2 id="games-title">Free for your table</h2>
+    </div>
+    <a class="link-arrow" href="/projects/">View all <span aria-hidden="true">→</span></a>
   </div>
-  <a class="preview-link" href="/projects/">See everything →</a>
+  {% if homeProjects.length %}
+  <div class="card-grid card-grid--scroll">
+    {% set cardTag = "h3" %}
+    {% asyncEach project in homeProjects %}{% include "project-card.njk" %}{% endeach %}
+  </div>
   {% else %}
   <p>Nothing here yet.</p>
   {% endif %}

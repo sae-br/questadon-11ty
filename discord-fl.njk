@@ -5,12 +5,12 @@ eleventyExcludeFromCollections: true
 ---
 {# The short URL printed as the Discord QR code in the Final Light books. The
    first printing linked straight to a Discord invite that expired, so this is
-   the stable address now: when the invite changes, update `destination` below
-   and nothing else. The invite must be set to never expire.
+   the stable address now: when the invite changes, update `discordUrl` in
+   _data/site.js and nothing else. The invite must be set to never expire.
 
    Same approach as fl.njk: count the scan in GA4, then forward. Discord
    invites ignore UTM tags, so the GA event is the only scan record. #}
-{% set destination = "https://discord.gg/tt3g2mkRZn" %}
+{% set destination = site.discordUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>

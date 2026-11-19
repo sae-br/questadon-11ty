@@ -1,10 +1,20 @@
 ---
 title: Questadon | Tabletop Role-Playing Games by Sarah Brown
 layout: layout.njk
+mainClass: main--home
 description: Cinematic, collaborative, occasionally chaotic tabletop role-playing games from Sarah Brown, creator of the horror-survival RPG Final Light.
 ---
 
+<h1 class="visually-hidden">Questadon: tabletop role-playing games by Sarah Brown</h1>
+{# main--home spans the window: the hero and newsletter band fill it, and
+   everything else sits in a .wrap. #}
 {% include "featured-final-light.njk" %}
-{% include "project-preview.njk" %}
+<div class="wrap">
+  {% include "studio.njk" %}
+  {% include "project-preview.njk" %}
+  {% include "community.njk" %}
+</div>
 {% include "newsletter-box.njk" %}
-{% include "posts-preview.njk" %}
+<div class="wrap">
+  {% include "posts-preview.njk" %}
+</div>

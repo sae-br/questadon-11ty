@@ -1,0 +1,14 @@
+{# One project tile. Expects `project` (a collection item) and, optionally,
+   `cardTag` (the title's heading level; h3 by default).
+   Front matter used: cardImage, cardImageFocus, kicker, heading, cardBlurb. #}
+{% set _tag = cardTag or "h3" %}
+<a class="card" href="{{ project.url }}">
+  {% if project.data.cardImage %}
+  <div class="card__media" style="--card-focus: {{ project.data.cardImageFocus | default('center') }}">
+    {% image project.data.cardImage, "", "(max-width: 540px) 78vw, (max-width: 860px) 50vw, 400px" %}
+  </div>
+  {% endif %}
+  {% if project.data.kicker %}<p class="eyebrow">{{ project.data.kicker }}</p>{% endif %}
+  <{{ _tag }} class="card__title">{{ project.data.heading or project.data.title }}</{{ _tag }}>
+  <p class="card__text">{{ project.data.cardBlurb or project.data.description }}</p>
+</a>

@@ -41,11 +41,22 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setLibrary("md", md); 
 
   // ✅ Custom filters
+  // Front matter dates are midnight UTC; read them in UTC so a post dated
+  // July 24 doesn't show as July 23 in a Canadian time zone.
   eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat("MMMM d, yyyy");
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("MMMM d, yyyy");
   });
   eleventyConfig.addFilter("limit", (array, limit) => {
     return array.slice(0, limit);
+  });
+  // "Jun 23, 2026" - dates in lists and labels
+  eleventyConfig.addFilter("shortDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("LLL d, yyyy");
+  });
+  // Up to `limit` items from a collection, leaving out the page at `url`
+  // ("More for your table" under a project, the home page's project cards).
+  eleventyConfig.addFilter("except", (items, url, limit = Infinity) => {
+    return (items || []).filter((item) => item.url !== url).slice(0, limit);
   });
   eleventyConfig.addFilter("year", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy");

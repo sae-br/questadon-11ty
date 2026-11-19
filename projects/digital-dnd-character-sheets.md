@@ -1,8 +1,13 @@
 ---
-title: D&D Character Sheets - Simple, Digital, Free
+title: "DDCS: D&D Character Sheets - Simple, Digital, Free"
 description: A free, simple app for managing your 5E or 5.5E character sheets digitally, featuring a pencil-and-paper approach, sortable spells, and rich text formatting.
 date: 2026-06-23
 tags: [project, d&d 5e, d&d 5.5e, tool]
+# Cards and page header: a short name (`title` stays the SEO <title>),
+# the small label above the card title, and a one-line card summary.
+heading: "DDCS: D&D Character Sheets"
+kicker: Free tool · D&D 5E & 5.5E
+cardBlurb: Pencil-and-paper freedom with digital search, spell sorting, and no lost pages.
 cardImage: ./assets/post-images/character-sheets/cover.png
 cardImageAlt: "D&D Character Sheets cover: a free digital 5E character sheet app"
 cardImageFocus: center
@@ -10,7 +15,7 @@ lead: Lots of digital D&D character sheet apps offer a ton of features but get s
 heroImage: ./assets/post-images/character-sheets/ddcs.jpg
 heroImageTall: ./assets/post-images/character-sheets/ddcs-tall.jpg
 heroImageAlt: "Preview of digital D&D character sheet app"
-ctaText: Create Your Own Character Sheet
+ctaText: Create your own character sheet
 ctaUrl: "https://ddcs.questadon.com/"
 ctaExternal: true
 ctaNote: Create a free account and use it as much as you want!
@@ -21,31 +26,43 @@ specs:
     value: Free, no subscription
   - label: Platform
     value: Desktop browser
+  - label: Updated
+    value: June 23, 2026
+# "Why I built it" link in the side panel
+relatedPost:
+  url: /posts/the-best-way-to-manage-dnd-character-sheets/
+  label: Why I built it
 ---
-*Last Significant Update: June 23, 2026*
-
 ## What Does My D&D Character Sheets (DDCS) App Do?
 
 While there's no perfect solution out there that works for everyone, I think this table below helps make it clear how my D&D Character Sheets compares to other options. 
 
 ### Comparison Table of DDCS and Other Options
+<div class="table-wrap compare">
+
 | Feature / Benefit | DnDBeyond, Roll20, etc | Pencil & Paper | Fillable PDF | Spreadsheet | DDCS |
 |---|---|---|---|---|---|
-| Totally free | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Familiar / official layout | ✅ | ✅ | ✅ | ❌ | ✅ |
-| Comes with pre-populated content | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Supports homebrew & custom content | ⚠️ | ✅ | ✅ | ✅ | ✅ |
-| Math done for you / one-click updates / auto-calculations | ✅ | ❌ | ⚠️ | ⚠️ | ❌ |
-| Easy spell list management | ✅ | ❌ | ❌ | ✅ | ✅ |
-| Works the same on any computer/OS | ✅ | ❌ | ⚠️ | ⚠️ | ✅ |
-| No/minimal risk of losing / damaging your sheet | ✅ | ❌ | ✅ | ✅ | ✅ |
-| Flexible text formatting & layout | ❌ | ⚠️ | ⚠️ | ⚠️ | ✅ |
+| Totally free | — | ✓ | ✓ | ✓ | ✓ |
+| Familiar / official layout | ✓ | ✓ | ✓ | — | ✓ |
+| Comes with pre-populated content | ✓ | — | — | — | — |
+| Supports homebrew & custom content | Partly | ✓ | ✓ | ✓ | ✓ |
+| Math done for you / one-click updates / auto-calculations | ✓ | — | Partly | Partly | — |
+| Easy spell list management | ✓ | — | — | ✓ | ✓ |
+| Works the same on any computer/OS | ✓ | — | Partly | Partly | ✓ |
+| No/minimal risk of losing / damaging your sheet | ✓ | — | ✓ | ✓ | ✓ |
+| Flexible text formatting & layout | — | Partly | Partly | Partly | ✓ |
+
+</div>
 
 The main thing you'll quickly notice is that, unlike most other apps out there, I have intentionally not included autocalculations (like one-click Long Rests) or prepopulated SRD content. 
 
 The main reason for this is I want to keep this as flexible (and barrier-free) as possible for homebrew, and not get close to any legal / licensed content messes.
 
-This is meant a highly flexible BYO-content digital character sheet that sticks fairly closely to the general layout we're familiar with from the official downloadable ones (5E and 5.5E). A way to make unlimited player characters and use all the home-brew you want—for free! 🙂
+Curious about the thinking behind the app? Read the update: [I Built a New Way to Manage D&D Character Sheets](/posts/the-best-way-to-manage-dnd-character-sheets/).
+
+This is meant a highly flexible BYO-content digital character sheet that sticks fairly closely to the general layout we're familiar with from the official downloadable ones (5E and 5.5E).
+
+<figure class="pull-quote"><blockquote><p>A way to make unlimited player characters and use all the homebrew you want—for free!</p></blockquote></figure>
 
 > If you have any feedback or suggestions, while I will stick with the end user experience I'm personally aiming for and can't guarantee timeframes, I welcome your thoughts! You can email me (Sarah) at hello@questadon.com.  
 

@@ -1,0 +1,18 @@
+{# A list of updates (or anything dated): date, title + summary, arrow.
+   Expects `postList` (collection items) and, optionally, `postTag` (the
+   title's heading level; h3 by default). #}
+{% set _tag = postTag or "h3" %}
+<ul class="post-list">
+  {% for post in postList %}
+  <li>
+    <a class="post-list__link" href="{{ post.url }}">
+      <p class="eyebrow"><time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | shortDate }}</time></p>
+      <div>
+        <{{ _tag }} class="post-list__title">{{ post.data.heading or post.data.title }}</{{ _tag }}>
+        {% if post.data.description %}<p class="post-list__text">{{ post.data.cardBlurb or post.data.description }}</p>{% endif %}
+      </div>
+      <span class="post-list__arrow" aria-hidden="true">→</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

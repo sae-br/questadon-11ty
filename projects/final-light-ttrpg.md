@@ -3,6 +3,9 @@ title: Final Light - A Zombie Survival Story TTRPG
 description: A survival-horror TTRPG for telling short, high-stakes zombie stories like The Last of Us, Train to Busan, 28 Days Later, and more.
 date: 2026-08-31
 tags: [project, ttrpg, full-game]
+# Card label and one-line summary (see the other projects)
+kicker: TTRPG · Survival horror
+cardBlurb: Scavenge, stealth, and escape through a world of undead.
 # Product page: the reusable product layout (_includes/product-page.njk), and
 # the body below is HTML run through Nunjucks only - no Markdown - so the
 # typography stays exactly as written. Products, FAQ, adventures and spreads
@@ -64,7 +67,7 @@ toc:
 </section>
 
 {# ---------- Quotes ---------- #}
-<section class="product-section" aria-label="What players say">
+<section class="product-section" id="what-players-say" aria-label="What players say">
   {# The headline quote is set into the art, so the alt text carries it. #}
   <figure class="product-art">
     {% artImage "./assets/post-images/final-light/final-light-core-book-quote.jpg", "“The tensest RPG I’ve ever run.” —Agis, beside the Final Light Core Book cover" %}

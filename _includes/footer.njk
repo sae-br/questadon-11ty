@@ -1,47 +1,49 @@
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div class="site-footer__col site-footer__brand">
-      <div class="site-footer__mark">
-        <img src="/assets/questadon-logo-web.png" alt="Questadon"
-             class="site-footer__mark-default" width="908" height="340">
-        <img src="/assets/questadon-logo-web-hov.png" alt="" aria-hidden="true"
-             class="site-footer__mark-hover" width="908" height="340">
+  <div class="wrap">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <div class="site-footer__mark">
+          <img src="/assets/questadon-logo-web.png" alt="Questadon"
+               class="site-footer__mark-default" width="908" height="340">
+          <img src="/assets/questadon-logo-web-hov.png" alt="" aria-hidden="true"
+               class="site-footer__mark-hover" width="908" height="340">
+        </div>
+        <p class="site-footer__tagline">Tabletop role-playing games by Sarah Brown.</p>
       </div>
+
+      <nav aria-labelledby="footer-explore">
+        <h2 class="site-footer__heading eyebrow" id="footer-explore">Explore</h2>
+        <ul class="site-footer__list">
+          <li><a href="/projects/">Games &amp; More</a></li>
+          <li><a href="/posts/">Updates</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="footer-final-light">
+        <h2 class="site-footer__heading eyebrow" id="footer-final-light">Final Light</h2>
+        <ul class="site-footer__list">
+          <li><a href="/projects/final-light-ttrpg/">About the game</a></li>
+          <li><a href="/projects/final-light-ttrpg/#quick-start">Free Quick Start</a></li>
+          <li><a href="/projects/final-light-ttrpg/#get-final-light">Where to buy</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="footer-connect">
+        <h2 class="site-footer__heading eyebrow" id="footer-connect">Connect</h2>
+        <ul class="site-footer__list">
+          <li><a href="{{ site.discordUrl }}">Discord</a></li>
+          <li><a href="https://www.instagram.com/questadon" rel="me">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@questadon" rel="me">TikTok</a></li>
+          <li><a href="/#newsletter">Email list</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
     </div>
 
-    <nav class="site-footer__col" aria-labelledby="footer-explore">
-      <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
-      <ul class="site-footer__list">
-        <li><a href="/projects/">Games &amp; More</a></li>
-        <li><a href="/posts/">Updates</a></li>
-        <li><a href="/about/">About</a></li>
-      </ul>
-    </nav>
-
-    <nav class="site-footer__col" aria-labelledby="footer-final-light">
-      <h2 class="site-footer__heading" id="footer-final-light">Final Light</h2>
-      <ul class="site-footer__list">
-        <li>
-          <a href="https://www.kickstarter.com/projects/heysarahbrown/final-light-a-cinematic-short-form-survival-ttrpg?ref=72yvgd"
-             target="_blank" rel="noopener noreferrer">View on Kickstarter (Closed)</a>
-        </li>
-        <li><a href="/projects/final-light-ttrpg/">About the game</a></li>
-      </ul>
-    </nav>
-
-    <nav class="site-footer__col" aria-labelledby="footer-connect">
-      <h2 class="site-footer__heading" id="footer-connect">Connect</h2>
-      <ul class="site-footer__list">
-        <li><a href="https://www.instagram.com/questadon" rel="me">Instagram</a></li>
-        <li><a href="https://www.tiktok.com/@questadon" rel="me">TikTok</a></li>
-        <li><a href="/#newsletter">Email list</a></li>
-        <li><a href="/feed.xml">RSS</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="site-footer__bottom">
-    <p>© {{ site.currentYear | year }} Questadon. Made in 🇨🇦 Canada. Canada Strong / Canada Fort.</p>
-    <p><a href="#top" class="back-to-top" aria-label="Back to top of page">↑ Back to top</a></p>
+    <div class="site-footer__bottom">
+      <p>© {{ site.currentYear | year }} Questadon. Made in 🇨🇦 Canada. Canada Strong / Canada Fort.</p>
+      <p><a href="#top">Back to top ↑</a></p>
+    </div>
   </div>
 </footer>

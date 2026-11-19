@@ -3,7 +3,12 @@ title: Ice-Fishing Mini Game (5e Compatible, Rules-Light)
 description: A free, rules-light mini-game for D&D 5e and other TTRPGs featuring an ice fishing competition and creature battle royale.
 date: 2026-01-28
 tags: [project, module, d&d 5e, d&d 5.5e, nimble]
-cardImage: ./assets/post-images/ice-fishing/ice-fishing-game.jpg
+# Cards and page header: a short name (`title` stays the SEO <title>),
+# the small label above the card title, and a one-line card summary.
+heading: Ice-Fishing Mini Game
+kicker: Free one-shot · 5E compatible
+cardBlurb: A rules-light fishing contest that turns into a creature battle royale.
+cardImage: ./assets/post-images/ice-fishing/ice-fishing-game-tall.jpg
 cardImageAlt: "Ice-Fishing Mini Game: printable creature cards for a winter festival one-shot"
 cardImageFocus: center
 lead: "A two-part winter festival mini-game for your table: an ice fishing competition followed by a creature battle royale. Perfect for a holiday one-shot or a fun side activity in your campaign."

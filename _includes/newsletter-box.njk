@@ -1,10 +1,14 @@
-{# Optional before including: newsletterHeading, newsletterBlurb, and
-   newsletterHeadingTag ("h3" when the box sits inside another section, so it
-   doesn't add a top-level heading). #}
+{# Full-width band (home). Optional before including: newsletterHeading,
+   newsletterBlurb, and newsletterHeadingTag ("h3" when the band sits inside
+   another section, so it doesn't add a top-level heading). #}
 {% set _nlTag = newsletterHeadingTag | default("h2") %}
 <section class="newsletter-box" id="newsletter" aria-labelledby="newsletter-heading">
-  <{{ _nlTag }} class="newsletter-box__heading" id="newsletter-heading">{{ newsletterHeading | default("Don't split the party") }}</{{ _nlTag }}>
-  <p class="newsletter-box__blurb">{{ newsletterBlurb | default("Let's go together (by email). Updates, releases, only the good stuff.") }}</p>
+  <div class="newsletter-box__inner">
+  <div>
+  <{{ _nlTag }} class="newsletter-box__heading" id="newsletter-heading">{{ newsletterHeading | default("Don’t split the party.") }}</{{ _nlTag }}>
+  <p class="newsletter-box__blurb">{{ newsletterBlurb | default("Let’s go together, by email. New games, releases, and only the good stuff.") }}</p>
+  </div>
+  <div class="newsletter-box__form">
   <script async src="https://eomail5.com/form/26022422-aad5-11f1-a11e-bdd4cfec24d4.js" data-form="26022422-aad5-11f1-a11e-bdd4cfec24d4"></script>
   <script>
     // EmailOctopus dispatches this on document once a signup succeeds - an
@@ -23,4 +27,6 @@
     <a href="https://policies.google.com/privacy" rel="noopener">Privacy Policy</a> and
     <a href="https://policies.google.com/terms" rel="noopener">Terms of Service</a> apply.
   </p>
+  </div>
+  </div>
 </section>

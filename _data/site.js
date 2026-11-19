@@ -4,6 +4,11 @@ module.exports = {
     name: "Questadon",
     defaultSocialImage: "/assets/social-share.jpg",
 
+    // The Questadon Discord invite. Must be set to never expire. Site links
+    // use it directly; the QR code in the books goes through /r/discord-fl/
+    // (discord-fl.njk), which counts the scan and then forwards here.
+    discordUrl: "https://discord.gg/tt3g2mkRZn",
+
     // Google Analytics 4 measurement ID. Blank it out to pull the tag from
     // every page at once.
     googleAnalyticsId: "G-M28KM46L5W",

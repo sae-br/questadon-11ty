@@ -1,25 +1,34 @@
-<section class="featured" aria-labelledby="featured-heading">
-  <div class="featured__art">
+{# Home: full-bleed Final Light hero, then one player quote. The hero slides
+   up under the translucent header (see .hero in styles.css). #}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__art">
     {% heroPicture
-        "./assets/feature-banner-final-light-square.jpg", "", "",
-        { sizes: "(max-width: 860px) 100vw, 700px", eager: true } %}
+        "./assets/feature-banner-final-light.jpg", "./assets/feature-banner-final-light-tall.jpg", "",
+        { sizes: "100vw", breakpoint: "760px", eager: true } %}
   </div>
 
-  <div class="featured__inner">
-    <div class="featured__content">
-      <h2 class="featured__heading" id="featured-heading">
-        <img class="featured__logo" src="/assets/final-light-logo-web.png"
+  <div class="wrap">
+    <div class="hero__content">
+      <p class="eyebrow eyebrow--hi">Funded on Kickstarter in one minute</p>
+      <h2 class="hero__title" id="hero-title">
+        <img class="hero__logo" src="/assets/final-light-logo-web.png"
              alt="Final Light" width="800" height="617" loading="eager" decoding="async">
       </h2>
-      <p class="featured__tagline">A survival-horror TTRPG for telling short, high-stakes zombie stories with your friends.</p>
-      <ul class="featured__stats eyebrow">
-        <li>Over 4200% funded</li>
-        <li>Closed and in production</li>
-      </ul>
-      <div class="featured__actions">
-        <a class="btn"
-           href="/projects/final-light-ttrpg/">Explore</a>
+      <p class="lede hero__tagline">Short, high-stakes zombie stories for 2–4 players. You are not heroes trying to fix it. You are survivors trying to get through it.</p>
+      <div class="hero__actions">
+        <a class="btn" href="/projects/final-light-ttrpg/">Explore Final Light</a>
+        <a class="btn btn--ghost" href="/projects/final-light-ttrpg/#quick-start">Free Quick Start</a>
       </div>
     </div>
   </div>
 </section>
+
+<div class="wrap">
+<figure class="proof">
+  <div>
+    <blockquote><p>“The tensest RPG <span class="proof__accent">I’ve ever run.</span>”</p></blockquote>
+    <figcaption class="eyebrow">Agis, Final Light GM</figcaption>
+  </div>
+  <a class="link-arrow" href="/projects/final-light-ttrpg/#what-players-say">See what players say <span aria-hidden="true">→</span></a>
+</figure>
+</div>
