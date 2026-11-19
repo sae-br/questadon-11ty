@@ -1964,7 +1964,6 @@ main.main--reading > * {
   --quote-accent:       var(--p-accent);
   --breadcrumb-color:   var(--p-muted);
   --breadcrumb-hover:   var(--p-text);
-  --hero-gap:           clamp(2.5rem, 6vw, 4rem);
   --panel-width:        17rem;
   --panel-gap-stacked:  3.5rem;
 
@@ -2042,9 +2041,10 @@ main.main--reading > * {
 
 /* ---------- Header ---------- */
 
+/* Same spacing as .project-head, so the two page types line up */
 .product__header {
   max-width: 46rem;
-  margin-bottom: clamp(3rem, 7vw, 5rem);
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
 }
 
 .product__title {
